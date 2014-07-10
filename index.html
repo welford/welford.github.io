@@ -43,7 +43,7 @@ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF S
 DAMAGE.
 " />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>My TiddlyWiki — a non-linear personal web notebook</title>
+<title>TWNotes — Samples Of My Tiddlywiki Stuff</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~--><!--~~ Raw markup ~~-->
 
 </head>
@@ -117,13 +117,15 @@ Error message and password prompt
 
 <p>This <a class='tw-tiddlylink-external' href='http://tiddlywiki.com' target='_blank'>TiddlyWiki</a> contains the following tiddlers:</p><p><ul>
 
-<li>$:/config/AnimationDuration</li>
-
 <li>$:/config/OriginalTiddlerPaths</li>
 
 <li>$:/core</li>
 
 <li>$:/DefaultTiddlers</li>
+
+<li>$:/editions/twnotes/download-empty</li>
+
+<li>$:/editions/twnotes/snippets/download-empty-button</li>
 
 <li>$:/isEncrypted</li>
 
@@ -131,17 +133,25 @@ Error message and password prompt
 
 <li>$:/plugins/tiddlywiki/codemirror</li>
 
+<li>$:/plugins/tiddlywiki/filesystem</li>
+
 <li>$:/plugins/tiddlywiki/highlight</li>
 
-<li>$:/plugins/tiddlywiki/highlight/styles</li>
+<li>$:/plugins/tiddlywiki/tiddlyweb</li>
 
 <li>$:/plugins/welford/htalink</li>
 
 <li>$:/plugins/welford/twexe</li>
 
+<li>$:/SiteSubtitle</li>
+
+<li>$:/SiteTitle</li>
+
 <li>$:/state/tab-{694242977}</li>
 
 <li>$:/state/tab/sidebar-{312696086}</li>
+
+<li>$:/status/IsLoggedIn</li>
 
 <li>$:/status/UserName</li>
 
@@ -149,21 +159,17 @@ Error message and password prompt
 
 <li>$:/temp/advancedsearch</li>
 
-<li>$:/temp/search</li>
-
 <li>$:/theme</li>
 
 <li>$:/themes/tiddlywiki/readonly</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
 
-<li>$:/themes/tiddlywiki/vanilla/metrics</li>
-
 <li>$:/themes/welford/phasersonkill</li>
 
-<li>Creating Plugins</li>
-
 <li>Customising Tiddly5</li>
+
+<li>Download</li>
 
 <li>Example Tiddler</li>
 
@@ -173,17 +179,11 @@ Error message and password prompt
 
 <li>list test</li>
 
-<li>SystemTags</li>
-
 <li>This Is TWEXE</li>
-
-<li>Tiddlywiki</li>
 
 <li>To Do</li>
 
 <li>TW Dev Notes</li>
-
-<li>what was imported</li>
 
 </ul>
 </p>
@@ -195,18 +195,20 @@ Error message and password prompt
 <!--~~ Ordinary tiddlers ~~-->
 
 <div id="storeArea" style="display:none;">
-<div created="20140707221158917" creator="ジェームス" modified="20140707221158917" modifier="ジェームス" title="$:/config/AnimationDuration">
-<pre>40</pre>
-</div>
-<div title="$:/config/OriginalTiddlerPaths" type="application/x-tiddler-dictionary">
-<pre>$:/theme: $__theme.tid
-$:/themes/tiddlywiki/vanilla/metrics: $__themes_tiddlywiki_vanilla_metrics.tid
+<div title="$:/config/OriginalTiddlerPaths" type="application/x-tiddler-dictionary" revision="0" bag="default">
+<pre>$:/DefaultTiddlers: DefaultTiddlers.tid
+$:/editions/twnotes/snippets/download-empty-button: download-empty-button.tid
+$:/editions/twnotes/download-empty: download-empty.tid
+Download: Download.tid
 Example Tiddler: Example Tiddler.tid
+$:/SiteSubtitle: SiteSubtitle.tid
+$:/SiteTitle: SiteTitle.tid
+$:/theme: theme.tid
 This Is TWEXE: This Is TWEXE.tid
 To Do: To Do.tid
 </pre>
 </div>
-<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core plugin" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.0.14-prerelease">
+<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core plugin" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/config/EditorTypeMappings/image/gif&quot;: {
@@ -2739,7 +2741,7 @@ To Do: To Do.tid
             &quot;module-type&quot;: &quot;startup&quot;
         },
         &quot;$:/core/modules/storyviews/classic.js&quot;: {
-            &quot;text&quot;: &quot;/*\\\r\ntitle: $:/core/modules/storyviews/classic.js\r\ntype: application/javascript\r\nmodule-type: storyview\r\n\r\nViews the story as a linear sequence\r\n\r\n\\*/\r\n(function(){\r\n\r\n/*jslint node: true, browser: true */\r\n/*global $tw: false */\r\n\&quot;use strict\&quot;;\r\n\r\nvar ClassicStoryView = function(listWidget) {\r\n\tthis.listWidget = listWidget;\r\n}\r\n\r\nClassicStoryView.prototype.navigateTo = function(historyInfo) {\r\n\tvar listElementIndex = this.listWidget.findListItem(0,historyInfo.title);\r\n\tif(listElementIndex === undefined) {\r\n\t\treturn;\r\n\t}\r\n\tvar listItemWidget = this.listWidget.children[listElementIndex],\r\n\t\ttargetElement = listItemWidget.findFirstDomNode();\r\n\t// Scroll the node into view\r\n\tthis.listWidget.dispatchEvent({type: \&quot;tw-scroll\&quot;, target: targetElement});\r\n};\r\n\r\nClassicStoryView.prototype.insert = function(widget) {\r\n\tvar targetElement = widget.findFirstDomNode(),\r\n\t\tduration = $tw.utils.getAnimationDuration();\r\n\t// Get the current height of the tiddler\r\n\tvar computedStyle = window.getComputedStyle(targetElement),\r\n\t\tcurrMarginBottom = parseInt(computedStyle.marginBottom,10),\r\n\t\tcurrMarginTop = parseInt(computedStyle.marginTop,10),\r\n\t\tcurrHeight = targetElement.offsetHeight + currMarginTop;\r\n\t// Reset the margin once the transition is over\r\n\tsetTimeout(function() {\r\n\t\t$tw.utils.setStyle(targetElement,[\r\n\t\t\t{transition: \&quot;none\&quot;},\r\n\t\t\t{marginBottom: \&quot;\&quot;}\r\n\t\t]);\r\n\t},duration);\r\n\t// Set up the initial position of the element\r\n\t$tw.utils.setStyle(targetElement,[\r\n\t\t{transition: \&quot;none\&quot;},\r\n\t\t{marginBottom: (-currHeight) + \&quot;px\&quot;},\r\n\t\t{opacity: \&quot;0.0\&quot;}\r\n\t]);\r\n\t$tw.utils.forceLayout(targetElement);\r\n\t// Transition to the final position\r\n\t$tw.utils.setStyle(targetElement,[\r\n\t\t{transition: \&quot;opacity \&quot; + duration + \&quot;ms ease-in-out, \&quot; +\r\n\t\t\t\t\t\&quot;margin-bottom \&quot; + duration + \&quot;ms ease-in-out\&quot;},\r\n\t\t{marginBottom: currMarginBottom + \&quot;px\&quot;},\r\n\t\t{opacity: \&quot;1.0\&quot;}\r\n\t]);\r\n};\r\n\r\nClassicStoryView.prototype.remove = function(widget) {\r\n\tvar targetElement = widget.findFirstDomNode(),\r\n\t\tduration = $tw.utils.getAnimationDuration();\r\n\t// Get the current height of the tiddler\r\n\tvar currWidth = targetElement.offsetWidth,\r\n\t\tcomputedStyle = window.getComputedStyle(targetElement),\r\n\t\tcurrMarginBottom = parseInt(computedStyle.marginBottom,10),\r\n\t\tcurrMarginTop = parseInt(computedStyle.marginTop,10),\r\n\t\tcurrHeight = targetElement.offsetHeight + currMarginTop;\r\n\t// Remove the dom nodes of the widget at the end of the transition\r\n\tsetTimeout(function() {\r\n\t\twidget.removeChildDomNodes();\r\n\t},duration);\r\n\t// Animate the closure\r\n\t$tw.utils.setStyle(targetElement,[\r\n\t\t{transition: \&quot;none\&quot;},\r\n\t\t{transform: \&quot;translateX(0px)\&quot;},\r\n\t\t{marginBottom:  currMarginBottom + \&quot;px\&quot;},\r\n\t\t{opacity: \&quot;1.0\&quot;}\r\n\t]);\r\n\t$tw.utils.forceLayout(targetElement);\r\n\t$tw.utils.setStyle(targetElement,[\r\n\t\t{transition: $tw.utils.roundTripPropertyName(\&quot;transform\&quot;) + \&quot; \&quot; + duration + \&quot;ms ease-in-out, \&quot; +\r\n\t\t\t\t\t\&quot;opacity \&quot; + duration + \&quot;ms ease-in-out, \&quot; +\r\n\t\t\t\t\t\&quot;margin-bottom \&quot; + duration + \&quot;ms ease-in-out\&quot;},\r\n\t\t{transform: \&quot;translateX(-\&quot; + currWidth + \&quot;px)\&quot;},\r\n\t\t{marginBottom: (-currHeight) + \&quot;px\&quot;},\r\n\t\t{opacity: \&quot;0.0\&quot;}\r\n\t]);\r\n};\r\n\r\nexports.classic = ClassicStoryView;\r\n\r\n})();&quot;,
+            &quot;text&quot;: &quot;/*\\\r\ntitle: $:/core/modules/storyviews/classic.js\r\ntype: application/javascript\r\nmodule-type: storyview\r\n\r\nViews the story as a linear sequence\r\n\r\n\\*/\r\n(function(){\r\n\r\n/*jslint node: true, browser: true */\r\n/*global $tw: false */\r\n\&quot;use strict\&quot;;\r\n\r\nvar easing = \&quot;cubic-bezier(0.645, 0.045, 0.355, 1)\&quot;; // From http://easings.net/#easeInOutCubic\r\n\r\nvar ClassicStoryView = function(listWidget) {\r\n\tthis.listWidget = listWidget;\r\n}\r\n\r\nClassicStoryView.prototype.navigateTo = function(historyInfo) {\r\n\tvar listElementIndex = this.listWidget.findListItem(0,historyInfo.title);\r\n\tif(listElementIndex === undefined) {\r\n\t\treturn;\r\n\t}\r\n\tvar listItemWidget = this.listWidget.children[listElementIndex],\r\n\t\ttargetElement = listItemWidget.findFirstDomNode();\r\n\t// Scroll the node into view\r\n\tthis.listWidget.dispatchEvent({type: \&quot;tw-scroll\&quot;, target: targetElement});\r\n};\r\n\r\nClassicStoryView.prototype.insert = function(widget) {\r\n\tvar targetElement = widget.findFirstDomNode(),\r\n\t\tduration = $tw.utils.getAnimationDuration();\r\n\t// Get the current height of the tiddler\r\n\tvar computedStyle = window.getComputedStyle(targetElement),\r\n\t\tcurrMarginBottom = parseInt(computedStyle.marginBottom,10),\r\n\t\tcurrMarginTop = parseInt(computedStyle.marginTop,10),\r\n\t\tcurrHeight = targetElement.offsetHeight + currMarginTop;\r\n\t// Reset the margin once the transition is over\r\n\tsetTimeout(function() {\r\n\t\t$tw.utils.setStyle(targetElement,[\r\n\t\t\t{transition: \&quot;none\&quot;},\r\n\t\t\t{marginBottom: \&quot;\&quot;}\r\n\t\t]);\r\n\t},duration);\r\n\t// Set up the initial position of the element\r\n\t$tw.utils.setStyle(targetElement,[\r\n\t\t{transition: \&quot;none\&quot;},\r\n\t\t{marginBottom: (-currHeight) + \&quot;px\&quot;},\r\n\t\t{opacity: \&quot;0.0\&quot;}\r\n\t]);\r\n\t$tw.utils.forceLayout(targetElement);\r\n\t// Transition to the final position\r\n\t$tw.utils.setStyle(targetElement,[\r\n\t\t{transition: \&quot;opacity \&quot; + duration + \&quot;ms \&quot; + easing + \&quot;, \&quot; +\r\n\t\t\t\t\t\&quot;margin-bottom \&quot; + duration + \&quot;ms \&quot; + easing},\r\n\t\t{marginBottom: currMarginBottom + \&quot;px\&quot;},\r\n\t\t{opacity: \&quot;1.0\&quot;}\r\n\t]);\r\n};\r\n\r\nClassicStoryView.prototype.remove = function(widget) {\r\n\tvar targetElement = widget.findFirstDomNode(),\r\n\t\tduration = $tw.utils.getAnimationDuration();\r\n\t// Get the current height of the tiddler\r\n\tvar currWidth = targetElement.offsetWidth,\r\n\t\tcomputedStyle = window.getComputedStyle(targetElement),\r\n\t\tcurrMarginBottom = parseInt(computedStyle.marginBottom,10),\r\n\t\tcurrMarginTop = parseInt(computedStyle.marginTop,10),\r\n\t\tcurrHeight = targetElement.offsetHeight + currMarginTop;\r\n\t// Remove the dom nodes of the widget at the end of the transition\r\n\tsetTimeout(function() {\r\n\t\twidget.removeChildDomNodes();\r\n\t},duration);\r\n\t// Animate the closure\r\n\t$tw.utils.setStyle(targetElement,[\r\n\t\t{transition: \&quot;none\&quot;},\r\n\t\t{transform: \&quot;translateX(0px)\&quot;},\r\n\t\t{marginBottom:  currMarginBottom + \&quot;px\&quot;},\r\n\t\t{opacity: \&quot;1.0\&quot;}\r\n\t]);\r\n\t$tw.utils.forceLayout(targetElement);\r\n\t$tw.utils.setStyle(targetElement,[\r\n\t\t{transition: $tw.utils.roundTripPropertyName(\&quot;transform\&quot;) + \&quot; \&quot; + duration + \&quot;ms \&quot; + easing + \&quot;, \&quot; +\r\n\t\t\t\t\t\&quot;opacity \&quot; + duration + \&quot;ms \&quot; + easing + \&quot;, \&quot; +\r\n\t\t\t\t\t\&quot;margin-bottom \&quot; + duration + \&quot;ms \&quot; + easing},\r\n\t\t{transform: \&quot;translateX(-\&quot; + currWidth + \&quot;px)\&quot;},\r\n\t\t{marginBottom: (-currHeight) + \&quot;px\&quot;},\r\n\t\t{opacity: \&quot;0.0\&quot;}\r\n\t]);\r\n};\r\n\r\nexports.classic = ClassicStoryView;\r\n\r\n})();&quot;,
             &quot;title&quot;: &quot;$:/core/modules/storyviews/classic.js&quot;,
             &quot;type&quot;: &quot;application/javascript&quot;,
             &quot;module-type&quot;: &quot;storyview&quot;
@@ -2751,7 +2753,7 @@ To Do: To Do.tid
             &quot;module-type&quot;: &quot;storyview&quot;
         },
         &quot;$:/core/modules/storyviews/zoomin.js&quot;: {
-            &quot;text&quot;: &quot;/*\\\r\ntitle: $:/core/modules/storyviews/zoomin.js\r\ntype: application/javascript\r\nmodule-type: storyview\r\n\r\nZooms between individual tiddlers\r\n\r\n\\*/\r\n(function(){\r\n\r\n/*jslint node: true, browser: true */\r\n/*global $tw: false */\r\n\&quot;use strict\&quot;;\r\n\r\nvar ZoominListView = function(listWidget) {\r\n\tvar self = this;\r\n\tthis.listWidget = listWidget;\r\n\t// Get the index of the tiddler that is at the top of the history\r\n\tvar history = this.listWidget.wiki.getTiddlerData(this.listWidget.historyTitle,[]),\r\n\t\ttargetTiddler;\r\n\tif(history.length &gt; 0) {\r\n\t\ttargetTiddler = history[history.length-1].title;\r\n\t}\r\n\t// Make all the tiddlers position absolute, and hide all but the top (or first) one\r\n\t$tw.utils.each(this.listWidget.children,function(itemWidget,index) {\r\n\t\tvar domNode = itemWidget.findFirstDomNode();\r\n\t\tif(targetTiddler !== itemWidget.parseTreeNode.itemTitle || (!targetTiddler &amp;&amp; index)) {\r\n\t\t\tdomNode.style.display = \&quot;none\&quot;;\r\n\t\t} else {\r\n\t\t\tself.currentTiddlerDomNode = domNode;\r\n\t\t}\r\n\t\tdomNode.style.position = \&quot;absolute\&quot;;\r\n\t});\r\n};\r\n\r\nZoominListView.prototype.navigateTo = function(historyInfo) {\r\n\tvar duration = $tw.utils.getAnimationDuration(),\r\n\t\tlistElementIndex = this.listWidget.findListItem(0,historyInfo.title);\r\n\tif(listElementIndex === undefined) {\r\n\t\treturn;\r\n\t}\r\n\tvar listItemWidget = this.listWidget.children[listElementIndex],\r\n\t\ttargetElement = listItemWidget.findFirstDomNode();\r\n\t// Make the new tiddler be position absolute and visible so that we can measure it\r\n\t$tw.utils.setStyle(targetElement,[\r\n\t\t{position: \&quot;absolute\&quot;},\r\n\t\t{display: \&quot;block\&quot;},\r\n\t\t{transformOrigin: \&quot;0 0\&quot;},\r\n\t\t{transform: \&quot;translateX(0px) translateY(0px) scale(1)\&quot;},\r\n\t\t{transition: \&quot;none\&quot;},\r\n\t\t{opacity: \&quot;0.0\&quot;}\r\n\t]);\r\n\t// Get the position of the source node, or use the centre of the window as the source position\r\n\tvar sourceBounds = historyInfo.fromPageRect || {\r\n\t\t\tleft: window.innerWidth/2 - 2,\r\n\t\t\ttop: window.innerHeight/2 - 2,\r\n\t\t\twidth: window.innerWidth/8,\r\n\t\t\theight: window.innerHeight/8\r\n\t\t};\r\n\t// Try to find the title node in the target tiddler\r\n\tvar titleDomNode = findTitleDomNode(listItemWidget) || listItemWidget.findFirstDomNode(),\r\n\t\tzoomBounds = titleDomNode.getBoundingClientRect();\r\n\t// Compute the transform for the target tiddler to make the title lie over the source rectange\r\n\tvar targetBounds = targetElement.getBoundingClientRect(),\r\n\t\tscale = sourceBounds.width / zoomBounds.width,\r\n\t\tx = sourceBounds.left - targetBounds.left - (zoomBounds.left - targetBounds.left) * scale,\r\n\t\ty = sourceBounds.top - targetBounds.top - (zoomBounds.top - targetBounds.top) * scale;\r\n\t// Transform the target tiddler to its starting position\r\n\t$tw.utils.setStyle(targetElement,[\r\n\t\t{transform: \&quot;translateX(\&quot; + x + \&quot;px) translateY(\&quot; + y + \&quot;px) scale(\&quot; + scale + \&quot;)\&quot;}\r\n\t]);\r\n\t// Force layout\r\n\t$tw.utils.forceLayout(targetElement);\r\n\t// Apply the ending transitions with a timeout to ensure that the previously applied transformations are applied first\r\n\tvar self = this,\r\n\t\tprevCurrentTiddler = this.currentTiddlerDomNode;\r\n\tthis.currentTiddlerDomNode = targetElement;\r\n\t// Transform the target tiddler to its natural size\r\n\t$tw.utils.setStyle(targetElement,[\r\n\t\t{transition: $tw.utils.roundTripPropertyName(\&quot;transform\&quot;) + \&quot; \&quot; + duration + \&quot;ms ease-in, opacity \&quot; + duration + \&quot;ms ease-in\&quot;},\r\n\t\t{opacity: \&quot;1.0\&quot;},\r\n\t\t{transform: \&quot;translateX(0px) translateY(0px) scale(1)\&quot;},\r\n\t\t{zIndex: \&quot;500\&quot;},\r\n\t]);\r\n\t// Transform the previous tiddler out of the way and then hide it\r\n\tif(prevCurrentTiddler &amp;&amp; prevCurrentTiddler !== targetElement) {\r\n\t\tvar scale = zoomBounds.width / sourceBounds.width;\r\n\t\tx =  zoomBounds.left - targetBounds.left - (sourceBounds.left - targetBounds.left) * scale;\r\n\t\ty =  zoomBounds.top - targetBounds.top - (sourceBounds.top - targetBounds.top) * scale;\r\n\t\t$tw.utils.setStyle(prevCurrentTiddler,[\r\n\t\t\t{transition: $tw.utils.roundTripPropertyName(\&quot;transform\&quot;) + \&quot; \&quot; + duration + \&quot;ms ease-in, opacity \&quot; + duration + \&quot;ms ease-in\&quot;},\r\n\t\t\t{opacity: \&quot;0.0\&quot;},\r\n\t\t\t{transformOrigin: \&quot;0 0\&quot;},\r\n\t\t\t{transform: \&quot;translateX(\&quot; + x + \&quot;px) translateY(\&quot; + y + \&quot;px) scale(\&quot; + scale + \&quot;)\&quot;},\r\n\t\t\t{zIndex: \&quot;0\&quot;}\r\n\t\t]);\r\n\t\t// Hide the tiddler when the transition has finished\r\n\t\tsetTimeout(function() {\r\n\t\t\tif(self.currentTiddlerDomNode !== prevCurrentTiddler) {\r\n\t\t\t\tprevCurrentTiddler.style.display = \&quot;none\&quot;;\r\n\t\t\t}\r\n\t\t},duration);\r\n\t}\r\n\t// Scroll the target into view\r\n//\t$tw.pageScroller.scrollIntoView(targetElement);\r\n};\r\n\r\n/*\r\nFind the first child DOM node of a widget that has the class \&quot;title\&quot;\r\n*/\r\nfunction findTitleDomNode(widget,targetClass) {\r\n\ttargetClass = targetClass || \&quot;title\&quot;;\r\n\tvar domNode = widget.findFirstDomNode();\r\n\tif(domNode &amp;&amp; domNode.querySelector) {\r\n\t\treturn domNode.querySelector(\&quot;.\&quot; + targetClass);\r\n\t}\r\n\treturn null;\r\n}\r\n\r\nZoominListView.prototype.insert = function(widget) {\r\n\tvar targetElement = widget.findFirstDomNode();\r\n\t// Make the newly inserted node position absolute and hidden\r\n\t$tw.utils.setStyle(targetElement,[\r\n\t\t{display: \&quot;none\&quot;},\r\n\t\t{position: \&quot;absolute\&quot;}\r\n\t]);\r\n};\r\n\r\nZoominListView.prototype.remove = function(widget) {\r\n\tvar targetElement = widget.findFirstDomNode(),\r\n\t\tduration = $tw.utils.getAnimationDuration();\r\n\t// Set up the tiddler that is being closed\r\n\t$tw.utils.setStyle(targetElement,[\r\n\t\t{position: \&quot;absolute\&quot;},\r\n\t\t{display: \&quot;block\&quot;},\r\n\t\t{transformOrigin: \&quot;50% 50%\&quot;},\r\n\t\t{transform: \&quot;translateX(0px) translateY(0px) scale(1)\&quot;},\r\n\t\t{transition: \&quot;none\&quot;},\r\n\t\t{zIndex: \&quot;0\&quot;}\r\n\t]);\r\n\t// We'll move back to the previous or next element in the story\r\n\tvar toWidget = widget.previousSibling();\r\n\tif(!toWidget) {\r\n\t\ttoWidget = widget.nextSibling();\r\n\t}\r\n\tvar toWidgetDomNode = toWidget &amp;&amp; toWidget.findFirstDomNode();\r\n\t// Set up the tiddler we're moving back in\r\n\tif(toWidgetDomNode) {\r\n\t\t$tw.utils.setStyle(toWidgetDomNode,[\r\n\t\t\t{position: \&quot;absolute\&quot;},\r\n\t\t\t{display: \&quot;block\&quot;},\r\n\t\t\t{transformOrigin: \&quot;50% 50%\&quot;},\r\n\t\t\t{transform: \&quot;translateX(0px) translateY(0px) scale(10)\&quot;},\r\n\t\t\t{transition: $tw.utils.roundTripPropertyName(\&quot;transform\&quot;) + \&quot; \&quot; + duration + \&quot;ms ease-in, opacity \&quot; + duration + \&quot;ms ease-in\&quot;},\r\n\t\t\t{opacity: \&quot;0\&quot;},\r\n\t\t\t{zIndex: \&quot;500\&quot;}\r\n\t\t]);\r\n\t\tthis.currentTiddlerDomNode = toWidgetDomNode;\r\n\t}\r\n\t// Animate them both\r\n\t// Force layout\r\n\t$tw.utils.forceLayout(this.listWidget.parentDomNode);\r\n\t// First, the tiddler we're closing\r\n\t$tw.utils.setStyle(targetElement,[\r\n\t\t{transformOrigin: \&quot;50% 50%\&quot;},\r\n\t\t{transform: \&quot;translateX(0px) translateY(0px) scale(0.1)\&quot;},\r\n\t\t{transition: $tw.utils.roundTripPropertyName(\&quot;transform\&quot;) + \&quot; \&quot; + duration + \&quot;ms ease-in, opacity \&quot; + duration + \&quot;ms ease-in\&quot;},\r\n\t\t{opacity: \&quot;0\&quot;},\r\n\t\t{zIndex: \&quot;0\&quot;}\r\n\t]);\r\n\tsetTimeout(function() {\r\n\t\t// Delete the DOM node when the transition is over\r\n\t\twidget.removeChildDomNodes();\r\n\t},duration);\r\n\t// Now the tiddler we're going back to\r\n\tif(toWidgetDomNode) {\r\n\t\t$tw.utils.setStyle(toWidgetDomNode,[\r\n\t\t\t{transform: \&quot;translateX(0px) translateY(0px) scale(1)\&quot;},\r\n\t\t\t{opacity: \&quot;1\&quot;}\r\n\t\t]);\r\n\t}\r\n\treturn true; // Indicate that we'll delete the DOM node\r\n};\r\n\r\nexports.zoomin = ZoominListView;\r\n\r\n})();&quot;,
+            &quot;text&quot;: &quot;/*\\\r\ntitle: $:/core/modules/storyviews/zoomin.js\r\ntype: application/javascript\r\nmodule-type: storyview\r\n\r\nZooms between individual tiddlers\r\n\r\n\\*/\r\n(function(){\r\n\r\n/*jslint node: true, browser: true */\r\n/*global $tw: false */\r\n\&quot;use strict\&quot;;\r\n\r\nvar easing = \&quot;cubic-bezier(0.645, 0.045, 0.355, 1)\&quot;; // From http://easings.net/#easeInOutCubic\r\n\r\nvar ZoominListView = function(listWidget) {\r\n\tvar self = this;\r\n\tthis.listWidget = listWidget;\r\n\t// Get the index of the tiddler that is at the top of the history\r\n\tvar history = this.listWidget.wiki.getTiddlerData(this.listWidget.historyTitle,[]),\r\n\t\ttargetTiddler;\r\n\tif(history.length &gt; 0) {\r\n\t\ttargetTiddler = history[history.length-1].title;\r\n\t}\r\n\t// Make all the tiddlers position absolute, and hide all but the top (or first) one\r\n\t$tw.utils.each(this.listWidget.children,function(itemWidget,index) {\r\n\t\tvar domNode = itemWidget.findFirstDomNode();\r\n\t\tif(targetTiddler !== itemWidget.parseTreeNode.itemTitle || (!targetTiddler &amp;&amp; index)) {\r\n\t\t\tdomNode.style.display = \&quot;none\&quot;;\r\n\t\t} else {\r\n\t\t\tself.currentTiddlerDomNode = domNode;\r\n\t\t}\r\n\t\tdomNode.style.position = \&quot;absolute\&quot;;\r\n\t});\r\n};\r\n\r\nZoominListView.prototype.navigateTo = function(historyInfo) {\r\n\tvar duration = $tw.utils.getAnimationDuration(),\r\n\t\tlistElementIndex = this.listWidget.findListItem(0,historyInfo.title);\r\n\tif(listElementIndex === undefined) {\r\n\t\treturn;\r\n\t}\r\n\tvar listItemWidget = this.listWidget.children[listElementIndex],\r\n\t\ttargetElement = listItemWidget.findFirstDomNode();\r\n\t// Make the new tiddler be position absolute and visible so that we can measure it\r\n\t$tw.utils.setStyle(targetElement,[\r\n\t\t{position: \&quot;absolute\&quot;},\r\n\t\t{display: \&quot;block\&quot;},\r\n\t\t{transformOrigin: \&quot;0 0\&quot;},\r\n\t\t{transform: \&quot;translateX(0px) translateY(0px) scale(1)\&quot;},\r\n\t\t{transition: \&quot;none\&quot;},\r\n\t\t{opacity: \&quot;0.0\&quot;}\r\n\t]);\r\n\t// Get the position of the source node, or use the centre of the window as the source position\r\n\tvar sourceBounds = historyInfo.fromPageRect || {\r\n\t\t\tleft: window.innerWidth/2 - 2,\r\n\t\t\ttop: window.innerHeight/2 - 2,\r\n\t\t\twidth: window.innerWidth/8,\r\n\t\t\theight: window.innerHeight/8\r\n\t\t};\r\n\t// Try to find the title node in the target tiddler\r\n\tvar titleDomNode = findTitleDomNode(listItemWidget) || listItemWidget.findFirstDomNode(),\r\n\t\tzoomBounds = titleDomNode.getBoundingClientRect();\r\n\t// Compute the transform for the target tiddler to make the title lie over the source rectange\r\n\tvar targetBounds = targetElement.getBoundingClientRect(),\r\n\t\tscale = sourceBounds.width / zoomBounds.width,\r\n\t\tx = sourceBounds.left - targetBounds.left - (zoomBounds.left - targetBounds.left) * scale,\r\n\t\ty = sourceBounds.top - targetBounds.top - (zoomBounds.top - targetBounds.top) * scale;\r\n\t// Transform the target tiddler to its starting position\r\n\t$tw.utils.setStyle(targetElement,[\r\n\t\t{transform: \&quot;translateX(\&quot; + x + \&quot;px) translateY(\&quot; + y + \&quot;px) scale(\&quot; + scale + \&quot;)\&quot;}\r\n\t]);\r\n\t// Force layout\r\n\t$tw.utils.forceLayout(targetElement);\r\n\t// Apply the ending transitions with a timeout to ensure that the previously applied transformations are applied first\r\n\tvar self = this,\r\n\t\tprevCurrentTiddler = this.currentTiddlerDomNode;\r\n\tthis.currentTiddlerDomNode = targetElement;\r\n\t// Transform the target tiddler to its natural size\r\n\t$tw.utils.setStyle(targetElement,[\r\n\t\t{transition: $tw.utils.roundTripPropertyName(\&quot;transform\&quot;) + \&quot; \&quot; + duration + \&quot;ms \&quot; + easing + \&quot;, opacity \&quot; + duration + \&quot;ms \&quot; + easing},\r\n\t\t{opacity: \&quot;1.0\&quot;},\r\n\t\t{transform: \&quot;translateX(0px) translateY(0px) scale(1)\&quot;},\r\n\t\t{zIndex: \&quot;500\&quot;},\r\n\t]);\r\n\t// Transform the previous tiddler out of the way and then hide it\r\n\tif(prevCurrentTiddler &amp;&amp; prevCurrentTiddler !== targetElement) {\r\n\t\tvar scale = zoomBounds.width / sourceBounds.width;\r\n\t\tx =  zoomBounds.left - targetBounds.left - (sourceBounds.left - targetBounds.left) * scale;\r\n\t\ty =  zoomBounds.top - targetBounds.top - (sourceBounds.top - targetBounds.top) * scale;\r\n\t\t$tw.utils.setStyle(prevCurrentTiddler,[\r\n\t\t\t{transition: $tw.utils.roundTripPropertyName(\&quot;transform\&quot;) + \&quot; \&quot; + duration + \&quot;ms \&quot; + easing + \&quot;, opacity \&quot; + duration + \&quot;ms \&quot; + easing},\r\n\t\t\t{opacity: \&quot;0.0\&quot;},\r\n\t\t\t{transformOrigin: \&quot;0 0\&quot;},\r\n\t\t\t{transform: \&quot;translateX(\&quot; + x + \&quot;px) translateY(\&quot; + y + \&quot;px) scale(\&quot; + scale + \&quot;)\&quot;},\r\n\t\t\t{zIndex: \&quot;0\&quot;}\r\n\t\t]);\r\n\t\t// Hide the tiddler when the transition has finished\r\n\t\tsetTimeout(function() {\r\n\t\t\tif(self.currentTiddlerDomNode !== prevCurrentTiddler) {\r\n\t\t\t\tprevCurrentTiddler.style.display = \&quot;none\&quot;;\r\n\t\t\t}\r\n\t\t},duration);\r\n\t}\r\n\t// Scroll the target into view\r\n//\t$tw.pageScroller.scrollIntoView(targetElement);\r\n};\r\n\r\n/*\r\nFind the first child DOM node of a widget that has the class \&quot;title\&quot;\r\n*/\r\nfunction findTitleDomNode(widget,targetClass) {\r\n\ttargetClass = targetClass || \&quot;title\&quot;;\r\n\tvar domNode = widget.findFirstDomNode();\r\n\tif(domNode &amp;&amp; domNode.querySelector) {\r\n\t\treturn domNode.querySelector(\&quot;.\&quot; + targetClass);\r\n\t}\r\n\treturn null;\r\n}\r\n\r\nZoominListView.prototype.insert = function(widget) {\r\n\tvar targetElement = widget.findFirstDomNode();\r\n\t// Make the newly inserted node position absolute and hidden\r\n\t$tw.utils.setStyle(targetElement,[\r\n\t\t{display: \&quot;none\&quot;},\r\n\t\t{position: \&quot;absolute\&quot;}\r\n\t]);\r\n};\r\n\r\nZoominListView.prototype.remove = function(widget) {\r\n\tvar targetElement = widget.findFirstDomNode(),\r\n\t\tduration = $tw.utils.getAnimationDuration();\r\n\t// Set up the tiddler that is being closed\r\n\t$tw.utils.setStyle(targetElement,[\r\n\t\t{position: \&quot;absolute\&quot;},\r\n\t\t{display: \&quot;block\&quot;},\r\n\t\t{transformOrigin: \&quot;50% 50%\&quot;},\r\n\t\t{transform: \&quot;translateX(0px) translateY(0px) scale(1)\&quot;},\r\n\t\t{transition: \&quot;none\&quot;},\r\n\t\t{zIndex: \&quot;0\&quot;}\r\n\t]);\r\n\t// We'll move back to the previous or next element in the story\r\n\tvar toWidget = widget.previousSibling();\r\n\tif(!toWidget) {\r\n\t\ttoWidget = widget.nextSibling();\r\n\t}\r\n\tvar toWidgetDomNode = toWidget &amp;&amp; toWidget.findFirstDomNode();\r\n\t// Set up the tiddler we're moving back in\r\n\tif(toWidgetDomNode) {\r\n\t\t$tw.utils.setStyle(toWidgetDomNode,[\r\n\t\t\t{position: \&quot;absolute\&quot;},\r\n\t\t\t{display: \&quot;block\&quot;},\r\n\t\t\t{transformOrigin: \&quot;50% 50%\&quot;},\r\n\t\t\t{transform: \&quot;translateX(0px) translateY(0px) scale(10)\&quot;},\r\n\t\t\t{transition: $tw.utils.roundTripPropertyName(\&quot;transform\&quot;) + \&quot; \&quot; + duration + \&quot;ms \&quot; + easing + \&quot;, opacity \&quot; + duration + \&quot;ms \&quot; + easing},\r\n\t\t\t{opacity: \&quot;0\&quot;},\r\n\t\t\t{zIndex: \&quot;500\&quot;}\r\n\t\t]);\r\n\t\tthis.currentTiddlerDomNode = toWidgetDomNode;\r\n\t}\r\n\t// Animate them both\r\n\t// Force layout\r\n\t$tw.utils.forceLayout(this.listWidget.parentDomNode);\r\n\t// First, the tiddler we're closing\r\n\t$tw.utils.setStyle(targetElement,[\r\n\t\t{transformOrigin: \&quot;50% 50%\&quot;},\r\n\t\t{transform: \&quot;translateX(0px) translateY(0px) scale(0.1)\&quot;},\r\n\t\t{transition: $tw.utils.roundTripPropertyName(\&quot;transform\&quot;) + \&quot; \&quot; + duration + \&quot;ms \&quot; + easing + \&quot;, opacity \&quot; + duration + \&quot;ms \&quot; + easing},\r\n\t\t{opacity: \&quot;0\&quot;},\r\n\t\t{zIndex: \&quot;0\&quot;}\r\n\t]);\r\n\tsetTimeout(function() {\r\n\t\t// Delete the DOM node when the transition is over\r\n\t\twidget.removeChildDomNodes();\r\n\t},duration);\r\n\t// Now the tiddler we're going back to\r\n\tif(toWidgetDomNode) {\r\n\t\t$tw.utils.setStyle(toWidgetDomNode,[\r\n\t\t\t{transform: \&quot;translateX(0px) translateY(0px) scale(1)\&quot;},\r\n\t\t\t{opacity: \&quot;1\&quot;}\r\n\t\t]);\r\n\t}\r\n\treturn true; // Indicate that we'll delete the DOM node\r\n};\r\n\r\nexports.zoomin = ZoominListView;\r\n\r\n})();&quot;,
             &quot;title&quot;: &quot;$:/core/modules/storyviews/zoomin.js&quot;,
             &quot;type&quot;: &quot;application/javascript&quot;,
             &quot;module-type&quot;: &quot;storyview&quot;
@@ -3595,7 +3597,7 @@ To Do: To Do.tid
         &quot;$:/core/ui/PageTemplate/story&quot;: {
             &quot;title&quot;: &quot;$:/core/ui/PageTemplate/story&quot;,
             &quot;tags&quot;: &quot;$:/tags/PageTemplate&quot;,
-            &quot;text&quot;: &quot;&lt;section class=\&quot;story-river\&quot;&gt;\n\n&lt;$list filter=\&quot;[list[$:/StoryList]]\&quot; history=\&quot;$:/HistoryList\&quot; template=\&quot;$:/core/ui/ViewTemplate\&quot; editTemplate=\&quot;$:/core/ui/EditTemplate\&quot; storyview={{$:/view}} /&gt;\n\n&lt;/section&gt;\r\n&quot;
+            &quot;text&quot;: &quot;&lt;section class=\&quot;story-river\&quot;&gt;\n\n&lt;section class=\&quot;story-backdrop\&quot;&gt;\n\n&lt;$list filter=\&quot;[all[shadows+tiddlers]tag[$:/tags/StoryBackdrop]!has[draft.of]]\&quot;&gt;\n\n&lt;$transclude/&gt;\n\n&lt;/$list&gt;\n\n&lt;/section&gt;\n\n&lt;$list filter=\&quot;[list[$:/StoryList]]\&quot; history=\&quot;$:/HistoryList\&quot; template=\&quot;$:/core/ui/ViewTemplate\&quot; editTemplate=\&quot;$:/core/ui/EditTemplate\&quot; storyview={{$:/view}} /&gt;\n\n&lt;section class=\&quot;story-frontdrop\&quot;&gt;\n\n&lt;$list filter=\&quot;[all[shadows+tiddlers]tag[$:/tags/StoryFrontdrop]!has[draft.of]]\&quot;&gt;\n\n&lt;$transclude/&gt;\n\n&lt;/$list&gt;\n\n&lt;/section&gt;\n\n&lt;/section&gt;\r\n&quot;
         },
         &quot;$:/core/ui/PageTemplate/topleftbar&quot;: {
             &quot;title&quot;: &quot;$:/core/ui/PageTemplate/topleftbar&quot;,
@@ -3941,15 +3943,28 @@ To Do: To Do.tid
     }
 }</pre>
 </div>
-<div created="20140707221201494" creator="ジェームス" modified="20140707221430542" modifier="ジェームス" title="$:/DefaultTiddlers">
-<pre>[[Hello]]
-[tag[splash]!sort[modified]]
-[[To Do]]</pre>
+<div created="20131127215321439" modified="20140710205307943" title="$:/DefaultTiddlers" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>Hello
+GettingStarted
+Download</pre>
 </div>
-<div title="$:/isEncrypted">
+<div title="$:/editions/twnotes/download-empty" revision="0" bag="default">
+<pre>\define saveTiddlerFilter()
+[[$:/core]] [[$:/isEncrypted]] [[$:/plugins/tiddlywiki/fullscreen]] [[$:/themes/tiddlywiki/vanilla]] [[$:/themes/welford/phasersonkill]] -[[$:/boot/boot.css]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] +[sort[title]]
+\end
+\define savingEmpty()
+yes
+\end
+{{$:/core/templates/tiddlywiki5.html}}
+</pre>
+</div>
+<div title="$:/editions/twnotes/snippets/download-empty-button" revision="0" bag="default">
+<pre>&lt;$button message=&quot;tw-download-file&quot; param=&quot;$:/editions/twnotes/download-empty&quot; class=&quot;btn-big-green&quot;&gt;Download Empty {{$:/core/images/save-button}}&lt;/$button&gt;</pre>
+</div>
+<div title="$:/isEncrypted" revision="0" bag="default">
 <pre>no</pre>
 </div>
-<div author="OGOSHI Masayuki, pekopeko1" core-version="&gt;=5.0.9" dependents="" description="Japanese (Japan)" name="ja-JP" plugin-type="language" title="$:/languages/ja-JP" type="application/json" version="5.0.14-prerelease">
+<div author="OGOSHI Masayuki, pekopeko1" core-version="&gt;=5.0.9" dependents="" description="Japanese (Japan)" name="ja-JP" plugin-type="language" title="$:/languages/ja-JP" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/language/ControlPanel/Advanced/Caption&quot;: {
@@ -5353,7 +5368,7 @@ To Do: To Do.tid
     }
 }</pre>
 </div>
-<div author="JeremyRuston" dependents="" description="Codemirror plugin" plugin-type="plugin" title="$:/plugins/tiddlywiki/codemirror" type="application/json" version="5.0.14-prerelease">
+<div author="JeremyRuston" dependents="" description="Codemirror plugin" plugin-type="plugin" title="$:/plugins/tiddlywiki/codemirror" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/core/modules/widgets/edit-codemirror.js&quot;: {
@@ -5466,7 +5481,19 @@ To Do: To Do.tid
     }
 }</pre>
 </div>
-<div author="JoaoBolila" dependents="" description="Highlight.js plugin for TiddlyWiki5" plugin-type="plugin" title="$:/plugins/tiddlywiki/highlight" type="application/json" version="5.0.14-prerelease">
+<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="File system synchronisation" plugin-type="plugin" title="$:/plugins/tiddlywiki/filesystem" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;$:/plugins/tiddlywiki/filesystem/filesystemadaptor.js&quot;: {
+            &quot;text&quot;: &quot;/*\\\r\ntitle: $:/plugins/tiddlywiki/filesystem/filesystemadaptor.js\r\ntype: application/javascript\r\nmodule-type: syncadaptor\r\n\r\nA sync adaptor module for synchronising with the local filesystem via node.js APIs \r\n\r\n\\*/\r\n(function(){\r\n\r\n/*jslint node: true, browser: true */\r\n/*global $tw: false */\r\n\&quot;use strict\&quot;;\r\n\r\n// Get a reference to the file system\r\nvar fs = !$tw.browser ? require(\&quot;fs\&quot;) : null,\r\n\tpath = !$tw.browser ? require(\&quot;path\&quot;) : null;\r\n\r\nfunction FileSystemAdaptor(syncer) {\r\n\tvar self = this;\r\n\tthis.syncer = syncer;\r\n\tthis.watchers = {};\r\n\tthis.pending = {};\r\n\tthis.logger = new $tw.utils.Logger(\&quot;FileSystem\&quot;);\r\n\tthis.setwatcher = function(filename, title) {\r\n\t\treturn undefined;\r\n\t\treturn this.watchers[filename] = this.watchers[filename] ||\r\n\t\t\tfs.watch(filename, {persistent: false}, function(e) {\r\n\t\t\t\tself.logger.log(\&quot;Error:\&quot;,e,filename);\r\n\t\t\t\tif(e === \&quot;change\&quot;) {\r\n\t\t\t\t\tvar tiddlers = $tw.loadTiddlersFromFile(filename).tiddlers;\r\n\t\t\t\t\tfor(var t in tiddlers) {\r\n\t\t\t\t\t\tif(tiddlers[t].title) {\r\n\t\t\t\t\t\t\t$tw.wiki.addTiddler(tiddlers[t]);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t});\r\n\t}\r\n\r\n\tfor(var f in $tw.boot.files) {\r\n\t\tvar fileInfo = $tw.boot.files[f];\r\n\t\tthis.setwatcher(fileInfo.filepath, f);\r\n\t}\r\n\t// Create the &lt;wiki&gt;/tiddlers folder if it doesn't exist\r\n\t// TODO: we should create the path recursively\r\n\tif(!fs.existsSync($tw.boot.wikiTiddlersPath)) {\r\n\t\tfs.mkdirSync($tw.boot.wikiTiddlersPath);\r\n\t}\r\n}\r\n\r\nFileSystemAdaptor.prototype.getTiddlerInfo = function(tiddler) {\r\n\treturn {};\r\n};\r\n\r\n$tw.config.typeInfo = {\r\n\t\&quot;text/vnd.tiddlywiki\&quot;: {\r\n\t\tfileType: \&quot;application/x-tiddler\&quot;,\r\n\t\textension: \&quot;.tid\&quot;\r\n\t},\r\n\t\&quot;image/jpeg\&quot; : {\r\n\t\thasMetaFile: true\r\n\t}\r\n};\r\n\r\n$tw.config.typeTemplates = {\r\n\t\&quot;application/x-tiddler\&quot;: \&quot;$:/core/templates/tid-tiddler\&quot;\r\n};\r\n\r\nFileSystemAdaptor.prototype.getTiddlerFileInfo = function(tiddler,callback) {\r\n\t// See if we've already got information about this file\r\n\tvar self = this,\r\n\t\ttitle = tiddler.fields.title,\r\n\t\tfileInfo = $tw.boot.files[title];\r\n\t// Get information about how to save tiddlers of this type\r\n\tvar type = tiddler.fields.type || \&quot;text/vnd.tiddlywiki\&quot;,\r\n\t\ttypeInfo = $tw.config.typeInfo[type];\r\n\tif(!typeInfo) {\r\n\t\ttypeInfo = $tw.config.typeInfo[\&quot;text/vnd.tiddlywiki\&quot;];\r\n\t}\r\n\tvar extension = typeInfo.extension || \&quot;\&quot;;\r\n\tif(!fileInfo) {\r\n\t\t// If not, we'll need to generate it\r\n\t\t// Start by getting a list of the existing files in the directory\r\n\t\tfs.readdir($tw.boot.wikiTiddlersPath,function(err,files) {\r\n\t\t\tif(err) {\r\n\t\t\t\treturn callback(err);\r\n\t\t\t}\r\n\t\t\t// Assemble the new fileInfo\r\n\t\t\tfileInfo = {};\r\n\t\t\tfileInfo.filepath = $tw.boot.wikiTiddlersPath + path.sep + self.generateTiddlerFilename(title,extension,files);\r\n\t\t\tfileInfo.type = typeInfo.fileType || tiddler.fields.type;\r\n\t\t\tfileInfo.hasMetaFile = typeInfo.hasMetaFile;\r\n\t\t\t// Save the newly created fileInfo\r\n\t\t\t$tw.boot.files[title] = fileInfo;\r\n\t\t\tself.pending[fileInfo.filepath] = title;\r\n\t\t\t// Pass it to the callback\r\n\t\t\tcallback(null,fileInfo);\r\n\t\t});\r\n\t} else {\r\n\t\t// Otherwise just invoke the callback\r\n\t\tcallback(null,fileInfo);\r\n\t}\r\n};\r\n\r\n/*\r\nGiven a tiddler title and an array of existing filenames, generate a new legal filename for the title, case insensitively avoiding the array of existing filenames\r\n*/\r\nFileSystemAdaptor.prototype.generateTiddlerFilename = function(title,extension,existingFilenames) {\r\n\t// First remove any of the characters that are illegal in Windows filenames\r\n\tvar baseFilename = title.replace(/\\&lt;|\\&gt;|\\:|\\\&quot;|\\/|\\\\|\\||\\?|\\*|\\^/g,\&quot;_\&quot;);\r\n\t// Truncate the filename if it is too long\r\n\tif(baseFilename.length &gt; 200) {\r\n\t\tbaseFilename = baseFilename.substr(0,200) + extension;\r\n\t}\r\n\t// Start with the base filename plus the extension\r\n\tvar filename = baseFilename + extension,\r\n\t\tcount = 1;\r\n\t// Add a discriminator if we're clashing with an existing filename\r\n\twhile(existingFilenames.indexOf(filename) !== -1) {\r\n\t\tfilename = baseFilename + \&quot; \&quot; + (count++) + extension;\r\n\t}\r\n\treturn filename;\r\n};\r\n\r\n/*\r\nSave a tiddler and invoke the callback with (err,adaptorInfo,revision)\r\n*/\r\nFileSystemAdaptor.prototype.saveTiddler = function(tiddler,callback) {\r\n\tvar self = this;\r\n\tthis.getTiddlerFileInfo(tiddler,function(err,fileInfo) {\r\n\t\tvar template, content, encoding;\r\n\t\tfunction _finish() {\r\n\t\t\tif(self.pending[fileInfo.filepath]) {\r\n\t\t\t\tself.setwatcher(fileInfo.filepath, tiddler.fields.title);\r\n\t\t\t\tdelete self.pending[fileInfo.filepath];\r\n\t\t\t}\r\n\t\t\tcallback(null, {}, 0);\r\n\t\t}\r\n\t\tif(err) {\r\n\t\t\treturn callback(err);\r\n\t\t}\r\n\t\tif(self.watchers[fileInfo.filepath]) {\r\n\t\t\tself.watchers[fileInfo.filepath].close();\r\n\t\t\tdelete self.watchers[fileInfo.filepath];\r\n\t\t\tself.pending[fileInfo.filepath] = tiddler.fields.title;\r\n\t\t}\r\n\t\tif(fileInfo.hasMetaFile) {\r\n\t\t\t// Save the tiddler as a separate body and meta file\r\n\t\t\tvar typeInfo = $tw.config.contentTypeInfo[fileInfo.type];\r\n\t\t\tfs.writeFile(fileInfo.filepath,tiddler.fields.text,{encoding: typeInfo.encoding},function(err) {\r\n\t\t\t\tif(err) {\r\n\t\t\t\t\treturn callback(err);\r\n\t\t\t\t}\r\n\t\t\t\tcontent = $tw.wiki.renderTiddler(\&quot;text/plain\&quot;,\&quot;$:/core/templates/tiddler-metadata\&quot;,{variables: {currentTiddler: tiddler.fields.title}});\r\n\t\t\t\tfs.writeFile(fileInfo.filepath + \&quot;.meta\&quot;,content,{encoding: \&quot;utf8\&quot;},function (err) {\r\n\t\t\t\t\tif(err) {\r\n\t\t\t\t\t\treturn callback(err);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tself.logger.log(\&quot;Saved file\&quot;,fileInfo.filepath);\r\n\t\t\t\t\t_finish();\r\n\t\t\t\t});\r\n\t\t\t});\r\n\t\t} else {\r\n\t\t\t// Save the tiddler as a self contained templated file\r\n\t\t\ttemplate = $tw.config.typeTemplates[fileInfo.type];\r\n\t\t\tcontent = $tw.wiki.renderTiddler(\&quot;text/plain\&quot;,template,{variables: {currentTiddler: tiddler.fields.title}});\r\n\t\t\tfs.writeFile(fileInfo.filepath,content,{encoding: \&quot;utf8\&quot;},function (err) {\r\n\t\t\t\tif(err) {\r\n\t\t\t\t\treturn callback(err);\r\n\t\t\t\t}\r\n\t\t\t\tself.logger.log(\&quot;Saved file\&quot;,fileInfo.filepath);\r\n\t\t\t\t_finish();\r\n\t\t\t});\r\n\t\t}\r\n\t});\r\n};\r\n\r\n/*\r\nLoad a tiddler and invoke the callback with (err,tiddlerFields)\r\n\r\nWe don't need to implement loading for the file system adaptor, because all the tiddler files will have been loaded during the boot process.\r\n*/\r\nFileSystemAdaptor.prototype.loadTiddler = function(title,callback) {\r\n\tcallback(null,null);\r\n};\r\n\r\n/*\r\nDelete a tiddler and invoke the callback with (err)\r\n*/\r\nFileSystemAdaptor.prototype.deleteTiddler = function(title,callback) {\r\n\tvar self = this,\r\n\t\tfileInfo = $tw.boot.files[title];\r\n\t// Only delete the tiddler if we have writable information for the file\r\n\tif(fileInfo) {\r\n\t\tif(this.watchers[fileInfo.filepath]) {\r\n\t\t\tthis.watchers[fileInfo.filepath].close();\r\n\t\t\tdelete this.watchers[fileInfo.filepath];\r\n\t\t}\r\n\t\tdelete this.pending[fileInfo.filepath];\r\n\t\t// Delete the file\r\n\t\tfs.unlink(fileInfo.filepath,function(err) {\r\n\t\t\tif(err) {\r\n\t\t\t\treturn callback(err);\r\n\t\t\t}\r\n\t\t\tself.logger.log(\&quot;Deleted file\&quot;,fileInfo.filepath);\r\n\t\t\t// Delete the metafile if present\r\n\t\t\tif(fileInfo.hasMetaFile) {\r\n\t\t\t\tfs.unlink(fileInfo.filepath + \&quot;.meta\&quot;,function(err) {\r\n\t\t\t\t\tif(err) {\r\n\t\t\t\t\t\treturn callback(err);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcallback(null);\r\n\t\t\t\t});\r\n\t\t\t} else {\r\n\t\t\t\tcallback(null);\r\n\t\t\t}\r\n\t\t});\r\n\t} else {\r\n\t\tcallback(null);\r\n\t}\r\n};\r\n\r\nif(fs) {\r\n\texports.adaptorClass = FileSystemAdaptor;\r\n}\r\n\r\n})();\r\n&quot;,
+            &quot;title&quot;: &quot;$:/plugins/tiddlywiki/filesystem/filesystemadaptor.js&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;syncadaptor&quot;
+        }
+    }
+}</pre>
+</div>
+<div author="JoaoBolila" dependents="" description="Highlight.js plugin for TiddlyWiki5" plugin-type="plugin" title="$:/plugins/tiddlywiki/highlight" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/plugins/tiddlywiki/highlight/highlight.js&quot;: {
@@ -5500,121 +5527,41 @@ To Do: To Do.tid
     }
 }</pre>
 </div>
-<div created="20140707221627477" creator="ジェームス" modified="20140707221630193" modifier="ジェームス" tags="$:/tags/stylesheet" title="$:/plugins/tiddlywiki/highlight/styles">
-<pre>/*
-
-Style with support for rainbow parens
-
-*/
-
-.hljs {
-  display: block;
-  padding: 0.5em;
-  background: #474949;
-  color: #d1d9e1;
-}
-
-
-.hljs-body,
-.hljs-collection {
-   color: #d1d9e1;
-}
-
-.hljs-comment,
-.hljs-template_comment,
-.diff .hljs-header,
-.hljs-doctype,
-.lisp .hljs-string,
-.hljs-javadoc {
-  color: #969896;
-  font-style: italic;
-}
-
-.hljs-keyword,
-.clojure .hljs-attribute,
-.hljs-winutils,
-.javascript .hljs-title,
-.hljs-addition,
-.css .hljs-tag {
-  color: #cc99cc;
-}
-
-.hljs-number { color: #f99157; }
-
-.hljs-command,
-.hljs-string,
-.hljs-tag .hljs-value,
-.hljs-phpdoc,
-.tex .hljs-formula,
-.hljs-regexp,
-.hljs-hexcolor {
-  color: #8abeb7;
-}
-
-.hljs-title,
-.hljs-localvars,
-.hljs-function .hljs-title,
-.hljs-chunk,
-.hljs-decorator,
-.hljs-built_in,
-.lisp .hljs-title,
-.hljs-identifier {
-  color: #b5bd68;
-}
-
-.hljs-class .hljs-keyword {
-  color: #f2777a;
-}
-
-.hljs-variable,
-.lisp .hljs-body,
-.smalltalk .hljs-number,
-.hljs-constant,
-.hljs-class .hljs-title,
-.hljs-parent,
-.haskell .hljs-label,
-.hljs-id,
-.lisp .hljs-title,
-.clojure .hljs-title .hljs-built_in {
-   color: #ffcc66;
-}
-
-.hljs-tag .hljs-title,
-.hljs-rules .hljs-property,
-.django .hljs-tag .hljs-keyword,
-.clojure .hljs-title .hljs-built_in {
-  font-weight: bold;
-}
-
-.hljs-attribute,
-.clojure .hljs-title {
-  color: #81a2be;
-}
-
-.hljs-preprocessor,
-.hljs-pragma,
-.hljs-pi,
-.hljs-shebang,
-.hljs-symbol,
-.hljs-symbol .hljs-string,
-.diff .hljs-change,
-.hljs-special,
-.hljs-attr_selector,
-.hljs-important,
-.hljs-subst,
-.hljs-cdata {
-  color: #f99157;
-}
-
-.hljs-deletion {
-  color: #dc322f;
-}
-
-.tex .hljs-formula {
-  background: #eee8d5;
+<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWeb and TiddlySpace components" plugin-type="plugin" title="$:/plugins/tiddlywiki/tiddlyweb" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;$:/editions/server/download-offline-button&quot;: {
+            &quot;title&quot;: &quot;$:/editions/server/download-offline-button&quot;,
+            &quot;text&quot;: &quot;&lt;$button message=\&quot;tw-download-file\&quot; param=\&quot;$:/editions/server/download-offline\&quot; class=\&quot;btn-big-green\&quot;&gt;Download Offline Snapshot {{$:/core/images/save-button}}&lt;/$button&gt;&quot;
+        },
+        &quot;$:/editions/server/download-offline&quot;: {
+            &quot;title&quot;: &quot;$:/editions/server/download-offline&quot;,
+            &quot;text&quot;: &quot;\\define saveTiddlerFilter()\r\n[is[tiddler]] -[[$:/boot/boot.css]] -[[$:/HistoryList]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] -[[$:/plugins/tiddlywiki/filesystem]] -[[$:/plugins/tiddlywiki/tiddlyweb]] +[sort[title]]\r\n\\end\r\n{{$:/core/templates/tiddlywiki5.html}}\r\n&quot;
+        },
+        &quot;$:/snippets/encryptionstatus&quot;: {
+            &quot;title&quot;: &quot;$:/snippets/encryptionstatus&quot;,
+            &quot;text&quot;: &quot;Encryption is not supported when running TiddlyWiki5 on the server.\r\n&quot;
+        },
+        &quot;$:/core/templates/html-div-tiddler&quot;: {
+            &quot;title&quot;: &quot;$:/core/templates/html-div-tiddler&quot;,
+            &quot;text&quot;: &quot;&lt;!--\n\nThis template is used for saving tiddlers as an HTML DIV tag with attributes representing the tiddler fields. This version includes the tiddler changecount as the field `revision`.\n\n--&gt;`&lt;div`&lt;$fields exclude='text revision bag' template=' $name$=\&quot;$encoded_value$\&quot;'&gt;&lt;/$fields&gt;` revision=\&quot;`&lt;&lt;changecount&gt;&gt;`\&quot; bag=\&quot;default\&quot;&gt;\r\n&lt;pre&gt;`&lt;$view field=\&quot;text\&quot; format=\&quot;htmlencoded\&quot; /&gt;`&lt;/pre&gt;\r\n&lt;/div&gt;`\r\n&quot;
+        },
+        &quot;$:/plugins/tiddlywiki/tiddlyweb/ServerControlPanel&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/tiddlywiki/tiddlyweb/ServerControlPanel&quot;,
+            &quot;caption&quot;: &quot;Server&quot;,
+            &quot;tags&quot;: &quot;$:/tags/ControlPanel&quot;,
+            &quot;text&quot;: &quot;&lt;$reveal state=\&quot;$:/status/IsLoggedIn\&quot; type=\&quot;nomatch\&quot; text=\&quot;yes\&quot;&gt;\r\nLog in to ~TiddlyWeb: &lt;$button message=\&quot;tw-login\&quot; class=\&quot;btn btn-info\&quot;&gt;Login&lt;/$button&gt;\r\n&lt;/$reveal&gt;\r\n&lt;$reveal state=\&quot;$:/status/IsLoggedIn\&quot; type=\&quot;match\&quot; text=\&quot;yes\&quot;&gt;\r\nLogged in as {{$:/status/UserName}} &lt;$button message=\&quot;tw-logout\&quot; class=\&quot;btn btn-warning\&quot;&gt;Logout&lt;/$button&gt;\r\n&lt;/$reveal&gt;\n\n----\n\nHost configuration: &lt;$edit-text tiddler=\&quot;$:/config/tiddlyweb/host\&quot; tag=\&quot;input\&quot; default=\&quot;\&quot;/&gt;\n\n&lt;blockquote&gt;//for example, `$protocol$//$host$/folder`, where `$protocol$` is replaced by the protocol (typically `http` or `https`), and `$host$` by the host name//&lt;/blockquote&gt;\n\n----\n\n&lt;$button message=\&quot;tw-server-refresh\&quot; class=\&quot;btn btn-warning\&quot;&gt;Refresh&lt;/$button&gt; to fetch changes from the server immediately\n\n----\n\nDownload an offline copy of this wiki:\n\n{{$:/editions/server/download-offline-button}}&quot;
+        },
+        &quot;$:/plugins/tiddlywiki/tiddlyweb/tiddlywebadaptor.js&quot;: {
+            &quot;text&quot;: &quot;/*\\\r\ntitle: $:/plugins/tiddlywiki/tiddlyweb/tiddlywebadaptor.js\r\ntype: application/javascript\r\nmodule-type: syncadaptor\r\n\r\nA sync adaptor module for synchronising with TiddlyWeb compatible servers \r\n\r\n\\*/\r\n(function(){\r\n\r\n/*jslint node: true, browser: true */\r\n/*global $tw: false */\r\n\&quot;use strict\&quot;;\r\n\r\nvar CONFIG_HOST_TIDDLER = \&quot;$:/config/tiddlyweb/host\&quot;,\r\n\tDEFAULT_HOST_TIDDLER = \&quot;$protocol$//$host$/\&quot;;\r\n\r\nfunction TiddlyWebAdaptor(syncer) {\r\n\tthis.syncer = syncer;\r\n\tthis.host = this.getHost();\r\n\tthis.recipe = undefined;\r\n\tthis.logger = new $tw.utils.Logger(\&quot;TiddlyWebAdaptor\&quot;);\r\n}\r\n\r\nTiddlyWebAdaptor.prototype.getHost = function() {\r\n\tvar text = this.syncer.wiki.getTiddlerText(CONFIG_HOST_TIDDLER,DEFAULT_HOST_TIDDLER),\r\n\t\tsubstitutions = [\r\n\t\t\t{name: \&quot;protocol\&quot;, value: document.location.protocol},\r\n\t\t\t{name: \&quot;host\&quot;, value: document.location.host}\r\n\t\t];\r\n\tfor(var t=0; t&lt;substitutions.length; t++) {\r\n\t\tvar s = substitutions[t];\r\n\t\ttext = text.replace(new RegExp(\&quot;\\\\$\&quot; + s.name + \&quot;\\\\$\&quot;,\&quot;mg\&quot;),s.value);\r\n\t}\r\n\treturn text;\r\n};\r\n\r\nTiddlyWebAdaptor.prototype.getTiddlerInfo = function(tiddler) {\r\n\treturn {\r\n\t\tbag: tiddler.fields[\&quot;bag\&quot;]\r\n\t};\r\n};\r\n\r\n/*\r\nGet the current status of the TiddlyWeb connection\r\n*/\r\nTiddlyWebAdaptor.prototype.getStatus = function(callback) {\r\n\t// Get status\r\n\tvar self = this,\r\n\t\twiki = self.syncer.wiki;\r\n\tthis.logger.log(\&quot;Getting status\&quot;);\r\n\t$tw.utils.httpRequest({\r\n\t\turl: this.host + \&quot;status\&quot;,\r\n\t\tcallback: function(err,data) {\r\n\t\t\tif(err) {\r\n\t\t\t\treturn callback(err);\r\n\t\t\t}\r\n\t\t\t// Decode the status JSON\r\n\t\t\tvar json = null,\r\n\t\t\t\tisLoggedIn = false;\r\n\t\t\ttry {\r\n\t\t\t\tjson = JSON.parse(data);\r\n\t\t\t} catch (e) {\r\n\t\t\t}\r\n\t\t\tif(json) {\r\n\t\t\t\tself.logger.log(\&quot;Status:\&quot;,data);\r\n\t\t\t\t// Record the recipe\r\n\t\t\t\tif(json.space) {\r\n\t\t\t\t\tself.recipe = json.space.recipe;\r\n\t\t\t\t}\r\n\t\t\t\t// Check if we're logged in\r\n\t\t\t\tisLoggedIn = json.username !== \&quot;GUEST\&quot;;\r\n\t\t\t}\r\n\t\t\t// Invoke the callback if present\r\n\t\t\tif(callback) {\r\n\t\t\t\tcallback(null,isLoggedIn,json.username);\r\n\t\t\t}\r\n\t\t}\r\n\t});\r\n};\r\n\r\n/*\r\nAttempt to login and invoke the callback(err)\r\n*/\r\nTiddlyWebAdaptor.prototype.login = function(username,password,callback) {\r\n\tvar options = {\r\n\t\turl: this.host + \&quot;challenge/tiddlywebplugins.tiddlyspace.cookie_form\&quot;,\r\n\t\ttype: \&quot;POST\&quot;,\r\n\t\tdata: {\r\n\t\t\tuser: username,\r\n\t\t\tpassword: password,\r\n\t\t\ttiddlyweb_redirect: \&quot;/status\&quot; // workaround to marginalize automatic subsequent GET\r\n\t\t},\r\n\t\tcallback: function(err) {\r\n\t\t\tcallback(err);\r\n\t\t}\r\n\t};\r\n\tthis.logger.log(\&quot;Logging in:\&quot;,options);\r\n\t$tw.utils.httpRequest(options);\r\n};\r\n\r\n/*\r\n*/\r\nTiddlyWebAdaptor.prototype.logout = function(callback) {\r\n\tvar options = {\r\n\t\turl: this.host + \&quot;logout\&quot;,\r\n\t\ttype: \&quot;POST\&quot;,\r\n\t\tdata: {\r\n\t\t\tcsrf_token: this.getCsrfToken(),\r\n\t\t\ttiddlyweb_redirect: \&quot;/status\&quot; // workaround to marginalize automatic subsequent GET\r\n\t\t},\r\n\t\tcallback: function(err,data) {\r\n\t\t\tcallback(err);\r\n\t\t}\r\n\t};\r\n\tthis.logger.log(\&quot;Logging out:\&quot;,options);\r\n\t$tw.utils.httpRequest(options);\r\n};\r\n\r\n/*\r\nRetrieve the CSRF token from its cookie\r\n*/\r\nTiddlyWebAdaptor.prototype.getCsrfToken = function() {\r\n\tvar regex = /^(?:.*; )?csrf_token=([^(;|$)]*)(?:;|$)/,\r\n\t\tmatch = regex.exec(document.cookie),\r\n\t\tcsrf = null;\r\n\tif (match &amp;&amp; (match.length === 2)) {\r\n\t\tcsrf = match[1];\r\n\t}\r\n\treturn csrf;\r\n};\r\n\r\n/*\r\nGet an array of skinny tiddler fields from the server\r\n*/\r\nTiddlyWebAdaptor.prototype.getSkinnyTiddlers = function(callback) {\r\n\tvar self = this;\r\n\t$tw.utils.httpRequest({\r\n\t\turl: this.host + \&quot;recipes/\&quot; + this.recipe + \&quot;/tiddlers.json\&quot;,\r\n\t\tcallback: function(err,data) {\r\n\t\t\t// Check for errors\r\n\t\t\tif(err) {\r\n\t\t\t\treturn callback(err);\r\n\t\t\t}\r\n\t\t\t// Process the tiddlers to make sure the revision is a string\r\n\t\t\tvar tiddlers = JSON.parse(data);\r\n\t\t\tfor(var t=0; t&lt;tiddlers.length; t++) {\r\n\t\t\t\ttiddlers[t] = self.convertTiddlerFromTiddlyWebFormat(tiddlers[t]);\r\n\t\t\t}\r\n\t\t\t// Invoke the callback with the skinny tiddlers\r\n\t\t\tcallback(null,tiddlers);\r\n\t\t}\r\n\t});\r\n};\r\n\r\n/*\r\nSave a tiddler and invoke the callback with (err,adaptorInfo,revision)\r\n*/\r\nTiddlyWebAdaptor.prototype.saveTiddler = function(tiddler,callback) {\r\n\tvar self = this;\r\n\t$tw.utils.httpRequest({\r\n\t\turl: this.host + \&quot;recipes/\&quot; + encodeURIComponent(this.recipe) + \&quot;/tiddlers/\&quot; + encodeURIComponent(tiddler.fields.title),\r\n\t\ttype: \&quot;PUT\&quot;,\r\n\t\theaders: {\r\n\t\t\t\&quot;Content-type\&quot;: \&quot;application/json\&quot;\r\n\t\t},\r\n\t\tdata: this.convertTiddlerToTiddlyWebFormat(tiddler),\r\n\t\tcallback: function(err,data,request) {\r\n\t\t\tif(err) {\r\n\t\t\t\treturn callback(err);\r\n\t\t\t}\r\n\t\t\t// Save the details of the new revision of the tiddler\r\n\t\t\tvar etagInfo = self.parseEtag(request.getResponseHeader(\&quot;Etag\&quot;));\r\n\t\t\t// Invoke the callback\r\n\t\t\tcallback(null,{\r\n\t\t\t\tbag: etagInfo.bag\r\n\t\t\t}, etagInfo.revision);\t\r\n\t\t}\r\n\t});\r\n};\r\n\r\n/*\r\nLoad a tiddler and invoke the callback with (err,tiddlerFields)\r\n*/\r\nTiddlyWebAdaptor.prototype.loadTiddler = function(title,callback) {\r\n\tvar self = this;\r\n\t$tw.utils.httpRequest({\r\n\t\turl: this.host + \&quot;recipes/\&quot; + encodeURIComponent(this.recipe) + \&quot;/tiddlers/\&quot; + encodeURIComponent(title),\r\n\t\tcallback: function(err,data,request) {\r\n\t\t\tif(err) {\r\n\t\t\t\treturn callback(err);\r\n\t\t\t}\r\n\t\t\t// Invoke the callback\r\n\t\t\tcallback(null,self.convertTiddlerFromTiddlyWebFormat(JSON.parse(data)));\r\n\t\t}\r\n\t});\r\n};\r\n\r\n/*\r\nDelete a tiddler and invoke the callback with (err)\r\n*/\r\nTiddlyWebAdaptor.prototype.deleteTiddler = function(title,callback) {\r\n\tvar self = this,\r\n\t\tbag = this.syncer.tiddlerInfo[title].adaptorInfo.bag;\r\n\t// If we don't have a bag it means that the tiddler hasn't been seen by the server, so we don't need to delete it\r\n\tif(!bag) {\r\n\t\treturn callback(null);\r\n\t}\r\n\t// Issue HTTP request to delete the tiddler\r\n\t$tw.utils.httpRequest({\r\n\t\turl: this.host + \&quot;bags/\&quot; + encodeURIComponent(bag) + \&quot;/tiddlers/\&quot; + encodeURIComponent(title),\r\n\t\ttype: \&quot;DELETE\&quot;,\r\n\t\tcallback: function(err,data,request) {\r\n\t\t\tif(err) {\r\n\t\t\t\treturn callback(err);\r\n\t\t\t}\r\n\t\t\t// Invoke the callback\r\n\t\t\tcallback(null);\r\n\t\t}\r\n\t});\r\n};\r\n\r\n/*\r\nConvert a tiddler to a field set suitable for PUTting to TiddlyWeb\r\n*/\r\nTiddlyWebAdaptor.prototype.convertTiddlerToTiddlyWebFormat = function(tiddler) {\r\n\tvar result = {},\r\n\t\tknownFields = [\r\n\t\t\t\&quot;bag\&quot;, \&quot;created\&quot;, \&quot;creator\&quot;, \&quot;modified\&quot;, \&quot;modifier\&quot;, \&quot;permissions\&quot;, \&quot;recipe\&quot;, \&quot;revision\&quot;, \&quot;tags\&quot;, \&quot;text\&quot;, \&quot;title\&quot;, \&quot;type\&quot;, \&quot;uri\&quot;\r\n\t\t];\r\n\tif(tiddler) {\r\n\t\t$tw.utils.each(tiddler.fields,function(fieldValue,fieldName) {\r\n\t\t\tvar fieldString = fieldName === \&quot;tags\&quot; ?\r\n\t\t\t\t\t\t\t\ttiddler.fields.tags :\r\n\t\t\t\t\t\t\t\ttiddler.getFieldString(fieldName); // Tags must be passed as an array, not a string\r\n\r\n\t\t\tif(knownFields.indexOf(fieldName) !== -1) {\r\n\t\t\t\t// If it's a known field, just copy it across\r\n\t\t\t\tresult[fieldName] = fieldString;\r\n\t\t\t} else {\r\n\t\t\t\t// If it's unknown, put it in the \&quot;fields\&quot; field\r\n\t\t\t\tresult.fields = result.fields || {};\r\n\t\t\t\tresult.fields[fieldName] = fieldString;\r\n\t\t\t}\r\n\t\t});\r\n\t}\r\n\t// Default the content type and convert the type \&quot;text/x-tiddlywiki\&quot; into null\r\n\tif(result.type === \&quot;text/x-tiddlywiki\&quot;) {\r\n\t\tresult.type = null;\r\n\t};\r\n\tresult.type = result.type || \&quot;text/vnd.tiddlywiki\&quot;;\r\n\treturn JSON.stringify(result,null,$tw.config.preferences.jsonSpaces);\r\n};\r\n\r\n/*\r\nConvert a field set in TiddlyWeb format into ordinary TiddlyWiki5 format\r\n*/\r\nTiddlyWebAdaptor.prototype.convertTiddlerFromTiddlyWebFormat = function(tiddlerFields) {\r\n\tvar self = this,\r\n\t\tresult = {};\r\n\t// Transfer the fields, pulling down the `fields` hashmap\r\n\t$tw.utils.each(tiddlerFields,function(element,title,object) {\r\n\t\tif(title === \&quot;fields\&quot;) {\r\n\t\t\t$tw.utils.each(element,function(element,subTitle,object) {\r\n\t\t\t\tresult[subTitle] = element;\r\n\t\t\t});\r\n\t\t} else {\r\n\t\t\tresult[title] = tiddlerFields[title];\r\n\t\t}\r\n\t});\r\n\t// Make sure the revision is expressed as a string\r\n\tif(typeof result.revision === \&quot;number\&quot;) {\r\n\t\tresult.revision = result.revision.toString();\r\n\t}\r\n\t// Some unholy freaking of content types\r\n\tif(result.type === \&quot;text/javascript\&quot;) {\r\n\t\tresult.type = \&quot;application/javascript\&quot;;\r\n\t} else if(!result.type || result.type === \&quot;None\&quot;) {\r\n\t\tresult.type = \&quot;text/x-tiddlywiki\&quot;;\r\n\t}\r\n\treturn result;\r\n};\r\n\r\n/*\r\nSplit a TiddlyWeb Etag into its constituent parts. For example:\r\n\r\n```\r\n\&quot;system-images_public/unsyncedIcon/946151:9f11c278ccde3a3149f339f4a1db80dd4369fc04\&quot;\r\n```\r\n\r\nNote that the value includes the opening and closing double quotes.\r\n\r\nThe parts are:\r\n\r\n```\r\n&lt;bag&gt;/&lt;title&gt;/&lt;revision&gt;:&lt;hash&gt;\r\n```\r\n*/\r\nTiddlyWebAdaptor.prototype.parseEtag = function(etag) {\r\n\tvar firstSlash = etag.indexOf(\&quot;/\&quot;),\r\n\t\tlastSlash = etag.lastIndexOf(\&quot;/\&quot;),\r\n\t\tcolon = etag.lastIndexOf(\&quot;:\&quot;);\r\n\tif(firstSlash === -1 || lastSlash === -1 || colon === -1) {\r\n\t\treturn null;\r\n\t} else {\r\n\t\treturn {\r\n\t\t\tbag: decodeURIComponent(etag.substring(1,firstSlash)),\r\n\t\t\ttitle: decodeURIComponent(etag.substring(firstSlash + 1,lastSlash)),\r\n\t\t\trevision: etag.substring(lastSlash + 1,colon)\r\n\t\t};\r\n\t}\r\n};\r\n\r\nif($tw.browser &amp;&amp; document.location.protocol.substr(0,4) === \&quot;http\&quot; ) {\r\n\texports.adaptorClass = TiddlyWebAdaptor;\r\n}\r\n\r\n})();\r\n&quot;,
+            &quot;title&quot;: &quot;$:/plugins/tiddlywiki/tiddlyweb/tiddlywebadaptor.js&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;syncadaptor&quot;
+        }
+    }
 }</pre>
 </div>
-<div author="James W. Anderson" core-version="&gt;=5.0.0" dependents="" description="Catches links in HTA" plugin-type="plugin" source="https://github.com/Welford/twexe" title="$:/plugins/welford/htalink" type="application/json" version="0.0.1">
+<div author="James W. Anderson" core-version="&gt;=5.0.0" dependents="" description="Catches links in HTA" plugin-type="plugin" source="https://github.com/Welford/twexe" title="$:/plugins/welford/htalink" type="application/json" version="0.0.1" revision="0" bag="default">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/plugins/welford/htalink/link&quot;: {
@@ -5626,7 +5573,7 @@ Style with support for rainbow parens
     }
 }</pre>
 </div>
-<div author="James W. Anderson" core-version="&gt;=5.0.0" dependents="" description="Runs local exe/batch files. Open in folder, copy to clipboard etc also optional" plugin-type="plugin" source="https://github.com/Welford/twexe" title="$:/plugins/welford/twexe" type="application/json" version="0.0.1">
+<div author="James W. Anderson" core-version="&gt;=5.0.0" dependents="" description="Runs local exe/batch files. Open in folder, copy to clipboard etc also optional" plugin-type="plugin" source="https://github.com/Welford/twexe" title="$:/plugins/welford/twexe" type="application/json" version="0.0.1" revision="0" bag="default">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/plugins/welford/twexe/create&quot;: {
@@ -5673,28 +5620,34 @@ Style with support for rainbow parens
     }
 }</pre>
 </div>
-<div modified="20140707221613982" modifier="ジェームス" title="$:/state/tab-{694242977}">
-<pre>$:/core/ui/AdvancedSearch/Shadows</pre>
+<div created="20140710201632183" creator="ジェームス" modified="20140710201654071" modifier="ジェームス" title="$:/SiteSubtitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>Samples Of My Tiddlywiki Stuff</pre>
 </div>
-<div modified="20140707214725205" title="$:/state/tab/sidebar-{312696086}">
+<div created="20140710201622904" creator="ジェームス" modified="20140710201628790" modifier="ジェームス" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>TWNotes</pre>
+</div>
+<div modified="20140710210032528" title="$:/state/tab-{694242977}" revision="4" bag="default">
+<pre>$:/core/ui/AdvancedSearch/System</pre>
+</div>
+<div modified="20140710210254022" title="$:/state/tab/sidebar-{312696086}" revision="1" bag="default">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
-<div created="20140707221154248" creator="ｊ" modified="20140707221156009" modifier="じぇーむす" title="$:/status/UserName">
-<pre>ジェームス</pre>
+<div title="$:/status/IsLoggedIn" revision="2" bag="default">
+<pre>yes</pre>
 </div>
-<div list="$:/AdvancedSearch $:/plugins/tiddlywiki/highlight/styles Hello [[TW Dev Notes]] [[Creating Plugins]] [[To Do]]" title="$:/StoryList">
+<div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20140707214737894" creator="ジェームス" modified="20140707221609750" modifier="ジェームス" title="$:/temp/advancedsearch">
-<pre>highlight</pre>
-</div>
-<div created="20140707214755798" modified="20140707214804682" title="$:/temp/search">
+<div list="Hello GettingStarted Download" title="$:/StoryList" revision="27" bag="default">
 <pre></pre>
 </div>
-<div created="20140620130427249" modified="20140630075504259" title="$:/theme" type="text/vnd.tiddlywiki">
+<div created="20140710205708112" modified="20140710210111712" title="$:/temp/advancedsearch" revision="26" bag="default">
+<pre>htalink</pre>
+</div>
+<div created="20140620130427249" modified="20140710200336807" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>$:/themes/welford/phasersonkill</pre>
 </div>
-<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/snowwhite" description="Theme for removing editing features" name="ReadOnly" plugin-type="theme" title="$:/themes/tiddlywiki/readonly" type="application/json" version="5.0.14-prerelease">
+<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/snowwhite" description="Theme for removing editing features" name="ReadOnly" plugin-type="theme" title="$:/themes/tiddlywiki/readonly" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/themes/tiddlywiki/readonly/styles.tid&quot;: {
@@ -5705,13 +5658,13 @@ Style with support for rainbow parens
     }
 }</pre>
 </div>
-<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="A basic default theme" name="Vanilla" plugin-type="theme" title="$:/themes/tiddlywiki/vanilla" type="application/json" version="5.0.14-prerelease">
+<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="A basic default theme" name="Vanilla" plugin-type="theme" title="$:/themes/tiddlywiki/vanilla" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/themes/tiddlywiki/vanilla/base&quot;: {
             &quot;title&quot;: &quot;$:/themes/tiddlywiki/vanilla/base&quot;,
             &quot;tags&quot;: &quot;[[$:/tags/stylesheet]]&quot;,
-            &quot;text&quot;: &quot;\\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline\r\n/*\r\n** Start with the normalize CSS reset, and then belay some of its effects\r\n*/\n\n{{$:/themes/tiddlywiki/vanilla/reset}}\n\n*, input[type=\&quot;search\&quot;] {\r\n\tbox-sizing: border-box;\r\n\t-moz-box-sizing: border-box;\r\n\t-webkit-box-sizing: border-box;\r\n}\n\nhtml button {\r\n\tline-height: 1.2;\r\n}\n\n/*\r\n** Basic element styles\r\n*/\n\nhtml {\r\n\tfont-family: {{$:/themes/tiddlywiki/vanilla/settings/fontfamily}};\r\n\ttext-rendering: optimizeLegibility; /* Enables kerning and ligatures etc. */\t\r\n}\n\nhtml:-webkit-full-screen {\r\n\tbackground-color: &lt;&lt;colour page-background&gt;&gt;;\r\n}\n\nbody.tw-body {\r\n\tfont-size: {{$:/themes/tiddlywiki/vanilla/metrics/fontsize}};\r\n\tline-height: {{$:/themes/tiddlywiki/vanilla/metrics/lineheight}};\r\n\tcolor: &lt;&lt;colour foreground&gt;&gt;;\r\n\tbackground-color: &lt;&lt;colour page-background&gt;&gt;;\r\n\tword-wrap: break-word;\r\n}\n\nh1, h2, h3, h4, h5, h6 {\r\n\tline-height: 1.2;\r\n\tfont-weight: 300;\r\n}\n\npre {\r\n\tdisplay: block;\r\n\tpadding: 14px;\r\n\tmargin-top: 1em;\r\n\tmargin-bottom: 1em;\r\n\tword-break: normal;\r\n\tword-wrap: break-word;\r\n\twhite-space: pre;\r\n\twhite-space: pre-wrap;\r\n\tbackground-color: &lt;&lt;colour pre-background&gt;&gt;;\r\n\tborder: 1px solid &lt;&lt;colour pre-border&gt;&gt;;\r\n\tpadding: 0 3px 2px;\r\n\tborder-radius: 3px;\r\n}\n\ncode {\r\n\tcolor: &lt;&lt;colour code-foreground&gt;&gt;;\r\n\tbackground-color: &lt;&lt;colour code-background&gt;&gt;;\r\n\tborder: 1px solid &lt;&lt;colour code-border&gt;&gt;;\r\n    white-space: pre-wrap;\r\n\tpadding: 0 3px 2px;\r\n\tborder-radius: 3px;\r\n}\n\nblockquote {\r\n\tborder-left: 5px solid &lt;&lt;colour blockquote-bar&gt;&gt;;\r\n\tmargin-left: 25px;\r\n\tpadding-left: 10px;\r\n}\n\ndl dt {\r\n\tfont-weight: bold;\r\n\tmargin-top: 6px;\r\n}\n\n/*\r\nMarkdown likes putting code elements inside pre elements\r\n*/\r\npre &gt; code {\r\n\tpadding: 0;\r\n\tborder: none;\r\n\tbackground-color: inherit;\r\n\tcolor: inherit;\r\n}\n\ntable {\r\n\tborder: 1px solid &lt;&lt;colour table-border&gt;&gt;;\r\n\twidth: auto;\r\n\tmax-width: 100%;\r\n\tcaption-side: bottom;\r\n\tmargin-top: 1em;\r\n\tmargin-bottom: 1em;\r\n}\n\ntable th, table td {\r\n\tpadding: 0 7px 0 7px;\r\n\tborder-top: 1px solid &lt;&lt;colour table-border&gt;&gt;;\r\n\tborder-left: 1px solid &lt;&lt;colour table-border&gt;&gt;;\r\n}\n\ntable thead tr td, table th {\r\n\tbackground-color: &lt;&lt;colour table-header-background&gt;&gt;;\r\n\tfont-weight: bold;\r\n}\n\ntable tfoot tr td {\r\n\tbackground-color: &lt;&lt;colour table-footer-background&gt;&gt;;\r\n}\n\n.tw-csv-table {\r\n\twhite-space: nowrap;\r\n}\n\n.tw-tiddler-frame img,\r\n.tw-tiddler-frame svg,\r\n.tw-tiddler-frame canvas,\r\n.tw-tiddler-frame embed,\r\n.tw-tiddler-frame iframe {\r\n\tmax-width: 100%;\r\n}\n\n.tw-tiddler-frame embed,\r\n.tw-tiddler-frame iframe {\r\n\twidth: 100%;\r\n\theight: 600px;\r\n}\n\n/*\r\n** Links\r\n*/\n\na.tw-tiddlylink {\r\n\ttext-decoration: none;\r\n\tfont-weight: normal;\r\n\tcolor: &lt;&lt;colour tiddler-link-foreground&gt;&gt;;\r\n\t-webkit-user-select: inherit; /* Otherwise the draggable attribute makes links impossible to select */\r\n}\n\n.tw-sidebar-lists a.tw-tiddlylink {\r\n\tcolor: &lt;&lt;colour sidebar-tiddler-link-foreground&gt;&gt;;\r\n}\n\n.tw-sidebar-lists a.tw-tiddlylink:hover {\r\n\tcolor: &lt;&lt;colour sidebar-tiddler-link-foreground-hover&gt;&gt;;\r\n}\n\na.tw-tiddlylink:hover {\r\n\ttext-decoration: underline;\r\n}\n\na.tw-tiddlylink-resolves {\r\n}\n\na.tw-tiddlylink-shadow {\r\n\tfont-weight: bold;\r\n}\n\na.tw-tiddlylink-shadow.tw-tiddlylink-resolves {\r\n\tfont-weight: normal;\r\n}\n\na.tw-tiddlylink-missing {\r\n\tfont-style: italic;\r\n}\n\na.tw-tiddlylink-external {\r\n\ttext-decoration: underline;\r\n\tcolor: &lt;&lt;colour external-link-foreground&gt;&gt;;\r\n\tbackground-color: &lt;&lt;colour external-link-background&gt;&gt;;\r\n}\n\na.tw-tiddlylink-external:visited {\r\n\tcolor: &lt;&lt;colour external-link-foreground-visited&gt;&gt;;\r\n\tbackground-color: &lt;&lt;colour external-link-background-visited&gt;&gt;;\r\n}\n\na.tw-tiddlylink-external:hover {\r\n\tcolor: &lt;&lt;colour external-link-foreground-hover&gt;&gt;;\r\n\tbackground-color: &lt;&lt;colour external-link-background-hover&gt;&gt;;\r\n}\n\n/*\r\n** Drag and drop styles\r\n*/\n\n.tw-tiddler-dragger {\r\n\tposition: relative;\r\n\tz-index: -10000;\r\n}\n\n.tw-tiddler-dragger-inner {\r\n\tposition: absolute;\r\n\tdisplay: inline-block;\r\n\tpadding: 8px 20px;\r\n\tfont-size: 16.9px;\r\n\tfont-weight: bold;\r\n\tline-height: 20px;\r\n\tcolor: &lt;&lt;colour dragger-foreground&gt;&gt;;\r\n\ttext-shadow: 0 1px 0 rgba(0, 0, 0, 1);\r\n\twhite-space: nowrap;\r\n\tvertical-align: baseline;\r\n\tbackground-color: &lt;&lt;colour dragger-background&gt;&gt;;\r\n\tborder-radius: 20px;\r\n}\n\n.tw-tiddler-dragger-cover {\r\n\tposition: absolute;\r\n\tbackground-color: &lt;&lt;colour page-background&gt;&gt;;\r\n}\n\n.tw-dropzone {\r\n\tposition: relative;\r\n}\n\n.tw-dropzone.tw-dragover:before {\r\n\tz-index: 10000;\r\n\tdisplay: block;\r\n\tposition: absolute;\r\n\ttop: 0;\r\n\tleft: 0;\r\n\tright: 0;\r\n\tbackground: &lt;&lt;colour dropzone-background&gt;&gt;;\r\n\ttext-align: center;\r\n\tcontent: \&quot;Drop here\&quot;;\r\n}\n\n/*\r\n** Buttons\r\n*/\n\n.btn-invisible {\r\n\tpadding: 0;\r\n\tmargin: 0;\r\n\tbackground: none;\r\n\tborder: none;\r\n}\n\n.btn-icon svg {\r\n\theight: 1em;\r\n\twidth: 1em;\r\n\tfill: &lt;&lt;colour muted-foreground&gt;&gt;;\r\n}\n\n.btn-big-green {\r\n\tpadding: 8px;\r\n\tmargin: 4px 8px 4px 8px;\r\n\tbackground: &lt;&lt;colour download-background&gt;&gt;;\r\n\tcolor: &lt;&lt;colour download-foreground&gt;&gt;;\r\n\tfill: &lt;&lt;colour download-foreground&gt;&gt;;\r\n\tborder: none;\r\n\tfont-size: 1.2em;\r\n\tline-height: 1.4em;\r\n}\n\n.tw-sidebar-lists input {\r\n\tcolor: &lt;&lt;colour foreground&gt;&gt;;\r\n}\n\n.tw-sidebar-lists button.btn {\r\n\tcolor: &lt;&lt;colour sidebar-button-foreground&gt;&gt;;\r\n}\n\n.tw-sidebar-lists button.btn-mini {\r\n\tcolor: &lt;&lt;colour sidebar-muted-foreground&gt;&gt;;\r\n}\n\n.tw-sidebar-lists button.btn-mini:hover {\r\n\tcolor: &lt;&lt;colour sidebar-muted-foreground-hover&gt;&gt;;\r\n}\n\n.tw-image-button {\r\n\theight: 1em;\r\n}\n\n/*\r\n** Tags and missing tiddlers\r\n*/\n\n.tw-tag-list-item {\r\n\tposition: relative;\r\n\tdisplay: inline-block;\r\n\tmargin-right: 7px;\r\n}\n\n.tw-tags-wrapper {\r\n\tmargin: 4px 0 14px 0;\r\n}\n\n.tw-missing-tiddler-label {\r\n\tfont-style: italic;\r\n\tfont-weight: normal;\r\n\tdisplay: inline-block;\r\n\tfont-size: 11.844px;\r\n\tline-height: 14px;\r\n\twhite-space: nowrap;\r\n\tvertical-align: baseline;\r\n}\n\n.tw-tag-label {\r\n\tdisplay: inline-block;\r\n\tpadding: 2px 9px;\r\n\tfont-size: 0.9em;\r\n\tfont-weight: 300;\r\n\tline-height: 1.2em;\r\n\tcolor: &lt;&lt;colour tag-foreground&gt;&gt;;\r\n\twhite-space: nowrap;\r\n\tvertical-align: baseline;\r\n\tbackground-color: &lt;&lt;colour tag-background&gt;&gt;;\r\n\tborder-radius: 8px;\r\n}\n\n.tw-untagged-label {\r\n\tbackground-color: &lt;&lt;colour untagged-background&gt;&gt;;\r\n}\n\n.tw-tag-label svg, .tw-tag-label img {\r\n\theight: 1em;\r\n\twidth: 1em;\r\n\tfill: &lt;&lt;colour tag-foreground&gt;&gt;;\r\n}\n\n/*\r\n** Page layout\r\n*/\n\n.tw-topbar {\r\n\tposition: fixed;\r\n\tz-index: 1200;\r\n}\n\n.tw-topbar-left {\r\n\tleft: 29px;\r\n\ttop: 5px;\r\n}\n\n.tw-topbar-right {\r\n\ttop: 5px;\r\n\tright: 29px;\r\n}\n\n.tw-topbar button {\r\n\tpadding: 8px;\r\n}\n\n.tw-topbar svg {\r\n\tfill: &lt;&lt;colour muted-foreground&gt;&gt;;\r\n}\n\n.tw-topbar button:hover svg {\r\n\tfill: &lt;&lt;colour foreground&gt;&gt;;\r\n}\n\n.sidebar-header {\r\n\tcolor: &lt;&lt;colour sidebar-foreground&gt;&gt;;\r\n\tfill: &lt;&lt;colour sidebar-foreground&gt;&gt;;\r\n}\n\n.sidebar-header .title a.tw-tiddlylink-resolves {\r\n\tfont-weight: 300;\r\n}\n\n.sidebar-header .tw-sidebar-lists p {\r\n\tmargin-top: 3px;\r\n\tmargin-bottom: 3px;\r\n}\n\n.sidebar-header .tw-missing-tiddler-label {\r\n\tcolor: &lt;&lt;colour sidebar-foreground&gt;&gt;;\r\n}\n\n.tw-advanced-search input {\r\n\twidth: 60%;\r\n}\n\n.tw-search {\r\n\tpadding-top: 14px;\r\n}\n\n.tw-search a svg {\r\n\theight: 0.75em;\r\n}\n\n.tw-search-results {\r\n\tpadding-top: 14px;\r\n}\n\n.tw-page-controls {\r\n\tmargin-top: 14px;\r\n}\n\n.tw-page-controls a.tw-tiddlylink:hover {\r\n\ttext-decoration: none;\r\n}\n\n.tw-page-controls svg {\r\n\theight: 1.75em;\r\n\tmin-width: 1px;\r\n\tpadding-right: 0.5em;\r\n\tfill: &lt;&lt;colour sidebar-controls-foreground&gt;&gt;;\r\n}\n\n.tw-page-controls button:hover svg, .tw-page-controls a:hover svg {\r\n\tfill: &lt;&lt;colour sidebar-controls-foreground-hover&gt;&gt;;\r\n}\n\n.tw-menu-list-item {\r\n\twhite-space: nowrap;\r\n}\n\n.tw-menu-list-count {\r\n\tfont-weight: bold;\r\n}\n\n.tw-open-tiddler-list {\r\n\t&lt;&lt;transform-origin \&quot;0% 0%\&quot;&gt;&gt;\r\n}\n\n.tw-menu-list-subitem {\r\n\tpadding-left: 7px;\r\n}\n\n.story-river {\r\n\tposition: relative;\r\n}\n\n.tw-story-spacer {\r\n\tposition: absolute;\r\n\tmin-height: 100%;\r\n}\n\n@media (max-width: {{$:/themes/tiddlywiki/vanilla/metrics/sidebarbreakpoint}}) {\n\n\t.sidebar-header {\r\n\t\tpadding: 14px;\r\n\t\tmin-height: 32px;\r\n\t}\n\n\t.story-river {\r\n\t\tposition: relative;\r\n\t\tpadding: 0;\r\n\t}\r\n}\n\n@media (min-width: {{$:/themes/tiddlywiki/vanilla/metrics/sidebarbreakpoint}}) {\n\n\t.tw-message-box {\r\n\t\tmargin: 21px -21px 21px -21px;\r\n\t}\n\n\t.tw-sidebar-scrollable {\r\n\t\tposition: fixed;\r\n\t\ttop: {{$:/themes/tiddlywiki/vanilla/metrics/storytop}};\r\n\t\tleft: {{$:/themes/tiddlywiki/vanilla/metrics/storyright}};\r\n\t\tbottom: 0;\r\n\t\tright: 0;\r\n\t\toverflow-y: auto;\r\n\t\toverflow-x: auto;\r\n\t\t-webkit-overflow-scrolling: touch;\r\n\t\tmargin: 0 0 0 -42px;\r\n\t\tpadding: 71px 0 28px 42px;\r\n\t}\n\n\t.story-river {\r\n\t\tposition: relative;\r\n\t\tleft: {{$:/themes/tiddlywiki/vanilla/metrics/storyleft}};\r\n\t\ttop: {{$:/themes/tiddlywiki/vanilla/metrics/storytop}};\r\n\t\twidth: {{$:/themes/tiddlywiki/vanilla/metrics/storywidth}};\r\n\t\tpadding: 42px 42px 42px 42px;\r\n\t}\n\n&lt;&lt;if-no-sidebar \&quot;\n\n\t.story-river {\r\n\t\twidth: auto;\r\n\t}\n\n\&quot;&gt;&gt;\n\n}\n\n@media print {\r\n\t.sidebar-header, .tw-topbar {\r\n\t\tdisplay: none;\r\n\t}\n\n\t.story-river {\r\n\t\tmargin-left: 14px;\r\n\t}\r\n}\n\n/*\r\n** Tiddler styles\r\n*/\n\n.tw-tiddler-frame {\r\n\tmargin-bottom: 28px;\r\n\tbackground-color: &lt;&lt;colour tiddler-background&gt;&gt;;\r\n\tborder: 1px solid &lt;&lt;colour tiddler-border&gt;&gt;;\r\n}\n\n\r\n@media print {\r\n\t.tw-tiddler-frame {\r\n\t\tborder: none;\r\n\t}\r\n}\n\n.tw-tiddler-info {\r\n\tpadding: 14px 42px 14px 42px;\r\n\tbackground-color: &lt;&lt;colour tiddler-info-background&gt;&gt;;\r\n\tborder-top: 1px solid &lt;&lt;colour tiddler-info-border&gt;&gt;;\r\n\tborder-bottom: 1px solid &lt;&lt;colour tiddler-info-border&gt;&gt;;\r\n}\n\n.tw-tiddler-info .tw-tab-buttons button.tw-tab-selected {\r\n\tbackground-color: &lt;&lt;colour tiddler-info-tab-background&gt;&gt;;\r\n\tborder-bottom: 1px solid &lt;&lt;colour tiddler-info-tab-background&gt;&gt;;\r\n}\n\n.tw-view-field-table {\r\n\twidth: 100%;\r\n}\n\n.tw-view-field-name {\r\n\twidth: 1%; /* Makes this column be as narrow as possible */\r\n\ttext-align: right;\r\n\tfont-style: italic;\r\n\tfont-weight: 200;\r\n}\n\n.tw-view-field-value {\r\n}\n\n@media (max-width: {{$:/themes/tiddlywiki/vanilla/metrics/sidebarbreakpoint}}) {\r\n\t.tw-tiddler-frame {\r\n\t\tpadding: 14px 14px 14px 14px;\r\n\t}\n\n\t.tw-tiddler-info {\r\n\t\tmargin: 0 -14px 0 -14px;\r\n\t}\r\n}\n\n@media (min-width: {{$:/themes/tiddlywiki/vanilla/metrics/sidebarbreakpoint}}) {\r\n\t.tw-tiddler-frame {\r\n\t\tpadding: 28px 42px 42px 42px;\r\n\t\twidth: {{$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth}};\r\n\t}\n\n&lt;&lt;if-no-sidebar \&quot;\n\n\t.tw-tiddler-frame {\r\n\t\twidth: 100%;\r\n\t}\n\n\&quot;&gt;&gt;\n\n\t.tw-tiddler-info {\r\n\t\tmargin: 0 -42px 0 -42px;\r\n\t}\r\n}\n\n.tw-site-title,\r\n.titlebar {\r\n\tfont-weight: 300;\r\n\tfont-size: 2.35em;\r\n\tline-height: 1.2em;\r\n\tcolor: &lt;&lt;colour tiddler-title-foreground&gt;&gt;;\r\n\tmargin: 0;\r\n}\n\n.tw-system-title-prefix {\r\n\tcolor: &lt;&lt;colour muted-foreground&gt;&gt;;\r\n}\n\n.titlebar img {\r\n\theight: 1em;\r\n}\n\n.tw-subtitle {\r\n\tfont-size: 0.9em;\r\n\tcolor: &lt;&lt;colour tiddler-subtitle-foreground&gt;&gt;;\r\n\tfont-weight: 300;\r\n}\n\n.tw-tiddler-missing .title {\r\n  font-style: italic;\r\n  font-weight: normal;\r\n}\n\n.tw-tiddler-frame .tw-tiddler-controls {\r\n\tfloat: right;\r\n}\n\n.tw-tiddler-controls button {\r\n\tmargin: 0 0 0 5px;\r\n\tvertical-align: baseline;\r\n}\n\n.tw-tiddler-controls button svg {\r\n\theight: 0.75em;\r\n\tfill: &lt;&lt;colour tiddler-controls-foreground&gt;&gt;;\r\n}\n\n.tw-tiddler-controls button.tw-selected svg {\r\n\tfill: &lt;&lt;colour tiddler-controls-foreground-selected&gt;&gt;;\r\n}\n\n.tw-tiddler-controls button.btn-invisible:hover svg {\r\n\tfill: &lt;&lt;colour tiddler-controls-foreground-hover&gt;&gt;;\r\n}\n\n@media print {\r\n\t.tw-tiddler-controls {\r\n\t\tdisplay: none;\r\n\t}\r\n}\n\n.tw-tiddler-help { /* Help prompts within tiddler template */\r\n\tcolor: &lt;&lt;colour muted-foreground&gt;&gt;;\r\n\tmargin-top: 14px;\r\n}\n\n.tw-tiddler-help a.tw-tiddlylink {\r\n\tcolor: &lt;&lt;colour very-muted-foreground&gt;&gt;;\r\n}\n\n.tw-tiddler-frame input.tw-edit-texteditor, .tw-tiddler-frame textarea.tw-edit-texteditor {\r\n\twidth: 100%;\r\n\tpadding: 3px 3px 3px 3px;\r\n\tborder: 1px solid &lt;&lt;colour tiddler-editor-border&gt;&gt;;\r\n\tline-height: 1.3em;\r\n\t-webkit-appearance: none;\r\n\tmargin: 4px 0 4px 0;\r\n}\n\n.tw-tiddler-frame .tw-binary-warning {\r\n\twidth: 100%;\r\n\theight: 5em;\r\n\ttext-align: center;\r\n\tpadding: 3em 3em 6em 3em;\r\n\tbackground: &lt;&lt;colour alert-background&gt;&gt;;\r\n\tborder: 1px solid &lt;&lt;colour alert-border&gt;&gt;;\r\n}\n\n.tw-tiddler-frame input.tw-edit-texteditor {\r\n\tbackground-color: &lt;&lt;colour tiddler-editor-background&gt;&gt;;\r\n}\n\ncanvas.tw-edit-bitmapeditor  {\r\n\tborder: 6px solid &lt;&lt;colour tiddler-editor-border-image&gt;&gt;;\r\n\tcursor: crosshair;\r\n\t-moz-user-select: none;\r\n\t-webkit-user-select: none;\r\n\t-ms-user-select: none;\r\n\tmargin-top: 6px;\r\n\tmargin-bottom: 6px;\r\n}\n\n.tw-edit-bitmapeditor-width {\r\n\tdisplay: block;\r\n}\n\n.tw-edit-bitmapeditor-height {\r\n\tdisplay: block;\r\n}\n\n/*\r\n** Toolbar buttons\r\n*/\n\n.tw-page-controls svg.tw-image-new-button {\r\n  fill: &lt;&lt;colour toolbar-new-button&gt;&gt;;\r\n}\n\n.tw-page-controls svg.tw-image-options-button {\r\n  fill: &lt;&lt;colour toolbar-options-button&gt;&gt;;\r\n}\n\n.tw-page-controls svg.tw-image-save-button {\r\n  fill: &lt;&lt;colour toolbar-save-button&gt;&gt;;\r\n}\n\n.tw-tiddler-controls button svg.tw-image-info-button {\r\n  fill: &lt;&lt;colour toolbar-info-button&gt;&gt;;\r\n}\n\n.tw-tiddler-controls button svg.tw-image-edit-button {\r\n  fill: &lt;&lt;colour toolbar-edit-button&gt;&gt;;\r\n}\n\n.tw-tiddler-controls button svg.tw-image-close-button {\r\n  fill: &lt;&lt;colour toolbar-close-button&gt;&gt;;\r\n}\n\n.tw-tiddler-controls button svg.tw-image-delete-button {\r\n  fill: &lt;&lt;colour toolbar-delete-button&gt;&gt;;\r\n}\n\n.tw-tiddler-controls button svg.tw-image-cancel-button {\r\n  fill: &lt;&lt;colour toolbar-cancel-button&gt;&gt;;\r\n}\n\n.tw-tiddler-controls button svg.tw-image-done-button {\r\n  fill: &lt;&lt;colour toolbar-done-button&gt;&gt;;\r\n}\n\n/*\r\n** Tiddler edit mode\r\n*/\n\n.tw-tiddler-edit-frame em.tw-edit {\r\n\tcolor: &lt;&lt;colour muted-foreground&gt;&gt;;\r\n\tfont-style: normal;\r\n}\n\n.tw-edit-type-dropdown a.tw-tiddlylink-missing {\r\n\tfont-style: normal;\r\n}\n\n.tw-edit-tags {\r\n\tborder: 1px solid &lt;&lt;colour tiddler-editor-border&gt;&gt;;\r\n\tpadding: 4px 8px 4px 8px;\r\n}\n\n.tw-edit-add-tag {\r\n\tdisplay: inline-block;\r\n}\n\n.tw-edit-add-tag .tw-add-tag-name input {\r\n\twidth: 50%;\r\n}\n\n.tw-edit-tags .tw-tag-label {\r\n\tdisplay: inline-block;\r\n}\n\n.tw-edit-tags-list {\r\n\tmargin: 14px 0 14px 0;\r\n}\n\n.tw-tag-editor-label {\r\n\tdisplay: inline-block;\r\n\tmargin-right: 7px;\r\n}\n\n.tw-remove-tag-button {\r\n\tpadding-left: 4px;\r\n}\n\n.tw-tiddler-preview {\r\n\toverflow: auto;\r\n}\n\n.tw-tiddler-preview-preview {\r\n\tfloat: right;\r\n\twidth: 48%;\r\n\tborder: 1px solid &lt;&lt;colour tiddler-editor-border&gt;&gt;;\r\n\tmargin: 4px 3px 3px 3px;\r\n\tpadding: 3px 3px 3px 3px;\r\n}\n\n.tw-tiddler-preview-edit {\r\n\twidth: 48%;\r\n}\n\n.tw-edit-fields {\r\n\twidth: 100%;\r\n}\n\n\r\n.tw-edit-fields table, .tw-edit-fields tr, .tw-edit-fields td {\r\n\tborder: none;\r\n\tpadding: 4px;\r\n}\n\n.tw-edit-fields &gt; tbody &gt; .tw-edit-field:nth-child(odd) {\r\n\tbackground-color: &lt;&lt;colour tiddler-editor-fields-odd&gt;&gt;;\r\n}\n\n.tw-edit-fields &gt; tbody &gt; .tw-edit-field:nth-child(even) {\r\n\tbackground-color: &lt;&lt;colour tiddler-editor-fields-even&gt;&gt;;\r\n}\n\n.tw-edit-field-name {\r\n\ttext-align: right;\r\n}\n\n.tw-edit-field-value input {\r\n\twidth: 100%;\r\n}\n\n.tw-edit-field-remove {\r\n}\n\n.tw-edit-field-remove svg {\r\n\theight: 1em;\r\n\twidth: 1em;\r\n\tfill: &lt;&lt;colour muted-foreground&gt;&gt;;\r\n\tvertical-align: middle;\r\n}\n\n.tw-edit-field-add-name {\r\n\tdisplay: inline-block;\r\n\twidth: 15%;\r\n}\n\n.tw-edit-field-add-button {\r\n\tdisplay: inline-block;\r\n\twidth: 10%;\r\n}\n\n/*\r\n** Dropdowns\r\n*/\n\n.btn-dropdown svg {\r\n\theight: 1em;\r\n\twidth: 1em;\r\n\tfill: &lt;&lt;colour muted-foreground&gt;&gt;;\r\n}\n\n.tw-drop-down {\r\n\tmin-width: 280px;\r\n\tborder: 1px solid &lt;&lt;colour dropdown-border&gt;&gt;;\r\n\tbackground-color: &lt;&lt;colour dropdown-background&gt;&gt;;\r\n\tpadding: 7px 0 7px 0;\r\n\tmargin: 4px 0 0 0;\r\n\twhite-space: nowrap;\r\n}\n\n.tw-drop-down p {\r\n\tpadding: 0 14px 0 14px;\r\n}\n\n.tw-drop-down a {\r\n\tdisplay: block;\r\n\tpadding: 0 14px 0 14px;\r\n}\n\n.tw-drop-down a:hover {\r\n\tcolor: &lt;&lt;colour tiddler-link-background&gt;&gt;;\r\n\tbackground-color: &lt;&lt;colour tiddler-link-foreground&gt;&gt;;\r\n\ttext-decoration: none;\r\n}\n\n.tw-drop-down .tw-tab-buttons button {\r\n\tbackground-color: &lt;&lt;colour dropdown-tab-background&gt;&gt;;\r\n}\n\n.tw-drop-down .tw-tab-buttons button.tw-tab-selected {\r\n\tbackground-color: &lt;&lt;colour dropdown-tab-background-selected&gt;&gt;;\r\n\tborder-bottom: 1px solid &lt;&lt;colour dropdown-tab-background-selected&gt;&gt;;\r\n}\n\n.tw-drop-down .tw-tab-contents a {\r\n\tpadding: 0 0.5em 0 0.5em;\r\n}\n\n.tw-block-dropdown-wrapper {\r\n\tposition: relative;\r\n}\n\n.tw-block-dropdown {\r\n\tposition: absolute;\r\n\tmin-width: 280px;\r\n\tborder: 1px solid &lt;&lt;colour dropdown-border&gt;&gt;;\r\n\tbackground-color: &lt;&lt;colour dropdown-background&gt;&gt;;\r\n\tpadding: 0 0 0 0;\r\n\tmargin: 4px 0 0 0;\r\n\twhite-space: nowrap;\r\n\tz-index: 1000;\r\n}\n\n.tw-block-dropdown a {\r\n\tdisplay: block;\r\n\tpadding: 4px 14px 4px 14px;\r\n}\n\n.tw-block-dropdown .tw-dropdown-item {\r\n\tpadding: 4px 14px 4px 7px;\r\n\tcolor: &lt;&lt;colour muted-foreground&gt;&gt;;\r\n}\n\n.tw-block-dropdown a:hover {\r\n\tcolor: &lt;&lt;colour tiddler-link-background&gt;&gt;;\r\n\tbackground-color: &lt;&lt;colour tiddler-link-foreground&gt;&gt;;\r\n\ttext-decoration: none;\r\n}\n\n/*\r\n** Modals\r\n*/\n\n.modal-wrapper {\r\n\tposition: fixed;\r\n\toverflow: auto;\r\n\toverflow-y: scroll;\r\n\ttop: 0;\r\n\tright: 0;\r\n\tbottom: 0;\r\n\tleft: 0;\r\n}\n\n.modal-backdrop {\r\n\tposition: fixed;\r\n\ttop: 0;\r\n\tright: 0;\r\n\tbottom: 0;\r\n\tleft: 0;\r\n\tz-index: 1000;\r\n\tbackground-color: &lt;&lt;colour modal-backdrop&gt;&gt;;\r\n}\n\n.modal {\r\n\tz-index: 1100;\r\n\tbackground-color: &lt;&lt;colour modal-background&gt;&gt;;\r\n\tborder: 1px solid &lt;&lt;colour modal-border&gt;&gt;;\r\n}\n\n@media (max-width: 55em) {\r\n\t.modal {\r\n\t\tposition: fixed;\r\n\t\ttop: 1em;\r\n\t\tleft: 1em;\r\n\t\tright: 1em;\r\n\t}\n\n\t.modal-body {\r\n\t\toverflow-y: auto;\r\n\t\tmax-height: 400px;\r\n\t}\r\n}\n\n@media (min-width: 55em) {\r\n\t.modal {\r\n\t\tposition: relative;\r\n\t\twidth: 50%;\r\n\t\tmargin: 30px auto;\r\n\t}\r\n}\n\n.modal-header {\r\n\tpadding: 9px 15px;\r\n\tborder-bottom: 1px solid &lt;&lt;colour modal-header-border&gt;&gt;;\r\n}\n\n.modal-header h3 {\r\n\tmargin: 0;\r\n\tline-height: 30px;\r\n}\n\n.modal-body {\r\n\tpadding: 15px;\r\n}\n\n.modal-footer {\r\n\tpadding: 14px 15px 15px;\r\n\tmargin-bottom: 0;\r\n\ttext-align: right;\r\n\tbackground-color: &lt;&lt;colour modal-footer-background&gt;&gt;;\r\n\tborder-top: 1px solid &lt;&lt;colour modal-footer-border&gt;&gt;;\r\n}\n\n/*\r\n** Notifications\r\n*/\n\n.tw-notification {\r\n\tposition: fixed;\r\n\ttop: 14px;\r\n\tright: 42px;\r\n\tz-index: 1000;\r\n\tmax-width: 280px;\r\n\tpadding: 0 14px 0 14px;\r\n\tbackground-color: &lt;&lt;colour notification-background&gt;&gt;;\r\n\tborder: 1px solid &lt;&lt;colour notification-border&gt;&gt;;\r\n}\n\n/*\r\n** Tabs\r\n*/\n\n.tw-tab-set.tw-vertical {\r\n\tdisplay: -webkit-flex;\r\n\tdisplay: flex;\r\n}\n\n.tw-tab-buttons {\r\n\tfont-size: 0.85em;\r\n\tpadding-top: 1em;\r\n\tmargin-bottom: -1px;\r\n}\n\n.tw-tab-buttons.tw-vertical  {\r\n\tz-index: 100;\r\n\tdisplay: block;\r\n\tpadding-top: 14px;\r\n\tvertical-align: top;\r\n\ttext-align: right;\r\n\tmargin-bottom: inherit;\r\n\tmargin-right: -1px;\r\n\tmax-width: 33%;\r\n\t-webkit-flex: 0 0 auto;\r\n\tflex: 0 0 auto;\r\n}\n\n.tw-tab-buttons button.tw-tab-selected {\r\n\tcolor: &lt;&lt;colour tab-foreground-selected&gt;&gt;;\r\n\tbackground-color: &lt;&lt;colour tab-background-selected&gt;&gt;;\r\n\tborder-left: 1px solid &lt;&lt;colour tab-border-selected&gt;&gt;;\r\n\tborder-top: 1px solid &lt;&lt;colour tab-border-selected&gt;&gt;;\r\n\tborder-right: 1px solid &lt;&lt;colour tab-border-selected&gt;&gt;;\r\n}\n\n.tw-tab-buttons button {\r\n\tcolor: &lt;&lt;colour tab-foreground&gt;&gt;;\r\n\tpadding: 3px 5px 3px 5px;\r\n\tfont-weight: 300;\r\n\tborder: none;\r\n\tbackground: inherit;\r\n\tbackground-color: &lt;&lt;colour tab-background&gt;&gt;;\r\n\tborder-left: 1px solid &lt;&lt;colour tab-border&gt;&gt;;\r\n\tborder-top: 1px solid &lt;&lt;colour tab-border&gt;&gt;;\r\n\tborder-right: 1px solid &lt;&lt;colour tab-border&gt;&gt;;\r\n}\n\n.tw-tab-buttons.tw-vertical button {\r\n\tdisplay: block;\r\n\twidth: 100%;\r\n\tmargin-top: 3px;\r\n\ttext-align: right;\r\n\tbackground-color: &lt;&lt;colour tab-background&gt;&gt;;\r\n\tborder-left: 1px solid &lt;&lt;colour tab-border&gt;&gt;;\r\n\tborder-bottom: 1px solid &lt;&lt;colour tab-border&gt;&gt;;\r\n\tborder-right: none;\r\n}\n\n.tw-tab-buttons.tw-vertical button.tw-tab-selected {\r\n\tbackground-color: &lt;&lt;colour tab-background-selected&gt;&gt;;\r\n\tborder-right: 1px solid &lt;&lt;colour tab-background-selected&gt;&gt;;\r\n}\n\n.tw-tab-divider {\r\n\tborder-top: 1px solid &lt;&lt;colour tab-divider&gt;&gt;;\r\n}\n\n.tw-tab-divider.tw-vertical  {\r\n\tdisplay: none;\r\n}\n\n.tw-tab-content {\r\n\tmargin-top: 14px;\r\n}\n\n.tw-tab-content.tw-vertical  {\r\n\tdisplay: inline-block;\r\n\tvertical-align: top;\r\n\tpadding-top: 0;\r\n\tpadding-left: 14px;\r\n\tborder-left: 1px solid &lt;&lt;colour tab-border&gt;&gt;;\r\n\t-webkit-flex: 0 0 70%;\r\n\tflex: 0 0 70%;\r\n}\n\n.tw-sidebar-lists .tw-tab-buttons button.tw-tab-selected {\r\n\tbackground-color: &lt;&lt;colour sidebar-tab-background-selected&gt;&gt;;\r\n\tcolor: &lt;&lt;colour sidebar-tab-foreground-selected&gt;&gt;;\r\n\tborder-left: 1px solid &lt;&lt;colour sidebar-tab-border-selected&gt;&gt;;\r\n\tborder-top: 1px solid &lt;&lt;colour sidebar-tab-border-selected&gt;&gt;;\r\n\tborder-right: 1px solid &lt;&lt;colour sidebar-tab-border-selected&gt;&gt;;\r\n}\n\n.tw-sidebar-lists .tw-tab-buttons button {\r\n\tbackground-color: &lt;&lt;colour sidebar-tab-background&gt;&gt;;\r\n\tcolor: &lt;&lt;colour sidebar-tab-foreground&gt;&gt;;\r\n\tborder-left: 1px solid &lt;&lt;colour sidebar-tab-border&gt;&gt;;\r\n\tborder-top: 1px solid &lt;&lt;colour sidebar-tab-border&gt;&gt;;\r\n\tborder-right: 1px solid &lt;&lt;colour sidebar-tab-border&gt;&gt;;\r\n}\n\n.tw-sidebar-lists .tw-tab-divider {\r\n\tborder-top: 1px solid &lt;&lt;colour sidebar-tab-divider&gt;&gt;;\r\n}\n\n.tw-more-sidebar .tw-tab-buttons button {\r\n\tbackground-color: &lt;&lt;colour sidebar-tab-background&gt;&gt;;\r\n\tborder-top: none;\r\n\tborder-left: none;\r\n\tborder-bottom: none;\r\n\tborder-right: 1px solid #ccc;\r\n\tmargin-bottom: inherit;\r\n}\n\n.tw-more-sidebar .tw-tab-buttons button.tw-tab-selected {\r\n\tbackground-color: &lt;&lt;colour sidebar-tab-background-selected&gt;&gt;;\r\n\tborder: none;\r\n}\n\n/*\r\n** Alerts\r\n*/\n\n.tw-alerts {\r\n\tposition: fixed;\r\n\ttop: 0;\r\n\tleft: 0;\r\n\tmax-width: 500px;\r\n\tz-index: 20000;\r\n}\n\n.tw-alert {\r\n\tposition: relative;\r\n\tmargin: 28px;\r\n\tpadding: 14px 14px 14px 14px;\r\n\tborder: 2px solid &lt;&lt;colour alert-border&gt;&gt;;\r\n\tbackground-color: &lt;&lt;colour alert-background&gt;&gt;;\r\n}\n\n.tw-alert-toolbar {\r\n\tposition: absolute;\r\n\ttop: 14px;\r\n\tright: 14px;\r\n}\n\n.tw-alert-toolbar svg {\r\n\tfill: &lt;&lt;colour alert-muted-foreground&gt;&gt;;\r\n}\n\n.tw-alert-subtitle {\r\n\tcolor: &lt;&lt;colour alert-muted-foreground&gt;&gt;;\r\n\tfont-weight: bold;\r\n}\n\n.tw-alert-highlight {\r\n\tcolor: &lt;&lt;colour alert-highlight&gt;&gt;;\t\r\n}\n\n.tw-static-alert {\r\n\tposition: relative;\r\n}\n\n.tw-static-alert-inner {\r\n\tpadding: 0 2px 2px 42px;\r\n\tcolor: &lt;&lt;colour static-alert-foreground&gt;&gt;;\r\n\tposition: absolute;\r\n}\n\n/*\r\n** Grids\r\n*/\n\n.tw-grid-frame td {\r\n\twidth: 1em;\r\n\theight: 1em;\r\n}\n\n/*\r\n** Control panel\r\n*/\n\n.tw-control-panel td {\r\n\tpadding: 4px;\r\n}\n\n.tw-control-panel table, .tw-control-panel table input, .tw-control-panel table textarea {\r\n\twidth: 100%;\r\n}\n\n/*\r\n** Message boxes\r\n*/\n\n.tw-message-box {\r\n\tborder: 1px solid &lt;&lt;colour message-border&gt;&gt;;\r\n\tbackground: &lt;&lt;colour message-background&gt;&gt;;\r\n\tpadding: 0px 21px 0px 21px;\r\n\tfont-size: 12px;\r\n\tline-height: 18px;\r\n\tcolor: &lt;&lt;colour message-foreground&gt;&gt;;\r\n}\n\n.tw-message-box img {\r\n\tfloat: right;\r\n\twidth: 150px;\r\n\tmargin: 0px 0px 12px 12px;\r\n}\n\n/*\r\n** Chooser\r\n*/\n\n.tw-chooser {\r\n\tborder: 1px solid &lt;&lt;colour table-border&gt;&gt;;\r\n}\n\n.tw-chooser-item {\r\n\tborder: 8px;\r\n}\n\n.tw-chooser-item a.tw-tiddlylink {\r\n\tdisplay: block;\r\n\ttext-decoration: none;\r\n\tcolor: &lt;&lt;colour tiddler-link-foreground&gt;&gt;;\r\n\tbackground-color: &lt;&lt;colour tiddler-link-background&gt;&gt;;\r\n\tmargin: 4px;\r\n}\n\n.tw-chooser-item a.tw-tiddlylink:hover {\r\n\ttext-decoration: none;\r\n\tcolor: &lt;&lt;colour tiddler-link-background&gt;&gt;;\r\n\tbackground-color: &lt;&lt;colour tiddler-link-foreground&gt;&gt;;\r\n}\n\n/*\r\n** Palette swatches\r\n*/\n\n.tw-swatches-horiz {\r\n}\n\n.tw-swatches-horiz .tw-swatch {\r\n\tdisplay: inline-block;\r\n}\n\n.tw-swatch {\r\n\twidth: 2em;\r\n\theight: 2em;\r\n\tmargin: 4px;\r\n\tborder: 1px solid #000;\r\n}\n\n/*\r\n** Table of contents\r\n*/\n\n.tw-sidebar-lists .tw-table-of-contents {\r\n\twhite-space: nowrap;\r\n}\n\n.tw-table-of-contents svg {\r\n\twidth: 0.7em;\r\n\theight: 0.7em;\r\n\tvertical-align: middle;\r\n}\n\n.tw-table-of-contents ol {\r\n\tlist-style-type: none;\r\n\tpadding-left: 0;\r\n}\n\n.tw-table-of-contents ol ol {\r\n\tpadding-left: 1em;\r\n}\n\n.tw-table-of-contents li {\r\n\tfont-size: 1.0em;\r\n\tfont-weight: bold;\r\n}\n\n.tw-table-of-contents li a {\r\n\tfont-weight: bold;\r\n}\n\n.tw-table-of-contents li li {\r\n\tfont-size: 0.95em;\r\n\tfont-weight: normal;\r\n\tline-height: 1.4;\r\n}\n\n.tw-table-of-contents li li a {\r\n\tfont-weight: normal;\r\n}\n\n.tw-table-of-contents li li li {\r\n\tfont-size: 0.95em;\r\n\tfont-weight: 200;\r\n\tline-height: 1.5;\r\n}\n\n.tw-table-of-contents li li li a {\r\n\tfont-weight: bold;\r\n}\n\n.tw-table-of-contents li li li li {\r\n\tfont-size: 0.95em;\r\n\tfont-weight: 200;\r\n}\r\n&quot;
+            &quot;text&quot;: &quot;\\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline\r\n/*\r\n** Start with the normalize CSS reset, and then belay some of its effects\r\n*/\n\n{{$:/themes/tiddlywiki/vanilla/reset}}\n\n*, input[type=\&quot;search\&quot;] {\r\n\tbox-sizing: border-box;\r\n\t-moz-box-sizing: border-box;\r\n\t-webkit-box-sizing: border-box;\r\n}\n\nhtml button {\r\n\tline-height: 1.2;\r\n}\n\n/*\r\n** Basic element styles\r\n*/\n\nhtml {\r\n\tfont-family: {{$:/themes/tiddlywiki/vanilla/settings/fontfamily}};\r\n\ttext-rendering: optimizeLegibility; /* Enables kerning and ligatures etc. */\t\r\n}\n\nhtml:-webkit-full-screen {\r\n\tbackground-color: &lt;&lt;colour page-background&gt;&gt;;\r\n}\n\nbody.tw-body {\r\n\tfont-size: {{$:/themes/tiddlywiki/vanilla/metrics/fontsize}};\r\n\tline-height: {{$:/themes/tiddlywiki/vanilla/metrics/lineheight}};\r\n\tcolor: &lt;&lt;colour foreground&gt;&gt;;\r\n\tbackground-color: &lt;&lt;colour page-background&gt;&gt;;\r\n\tword-wrap: break-word;\r\n}\n\nh1, h2, h3, h4, h5, h6 {\r\n\tline-height: 1.2;\r\n\tfont-weight: 300;\r\n}\n\npre {\r\n\tdisplay: block;\r\n\tpadding: 14px;\r\n\tmargin-top: 1em;\r\n\tmargin-bottom: 1em;\r\n\tword-break: normal;\r\n\tword-wrap: break-word;\r\n\twhite-space: pre;\r\n\twhite-space: pre-wrap;\r\n\tbackground-color: &lt;&lt;colour pre-background&gt;&gt;;\r\n\tborder: 1px solid &lt;&lt;colour pre-border&gt;&gt;;\r\n\tpadding: 0 3px 2px;\r\n\tborder-radius: 3px;\r\n}\n\ncode {\r\n\tcolor: &lt;&lt;colour code-foreground&gt;&gt;;\r\n\tbackground-color: &lt;&lt;colour code-background&gt;&gt;;\r\n\tborder: 1px solid &lt;&lt;colour code-border&gt;&gt;;\r\n    white-space: pre-wrap;\r\n\tpadding: 0 3px 2px;\r\n\tborder-radius: 3px;\r\n}\n\nblockquote {\r\n\tborder-left: 5px solid &lt;&lt;colour blockquote-bar&gt;&gt;;\r\n\tmargin-left: 25px;\r\n\tpadding-left: 10px;\r\n}\n\ndl dt {\r\n\tfont-weight: bold;\r\n\tmargin-top: 6px;\r\n}\n\n/*\r\nMarkdown likes putting code elements inside pre elements\r\n*/\r\npre &gt; code {\r\n\tpadding: 0;\r\n\tborder: none;\r\n\tbackground-color: inherit;\r\n\tcolor: inherit;\r\n}\n\ntable {\r\n\tborder: 1px solid &lt;&lt;colour table-border&gt;&gt;;\r\n\twidth: auto;\r\n\tmax-width: 100%;\r\n\tcaption-side: bottom;\r\n\tmargin-top: 1em;\r\n\tmargin-bottom: 1em;\r\n}\n\ntable th, table td {\r\n\tpadding: 0 7px 0 7px;\r\n\tborder-top: 1px solid &lt;&lt;colour table-border&gt;&gt;;\r\n\tborder-left: 1px solid &lt;&lt;colour table-border&gt;&gt;;\r\n}\n\ntable thead tr td, table th {\r\n\tbackground-color: &lt;&lt;colour table-header-background&gt;&gt;;\r\n\tfont-weight: bold;\r\n}\n\ntable tfoot tr td {\r\n\tbackground-color: &lt;&lt;colour table-footer-background&gt;&gt;;\r\n}\n\n.tw-csv-table {\r\n\twhite-space: nowrap;\r\n}\n\n.tw-tiddler-frame img,\r\n.tw-tiddler-frame svg,\r\n.tw-tiddler-frame canvas,\r\n.tw-tiddler-frame embed,\r\n.tw-tiddler-frame iframe {\r\n\tmax-width: 100%;\r\n}\n\n.tw-tiddler-frame embed,\r\n.tw-tiddler-frame iframe {\r\n\twidth: 100%;\r\n\theight: 600px;\r\n}\n\n/*\r\n** Links\r\n*/\n\na.tw-tiddlylink {\r\n\ttext-decoration: none;\r\n\tfont-weight: normal;\r\n\tcolor: &lt;&lt;colour tiddler-link-foreground&gt;&gt;;\r\n\t-webkit-user-select: inherit; /* Otherwise the draggable attribute makes links impossible to select */\r\n}\n\n.tw-sidebar-lists a.tw-tiddlylink {\r\n\tcolor: &lt;&lt;colour sidebar-tiddler-link-foreground&gt;&gt;;\r\n}\n\n.tw-sidebar-lists a.tw-tiddlylink:hover {\r\n\tcolor: &lt;&lt;colour sidebar-tiddler-link-foreground-hover&gt;&gt;;\r\n}\n\na.tw-tiddlylink:hover {\r\n\ttext-decoration: underline;\r\n}\n\na.tw-tiddlylink-resolves {\r\n}\n\na.tw-tiddlylink-shadow {\r\n\tfont-weight: bold;\r\n}\n\na.tw-tiddlylink-shadow.tw-tiddlylink-resolves {\r\n\tfont-weight: normal;\r\n}\n\na.tw-tiddlylink-missing {\r\n\tfont-style: italic;\r\n}\n\na.tw-tiddlylink-external {\r\n\ttext-decoration: underline;\r\n\tcolor: &lt;&lt;colour external-link-foreground&gt;&gt;;\r\n\tbackground-color: &lt;&lt;colour external-link-background&gt;&gt;;\r\n}\n\na.tw-tiddlylink-external:visited {\r\n\tcolor: &lt;&lt;colour external-link-foreground-visited&gt;&gt;;\r\n\tbackground-color: &lt;&lt;colour external-link-background-visited&gt;&gt;;\r\n}\n\na.tw-tiddlylink-external:hover {\r\n\tcolor: &lt;&lt;colour external-link-foreground-hover&gt;&gt;;\r\n\tbackground-color: &lt;&lt;colour external-link-background-hover&gt;&gt;;\r\n}\n\n/*\r\n** Drag and drop styles\r\n*/\n\n.tw-tiddler-dragger {\r\n\tposition: relative;\r\n\tz-index: -10000;\r\n}\n\n.tw-tiddler-dragger-inner {\r\n\tposition: absolute;\r\n\tdisplay: inline-block;\r\n\tpadding: 8px 20px;\r\n\tfont-size: 16.9px;\r\n\tfont-weight: bold;\r\n\tline-height: 20px;\r\n\tcolor: &lt;&lt;colour dragger-foreground&gt;&gt;;\r\n\ttext-shadow: 0 1px 0 rgba(0, 0, 0, 1);\r\n\twhite-space: nowrap;\r\n\tvertical-align: baseline;\r\n\tbackground-color: &lt;&lt;colour dragger-background&gt;&gt;;\r\n\tborder-radius: 20px;\r\n}\n\n.tw-tiddler-dragger-cover {\r\n\tposition: absolute;\r\n\tbackground-color: &lt;&lt;colour page-background&gt;&gt;;\r\n}\n\n.tw-dropzone {\r\n\tposition: relative;\r\n}\n\n.tw-dropzone.tw-dragover:before {\r\n\tz-index: 10000;\r\n\tdisplay: block;\r\n\tposition: absolute;\r\n\ttop: 0;\r\n\tleft: 0;\r\n\tright: 0;\r\n\tbackground: &lt;&lt;colour dropzone-background&gt;&gt;;\r\n\ttext-align: center;\r\n\tcontent: \&quot;Drop here\&quot;;\r\n}\n\n/*\r\n** Buttons\r\n*/\n\n.btn-invisible {\r\n\tpadding: 0;\r\n\tmargin: 0;\r\n\tbackground: none;\r\n\tborder: none;\r\n}\n\n.btn-icon svg {\r\n\theight: 1em;\r\n\twidth: 1em;\r\n\tfill: &lt;&lt;colour muted-foreground&gt;&gt;;\r\n}\n\n.btn-big-green {\r\n\tpadding: 8px;\r\n\tmargin: 4px 8px 4px 8px;\r\n\tbackground: &lt;&lt;colour download-background&gt;&gt;;\r\n\tcolor: &lt;&lt;colour download-foreground&gt;&gt;;\r\n\tfill: &lt;&lt;colour download-foreground&gt;&gt;;\r\n\tborder: none;\r\n\tfont-size: 1.2em;\r\n\tline-height: 1.4em;\r\n}\n\n.tw-sidebar-lists input {\r\n\tcolor: &lt;&lt;colour foreground&gt;&gt;;\r\n}\n\n.tw-sidebar-lists button.btn {\r\n\tcolor: &lt;&lt;colour sidebar-button-foreground&gt;&gt;;\r\n}\n\n.tw-sidebar-lists button.btn-mini {\r\n\tcolor: &lt;&lt;colour sidebar-muted-foreground&gt;&gt;;\r\n}\n\n.tw-sidebar-lists button.btn-mini:hover {\r\n\tcolor: &lt;&lt;colour sidebar-muted-foreground-hover&gt;&gt;;\r\n}\n\n.tw-image-button {\r\n\theight: 1em;\r\n}\n\n/*\r\n** Tags and missing tiddlers\r\n*/\n\n.tw-tag-list-item {\r\n\tposition: relative;\r\n\tdisplay: inline-block;\r\n\tmargin-right: 7px;\r\n}\n\n.tw-tags-wrapper {\r\n\tmargin: 4px 0 14px 0;\r\n}\n\n.tw-missing-tiddler-label {\r\n\tfont-style: italic;\r\n\tfont-weight: normal;\r\n\tdisplay: inline-block;\r\n\tfont-size: 11.844px;\r\n\tline-height: 14px;\r\n\twhite-space: nowrap;\r\n\tvertical-align: baseline;\r\n}\n\n.tw-tag-label {\r\n\tdisplay: inline-block;\r\n\tpadding: 2px 9px;\r\n\tfont-size: 0.9em;\r\n\tfont-weight: 300;\r\n\tline-height: 1.2em;\r\n\tcolor: &lt;&lt;colour tag-foreground&gt;&gt;;\r\n\twhite-space: nowrap;\r\n\tvertical-align: baseline;\r\n\tbackground-color: &lt;&lt;colour tag-background&gt;&gt;;\r\n\tborder-radius: 8px;\r\n}\n\n.tw-untagged-label {\r\n\tbackground-color: &lt;&lt;colour untagged-background&gt;&gt;;\r\n}\n\n.tw-tag-label svg, .tw-tag-label img {\r\n\theight: 1em;\r\n\twidth: 1em;\r\n\tfill: &lt;&lt;colour tag-foreground&gt;&gt;;\r\n}\n\n/*\r\n** Page layout\r\n*/\n\n.tw-topbar {\r\n\tposition: fixed;\r\n\tz-index: 1200;\r\n}\n\n.tw-topbar-left {\r\n\tleft: 29px;\r\n\ttop: 5px;\r\n}\n\n.tw-topbar-right {\r\n\ttop: 5px;\r\n\tright: 29px;\r\n}\n\n.tw-topbar button {\r\n\tpadding: 8px;\r\n}\n\n.tw-topbar svg {\r\n\tfill: &lt;&lt;colour muted-foreground&gt;&gt;;\r\n}\n\n.tw-topbar button:hover svg {\r\n\tfill: &lt;&lt;colour foreground&gt;&gt;;\r\n}\n\n.sidebar-header {\r\n\tcolor: &lt;&lt;colour sidebar-foreground&gt;&gt;;\r\n\tfill: &lt;&lt;colour sidebar-foreground&gt;&gt;;\r\n}\n\n.sidebar-header .title a.tw-tiddlylink-resolves {\r\n\tfont-weight: 300;\r\n}\n\n.sidebar-header .tw-sidebar-lists p {\r\n\tmargin-top: 3px;\r\n\tmargin-bottom: 3px;\r\n}\n\n.sidebar-header .tw-missing-tiddler-label {\r\n\tcolor: &lt;&lt;colour sidebar-foreground&gt;&gt;;\r\n}\n\n.tw-advanced-search input {\r\n\twidth: 60%;\r\n}\n\n.tw-search {\r\n\tpadding-top: 14px;\r\n}\n\n.tw-search a svg {\r\n\theight: 0.75em;\r\n}\n\n.tw-search-results {\r\n\tpadding-top: 14px;\r\n}\n\n.tw-page-controls {\r\n\tmargin-top: 14px;\r\n}\n\n.tw-page-controls a.tw-tiddlylink:hover {\r\n\ttext-decoration: none;\r\n}\n\n.tw-page-controls svg {\r\n\theight: 1.75em;\r\n\tmin-width: 1px;\r\n\tpadding-right: 0.5em;\r\n\tfill: &lt;&lt;colour sidebar-controls-foreground&gt;&gt;;\r\n}\n\n.tw-page-controls button:hover svg, .tw-page-controls a:hover svg {\r\n\tfill: &lt;&lt;colour sidebar-controls-foreground-hover&gt;&gt;;\r\n}\n\n.tw-menu-list-item {\r\n\twhite-space: nowrap;\r\n}\n\n.tw-menu-list-count {\r\n\tfont-weight: bold;\r\n}\n\n.tw-open-tiddler-list {\r\n\t&lt;&lt;transform-origin \&quot;0% 0%\&quot;&gt;&gt;\r\n}\n\n.tw-menu-list-subitem {\r\n\tpadding-left: 7px;\r\n}\n\n.story-river {\r\n\tposition: relative;\r\n}\n\n.tw-story-spacer {\r\n\tposition: absolute;\r\n\tmin-height: 100%;\r\n}\n\n@media (max-width: {{$:/themes/tiddlywiki/vanilla/metrics/sidebarbreakpoint}}) {\n\n\t.sidebar-header {\r\n\t\tpadding: 14px;\r\n\t\tmin-height: 32px;\r\n\t}\n\n\t.story-river {\r\n\t\tposition: relative;\r\n\t\tpadding: 0;\r\n\t}\r\n}\n\n@media (min-width: {{$:/themes/tiddlywiki/vanilla/metrics/sidebarbreakpoint}}) {\n\n\t.tw-message-box {\r\n\t\tmargin: 21px -21px 21px -21px;\r\n\t}\n\n\t.tw-sidebar-scrollable {\r\n\t\tposition: fixed;\r\n\t\ttop: {{$:/themes/tiddlywiki/vanilla/metrics/storytop}};\r\n\t\tleft: {{$:/themes/tiddlywiki/vanilla/metrics/storyright}};\r\n\t\tbottom: 0;\r\n\t\tright: 0;\r\n\t\toverflow-y: auto;\r\n\t\toverflow-x: auto;\r\n\t\t-webkit-overflow-scrolling: touch;\r\n\t\tmargin: 0 0 0 -42px;\r\n\t\tpadding: 71px 0 28px 42px;\r\n\t}\n\n\t.story-river {\r\n\t\tposition: relative;\r\n\t\tleft: {{$:/themes/tiddlywiki/vanilla/metrics/storyleft}};\r\n\t\ttop: {{$:/themes/tiddlywiki/vanilla/metrics/storytop}};\r\n\t\twidth: {{$:/themes/tiddlywiki/vanilla/metrics/storywidth}};\r\n\t\tpadding: 42px 42px 42px 42px;\r\n\t}\n\n&lt;&lt;if-no-sidebar \&quot;\n\n\t.story-river {\r\n\t\twidth: auto;\r\n\t}\n\n\&quot;&gt;&gt;\n\n}\n\n@media print {\n\n\tbody.tw-body {\r\n\t\tbackground-color: transparent;\r\n\t}\n\n\t.sidebar-header, .tw-topbar {\r\n\t\tdisplay: none;\r\n\t}\n\n\t.story-river {\r\n\t\tmargin: 0;\r\n\t\tpadding: 0;\r\n\t}\n\n\t.story-river .tw-tiddler-frame {\r\n\t\tmargin: 0;\r\n\t\tborder: none;\r\n\t\tpadding: 28px;\r\n\t}\r\n}\n\n/*\r\n** Tiddler styles\r\n*/\n\n.tw-tiddler-frame {\r\n\tmargin-bottom: 28px;\r\n\tbackground-color: &lt;&lt;colour tiddler-background&gt;&gt;;\r\n\tborder: 1px solid &lt;&lt;colour tiddler-border&gt;&gt;;\r\n}\n\n.tw-tiddler-info {\r\n\tpadding: 14px 42px 14px 42px;\r\n\tbackground-color: &lt;&lt;colour tiddler-info-background&gt;&gt;;\r\n\tborder-top: 1px solid &lt;&lt;colour tiddler-info-border&gt;&gt;;\r\n\tborder-bottom: 1px solid &lt;&lt;colour tiddler-info-border&gt;&gt;;\r\n}\n\n.tw-tiddler-info .tw-tab-buttons button.tw-tab-selected {\r\n\tbackground-color: &lt;&lt;colour tiddler-info-tab-background&gt;&gt;;\r\n\tborder-bottom: 1px solid &lt;&lt;colour tiddler-info-tab-background&gt;&gt;;\r\n}\n\n.tw-view-field-table {\r\n\twidth: 100%;\r\n}\n\n.tw-view-field-name {\r\n\twidth: 1%; /* Makes this column be as narrow as possible */\r\n\ttext-align: right;\r\n\tfont-style: italic;\r\n\tfont-weight: 200;\r\n}\n\n.tw-view-field-value {\r\n}\n\n@media (max-width: {{$:/themes/tiddlywiki/vanilla/metrics/sidebarbreakpoint}}) {\r\n\t.tw-tiddler-frame {\r\n\t\tpadding: 14px 14px 14px 14px;\r\n\t}\n\n\t.tw-tiddler-info {\r\n\t\tmargin: 0 -14px 0 -14px;\r\n\t}\r\n}\n\n@media (min-width: {{$:/themes/tiddlywiki/vanilla/metrics/sidebarbreakpoint}}) {\r\n\t.tw-tiddler-frame {\r\n\t\tpadding: 28px 42px 42px 42px;\r\n\t\twidth: {{$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth}};\r\n\t}\n\n&lt;&lt;if-no-sidebar \&quot;\n\n\t.tw-tiddler-frame {\r\n\t\twidth: 100%;\r\n\t}\n\n\&quot;&gt;&gt;\n\n\t.tw-tiddler-info {\r\n\t\tmargin: 0 -42px 0 -42px;\r\n\t}\r\n}\n\n.tw-site-title,\r\n.titlebar {\r\n\tfont-weight: 300;\r\n\tfont-size: 2.35em;\r\n\tline-height: 1.2em;\r\n\tcolor: &lt;&lt;colour tiddler-title-foreground&gt;&gt;;\r\n\tmargin: 0;\r\n}\n\n.tw-system-title-prefix {\r\n\tcolor: &lt;&lt;colour muted-foreground&gt;&gt;;\r\n}\n\n.titlebar img {\r\n\theight: 1em;\r\n}\n\n.tw-subtitle {\r\n\tfont-size: 0.9em;\r\n\tcolor: &lt;&lt;colour tiddler-subtitle-foreground&gt;&gt;;\r\n\tfont-weight: 300;\r\n}\n\n.tw-tiddler-missing .title {\r\n  font-style: italic;\r\n  font-weight: normal;\r\n}\n\n.tw-tiddler-frame .tw-tiddler-controls {\r\n\tfloat: right;\r\n}\n\n.tw-tiddler-controls button {\r\n\tmargin: 0 0 0 5px;\r\n\tvertical-align: baseline;\r\n}\n\n.tw-tiddler-controls button svg {\r\n\theight: 0.75em;\r\n\tfill: &lt;&lt;colour tiddler-controls-foreground&gt;&gt;;\r\n}\n\n.tw-tiddler-controls button.tw-selected svg {\r\n\tfill: &lt;&lt;colour tiddler-controls-foreground-selected&gt;&gt;;\r\n}\n\n.tw-tiddler-controls button.btn-invisible:hover svg {\r\n\tfill: &lt;&lt;colour tiddler-controls-foreground-hover&gt;&gt;;\r\n}\n\n@media print {\r\n\t.tw-tiddler-controls {\r\n\t\tdisplay: none;\r\n\t}\r\n}\n\n.tw-tiddler-help { /* Help prompts within tiddler template */\r\n\tcolor: &lt;&lt;colour muted-foreground&gt;&gt;;\r\n\tmargin-top: 14px;\r\n}\n\n.tw-tiddler-help a.tw-tiddlylink {\r\n\tcolor: &lt;&lt;colour very-muted-foreground&gt;&gt;;\r\n}\n\n.tw-tiddler-frame input.tw-edit-texteditor, .tw-tiddler-frame textarea.tw-edit-texteditor {\r\n\twidth: 100%;\r\n\tpadding: 3px 3px 3px 3px;\r\n\tborder: 1px solid &lt;&lt;colour tiddler-editor-border&gt;&gt;;\r\n\tline-height: 1.3em;\r\n\t-webkit-appearance: none;\r\n\tmargin: 4px 0 4px 0;\r\n}\n\n.tw-tiddler-frame .tw-binary-warning {\r\n\twidth: 100%;\r\n\theight: 5em;\r\n\ttext-align: center;\r\n\tpadding: 3em 3em 6em 3em;\r\n\tbackground: &lt;&lt;colour alert-background&gt;&gt;;\r\n\tborder: 1px solid &lt;&lt;colour alert-border&gt;&gt;;\r\n}\n\n.tw-tiddler-frame input.tw-edit-texteditor {\r\n\tbackground-color: &lt;&lt;colour tiddler-editor-background&gt;&gt;;\r\n}\n\ncanvas.tw-edit-bitmapeditor  {\r\n\tborder: 6px solid &lt;&lt;colour tiddler-editor-border-image&gt;&gt;;\r\n\tcursor: crosshair;\r\n\t-moz-user-select: none;\r\n\t-webkit-user-select: none;\r\n\t-ms-user-select: none;\r\n\tmargin-top: 6px;\r\n\tmargin-bottom: 6px;\r\n}\n\n.tw-edit-bitmapeditor-width {\r\n\tdisplay: block;\r\n}\n\n.tw-edit-bitmapeditor-height {\r\n\tdisplay: block;\r\n}\n\n/*\r\n** Toolbar buttons\r\n*/\n\n.tw-page-controls svg.tw-image-new-button {\r\n  fill: &lt;&lt;colour toolbar-new-button&gt;&gt;;\r\n}\n\n.tw-page-controls svg.tw-image-options-button {\r\n  fill: &lt;&lt;colour toolbar-options-button&gt;&gt;;\r\n}\n\n.tw-page-controls svg.tw-image-save-button {\r\n  fill: &lt;&lt;colour toolbar-save-button&gt;&gt;;\r\n}\n\n.tw-tiddler-controls button svg.tw-image-info-button {\r\n  fill: &lt;&lt;colour toolbar-info-button&gt;&gt;;\r\n}\n\n.tw-tiddler-controls button svg.tw-image-edit-button {\r\n  fill: &lt;&lt;colour toolbar-edit-button&gt;&gt;;\r\n}\n\n.tw-tiddler-controls button svg.tw-image-close-button {\r\n  fill: &lt;&lt;colour toolbar-close-button&gt;&gt;;\r\n}\n\n.tw-tiddler-controls button svg.tw-image-delete-button {\r\n  fill: &lt;&lt;colour toolbar-delete-button&gt;&gt;;\r\n}\n\n.tw-tiddler-controls button svg.tw-image-cancel-button {\r\n  fill: &lt;&lt;colour toolbar-cancel-button&gt;&gt;;\r\n}\n\n.tw-tiddler-controls button svg.tw-image-done-button {\r\n  fill: &lt;&lt;colour toolbar-done-button&gt;&gt;;\r\n}\n\n/*\r\n** Tiddler edit mode\r\n*/\n\n.tw-tiddler-edit-frame em.tw-edit {\r\n\tcolor: &lt;&lt;colour muted-foreground&gt;&gt;;\r\n\tfont-style: normal;\r\n}\n\n.tw-edit-type-dropdown a.tw-tiddlylink-missing {\r\n\tfont-style: normal;\r\n}\n\n.tw-edit-tags {\r\n\tborder: 1px solid &lt;&lt;colour tiddler-editor-border&gt;&gt;;\r\n\tpadding: 4px 8px 4px 8px;\r\n}\n\n.tw-edit-add-tag {\r\n\tdisplay: inline-block;\r\n}\n\n.tw-edit-add-tag .tw-add-tag-name input {\r\n\twidth: 50%;\r\n}\n\n.tw-edit-tags .tw-tag-label {\r\n\tdisplay: inline-block;\r\n}\n\n.tw-edit-tags-list {\r\n\tmargin: 14px 0 14px 0;\r\n}\n\n.tw-tag-editor-label {\r\n\tdisplay: inline-block;\r\n\tmargin-right: 7px;\r\n}\n\n.tw-remove-tag-button {\r\n\tpadding-left: 4px;\r\n}\n\n.tw-tiddler-preview {\r\n\toverflow: auto;\r\n}\n\n.tw-tiddler-preview-preview {\r\n\tfloat: right;\r\n\twidth: 48%;\r\n\tborder: 1px solid &lt;&lt;colour tiddler-editor-border&gt;&gt;;\r\n\tmargin: 4px 3px 3px 3px;\r\n\tpadding: 3px 3px 3px 3px;\r\n}\n\n.tw-tiddler-preview-edit {\r\n\twidth: 48%;\r\n}\n\n.tw-edit-fields {\r\n\twidth: 100%;\r\n}\n\n\r\n.tw-edit-fields table, .tw-edit-fields tr, .tw-edit-fields td {\r\n\tborder: none;\r\n\tpadding: 4px;\r\n}\n\n.tw-edit-fields &gt; tbody &gt; .tw-edit-field:nth-child(odd) {\r\n\tbackground-color: &lt;&lt;colour tiddler-editor-fields-odd&gt;&gt;;\r\n}\n\n.tw-edit-fields &gt; tbody &gt; .tw-edit-field:nth-child(even) {\r\n\tbackground-color: &lt;&lt;colour tiddler-editor-fields-even&gt;&gt;;\r\n}\n\n.tw-edit-field-name {\r\n\ttext-align: right;\r\n}\n\n.tw-edit-field-value input {\r\n\twidth: 100%;\r\n}\n\n.tw-edit-field-remove {\r\n}\n\n.tw-edit-field-remove svg {\r\n\theight: 1em;\r\n\twidth: 1em;\r\n\tfill: &lt;&lt;colour muted-foreground&gt;&gt;;\r\n\tvertical-align: middle;\r\n}\n\n.tw-edit-field-add-name {\r\n\tdisplay: inline-block;\r\n\twidth: 15%;\r\n}\n\n.tw-edit-field-add-button {\r\n\tdisplay: inline-block;\r\n\twidth: 10%;\r\n}\n\n/*\r\n** Dropdowns\r\n*/\n\n.btn-dropdown svg {\r\n\theight: 1em;\r\n\twidth: 1em;\r\n\tfill: &lt;&lt;colour muted-foreground&gt;&gt;;\r\n}\n\n.tw-drop-down {\r\n\tmin-width: 280px;\r\n\tborder: 1px solid &lt;&lt;colour dropdown-border&gt;&gt;;\r\n\tbackground-color: &lt;&lt;colour dropdown-background&gt;&gt;;\r\n\tpadding: 7px 0 7px 0;\r\n\tmargin: 4px 0 0 0;\r\n\twhite-space: nowrap;\r\n}\n\n.tw-drop-down p {\r\n\tpadding: 0 14px 0 14px;\r\n}\n\n.tw-drop-down a {\r\n\tdisplay: block;\r\n\tpadding: 0 14px 0 14px;\r\n}\n\n.tw-drop-down a:hover {\r\n\tcolor: &lt;&lt;colour tiddler-link-background&gt;&gt;;\r\n\tbackground-color: &lt;&lt;colour tiddler-link-foreground&gt;&gt;;\r\n\ttext-decoration: none;\r\n}\n\n.tw-drop-down .tw-tab-buttons button {\r\n\tbackground-color: &lt;&lt;colour dropdown-tab-background&gt;&gt;;\r\n}\n\n.tw-drop-down .tw-tab-buttons button.tw-tab-selected {\r\n\tbackground-color: &lt;&lt;colour dropdown-tab-background-selected&gt;&gt;;\r\n\tborder-bottom: 1px solid &lt;&lt;colour dropdown-tab-background-selected&gt;&gt;;\r\n}\n\n.tw-drop-down .tw-tab-contents a {\r\n\tpadding: 0 0.5em 0 0.5em;\r\n}\n\n.tw-block-dropdown-wrapper {\r\n\tposition: relative;\r\n}\n\n.tw-block-dropdown {\r\n\tposition: absolute;\r\n\tmin-width: 280px;\r\n\tborder: 1px solid &lt;&lt;colour dropdown-border&gt;&gt;;\r\n\tbackground-color: &lt;&lt;colour dropdown-background&gt;&gt;;\r\n\tpadding: 0 0 0 0;\r\n\tmargin: 4px 0 0 0;\r\n\twhite-space: nowrap;\r\n\tz-index: 1000;\r\n}\n\n.tw-block-dropdown a {\r\n\tdisplay: block;\r\n\tpadding: 4px 14px 4px 14px;\r\n}\n\n.tw-block-dropdown .tw-dropdown-item {\r\n\tpadding: 4px 14px 4px 7px;\r\n\tcolor: &lt;&lt;colour muted-foreground&gt;&gt;;\r\n}\n\n.tw-block-dropdown a:hover {\r\n\tcolor: &lt;&lt;colour tiddler-link-background&gt;&gt;;\r\n\tbackground-color: &lt;&lt;colour tiddler-link-foreground&gt;&gt;;\r\n\ttext-decoration: none;\r\n}\n\n/*\r\n** Modals\r\n*/\n\n.modal-wrapper {\r\n\tposition: fixed;\r\n\toverflow: auto;\r\n\toverflow-y: scroll;\r\n\ttop: 0;\r\n\tright: 0;\r\n\tbottom: 0;\r\n\tleft: 0;\r\n}\n\n.modal-backdrop {\r\n\tposition: fixed;\r\n\ttop: 0;\r\n\tright: 0;\r\n\tbottom: 0;\r\n\tleft: 0;\r\n\tz-index: 1000;\r\n\tbackground-color: &lt;&lt;colour modal-backdrop&gt;&gt;;\r\n}\n\n.modal {\r\n\tz-index: 1100;\r\n\tbackground-color: &lt;&lt;colour modal-background&gt;&gt;;\r\n\tborder: 1px solid &lt;&lt;colour modal-border&gt;&gt;;\r\n}\n\n@media (max-width: 55em) {\r\n\t.modal {\r\n\t\tposition: fixed;\r\n\t\ttop: 1em;\r\n\t\tleft: 1em;\r\n\t\tright: 1em;\r\n\t}\n\n\t.modal-body {\r\n\t\toverflow-y: auto;\r\n\t\tmax-height: 400px;\r\n\t}\r\n}\n\n@media (min-width: 55em) {\r\n\t.modal {\r\n\t\tposition: relative;\r\n\t\twidth: 50%;\r\n\t\tmargin: 30px auto;\r\n\t}\r\n}\n\n.modal-header {\r\n\tpadding: 9px 15px;\r\n\tborder-bottom: 1px solid &lt;&lt;colour modal-header-border&gt;&gt;;\r\n}\n\n.modal-header h3 {\r\n\tmargin: 0;\r\n\tline-height: 30px;\r\n}\n\n.modal-body {\r\n\tpadding: 15px;\r\n}\n\n.modal-footer {\r\n\tpadding: 14px 15px 15px;\r\n\tmargin-bottom: 0;\r\n\ttext-align: right;\r\n\tbackground-color: &lt;&lt;colour modal-footer-background&gt;&gt;;\r\n\tborder-top: 1px solid &lt;&lt;colour modal-footer-border&gt;&gt;;\r\n}\n\n/*\r\n** Notifications\r\n*/\n\n.tw-notification {\r\n\tposition: fixed;\r\n\ttop: 14px;\r\n\tright: 42px;\r\n\tz-index: 1000;\r\n\tmax-width: 280px;\r\n\tpadding: 0 14px 0 14px;\r\n\tbackground-color: &lt;&lt;colour notification-background&gt;&gt;;\r\n\tborder: 1px solid &lt;&lt;colour notification-border&gt;&gt;;\r\n}\n\n/*\r\n** Tabs\r\n*/\n\n.tw-tab-set.tw-vertical {\r\n\tdisplay: -webkit-flex;\r\n\tdisplay: flex;\r\n}\n\n.tw-tab-buttons {\r\n\tfont-size: 0.85em;\r\n\tpadding-top: 1em;\r\n\tmargin-bottom: -1px;\r\n}\n\n.tw-tab-buttons.tw-vertical  {\r\n\tz-index: 100;\r\n\tdisplay: block;\r\n\tpadding-top: 14px;\r\n\tvertical-align: top;\r\n\ttext-align: right;\r\n\tmargin-bottom: inherit;\r\n\tmargin-right: -1px;\r\n\tmax-width: 33%;\r\n\t-webkit-flex: 0 0 auto;\r\n\tflex: 0 0 auto;\r\n}\n\n.tw-tab-buttons button.tw-tab-selected {\r\n\tcolor: &lt;&lt;colour tab-foreground-selected&gt;&gt;;\r\n\tbackground-color: &lt;&lt;colour tab-background-selected&gt;&gt;;\r\n\tborder-left: 1px solid &lt;&lt;colour tab-border-selected&gt;&gt;;\r\n\tborder-top: 1px solid &lt;&lt;colour tab-border-selected&gt;&gt;;\r\n\tborder-right: 1px solid &lt;&lt;colour tab-border-selected&gt;&gt;;\r\n}\n\n.tw-tab-buttons button {\r\n\tcolor: &lt;&lt;colour tab-foreground&gt;&gt;;\r\n\tpadding: 3px 5px 3px 5px;\r\n\tfont-weight: 300;\r\n\tborder: none;\r\n\tbackground: inherit;\r\n\tbackground-color: &lt;&lt;colour tab-background&gt;&gt;;\r\n\tborder-left: 1px solid &lt;&lt;colour tab-border&gt;&gt;;\r\n\tborder-top: 1px solid &lt;&lt;colour tab-border&gt;&gt;;\r\n\tborder-right: 1px solid &lt;&lt;colour tab-border&gt;&gt;;\r\n}\n\n.tw-tab-buttons.tw-vertical button {\r\n\tdisplay: block;\r\n\twidth: 100%;\r\n\tmargin-top: 3px;\r\n\ttext-align: right;\r\n\tbackground-color: &lt;&lt;colour tab-background&gt;&gt;;\r\n\tborder-left: 1px solid &lt;&lt;colour tab-border&gt;&gt;;\r\n\tborder-bottom: 1px solid &lt;&lt;colour tab-border&gt;&gt;;\r\n\tborder-right: none;\r\n}\n\n.tw-tab-buttons.tw-vertical button.tw-tab-selected {\r\n\tbackground-color: &lt;&lt;colour tab-background-selected&gt;&gt;;\r\n\tborder-right: 1px solid &lt;&lt;colour tab-background-selected&gt;&gt;;\r\n}\n\n.tw-tab-divider {\r\n\tborder-top: 1px solid &lt;&lt;colour tab-divider&gt;&gt;;\r\n}\n\n.tw-tab-divider.tw-vertical  {\r\n\tdisplay: none;\r\n}\n\n.tw-tab-content {\r\n\tmargin-top: 14px;\r\n}\n\n.tw-tab-content.tw-vertical  {\r\n\tdisplay: inline-block;\r\n\tvertical-align: top;\r\n\tpadding-top: 0;\r\n\tpadding-left: 14px;\r\n\tborder-left: 1px solid &lt;&lt;colour tab-border&gt;&gt;;\r\n\t-webkit-flex: 0 0 70%;\r\n\tflex: 0 0 70%;\r\n}\n\n.tw-sidebar-lists .tw-tab-buttons button.tw-tab-selected {\r\n\tbackground-color: &lt;&lt;colour sidebar-tab-background-selected&gt;&gt;;\r\n\tcolor: &lt;&lt;colour sidebar-tab-foreground-selected&gt;&gt;;\r\n\tborder-left: 1px solid &lt;&lt;colour sidebar-tab-border-selected&gt;&gt;;\r\n\tborder-top: 1px solid &lt;&lt;colour sidebar-tab-border-selected&gt;&gt;;\r\n\tborder-right: 1px solid &lt;&lt;colour sidebar-tab-border-selected&gt;&gt;;\r\n}\n\n.tw-sidebar-lists .tw-tab-buttons button {\r\n\tbackground-color: &lt;&lt;colour sidebar-tab-background&gt;&gt;;\r\n\tcolor: &lt;&lt;colour sidebar-tab-foreground&gt;&gt;;\r\n\tborder-left: 1px solid &lt;&lt;colour sidebar-tab-border&gt;&gt;;\r\n\tborder-top: 1px solid &lt;&lt;colour sidebar-tab-border&gt;&gt;;\r\n\tborder-right: 1px solid &lt;&lt;colour sidebar-tab-border&gt;&gt;;\r\n}\n\n.tw-sidebar-lists .tw-tab-divider {\r\n\tborder-top: 1px solid &lt;&lt;colour sidebar-tab-divider&gt;&gt;;\r\n}\n\n.tw-more-sidebar .tw-tab-buttons button {\r\n\tbackground-color: &lt;&lt;colour sidebar-tab-background&gt;&gt;;\r\n\tborder-top: none;\r\n\tborder-left: none;\r\n\tborder-bottom: none;\r\n\tborder-right: 1px solid #ccc;\r\n\tmargin-bottom: inherit;\r\n}\n\n.tw-more-sidebar .tw-tab-buttons button.tw-tab-selected {\r\n\tbackground-color: &lt;&lt;colour sidebar-tab-background-selected&gt;&gt;;\r\n\tborder: none;\r\n}\n\n/*\r\n** Alerts\r\n*/\n\n.tw-alerts {\r\n\tposition: fixed;\r\n\ttop: 0;\r\n\tleft: 0;\r\n\tmax-width: 500px;\r\n\tz-index: 20000;\r\n}\n\n.tw-alert {\r\n\tposition: relative;\r\n\tmargin: 28px;\r\n\tpadding: 14px 14px 14px 14px;\r\n\tborder: 2px solid &lt;&lt;colour alert-border&gt;&gt;;\r\n\tbackground-color: &lt;&lt;colour alert-background&gt;&gt;;\r\n}\n\n.tw-alert-toolbar {\r\n\tposition: absolute;\r\n\ttop: 14px;\r\n\tright: 14px;\r\n}\n\n.tw-alert-toolbar svg {\r\n\tfill: &lt;&lt;colour alert-muted-foreground&gt;&gt;;\r\n}\n\n.tw-alert-subtitle {\r\n\tcolor: &lt;&lt;colour alert-muted-foreground&gt;&gt;;\r\n\tfont-weight: bold;\r\n}\n\n.tw-alert-highlight {\r\n\tcolor: &lt;&lt;colour alert-highlight&gt;&gt;;\t\r\n}\n\n.tw-static-alert {\r\n\tposition: relative;\r\n}\n\n.tw-static-alert-inner {\r\n\tpadding: 0 2px 2px 42px;\r\n\tcolor: &lt;&lt;colour static-alert-foreground&gt;&gt;;\r\n\tposition: absolute;\r\n}\n\n/*\r\n** Grids\r\n*/\n\n.tw-grid-frame td {\r\n\twidth: 1em;\r\n\theight: 1em;\r\n}\n\n/*\r\n** Control panel\r\n*/\n\n.tw-control-panel td {\r\n\tpadding: 4px;\r\n}\n\n.tw-control-panel table, .tw-control-panel table input, .tw-control-panel table textarea {\r\n\twidth: 100%;\r\n}\n\n/*\r\n** Message boxes\r\n*/\n\n.tw-message-box {\r\n\tborder: 1px solid &lt;&lt;colour message-border&gt;&gt;;\r\n\tbackground: &lt;&lt;colour message-background&gt;&gt;;\r\n\tpadding: 0px 21px 0px 21px;\r\n\tfont-size: 12px;\r\n\tline-height: 18px;\r\n\tcolor: &lt;&lt;colour message-foreground&gt;&gt;;\r\n}\n\n.tw-message-box img {\r\n\tfloat: right;\r\n\twidth: 150px;\r\n\tmargin: 0px 0px 12px 12px;\r\n}\n\n/*\r\n** Chooser\r\n*/\n\n.tw-chooser {\r\n\tborder: 1px solid &lt;&lt;colour table-border&gt;&gt;;\r\n}\n\n.tw-chooser-item {\r\n\tborder: 8px;\r\n}\n\n.tw-chooser-item a.tw-tiddlylink {\r\n\tdisplay: block;\r\n\ttext-decoration: none;\r\n\tcolor: &lt;&lt;colour tiddler-link-foreground&gt;&gt;;\r\n\tbackground-color: &lt;&lt;colour tiddler-link-background&gt;&gt;;\r\n\tmargin: 4px;\r\n}\n\n.tw-chooser-item a.tw-tiddlylink:hover {\r\n\ttext-decoration: none;\r\n\tcolor: &lt;&lt;colour tiddler-link-background&gt;&gt;;\r\n\tbackground-color: &lt;&lt;colour tiddler-link-foreground&gt;&gt;;\r\n}\n\n/*\r\n** Palette swatches\r\n*/\n\n.tw-swatches-horiz {\r\n}\n\n.tw-swatches-horiz .tw-swatch {\r\n\tdisplay: inline-block;\r\n}\n\n.tw-swatch {\r\n\twidth: 2em;\r\n\theight: 2em;\r\n\tmargin: 4px;\r\n\tborder: 1px solid #000;\r\n}\n\n/*\r\n** Table of contents\r\n*/\n\n.tw-sidebar-lists .tw-table-of-contents {\r\n\twhite-space: nowrap;\r\n}\n\n.tw-table-of-contents svg {\r\n\twidth: 0.7em;\r\n\theight: 0.7em;\r\n\tvertical-align: middle;\r\n}\n\n.tw-table-of-contents ol {\r\n\tlist-style-type: none;\r\n\tpadding-left: 0;\r\n}\n\n.tw-table-of-contents ol ol {\r\n\tpadding-left: 1em;\r\n}\n\n.tw-table-of-contents li {\r\n\tfont-size: 1.0em;\r\n\tfont-weight: bold;\r\n}\n\n.tw-table-of-contents li a {\r\n\tfont-weight: bold;\r\n}\n\n.tw-table-of-contents li li {\r\n\tfont-size: 0.95em;\r\n\tfont-weight: normal;\r\n\tline-height: 1.4;\r\n}\n\n.tw-table-of-contents li li a {\r\n\tfont-weight: normal;\r\n}\n\n.tw-table-of-contents li li li {\r\n\tfont-size: 0.95em;\r\n\tfont-weight: 200;\r\n\tline-height: 1.5;\r\n}\n\n.tw-table-of-contents li li li a {\r\n\tfont-weight: bold;\r\n}\n\n.tw-table-of-contents li li li li {\r\n\tfont-size: 0.95em;\r\n\tfont-weight: 200;\r\n}\r\n&quot;
         },
         &quot;$:/themes/tiddlywiki/vanilla/metrics/fontsize&quot;: {
             &quot;title&quot;: &quot;$:/themes/tiddlywiki/vanilla/metrics/fontsize&quot;,
@@ -5763,28 +5716,63 @@ Style with support for rainbow parens
     }
 }</pre>
 </div>
-<div created="20140630210944484" modified="20140704182717725" title="$:/themes/tiddlywiki/vanilla/metrics" type="application/x-tiddler-dictionary">
-<pre>fontsize: `14px`
-lineheight: `20px`
-storyleft: `0px`
-storytop: `0px`
-storyright: `770px`
-storywidth: `970px`
-tiddlerwidth: `686px`</pre>
-</div>
-<div author="James.W.Anderson" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="customized version of Seamless by Jeremy Ruston" name="PhasersOnKill" plugin-type="theme" title="$:/themes/welford/phasersonkill" type="application/json" version="5.0.14-prerelease">
+<div author="James.W.Anderson" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="custom theme based on Seamless" name="PhasersOnKill" plugin-type="theme" title="$:/themes/welford/phasersonkill" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
 <pre>{
     &quot;tiddlers&quot;: {
+        &quot;$:/config/AnimationDuration&quot;: {
+            &quot;created&quot;: &quot;20140710201328155&quot;,
+            &quot;modified&quot;: &quot;20140710204315791&quot;,
+            &quot;title&quot;: &quot;$:/config/AnimationDuration&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;100&quot;
+        },
+        &quot;$:/themes/tiddlywiki/vanilla/metrics/fontsize&quot;: {
+            &quot;created&quot;: &quot;20140710194455567&quot;,
+            &quot;modified&quot;: &quot;20140710204321575&quot;,
+            &quot;title&quot;: &quot;$:/themes/tiddlywiki/vanilla/metrics/fontsize&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;14px&quot;
+        },
+        &quot;$:/themes/tiddlywiki/vanilla/metrics/lineheight&quot;: {
+            &quot;created&quot;: &quot;20140710194440895&quot;,
+            &quot;modified&quot;: &quot;20140710204323543&quot;,
+            &quot;title&quot;: &quot;$:/themes/tiddlywiki/vanilla/metrics/lineheight&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;16px&quot;
+        },
         &quot;$:/themes/welford/phasersonkill/base&quot;: {
             &quot;title&quot;: &quot;$:/themes/welford/phasersonkill/base&quot;,
             &quot;tags&quot;: &quot;[[$:/tags/stylesheet]]&quot;,
             &quot;list-after&quot;: &quot;$:/themes/tiddlywiki/vanilla/base&quot;,
-            &quot;text&quot;: &quot;\\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline\n\n/*\r\nRules copied from Snow White\r\n*/\n\n.tw-page-controls button svg, .tw-tiddler-controls button svg, .tw-topbar button svg {\r\n\t&lt;&lt;transition \&quot;fill 150ms ease-in-out\&quot;&gt;&gt;\r\n}\n\n.tw-tiddler-controls button.tw-selected svg {\r\n\t&lt;&lt;filter \&quot;drop-shadow(0px -1px 2px rgba(0,0,0,0.25))\&quot;&gt;&gt;\r\n}\n\n.tw-drop-down {\r\n\tborder-radius: 4px;\r\n\t&lt;&lt;box-shadow \&quot;2px 2px 10px rgba(0, 0, 0, 0.5)\&quot;&gt;&gt;\r\n}\n\n.tw-block-dropdown {\r\n\tborder-radius: 4px;\r\n\t&lt;&lt;box-shadow \&quot;2px 2px 10px rgba(0, 0, 0, 0.5)\&quot;&gt;&gt;\r\n}\n\n.tw-modal-displayed {\r\n\t-webkit-filter: blur(4px);\r\n}\n\n.modal {\r\n\tborder-radius: 6px;\r\n\t&lt;&lt;box-shadow \&quot;0 3px 7px rgba(0,0,0,0.3)\&quot;&gt;&gt;\r\n}\n\n.modal-footer {\r\n\tborder-radius: 0 0 6px 6px;\r\n\t&lt;&lt;box-shadow \&quot;inset 0 1px 0 #fff\&quot;&gt;&gt;;\r\n}\n\n.tw-alert {\r\n\tborder-radius: 6px;\r\n\t&lt;&lt;box-shadow \&quot;0 3px 7px rgba(0,0,0,0.6)\&quot;&gt;&gt;\r\n}\n\n.tw-notification {\r\n\tborder-radius: 6px;\r\n\t&lt;&lt;box-shadow \&quot;0 3px 7px rgba(0,0,0,0.3)\&quot;&gt;&gt;\r\n\ttext-shadow: 0 1px 0 rgba(255,255,255, 0.8);\r\n}\n\n.tw-message-box img {\r\n\t&lt;&lt;box-shadow \&quot;1px 1px 3px rgba(0,0,0,0.5)\&quot;&gt;&gt;\r\n}\n\n/*\r\nPhaserOnKill Stuff\r\n*/\n\n/* page header */\r\n.tw-pagetop { \r\n background : #222 !important; /* as background */\r\n height:{{$:/themes/welford/phasersonkill/metrics##headerheight}}; \r\n padding-left: 5px; \r\n top : 0px;\r\n left : 0px;\r\n width: 100%;\r\n z-index: 99;\r\n overflow:hidden;\r\n position:fixed;\r\n}\n\n.tw-pagetop b { color:#e00; font-size:1.1em;}\n\n.story-river {  \r\n top:{{$:/themes/welford/phasersonkill/metrics##headerheight}};\r\n width: auto;  \r\n left: 0px;\r\n padding: 0px 10px 0px 10px;\r\n margin: 0;\r\n background-color:#fff;\r height:100%;\r}\n\n.tw-tiddler-frame {\r\n width:100%;\r\n}\n\n\r\n/* small screen differences */\n\n@media (max-width: {{$:/themes/tiddlywiki/vanilla/metrics##storywidth}}) \r\n{\r\n\tbody.tw-body .tw-tiddler-frame {padding: 0;\t}\r\n\t.sidebar-header\t\t{ display:none;}\t\r\n\t.largescreen-only\t{ display:none; }\r\n\t.story-river\t\t{ position:relative; }\t\r\n}\n\n/* larger screen differences */\n\n@media (min-width: {{$:/themes/tiddlywiki/vanilla/metrics##storywidth}}) {\n\n\t/* Drop the tiddler frame padding */\r\n\tbody.tw-body .tw-tiddler-frame {\r\n\t\tpadding: 0;\r\n\t}\n\n\t/* Move the sidebar up so that the title lines up */\r\n\tbody.tw-body .tw-sidebar-scrollable {\r\n\t\tposition: fixed;\r\n\t\tleft : auto;\r\n\t\tmargin:0;\r\n\t\ttop:{{$:/themes/welford/phasersonkill/metrics##headerheight}};\r\n\t\twidth:{{$:/themes/welford/phasersonkill/metrics##menuwidth}};\r\n\t\tpadding: 0 0 0 10px;\r\n\t\tbackground-color:#eee;\r\n\t}\n\n\t.tw-pagetop { \r\n\t\tline-height:{{$:/themes/welford/phasersonkill/metrics##headerheight}};\r\n\t\tvertical-align:middle;\r\n\t}\n\n\t.story-river { right: {{$:/themes/welford/phasersonkill/metrics##menuwidth}}; }\n\n\t/* Stop the tiddler info panel from bleeding into the tiddler frame padding */\r\n\tbody.tw-body .tw-tiddler-info { margin: 0; }\n\n\t/* Stop message boxes from bleeding into the tiddler frame padding */\r\n\tbody.tw-body .tw-message-box { margin: 21px 0 21px 0; }\n\n\t/* Hide smallscreen only stuff */\r\n\t.smallscreen-only\t{ display:none;}\r\n\t.story-river\t\t{ position: absolute;}\t\n\n}\n\n/* Use the tiddler background colour for the page background */\r\nhtml body.tw-body {\r\n\tbackground-color: &lt;&lt;colour background&gt;&gt;;\r\n}\n\nhtml:-webkit-full-screen {\r\n\tbackground-color: &lt;&lt;colour background&gt;&gt;;\r\n}\n\n/* Adjust the colour of the page controls */\r\nbody.tw-body .tw-page-controls svg {\r\n\tfill: &lt;&lt;colour muted-foreground&gt;&gt;;\r\n}\n\n/* Adjust the colour of the sidebar selected tabs */\r\nbody.tw-body .tw-sidebar-lists .tw-tab-buttons button.tw-tab-selected {\r\n\tbackground-color: &lt;&lt;colour background&gt;&gt;;\r\n}\n\n/* tiddler titles  */\r\n.tw-tiddler-title {\r\nborder-bottom: 1px solid #000;\r\n}\n\nhtml {\r\npadding: 0;\r\nmargin: 0;\r\n}\n\n/* stop the p tags form adding unwanted padding at the stop of the story river */\r\n.tw-dropzone p { margin:0px; padding:0px; }\r\n.story-river p { padding: 0px; margin: 0px; }\n\n/* hide the reveal stuff for the sidebar*/\r\nspan.tw-topbar {display:none;}\n\n/* color and size of controls in topbar for smallscreen version */\r\n.tw-pagetop svg {\r\npadding:0;\r\nmargin:0; \r\nfill:red;\r\nwidth:{{$:/themes/welford/phasersonkill/metrics##headerheight}};\r\nheight:{{$:/themes/welford/phasersonkill/metrics##headerheight}};\r\nvertical-align:middle;\r\n}\n\n.smallscreen-only .tw-reveal .tw-search-results { \r\npadding: 0;\r\nmargin: 0;\r\nborder-top: 1px dashed grey;\r\nborder-bottom: 1px dashed grey;\r\nbackground: #eee;\r\nposition : fixed;\r\ntop : {{$:/themes/welford/phasersonkill/metrics##headerheight}};\r\nleft : 0px;\r\nwidth: 100%;\r\nz-index: 99;\r\n}\n\n.hacky-buffer .tw-reveal .tw-search-results { \r\nposition : relative;\r\ntop : {{$:/themes/welford/phasersonkill/metrics##headerheight}};\r\n}\r\n.smallscreen-only .tw-reveal {display : block;}\n\n.tw-pagetop-search  svg { float: right; \r\nwidth:{{$:/themes/welford/phasersonkill/metrics##headerheight}};\r\nheight:{{$:/themes/welford/phasersonkill/metrics##headerheight}};\r\n}&quot;
+            &quot;text&quot;: &quot;\\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline\n\n/*\r\nRules copied from Snow White---------------------------------------------\r\n*/\n\n.tw-page-controls button svg, .tw-tiddler-controls button svg, .tw-topbar button svg {\r\n\t&lt;&lt;transition \&quot;fill 150ms ease-in-out\&quot;&gt;&gt;\r\n}\n\n.tw-tiddler-controls button.tw-selected svg {\r\n\t&lt;&lt;filter \&quot;drop-shadow(0px -1px 2px rgba(0,0,0,0.25))\&quot;&gt;&gt;\r\n}\n\n.tw-drop-down {\r\n\tborder-radius: 4px;\r\n\t&lt;&lt;box-shadow \&quot;2px 2px 10px rgba(0, 0, 0, 0.5)\&quot;&gt;&gt;\r\n}\n\n.tw-block-dropdown {\r\n\tborder-radius: 4px;\r\n\t&lt;&lt;box-shadow \&quot;2px 2px 10px rgba(0, 0, 0, 0.5)\&quot;&gt;&gt;\r\n}\n\n.tw-modal-displayed {\r\n\t-webkit-filter: blur(4px);\r\n}\n\n.modal {\r\n\tborder-radius: 6px;\r\n\t&lt;&lt;box-shadow \&quot;0 3px 7px rgba(0,0,0,0.3)\&quot;&gt;&gt;\r\n}\n\n.modal-footer {\r\n\tborder-radius: 0 0 6px 6px;\r\n\t&lt;&lt;box-shadow \&quot;inset 0 1px 0 #fff\&quot;&gt;&gt;;\r\n}\n\n.tw-alert {\r\n\tborder-radius: 6px;\r\n\t&lt;&lt;box-shadow \&quot;0 3px 7px rgba(0,0,0,0.6)\&quot;&gt;&gt;\r\n}\n\n.tw-notification {\r\n\tborder-radius: 6px;\r\n\t&lt;&lt;box-shadow \&quot;0 3px 7px rgba(0,0,0,0.3)\&quot;&gt;&gt;\r\n\ttext-shadow: 0 1px 0 rgba(255,255,255, 0.8);\r\n}\n\n.tw-message-box img {\r\n\t&lt;&lt;box-shadow \&quot;1px 1px 3px rgba(0,0,0,0.5)\&quot;&gt;&gt;\r\n}\n\n/*\r\nPhaserOnKill Stuff---------------------------------------------\r\n*/\n\nblockquote { border-left:2px dashed #DDD; margin-left:12px; }\n\n/* page header */\r\n.tw-pagetop { \r\n position:fixed;\r\n max-height:{{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\n width: 100%;\r\n top : 0px;\r\n left : 0px;\r\n padding-left: 5px;  \r\n z-index: 99;\r\n background : {{$:/themes/welford/phasersonkill/metrics/headerbgcolour}}; !important; /* as background */\r\n overflow:hidden;\r\n vertical-align:middle;\r\n line-height:{{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\n}\n\n.tw-pagetop b { color:{{$:/themes/welford/phasersonkill/metrics/headerfontcolour}}; font-size:1.1em;}\n\n.story-river {\r\n width: auto;\r\n height: 100%;\r\n left: 0px;\r\n top: {{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\n padding: 0px 10px 0px 10px;\r\n margin: 0;\r\n background-color: #fff;\r}\n\n.tw-tiddler-frame {\r\n width:100%;\r\n}\n\n.tw-tiddler-frame .body{\r\n width:100%;\r\n}\n\n/* Use the tiddler background colour for the page background */\r\nhtml body.tw-body {\r\n\tbackground-color: &lt;&lt;colour background&gt;&gt;;\r\n}\n\nhtml:-webkit-full-screen {\r\n\tbackground-color: &lt;&lt;colour background&gt;&gt;;\r\n}\n\n/* Adjust the colour of the page controls */\r\nbody.tw-body .tw-page-controls svg {\r\n\tfill: &lt;&lt;colour muted-foreground&gt;&gt;;\r\n}\n\n/* Adjust the colour of the sidebar selected tabs */\r\nbody.tw-body .tw-sidebar-lists .tw-tab-buttons button.tw-tab-selected {\r\n\tbackground-color: &lt;&lt;colour background&gt;&gt;;\r\n}\n\n/* tiddler titles  */\r\n.tw-tiddler-title {\r\nborder-bottom: 1px solid #000;\r\n}\n\n/* stop the p tags form adding unwanted padding at the stop of the story river */\r\n.tw-dropzone p { margin:0px; padding:0px; }\r\n.story-river p { padding: 0px; margin: 0px; }\n\n/* hide the reveal stuff for the sidebar*/\r\nspan.tw-topbar {display:none;}\n\n/* color and size of controls in topbar for smallscreen version */\r\n.tw-pagetop svg {\r\npadding:0;\r\nmargin:0; \r\nfill:red;\r\nwidth:{{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\nheight:{{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\nvertical-align:middle;\r\n}\n\n.special-search .tw-reveal .tw-search-results, .hacky-buffer .tw-reveal .tw-search-results { \r\nposition : fixed;\r\ntop : {{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\nleft : 0px;\t\r\npadding: 0px 10px 0px 10px;\r\nmargin: 0;\n\nbackground: #eee;\r\nz-index: 99;\r\n}\n\n.hacky-buffer .tw-reveal{ display: block; }\r\n.hacky-buffer .tw-reveal .tw-search-results { position : static;}\n\n.topbar-hack { \r\n\theight : {{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\n\tposition : static;\r\n}\n\n.tw-pagetop-close-search  svg { \r\nposition: fixed;\r\ntop : {{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\nwidth:{{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\nheight:{{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\nz-index: 99;\r\n}\n\n.smallscreen-only .tw-reveal\t{display : block;}\r\n.displayblock\t\t\t\t\t{display : block;}\r\nbody.tw-body .tw-tiddler-frame\t{ padding: 0; }\r\n.tw-tiddler-frame .body\t\t\t{ padding: 0 0 0 10px; }\n\n\r\n.tw-scrollable {\t\r\n\tmax-height: {{$:/themes/welford/phasersonkill/metrics/searchheight}};\r\n}\n\n/* \r\nsmall screen differences \r\n*/\n\n@media (max-width: {{$:/themes/tiddlywiki/vanilla/metrics/sidebarbreakpoint}} ) \r\n{\r\n\t.sidebar-header\t\t{ display:none;}\t\r\n\t.largescreen-only\t{ display:none; }\t\r\n\t.special-search .tw-reveal .tw-search-results, .hacky-buffer .tw-reveal .tw-search-results { \r\n\t\t width: 100%;\r\n\t\tright: {{$:/themes/welford/phasersonkill/metrics/menuwidth}}; \r\n\t}\t\r\n\t/* close search button */\r\n\t.tw-pagetop-close-search  svg { right: {{$:/themes/welford/phasersonkill/metrics/border}}; }\t\r\n}\n\n/* \r\nlarger screen differences \r\n*/\n\n@media (min-width: {{$:/themes/tiddlywiki/vanilla/metrics/sidebarbreakpoint}}) {\n\n\t/* Move the sidebar up so that the title lines up */\r\n\tbody.tw-body .tw-sidebar-scrollable {\r\n\t\tposition: fixed;\r\n\t\tleft : auto;\r\n\t\tmargin:0;\r\n\t\ttop:{{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\n\t\twidth:{{$:/themes/welford/phasersonkill/metrics/menuwidth}};\r\n\t\tpadding: 0 0 0 10px;\r\n\t\tbackground-color:#eee;\r\n\t}\n\n\t.tw-pagetop { \r\n\t\t/*line-height:{{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\n\t\tvertical-align:middle;*/\r\n\t}\n\n\t.story-river { \r\n\t right: {{$:/themes/welford/phasersonkill/metrics/menuwidth}}; \r\n\t position: absolute;\r\n\t}\t\n\n\t.special-search .tw-reveal .tw-search-results, .hacky-buffer .tw-reveal .tw-search-results { \r\n\t right: {{$:/themes/welford/phasersonkill/metrics/menuwidth}}; \r\n\t border-right: 1px dashed #ccc;\r\n\t}\n\n\t/* Stop the tiddler info panel from bleeding into the tiddler frame padding */\r\n\tbody.tw-body .tw-tiddler-info { margin: 0; }\n\n\t/* Stop message boxes from bleeding into the tiddler frame padding */\r\n\tbody.tw-body .tw-message-box { margin: 21px 0 21px 0; }\n\n\t/* Hide smallscreen only stuff */\r\n\t.smallscreen-only\t{ display:none;}\t\n\n\t/*close search button*/\t\r\n\t.tw-pagetop-close-search  svg { right: calc( {{$:/themes/welford/phasersonkill/metrics/menuwidth}} + {{$:/themes/welford/phasersonkill/metrics/border}} ); }\r\n\t/*\r\n\t.tw-pagetop-close-search  svg { display:None; }\r\n\t*/\r\n}&quot;
         },
-        &quot;$:/themes/welford/phasersonkill/metrics&quot;: {
-            &quot;title&quot;: &quot;$:/themes/welford/phasersonkill/metrics&quot;,
-            &quot;type&quot;: &quot;application/x-tiddler-dictionary&quot;,
-            &quot;text&quot;: &quot;headerheight: `30px`\r\nmenuwidth: `300px`\r\nsidebarcolour: `#eee`&quot;
+        &quot;$:/themes/welford/phasersonkill/metrics/headerfontcolour&quot;: {
+            &quot;title&quot;: &quot;$:/themes/welford/phasersonkill/metrics/headerfontcolour&quot;,
+            &quot;text&quot;: &quot;#F00&quot;
+        },
+        &quot;$:/themes/welford/phasersonkill/metrics/headerbgcolour&quot;: {
+            &quot;title&quot;: &quot;$:/themes/welford/phasersonkill/metrics/headerbgcolour&quot;,
+            &quot;text&quot;: &quot;#333&quot;
+        },
+        &quot;$:/themes/welford/phasersonkill/metrics/headerheight&quot;: {
+            &quot;title&quot;: &quot;$:/themes/welford/phasersonkill/metrics/headerheight&quot;,
+            &quot;text&quot;: &quot;30px&quot;
+        },
+        &quot;$:/themes/welford/phasersonkill/metrics/menuwidth&quot;: {
+            &quot;title&quot;: &quot;$:/themes/welford/phasersonkill/metrics/menuwidth&quot;,
+            &quot;text&quot;: &quot;300px&quot;
+        },
+        &quot;$:/themes/welford/phasersonkill/metrics/border&quot;: {
+            &quot;title&quot;: &quot;$:/themes/welford/phasersonkill/metrics/border&quot;,
+            &quot;text&quot;: &quot;20px&quot;
+        },
+        &quot;$:/themes/welford/phasersonkill/metrics/searchheight&quot;: {
+            &quot;title&quot;: &quot;$:/themes/welford/phasersonkill/metrics/searchheight&quot;,
+            &quot;text&quot;: &quot;200px&quot;
+        },
+        &quot;$:/themes/welford/phasersonkill/metrics/sidebarcolour&quot;: {
+            &quot;title&quot;: &quot;$:/themes/welford/phasersonkill/metrics/sidebarcolour&quot;,
+            &quot;text&quot;: &quot;#eee&quot;
         },
         &quot;$:/themes/welford/phasersonkill/PageTop&quot;: {
             &quot;created&quot;: &quot;20140629173226803&quot;,
@@ -5792,28 +5780,35 @@ tiddlerwidth: `686px`</pre>
             &quot;tags&quot;: &quot;$:/tags/PageTemplate&quot;,
             &quot;title&quot;: &quot;$:/themes/welford/phasersonkill/PageTop&quot;,
             &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
-            &quot;text&quot;: &quot;&lt;div class=\&quot;tw-pagetop largescreen-only\&quot;&gt;&lt;b&gt;{{$:/SiteTitle}}&lt;/b&gt;&lt;/div&gt;\n\n&lt;div class=\&quot;tw-pagetop smallscreen-only\&quot;&gt;\r\n\t&lt;b&gt;{{$:/SiteTitle}}&lt;/b&gt; \r\n\t&lt;$edit-text tiddler=\&quot;$:/temp/search\&quot; type=\&quot;search\&quot; tag=\&quot;input\&quot;/&gt;\r\n\t&lt;$list filter=\&quot;[all[shadows+tiddlers]tag[$:/tags/PageControls]!has[draft.of]]\&quot; variable=\&quot;listItem\&quot;&gt;\r\n\t\t&lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt; mode=\&quot;inline\&quot;/&gt;\r\n\t&lt;/$list&gt;\r\n&lt;/div&gt;\r\n&lt;div class=\&quot;smallscreen-only\&quot;&gt;\r\n{{$:/themes/welford/phasersonkill/SearchResults}}\r\n&lt;/div&gt;&quot;
+            &quot;text&quot;: &quot;&lt;div class=\&quot;tw-pagetop\&quot;&gt;\r\n\t&lt;b&gt;{{$:/SiteTitle}}&lt;/b&gt; \r\n\t&lt;$edit-text tiddler=\&quot;$:/temp/topsearch\&quot; type=\&quot;search\&quot; tag=\&quot;input\&quot;/&gt;\r\n\t&lt;$list filter=\&quot;[all[shadows+tiddlers]tag[$:/tags/PageControls]!has[draft.of]]\&quot; variable=\&quot;listItem\&quot;&gt;\r\n\t\t&lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt; mode=\&quot;inline\&quot;/&gt;\r\n\t&lt;/$list&gt;\r\n&lt;/div&gt;\r\n&lt;div class=\&quot;special-search\&quot;&gt;\r\n{{$:/themes/welford/phasersonkill/SearchResults}}\r\n&lt;/div&gt;\r\n&quot;
+        },
+        &quot;$:/themes/welford/phasersonkill/SearchPadding&quot;: {
+            &quot;created&quot;: &quot;20140629173226803&quot;,
+            &quot;modified&quot;: &quot;20140629173456183&quot;,
+            &quot;tags&quot;: &quot;$:/tags/StoryBackdrop&quot;,
+            &quot;title&quot;: &quot;$:/themes/welford/phasersonkill/SearchPadding&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;&lt;div class=\&quot;hacky-buffer\&quot;&gt;{{$:/themes/welford/phasersonkill/SearchResults}}&lt;/div&gt;&quot;
         },
         &quot;$:/themes/welford/phasersonkill/SearchResults&quot;: {
             &quot;created&quot;: &quot;20140629173226803&quot;,
             &quot;modified&quot;: &quot;20140629173456183&quot;,
             &quot;title&quot;: &quot;$:/themes/welford/phasersonkill/SearchResults&quot;,
             &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
-            &quot;text&quot;: &quot;&lt;$reveal state=\&quot;$:/temp/search\&quot; type=\&quot;nomatch\&quot; text=\&quot;\&quot;&gt;\r\n&lt;div class=\&quot;tw-search-results\&quot;&gt;\r\n&lt;$reveal state=\&quot;$:/temp/search\&quot; type=\&quot;nomatch\&quot; text=\&quot;\&quot;&gt;&lt;span class=\&quot;tw-pagetop-search\&quot;&gt;&lt;$linkcatcher to=\&quot;$:/temp/search\&quot;&gt;&lt;$link to=\&quot;\&quot; class=\&quot;btn-invisible\&quot;&gt;{{$:/core/images/close-button}}&lt;/$link&gt;&lt;/$linkcatcher&gt;&lt;/span&gt;&lt;/$reveal&gt;\r\n{{$:/language/Search/Matches}} \r\n&lt;!-- TWexe stuff first --&gt;\r\n&lt;$list filter=\&quot;[!is[system]search{$:/temp/search}tag[$:/tags/twexe]sort[title]limit[250]]\&quot; template=\&quot;$:/themes/welford/phasersonkill/TWexeTemplate\&quot;/&gt;\r\n&lt;!-- Normal Search Second stuff first --&gt;\r\n&lt;$list filter=\&quot;[!is[system]search{$:/temp/search}!tag[$:/tags/twexe]sort[title]limit[250]]\&quot; template=\&quot;$:/core/ui/ListItemTemplate\&quot;/&gt;\r\n&lt;$reveal state=\&quot;$:/temp/search\&quot; type=\&quot;nomatch\&quot; text=\&quot;\&quot;&gt;&lt;$linkcatcher to=\&quot;$:/temp/search\&quot;&gt;&lt;$link to=\&quot;\&quot;&gt;close search results&lt;/$link&gt;&lt;/$linkcatcher&gt;&lt;/$reveal&gt;\r\n&lt;/div&gt;\r\n&lt;/$reveal&gt;&quot;
-        },
-        &quot;$:/core/ui/PageTemplate/story&quot;: {
-            &quot;created&quot;: &quot;20140629173226803&quot;,
-            &quot;modified&quot;: &quot;20140629173456183&quot;,
-            &quot;tags&quot;: &quot;$:/tags/PageTemplate&quot;,
-            &quot;title&quot;: &quot;$:/core/ui/PageTemplate/story&quot;,
-            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
-            &quot;text&quot;: &quot;&lt;div class=\&quot;smallscreen-only hacky-buffer\&quot;&gt;{{$:/themes/welford/phasersonkill/SearchResults}}&lt;/div&gt;\r\n&lt;section class=\&quot;story-river\&quot;&gt;\r\n&lt;$list filter=\&quot;[list[$:/StoryList]]\&quot; history=\&quot;$:/HistoryList\&quot; template=\&quot;$:/core/ui/ViewTemplate\&quot; editTemplate=\&quot;$:/core/ui/EditTemplate\&quot; storyview={{$:/view}} /&gt;\r\n&lt;/section&gt;\r\n&quot;
+            &quot;text&quot;: &quot;&lt;$reveal state=\&quot;$:/temp/topsearch\&quot; type=\&quot;nomatch\&quot; text=\&quot;\&quot;&gt;\r\n&lt;$scrollable class='tw-scrollable tw-search-results'&gt;\r\n&lt;small&gt;&lt;$count filter=\&quot;[!is[system]search{$:/temp/topsearch}]\&quot;/&gt; matches&lt;/small&gt;\r\n&lt;!-- TWexe stuff first --&gt;\r\n&lt;$list filter=\&quot;[!is[system]search{$:/temp/topsearch}tag[$:/tags/twexe]sort[title]limit[20]]\&quot; template=\&quot;$:/themes/welford/phasersonkill/TWexeTemplate\&quot;/&gt;\r\n&lt;!-- Normal Search Second stuff first (includes --&gt;\r\n&lt;$list filter=\&quot;[!is[system]search{$:/temp/topsearch}sort[title]limit[250]]\&quot; template=\&quot;$:/core/ui/ListItemTemplate\&quot;/&gt;\r\n&lt;small class=\&quot;displayblock\&quot;&gt;&lt;$linkcatcher to=\&quot;$:/temp/topsearch\&quot;&gt;&lt;$link to=\&quot;\&quot;&gt;close search results&lt;/$link&gt;&lt;/$linkcatcher&gt;&lt;/small&gt;\r\n&lt;/$scrollable&gt;\r\n&lt;span class=\&quot;tw-pagetop-close-search\&quot;&gt;&lt;$linkcatcher to=\&quot;$:/temp/topsearch\&quot;&gt;&lt;$link to=\&quot;\&quot; class=\&quot;btn-invisible\&quot;&gt;{{$:/core/images/close-button}}&lt;/$link&gt;&lt;/$linkcatcher&gt;&lt;/span&gt;\r\n&lt;/$reveal&gt;&quot;
         },
         &quot;$:/themes/welford/phasersonkill/ThemeTweaks&quot;: {
             &quot;title&quot;: &quot;$:/themes/welford/phasersonkill/ThemeTweaks&quot;,
             &quot;tags&quot;: &quot;$:/tags/ControlPanel/Appearance&quot;,
             &quot;caption&quot;: &quot;Theme Tweaks&quot;,
             &quot;text&quot;: &quot;You can tweak certain aspects of the ''PhasersOnKill'' theme.\n\n//Take care to preserve any backticks (&amp;#96;) in the settings//\n\n! Sizes\n\n* Header Height: &lt;$edit-text tiddler=\&quot;$:/themes/welford/phasersonkill/metrics\&quot; index=\&quot;headerheight\&quot; default=\&quot;\&quot; tag=\&quot;input\&quot;/&gt;\r\n* Menu Width: &lt;$edit-text tiddler=\&quot;$:/themes/welford/phasersonkill/metrics\&quot; index=\&quot;menuwidth\&quot; default=\&quot;\&quot; tag=\&quot;input\&quot;/&gt;\n\n&quot;
+        },
+        &quot;$:/temp/topsearch&quot;: {
+            &quot;created&quot;: &quot;20140629173226803&quot;,
+            &quot;modified&quot;: &quot;20140629173456183&quot;,
+            &quot;title&quot;: &quot;$:/temp/topsearch&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;&quot;
         },
         &quot;$:/themes/welford/phasersonkill/TWexeTemplate&quot;: {
             &quot;created&quot;: &quot;20140629173226803&quot;,
@@ -5825,67 +5820,7 @@ tiddlerwidth: `686px`</pre>
     }
 }</pre>
 </div>
-<div created="20140316210654272" creator="ジェームス" modified="20140325223202232" modifier="ジェームス" tags="tiddlywiki splash" title="Creating Plugins">
-<pre>#install node.js
-## ~~edit P:\nodejs\node_modules\npm\npmrc to change where npm installs it's modules if you want~~
-#~~install tiddlywiki on nodejs `&gt;npm install -g tiddlywiki`~~ not neccesary if you are using the github repo
-#clone the repo at https://github.com/Jermolene/TiddlyWiki5 then
-##go to where you cloned tiddlywiki and use `npm link` so that it uses the local github copy instead of the installed one (need to do as admin if you already installed the nodejs version)
-## sanity check `tiddlywiki --version`
-# moveto [tw_root]\editions\
-# create a wiki to test your plugin ``tiddlywiki plugintest --init server``
-## this will create a folder called plugintest with a tiddlywiki.info file in it
-#create some folders for your plugin in ``[tw_root]\plugins\[organization_name]\[plugin_name]``
-##also need some extra data like ``[tw_root]\plugins\[organization_name]\[plugin_name]\plugin.info``
-##also need some extra data like ``[tw_root]\plugins\[organization_name]\[plugin_name]\plugin.js``
-#add your plugin to ``tiddlywiki.info``
-
-!!Example plugin.info
-```javascript
-{
-	&quot;title&quot;: &quot;$:/plugins/[organization_name]\[plugin_name]&quot;,
-	&quot;description&quot;: &quot;runs local batch scripts&quot;,
-	&quot;author&quot;: &quot;James W. Anderson&quot;,
-	&quot;version&quot;: &quot;0.0.1&quot;,
-	&quot;core-version&quot;: &quot;&gt;=5.0.0&quot;,
-	&quot;source&quot;: &quot;https://github.com/Welford/NotUploadedYet&quot;,
-	&quot;plugin-type&quot;: &quot;plugin&quot;
-}
-```
-!!Example plugin.js
-```javascript
-/*\
-title: $:/plugins/welford/batch/plugin.js
-type: application/javascript
-module-type: macro
-runs a batch/exe on the local computer
-\*/
-//module-type etermines the kind of plugin that it is....see the docs somewhere for it
-//don't put your own comments in the above, it will ruin the plugin creation
-(function () {
-
-	/*jslint node: true, browser: true */
-	/*global $tw: false */
-	&quot;use strict&quot;;
-
-	/*
-	Information about this macro
-	*/
-
-	exports.name = &quot;plugin&quot;; //the name by which the plugin can be called in this case, because it is of type macro, it can be invoked in a tiddler as &lt;&lt;plugin&gt;&gt;
-	exports.params = [];
-
-	/*
-	Run the macro
-	*/
-	exports.run = function () {
-		return &quot;Garbled Mess1&quot;;
-	};
-
-})();
-```</pre>
-</div>
-<div created="20140102190517965" creator="ジェームス" modified="20140318214520775" modifier="ジェームス" title="Customising Tiddly5">
+<div created="20140102190517965" creator="ジェームス" modified="20140710205056326" modifier="ジェームス" tags="twdev" title="Customising Tiddly5" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>;Page Template 
 &lt;&lt;&lt; [[$:/tags/PageTemplate]] [[$:/PageTop]] [[$:/core/ui/PageTemplate/sidebar]] [[$:/core/ui/PageTemplate/story]]
 Extra pages must have [[$:/tags/PageTemplate]] tag in them
@@ -5909,7 +5844,17 @@ here is one i made earlier  [[$:/stylesheet/Custom]]
 
 </pre>
 </div>
-<div created="20140705202408826" modified="20140707212850957" title="Example Tiddler" type="text/vnd.tiddlywiki">
+<div created="20131119194500000" modified="20140710204510974" title="Download" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>Download single file editions of version ''&lt;&lt;version&gt;&gt;'' of TiddlyWiki:
+
+|{{$:/editions/twnotes/snippets/download-empty-button}}|Get started with an empty wiki |
+|{{$:/snippets/download-wiki-button}}|Download a full copy of this site|
+
+For more advanced configurations, you can run [[TiddlyWiki on Node.js]].
+
+</pre>
+</div>
+<div created="20140705202408826" modified="20140707212850957" title="Example Tiddler" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!This Tiddler
 !!Does Nothing
 !!!It's just an example
@@ -5928,12 +5873,22 @@ http://www.google.co.jp
 !!TWexe
 &lt;$twexe tiddler=&quot;This Is TWEXE&quot; /&gt;</pre>
 </div>
-<div created="20140325223215222" creator="ジェームス" modified="20140325223919485" modifier="ジェームス" title="Hello">
+<div created="20140325223215222" creator="ジェームス" modified="20140710210123760" modifier="ジェームス" title="Hello" type="text/vnd.tiddlywiki" revision="8" bag="default">
 <pre>This TiddlyWiki is for keeping basic notes on how to make plugins for TiddlyWiki and is very much a work in progress.
 
+!!Features
+*It uses the theme ~PhasersOnKill
+**source : https://github.com/welford/phasersonkill
+**import into your tiddlywiki by dragging and dropping this link [[$:/themes/welford/phasersonkill]]
+*It uses the plugin TWExe
+**source : https://github.com/welford/twexe
+**import into your tiddlywiki by dragging and dropping this link [[$:/plugins/welford/twexe]]
+*It uses the plugin HTA Link (which will only work in offline hta editions of this page)
+**source : https://github.com/welford/htalink
+**import into your tiddlywiki by dragging and dropping this link [[$:/plugins/welford/htalink]]
 </pre>
 </div>
-<div created="20140318214655832" creator="ジェームス" modified="20140318214729239" modifier="ジェームス" title="Highlight Example">
+<div created="20140318214655832" creator="ジェームス" modified="20140318214729239" modifier="ジェームス" title="Highlight Example" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>```cpp
 void main(void)
 {
@@ -5942,7 +5897,7 @@ void main(void)
 }
 ```</pre>
 </div>
-<div created="20140103173954731" creator="ジェームス" modified="20140103174257442" modifier="ジェームス" title="list test">
+<div created="20140103173954731" creator="ジェームス" modified="20140710205037638" modifier="ジェームス" tags="twexample" title="list test" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;$list filter=&quot;[!is[system]has[type]each[type]sort[type]]&quot;&gt;
 &lt;div class=&quot;tw-menu-list-item&quot;&gt;
 &lt;$view field=&quot;type&quot;/&gt;
@@ -5965,51 +5920,25 @@ void main(void)
 &lt;/div&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20130822080600000" creator="ジェームス" modified="20131129163429930" modifier="ジェームス" tags="concepts" title="SystemTags" type="text/vnd.tiddlywiki">
-<pre>System tags are used to give special behaviour to tiddlers:
-
-* [[$:/tags/stylesheet]] to indicate that a tiddler should be applied as a CSS stylesheet
-* [[$:/tags/TiddlerInfo]] for tiddler info panel tabs
-* [[$:/tags/ControlPanel]] for control panel tabs
-* [[$:/tags/SideBar]] for sidebar tabs
-* [[$:/tags/MoreSideBar]] for tabs in the &quot;more&quot; sidebar
-* [[$:/tags/ViewToolbar]] for the view mode tiddler toolbar
-* [[$:/tags/EditTemplate]] for the edit template
-* [[$:/tags/EditToolbar]] for the edit mode tiddler toolbar
-* [[$:/tags/PageControls]] for the page control tools in the sidebar
-* [[$:/tags/PageTemplate]] for the main page elements
-
-! System tags in use
-
-These are the system tags in use in this wiki:
-
-{{{ [is[shadow]tags[]prefix[$:/]] [!is[shadow]tags[]prefix[$:/]] +[sort[title]] }}}
-</pre>
-</div>
-<div created="20140707212036871" modified="20140707212107032" tags="$:/tags/twexe" title="This Is TWEXE" twexe_cwd=".\" twexe_name="TWEXE Example" twexe_target=".\" type="text/vnd.tiddlywiki">
+<div created="20140707212036871" modified="20140707212107032" tags="$:/tags/twexe" title="This Is TWEXE" twexe_cwd=".\" twexe_name="TWEXE Example" twexe_target=".\" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Write a description of the exe here.</pre>
 </div>
-<div created="20140105092344249" creator="ジェームス" modified="20140105102159871" modifier="ジェームス" tags="[[to do]]" title="Tiddlywiki">
-<pre>*Autosave
-*ctrl-enter to finish editing
-*keyboard shorcuts
-*input order
-*button to delete finished tasks
-*double click to edit</pre>
-</div>
-<div created="20140105080912579" creator="ジェームス" modified="20140325223552193" modifier="ジェームス" title="To Do">
-<pre>''To Do{{$:/New-To-Do-Button}}''
+<div created="20140630220900224" modified="20140710201506015" title="To Do" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre># transclusion of twexe search results
+# ~~push storyriver down by the height of the results~~
+# clean up CSS
+##clarify rules
+# ~~check TW metics changes~~
+# ~~twexe examples~~
+# ~~hightlight examples~~
+# hta to html export button
+# hta externa link support
 
-&lt;$list filter=&quot;[!has[draft.of]!title[$:/new-to-do]tag[to do]!tag[done]sort[created]]&quot;&gt;
-&lt;$checkbox tag=&quot;done&quot;&gt; &lt;$link to={{!!title}}&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;&lt;/$checkbox&gt;
-&lt;/$list&gt;
-
-''Done''
-&lt;$list filter=&quot;[!has[draft.of]tag[done]sort[created]]&quot;&gt;
-&lt;$checkbox tag=&quot;done&quot;&gt; ~~&lt;$link to={{!!title}}&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;~~&lt;/$checkbox&gt;
-</pre>
+#~~change the spacing of the close search button at the top~~
+#~~move the custom storyview out into the theme from the actual tiddly~~
+#~~consder having the quick search in the main version too~~</pre>
 </div>
-<div created="20140325222233114" creator="ジェームス" modified="20140325223526930" modifier="ジェームス" tags="splash" title="TW Dev Notes">
+<div created="20140325222233114" creator="ジェームス" modified="20140710204928545" modifier="ジェームス" title="TW Dev Notes" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!Widgets
 
 Accessing a tidder's field and text data from within a widget
@@ -6050,72 +5979,6 @@ this.dispatchEvent({
 });
 ```
 &lt;&lt;&lt;
-</pre>
-</div>
-<div created="20140319221321875" creator="ジェームス" modified="20140319221558617" modifier="ジェームス" title="what was imported">
-<pre># [[$:/Close-others-button]]
-# [[$:/config/AnimationDuration]]
-# [[$:/core]]
-# [[$:/core/ui/PageControls/add-header]]
-# [[$:/core/ui/PageTemplate/sidebar]]
-# [[$:/DefaultTiddlers]]
-# [[$:/HeaderHeight]]
-# [[$:/HistoryList]]
-# [[$:/images/close-all-button]]
-# [[$:/images/close-others-button]]
-# [[$:/isEncrypted]]
-# [[$:/language]]
-# [[$:/MenuWidth]]
-# [[$:/new-header]]
-# [[$:/New-Header-Button]]
-# [[$:/New-To-Do-Button]]
-# [[$:/NewFieldName]]
-# [[$:/NewTagName]]
-# [[$:/PageTop]]
-# [[$:/plugins/tiddlywiki/fullscreen]]
-# [[$:/plugins/tiddlywiki/highlight]]
-# [[$:/plugins/tiddlywiki/highlight/styles]]
-# [[$:/ShowEditPreview]]
-# [[$:/SiteSubtitle]]
-# [[$:/SiteTitle]]
-# [[$:/state/tab-{-1078088311}]]
-# [[$:/state/tab-{-618750197}]]
-# [[$:/state/tab-{-640186081}]]
-# [[$:/state/tab-{260706635}]]
-# [[$:/state/tab/moresidebar-{-760315134}]]
-# [[$:/state/tab/moresidebar-{1461221948}]]
-# [[$:/state/tab/moresidebar-{927475770}]]
-# [[$:/state/tab/sidebar-{-610972467}]]
-# [[$:/state/tab/sidebar-{1569912453}]]
-# [[$:/state/tab/sidebar-{1743827719}]]
-# [[$:/status/UserName]]
-# [[$:/StoryList]]
-# [[$:/stylesheet/Custom]]
-# [[$:/tags/header]]
-# [[$:/tags/PageControls]]
-# [[$:/tags/PageTemplate]]
-# [[$:/tags/ViewToolbar]]
-# [[$:/temp/advancedsearch]]
-# [[$:/temp/ImportReport]]
-# [[$:/temp/NewTagName]]
-# [[$:/temp/search]]
-# [[$:/theme]]
-# [[$:/themes/tiddlywiki/snowwhite]]
-# [[$:/themes/tiddlywiki/vanilla]]
-# [[$:/Top-close-all-button]]
-# [[$:/view]]
-# [['Close others' button]]
-# [[Customising Tiddly5]]
-# [[GettingStarted]]
-# [[Highlight Example]]
-# [[list test]]
-# [[ListWidget]]
-# [[Syntax Test]]
-# [[SystemTags]]
-# [[TiddlerFilters]]
-# [[Tiddlywiki]]
-# [[To Do]]
-# [[Untitled]]
 </pre>
 </div>
 
