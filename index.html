@@ -133,11 +133,7 @@ Error message and password prompt
 
 <li>$:/plugins/tiddlywiki/codemirror</li>
 
-<li>$:/plugins/tiddlywiki/filesystem</li>
-
 <li>$:/plugins/tiddlywiki/highlight</li>
-
-<li>$:/plugins/tiddlywiki/tiddlyweb</li>
 
 <li>$:/plugins/welford/htalink</li>
 
@@ -146,10 +142,6 @@ Error message and password prompt
 <li>$:/SiteSubtitle</li>
 
 <li>$:/SiteTitle</li>
-
-<li>$:/status/IsLoggedIn</li>
-
-<li>$:/status/UserName</li>
 
 <li>$:/StoryList</li>
 
@@ -171,9 +163,7 @@ Error message and password prompt
 
 <li>Download Partial</li>
 
-<li>Draft of '$:/core/ui/PageControls/new-tiddler'</li>
-
-<li>Draft of '$:/tags/PageControls'</li>
+<li>Draft of 'Download'</li>
 
 <li>Example Tiddler</li>
 
@@ -184,6 +174,8 @@ Error message and password prompt
 <li>Highlight Example</li>
 
 <li>list test</li>
+
+<li>shortcut.js</li>
 
 <li>This Is TWEXE</li>
 
@@ -201,15 +193,21 @@ Error message and password prompt
 <!--~~ Ordinary tiddlers ~~-->
 
 <div id="storeArea" style="display:none;">
-<div title="$:/config/OriginalTiddlerPaths" type="application/x-tiddler-dictionary" revision="0" bag="default">
-<pre>$:/DefaultTiddlers: DefaultTiddlers.tid
+<div title="$:/config/OriginalTiddlerPaths" type="application/x-tiddler-dictionary">
+<pre>A Sample Blog Post: A Sample Blog Post.tid
+$:/DefaultTiddlers: DefaultTiddlers.tid
+Developing For And Using TW5: Developing For And Using TW5.tid
+Download Partial: Download Partial.tid
 $:/editions/twnotes/snippets/download-empty-button: download-empty-button.tid
 $:/editions/twnotes/download-empty: download-empty.tid
 Download: Download.tid
+Draft of 'Download': Draft of 'Download'.tid
 Example Tiddler: Example Tiddler.tid
+Export Specific Tiddlers: Export Specific Tiddlers.tid
 Hello: Hello.tid
 Highlight Example: Highlight Example.tid
 list test: list test.tid
+shortcut.js: shortcut.js.tid
 $:/SiteSubtitle: SiteSubtitle.tid
 $:/SiteTitle: SiteTitle.tid
 $:/theme: theme.tid
@@ -218,7 +216,7 @@ To Do: To Do.tid
 TW Dev Notes: TW Dev Notes.tid
 </pre>
 </div>
-<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core plugin" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
+<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core plugin" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.0.14-prerelease">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/config/EditorTypeMappings/image/gif&quot;: {
@@ -3953,12 +3951,12 @@ TW Dev Notes: TW Dev Notes.tid
     }
 }</pre>
 </div>
-<div created="20131127215321439" modified="20140712134200472" title="$:/DefaultTiddlers" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20131127215321439" modified="20140712134200472" title="$:/DefaultTiddlers" type="text/vnd.tiddlywiki">
 <pre>Hello
 Download
 [[Developing For And Using TW5]]</pre>
 </div>
-<div created="20140712113349124" modified="20140712125439538" title="$:/editions/twnotes/download-empty" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140712113349124" modified="20140712125439538" title="$:/editions/twnotes/download-empty" type="text/vnd.tiddlywiki">
 <pre>\define saveTiddlerFilter()
 [[$:/core]] [[$:/isEncrypted]] [[$:/plugins/tiddlywiki/fullscreen]] [[$:/themes/tiddlywiki/vanilla]] [[$:/themes/welford/phasersonkill]] [[$:/themes/welford/readonly]] [[$:/theme]] [[$:/plugins/tiddlywiki/codemirror]] [[$:/plugins/tiddlywiki/highlight]] [[$:/plugins/welford/twexe]] [[$:/plugins/welford/htalink]] -[[$:/boot/boot.css]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] +[sort[title]]
 \end
@@ -3968,13 +3966,13 @@ yes
 {{$:/core/templates/tiddlywiki5.html}}
 </pre>
 </div>
-<div title="$:/editions/twnotes/snippets/download-empty-button" revision="0" bag="default">
+<div title="$:/editions/twnotes/snippets/download-empty-button">
 <pre>&lt;$button message=&quot;tw-download-file&quot; param=&quot;$:/editions/twnotes/download-empty&quot; class=&quot;btn-big-green&quot;&gt;Download Empty {{$:/core/images/save-button}}&lt;/$button&gt;</pre>
 </div>
-<div title="$:/isEncrypted" revision="0" bag="default">
+<div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div author="OGOSHI Masayuki, pekopeko1" core-version="&gt;=5.0.9" dependents="" description="Japanese (Japan)" name="ja-JP" plugin-type="language" title="$:/languages/ja-JP" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
+<div author="OGOSHI Masayuki, pekopeko1" core-version="&gt;=5.0.9" dependents="" description="Japanese (Japan)" name="ja-JP" plugin-type="language" title="$:/languages/ja-JP" type="application/json" version="5.0.14-prerelease">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/language/ControlPanel/Advanced/Caption&quot;: {
@@ -5378,7 +5376,7 @@ yes
     }
 }</pre>
 </div>
-<div author="JeremyRuston" dependents="" description="Codemirror plugin" plugin-type="plugin" title="$:/plugins/tiddlywiki/codemirror" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
+<div author="JeremyRuston" dependents="" description="Codemirror plugin" plugin-type="plugin" title="$:/plugins/tiddlywiki/codemirror" type="application/json" version="5.0.14-prerelease">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/core/modules/widgets/edit-codemirror.js&quot;: {
@@ -5491,19 +5489,7 @@ yes
     }
 }</pre>
 </div>
-<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="File system synchronisation" plugin-type="plugin" title="$:/plugins/tiddlywiki/filesystem" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
-<pre>{
-    &quot;tiddlers&quot;: {
-        &quot;$:/plugins/tiddlywiki/filesystem/filesystemadaptor.js&quot;: {
-            &quot;text&quot;: &quot;/*\\\r\ntitle: $:/plugins/tiddlywiki/filesystem/filesystemadaptor.js\r\ntype: application/javascript\r\nmodule-type: syncadaptor\r\n\r\nA sync adaptor module for synchronising with the local filesystem via node.js APIs \r\n\r\n\\*/\r\n(function(){\r\n\r\n/*jslint node: true, browser: true */\r\n/*global $tw: false */\r\n\&quot;use strict\&quot;;\r\n\r\n// Get a reference to the file system\r\nvar fs = !$tw.browser ? require(\&quot;fs\&quot;) : null,\r\n\tpath = !$tw.browser ? require(\&quot;path\&quot;) : null;\r\n\r\nfunction FileSystemAdaptor(syncer) {\r\n\tvar self = this;\r\n\tthis.syncer = syncer;\r\n\tthis.watchers = {};\r\n\tthis.pending = {};\r\n\tthis.logger = new $tw.utils.Logger(\&quot;FileSystem\&quot;);\r\n\tthis.setwatcher = function(filename, title) {\r\n\t\treturn undefined;\r\n\t\treturn this.watchers[filename] = this.watchers[filename] ||\r\n\t\t\tfs.watch(filename, {persistent: false}, function(e) {\r\n\t\t\t\tself.logger.log(\&quot;Error:\&quot;,e,filename);\r\n\t\t\t\tif(e === \&quot;change\&quot;) {\r\n\t\t\t\t\tvar tiddlers = $tw.loadTiddlersFromFile(filename).tiddlers;\r\n\t\t\t\t\tfor(var t in tiddlers) {\r\n\t\t\t\t\t\tif(tiddlers[t].title) {\r\n\t\t\t\t\t\t\t$tw.wiki.addTiddler(tiddlers[t]);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t});\r\n\t}\r\n\r\n\tfor(var f in $tw.boot.files) {\r\n\t\tvar fileInfo = $tw.boot.files[f];\r\n\t\tthis.setwatcher(fileInfo.filepath, f);\r\n\t}\r\n\t// Create the &lt;wiki&gt;/tiddlers folder if it doesn't exist\r\n\t// TODO: we should create the path recursively\r\n\tif(!fs.existsSync($tw.boot.wikiTiddlersPath)) {\r\n\t\tfs.mkdirSync($tw.boot.wikiTiddlersPath);\r\n\t}\r\n}\r\n\r\nFileSystemAdaptor.prototype.getTiddlerInfo = function(tiddler) {\r\n\treturn {};\r\n};\r\n\r\n$tw.config.typeInfo = {\r\n\t\&quot;text/vnd.tiddlywiki\&quot;: {\r\n\t\tfileType: \&quot;application/x-tiddler\&quot;,\r\n\t\textension: \&quot;.tid\&quot;\r\n\t},\r\n\t\&quot;image/jpeg\&quot; : {\r\n\t\thasMetaFile: true\r\n\t}\r\n};\r\n\r\n$tw.config.typeTemplates = {\r\n\t\&quot;application/x-tiddler\&quot;: \&quot;$:/core/templates/tid-tiddler\&quot;\r\n};\r\n\r\nFileSystemAdaptor.prototype.getTiddlerFileInfo = function(tiddler,callback) {\r\n\t// See if we've already got information about this file\r\n\tvar self = this,\r\n\t\ttitle = tiddler.fields.title,\r\n\t\tfileInfo = $tw.boot.files[title];\r\n\t// Get information about how to save tiddlers of this type\r\n\tvar type = tiddler.fields.type || \&quot;text/vnd.tiddlywiki\&quot;,\r\n\t\ttypeInfo = $tw.config.typeInfo[type];\r\n\tif(!typeInfo) {\r\n\t\ttypeInfo = $tw.config.typeInfo[\&quot;text/vnd.tiddlywiki\&quot;];\r\n\t}\r\n\tvar extension = typeInfo.extension || \&quot;\&quot;;\r\n\tif(!fileInfo) {\r\n\t\t// If not, we'll need to generate it\r\n\t\t// Start by getting a list of the existing files in the directory\r\n\t\tfs.readdir($tw.boot.wikiTiddlersPath,function(err,files) {\r\n\t\t\tif(err) {\r\n\t\t\t\treturn callback(err);\r\n\t\t\t}\r\n\t\t\t// Assemble the new fileInfo\r\n\t\t\tfileInfo = {};\r\n\t\t\tfileInfo.filepath = $tw.boot.wikiTiddlersPath + path.sep + self.generateTiddlerFilename(title,extension,files);\r\n\t\t\tfileInfo.type = typeInfo.fileType || tiddler.fields.type;\r\n\t\t\tfileInfo.hasMetaFile = typeInfo.hasMetaFile;\r\n\t\t\t// Save the newly created fileInfo\r\n\t\t\t$tw.boot.files[title] = fileInfo;\r\n\t\t\tself.pending[fileInfo.filepath] = title;\r\n\t\t\t// Pass it to the callback\r\n\t\t\tcallback(null,fileInfo);\r\n\t\t});\r\n\t} else {\r\n\t\t// Otherwise just invoke the callback\r\n\t\tcallback(null,fileInfo);\r\n\t}\r\n};\r\n\r\n/*\r\nGiven a tiddler title and an array of existing filenames, generate a new legal filename for the title, case insensitively avoiding the array of existing filenames\r\n*/\r\nFileSystemAdaptor.prototype.generateTiddlerFilename = function(title,extension,existingFilenames) {\r\n\t// First remove any of the characters that are illegal in Windows filenames\r\n\tvar baseFilename = title.replace(/\\&lt;|\\&gt;|\\:|\\\&quot;|\\/|\\\\|\\||\\?|\\*|\\^/g,\&quot;_\&quot;);\r\n\t// Truncate the filename if it is too long\r\n\tif(baseFilename.length &gt; 200) {\r\n\t\tbaseFilename = baseFilename.substr(0,200) + extension;\r\n\t}\r\n\t// Start with the base filename plus the extension\r\n\tvar filename = baseFilename + extension,\r\n\t\tcount = 1;\r\n\t// Add a discriminator if we're clashing with an existing filename\r\n\twhile(existingFilenames.indexOf(filename) !== -1) {\r\n\t\tfilename = baseFilename + \&quot; \&quot; + (count++) + extension;\r\n\t}\r\n\treturn filename;\r\n};\r\n\r\n/*\r\nSave a tiddler and invoke the callback with (err,adaptorInfo,revision)\r\n*/\r\nFileSystemAdaptor.prototype.saveTiddler = function(tiddler,callback) {\r\n\tvar self = this;\r\n\tthis.getTiddlerFileInfo(tiddler,function(err,fileInfo) {\r\n\t\tvar template, content, encoding;\r\n\t\tfunction _finish() {\r\n\t\t\tif(self.pending[fileInfo.filepath]) {\r\n\t\t\t\tself.setwatcher(fileInfo.filepath, tiddler.fields.title);\r\n\t\t\t\tdelete self.pending[fileInfo.filepath];\r\n\t\t\t}\r\n\t\t\tcallback(null, {}, 0);\r\n\t\t}\r\n\t\tif(err) {\r\n\t\t\treturn callback(err);\r\n\t\t}\r\n\t\tif(self.watchers[fileInfo.filepath]) {\r\n\t\t\tself.watchers[fileInfo.filepath].close();\r\n\t\t\tdelete self.watchers[fileInfo.filepath];\r\n\t\t\tself.pending[fileInfo.filepath] = tiddler.fields.title;\r\n\t\t}\r\n\t\tif(fileInfo.hasMetaFile) {\r\n\t\t\t// Save the tiddler as a separate body and meta file\r\n\t\t\tvar typeInfo = $tw.config.contentTypeInfo[fileInfo.type];\r\n\t\t\tfs.writeFile(fileInfo.filepath,tiddler.fields.text,{encoding: typeInfo.encoding},function(err) {\r\n\t\t\t\tif(err) {\r\n\t\t\t\t\treturn callback(err);\r\n\t\t\t\t}\r\n\t\t\t\tcontent = $tw.wiki.renderTiddler(\&quot;text/plain\&quot;,\&quot;$:/core/templates/tiddler-metadata\&quot;,{variables: {currentTiddler: tiddler.fields.title}});\r\n\t\t\t\tfs.writeFile(fileInfo.filepath + \&quot;.meta\&quot;,content,{encoding: \&quot;utf8\&quot;},function (err) {\r\n\t\t\t\t\tif(err) {\r\n\t\t\t\t\t\treturn callback(err);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tself.logger.log(\&quot;Saved file\&quot;,fileInfo.filepath);\r\n\t\t\t\t\t_finish();\r\n\t\t\t\t});\r\n\t\t\t});\r\n\t\t} else {\r\n\t\t\t// Save the tiddler as a self contained templated file\r\n\t\t\ttemplate = $tw.config.typeTemplates[fileInfo.type];\r\n\t\t\tcontent = $tw.wiki.renderTiddler(\&quot;text/plain\&quot;,template,{variables: {currentTiddler: tiddler.fields.title}});\r\n\t\t\tfs.writeFile(fileInfo.filepath,content,{encoding: \&quot;utf8\&quot;},function (err) {\r\n\t\t\t\tif(err) {\r\n\t\t\t\t\treturn callback(err);\r\n\t\t\t\t}\r\n\t\t\t\tself.logger.log(\&quot;Saved file\&quot;,fileInfo.filepath);\r\n\t\t\t\t_finish();\r\n\t\t\t});\r\n\t\t}\r\n\t});\r\n};\r\n\r\n/*\r\nLoad a tiddler and invoke the callback with (err,tiddlerFields)\r\n\r\nWe don't need to implement loading for the file system adaptor, because all the tiddler files will have been loaded during the boot process.\r\n*/\r\nFileSystemAdaptor.prototype.loadTiddler = function(title,callback) {\r\n\tcallback(null,null);\r\n};\r\n\r\n/*\r\nDelete a tiddler and invoke the callback with (err)\r\n*/\r\nFileSystemAdaptor.prototype.deleteTiddler = function(title,callback) {\r\n\tvar self = this,\r\n\t\tfileInfo = $tw.boot.files[title];\r\n\t// Only delete the tiddler if we have writable information for the file\r\n\tif(fileInfo) {\r\n\t\tif(this.watchers[fileInfo.filepath]) {\r\n\t\t\tthis.watchers[fileInfo.filepath].close();\r\n\t\t\tdelete this.watchers[fileInfo.filepath];\r\n\t\t}\r\n\t\tdelete this.pending[fileInfo.filepath];\r\n\t\t// Delete the file\r\n\t\tfs.unlink(fileInfo.filepath,function(err) {\r\n\t\t\tif(err) {\r\n\t\t\t\treturn callback(err);\r\n\t\t\t}\r\n\t\t\tself.logger.log(\&quot;Deleted file\&quot;,fileInfo.filepath);\r\n\t\t\t// Delete the metafile if present\r\n\t\t\tif(fileInfo.hasMetaFile) {\r\n\t\t\t\tfs.unlink(fileInfo.filepath + \&quot;.meta\&quot;,function(err) {\r\n\t\t\t\t\tif(err) {\r\n\t\t\t\t\t\treturn callback(err);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcallback(null);\r\n\t\t\t\t});\r\n\t\t\t} else {\r\n\t\t\t\tcallback(null);\r\n\t\t\t}\r\n\t\t});\r\n\t} else {\r\n\t\tcallback(null);\r\n\t}\r\n};\r\n\r\nif(fs) {\r\n\texports.adaptorClass = FileSystemAdaptor;\r\n}\r\n\r\n})();\r\n&quot;,
-            &quot;title&quot;: &quot;$:/plugins/tiddlywiki/filesystem/filesystemadaptor.js&quot;,
-            &quot;type&quot;: &quot;application/javascript&quot;,
-            &quot;module-type&quot;: &quot;syncadaptor&quot;
-        }
-    }
-}</pre>
-</div>
-<div author="JoaoBolila" dependents="" description="Highlight.js plugin for TiddlyWiki5" plugin-type="plugin" title="$:/plugins/tiddlywiki/highlight" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
+<div author="JoaoBolila" dependents="" description="Highlight.js plugin for TiddlyWiki5" plugin-type="plugin" title="$:/plugins/tiddlywiki/highlight" type="application/json" version="5.0.14-prerelease">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/plugins/tiddlywiki/highlight/highlight.js&quot;: {
@@ -5537,41 +5523,7 @@ yes
     }
 }</pre>
 </div>
-<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWeb and TiddlySpace components" plugin-type="plugin" title="$:/plugins/tiddlywiki/tiddlyweb" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
-<pre>{
-    &quot;tiddlers&quot;: {
-        &quot;$:/editions/server/download-offline-button&quot;: {
-            &quot;title&quot;: &quot;$:/editions/server/download-offline-button&quot;,
-            &quot;text&quot;: &quot;&lt;$button message=\&quot;tw-download-file\&quot; param=\&quot;$:/editions/server/download-offline\&quot; class=\&quot;btn-big-green\&quot;&gt;Download Offline Snapshot {{$:/core/images/save-button}}&lt;/$button&gt;&quot;
-        },
-        &quot;$:/editions/server/download-offline&quot;: {
-            &quot;title&quot;: &quot;$:/editions/server/download-offline&quot;,
-            &quot;text&quot;: &quot;\\define saveTiddlerFilter()\r\n[is[tiddler]] -[[$:/boot/boot.css]] -[[$:/HistoryList]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] -[[$:/plugins/tiddlywiki/filesystem]] -[[$:/plugins/tiddlywiki/tiddlyweb]] +[sort[title]]\r\n\\end\r\n{{$:/core/templates/tiddlywiki5.html}}\r\n&quot;
-        },
-        &quot;$:/snippets/encryptionstatus&quot;: {
-            &quot;title&quot;: &quot;$:/snippets/encryptionstatus&quot;,
-            &quot;text&quot;: &quot;Encryption is not supported when running TiddlyWiki5 on the server.\r\n&quot;
-        },
-        &quot;$:/core/templates/html-div-tiddler&quot;: {
-            &quot;title&quot;: &quot;$:/core/templates/html-div-tiddler&quot;,
-            &quot;text&quot;: &quot;&lt;!--\n\nThis template is used for saving tiddlers as an HTML DIV tag with attributes representing the tiddler fields. This version includes the tiddler changecount as the field `revision`.\n\n--&gt;`&lt;div`&lt;$fields exclude='text revision bag' template=' $name$=\&quot;$encoded_value$\&quot;'&gt;&lt;/$fields&gt;` revision=\&quot;`&lt;&lt;changecount&gt;&gt;`\&quot; bag=\&quot;default\&quot;&gt;\r\n&lt;pre&gt;`&lt;$view field=\&quot;text\&quot; format=\&quot;htmlencoded\&quot; /&gt;`&lt;/pre&gt;\r\n&lt;/div&gt;`\r\n&quot;
-        },
-        &quot;$:/plugins/tiddlywiki/tiddlyweb/ServerControlPanel&quot;: {
-            &quot;title&quot;: &quot;$:/plugins/tiddlywiki/tiddlyweb/ServerControlPanel&quot;,
-            &quot;caption&quot;: &quot;Server&quot;,
-            &quot;tags&quot;: &quot;$:/tags/ControlPanel&quot;,
-            &quot;text&quot;: &quot;&lt;$reveal state=\&quot;$:/status/IsLoggedIn\&quot; type=\&quot;nomatch\&quot; text=\&quot;yes\&quot;&gt;\r\nLog in to ~TiddlyWeb: &lt;$button message=\&quot;tw-login\&quot; class=\&quot;btn btn-info\&quot;&gt;Login&lt;/$button&gt;\r\n&lt;/$reveal&gt;\r\n&lt;$reveal state=\&quot;$:/status/IsLoggedIn\&quot; type=\&quot;match\&quot; text=\&quot;yes\&quot;&gt;\r\nLogged in as {{$:/status/UserName}} &lt;$button message=\&quot;tw-logout\&quot; class=\&quot;btn btn-warning\&quot;&gt;Logout&lt;/$button&gt;\r\n&lt;/$reveal&gt;\n\n----\n\nHost configuration: &lt;$edit-text tiddler=\&quot;$:/config/tiddlyweb/host\&quot; tag=\&quot;input\&quot; default=\&quot;\&quot;/&gt;\n\n&lt;blockquote&gt;//for example, `$protocol$//$host$/folder`, where `$protocol$` is replaced by the protocol (typically `http` or `https`), and `$host$` by the host name//&lt;/blockquote&gt;\n\n----\n\n&lt;$button message=\&quot;tw-server-refresh\&quot; class=\&quot;btn btn-warning\&quot;&gt;Refresh&lt;/$button&gt; to fetch changes from the server immediately\n\n----\n\nDownload an offline copy of this wiki:\n\n{{$:/editions/server/download-offline-button}}&quot;
-        },
-        &quot;$:/plugins/tiddlywiki/tiddlyweb/tiddlywebadaptor.js&quot;: {
-            &quot;text&quot;: &quot;/*\\\r\ntitle: $:/plugins/tiddlywiki/tiddlyweb/tiddlywebadaptor.js\r\ntype: application/javascript\r\nmodule-type: syncadaptor\r\n\r\nA sync adaptor module for synchronising with TiddlyWeb compatible servers \r\n\r\n\\*/\r\n(function(){\r\n\r\n/*jslint node: true, browser: true */\r\n/*global $tw: false */\r\n\&quot;use strict\&quot;;\r\n\r\nvar CONFIG_HOST_TIDDLER = \&quot;$:/config/tiddlyweb/host\&quot;,\r\n\tDEFAULT_HOST_TIDDLER = \&quot;$protocol$//$host$/\&quot;;\r\n\r\nfunction TiddlyWebAdaptor(syncer) {\r\n\tthis.syncer = syncer;\r\n\tthis.host = this.getHost();\r\n\tthis.recipe = undefined;\r\n\tthis.logger = new $tw.utils.Logger(\&quot;TiddlyWebAdaptor\&quot;);\r\n}\r\n\r\nTiddlyWebAdaptor.prototype.getHost = function() {\r\n\tvar text = this.syncer.wiki.getTiddlerText(CONFIG_HOST_TIDDLER,DEFAULT_HOST_TIDDLER),\r\n\t\tsubstitutions = [\r\n\t\t\t{name: \&quot;protocol\&quot;, value: document.location.protocol},\r\n\t\t\t{name: \&quot;host\&quot;, value: document.location.host}\r\n\t\t];\r\n\tfor(var t=0; t&lt;substitutions.length; t++) {\r\n\t\tvar s = substitutions[t];\r\n\t\ttext = text.replace(new RegExp(\&quot;\\\\$\&quot; + s.name + \&quot;\\\\$\&quot;,\&quot;mg\&quot;),s.value);\r\n\t}\r\n\treturn text;\r\n};\r\n\r\nTiddlyWebAdaptor.prototype.getTiddlerInfo = function(tiddler) {\r\n\treturn {\r\n\t\tbag: tiddler.fields[\&quot;bag\&quot;]\r\n\t};\r\n};\r\n\r\n/*\r\nGet the current status of the TiddlyWeb connection\r\n*/\r\nTiddlyWebAdaptor.prototype.getStatus = function(callback) {\r\n\t// Get status\r\n\tvar self = this,\r\n\t\twiki = self.syncer.wiki;\r\n\tthis.logger.log(\&quot;Getting status\&quot;);\r\n\t$tw.utils.httpRequest({\r\n\t\turl: this.host + \&quot;status\&quot;,\r\n\t\tcallback: function(err,data) {\r\n\t\t\tif(err) {\r\n\t\t\t\treturn callback(err);\r\n\t\t\t}\r\n\t\t\t// Decode the status JSON\r\n\t\t\tvar json = null,\r\n\t\t\t\tisLoggedIn = false;\r\n\t\t\ttry {\r\n\t\t\t\tjson = JSON.parse(data);\r\n\t\t\t} catch (e) {\r\n\t\t\t}\r\n\t\t\tif(json) {\r\n\t\t\t\tself.logger.log(\&quot;Status:\&quot;,data);\r\n\t\t\t\t// Record the recipe\r\n\t\t\t\tif(json.space) {\r\n\t\t\t\t\tself.recipe = json.space.recipe;\r\n\t\t\t\t}\r\n\t\t\t\t// Check if we're logged in\r\n\t\t\t\tisLoggedIn = json.username !== \&quot;GUEST\&quot;;\r\n\t\t\t}\r\n\t\t\t// Invoke the callback if present\r\n\t\t\tif(callback) {\r\n\t\t\t\tcallback(null,isLoggedIn,json.username);\r\n\t\t\t}\r\n\t\t}\r\n\t});\r\n};\r\n\r\n/*\r\nAttempt to login and invoke the callback(err)\r\n*/\r\nTiddlyWebAdaptor.prototype.login = function(username,password,callback) {\r\n\tvar options = {\r\n\t\turl: this.host + \&quot;challenge/tiddlywebplugins.tiddlyspace.cookie_form\&quot;,\r\n\t\ttype: \&quot;POST\&quot;,\r\n\t\tdata: {\r\n\t\t\tuser: username,\r\n\t\t\tpassword: password,\r\n\t\t\ttiddlyweb_redirect: \&quot;/status\&quot; // workaround to marginalize automatic subsequent GET\r\n\t\t},\r\n\t\tcallback: function(err) {\r\n\t\t\tcallback(err);\r\n\t\t}\r\n\t};\r\n\tthis.logger.log(\&quot;Logging in:\&quot;,options);\r\n\t$tw.utils.httpRequest(options);\r\n};\r\n\r\n/*\r\n*/\r\nTiddlyWebAdaptor.prototype.logout = function(callback) {\r\n\tvar options = {\r\n\t\turl: this.host + \&quot;logout\&quot;,\r\n\t\ttype: \&quot;POST\&quot;,\r\n\t\tdata: {\r\n\t\t\tcsrf_token: this.getCsrfToken(),\r\n\t\t\ttiddlyweb_redirect: \&quot;/status\&quot; // workaround to marginalize automatic subsequent GET\r\n\t\t},\r\n\t\tcallback: function(err,data) {\r\n\t\t\tcallback(err);\r\n\t\t}\r\n\t};\r\n\tthis.logger.log(\&quot;Logging out:\&quot;,options);\r\n\t$tw.utils.httpRequest(options);\r\n};\r\n\r\n/*\r\nRetrieve the CSRF token from its cookie\r\n*/\r\nTiddlyWebAdaptor.prototype.getCsrfToken = function() {\r\n\tvar regex = /^(?:.*; )?csrf_token=([^(;|$)]*)(?:;|$)/,\r\n\t\tmatch = regex.exec(document.cookie),\r\n\t\tcsrf = null;\r\n\tif (match &amp;&amp; (match.length === 2)) {\r\n\t\tcsrf = match[1];\r\n\t}\r\n\treturn csrf;\r\n};\r\n\r\n/*\r\nGet an array of skinny tiddler fields from the server\r\n*/\r\nTiddlyWebAdaptor.prototype.getSkinnyTiddlers = function(callback) {\r\n\tvar self = this;\r\n\t$tw.utils.httpRequest({\r\n\t\turl: this.host + \&quot;recipes/\&quot; + this.recipe + \&quot;/tiddlers.json\&quot;,\r\n\t\tcallback: function(err,data) {\r\n\t\t\t// Check for errors\r\n\t\t\tif(err) {\r\n\t\t\t\treturn callback(err);\r\n\t\t\t}\r\n\t\t\t// Process the tiddlers to make sure the revision is a string\r\n\t\t\tvar tiddlers = JSON.parse(data);\r\n\t\t\tfor(var t=0; t&lt;tiddlers.length; t++) {\r\n\t\t\t\ttiddlers[t] = self.convertTiddlerFromTiddlyWebFormat(tiddlers[t]);\r\n\t\t\t}\r\n\t\t\t// Invoke the callback with the skinny tiddlers\r\n\t\t\tcallback(null,tiddlers);\r\n\t\t}\r\n\t});\r\n};\r\n\r\n/*\r\nSave a tiddler and invoke the callback with (err,adaptorInfo,revision)\r\n*/\r\nTiddlyWebAdaptor.prototype.saveTiddler = function(tiddler,callback) {\r\n\tvar self = this;\r\n\t$tw.utils.httpRequest({\r\n\t\turl: this.host + \&quot;recipes/\&quot; + encodeURIComponent(this.recipe) + \&quot;/tiddlers/\&quot; + encodeURIComponent(tiddler.fields.title),\r\n\t\ttype: \&quot;PUT\&quot;,\r\n\t\theaders: {\r\n\t\t\t\&quot;Content-type\&quot;: \&quot;application/json\&quot;\r\n\t\t},\r\n\t\tdata: this.convertTiddlerToTiddlyWebFormat(tiddler),\r\n\t\tcallback: function(err,data,request) {\r\n\t\t\tif(err) {\r\n\t\t\t\treturn callback(err);\r\n\t\t\t}\r\n\t\t\t// Save the details of the new revision of the tiddler\r\n\t\t\tvar etagInfo = self.parseEtag(request.getResponseHeader(\&quot;Etag\&quot;));\r\n\t\t\t// Invoke the callback\r\n\t\t\tcallback(null,{\r\n\t\t\t\tbag: etagInfo.bag\r\n\t\t\t}, etagInfo.revision);\t\r\n\t\t}\r\n\t});\r\n};\r\n\r\n/*\r\nLoad a tiddler and invoke the callback with (err,tiddlerFields)\r\n*/\r\nTiddlyWebAdaptor.prototype.loadTiddler = function(title,callback) {\r\n\tvar self = this;\r\n\t$tw.utils.httpRequest({\r\n\t\turl: this.host + \&quot;recipes/\&quot; + encodeURIComponent(this.recipe) + \&quot;/tiddlers/\&quot; + encodeURIComponent(title),\r\n\t\tcallback: function(err,data,request) {\r\n\t\t\tif(err) {\r\n\t\t\t\treturn callback(err);\r\n\t\t\t}\r\n\t\t\t// Invoke the callback\r\n\t\t\tcallback(null,self.convertTiddlerFromTiddlyWebFormat(JSON.parse(data)));\r\n\t\t}\r\n\t});\r\n};\r\n\r\n/*\r\nDelete a tiddler and invoke the callback with (err)\r\n*/\r\nTiddlyWebAdaptor.prototype.deleteTiddler = function(title,callback) {\r\n\tvar self = this,\r\n\t\tbag = this.syncer.tiddlerInfo[title].adaptorInfo.bag;\r\n\t// If we don't have a bag it means that the tiddler hasn't been seen by the server, so we don't need to delete it\r\n\tif(!bag) {\r\n\t\treturn callback(null);\r\n\t}\r\n\t// Issue HTTP request to delete the tiddler\r\n\t$tw.utils.httpRequest({\r\n\t\turl: this.host + \&quot;bags/\&quot; + encodeURIComponent(bag) + \&quot;/tiddlers/\&quot; + encodeURIComponent(title),\r\n\t\ttype: \&quot;DELETE\&quot;,\r\n\t\tcallback: function(err,data,request) {\r\n\t\t\tif(err) {\r\n\t\t\t\treturn callback(err);\r\n\t\t\t}\r\n\t\t\t// Invoke the callback\r\n\t\t\tcallback(null);\r\n\t\t}\r\n\t});\r\n};\r\n\r\n/*\r\nConvert a tiddler to a field set suitable for PUTting to TiddlyWeb\r\n*/\r\nTiddlyWebAdaptor.prototype.convertTiddlerToTiddlyWebFormat = function(tiddler) {\r\n\tvar result = {},\r\n\t\tknownFields = [\r\n\t\t\t\&quot;bag\&quot;, \&quot;created\&quot;, \&quot;creator\&quot;, \&quot;modified\&quot;, \&quot;modifier\&quot;, \&quot;permissions\&quot;, \&quot;recipe\&quot;, \&quot;revision\&quot;, \&quot;tags\&quot;, \&quot;text\&quot;, \&quot;title\&quot;, \&quot;type\&quot;, \&quot;uri\&quot;\r\n\t\t];\r\n\tif(tiddler) {\r\n\t\t$tw.utils.each(tiddler.fields,function(fieldValue,fieldName) {\r\n\t\t\tvar fieldString = fieldName === \&quot;tags\&quot; ?\r\n\t\t\t\t\t\t\t\ttiddler.fields.tags :\r\n\t\t\t\t\t\t\t\ttiddler.getFieldString(fieldName); // Tags must be passed as an array, not a string\r\n\r\n\t\t\tif(knownFields.indexOf(fieldName) !== -1) {\r\n\t\t\t\t// If it's a known field, just copy it across\r\n\t\t\t\tresult[fieldName] = fieldString;\r\n\t\t\t} else {\r\n\t\t\t\t// If it's unknown, put it in the \&quot;fields\&quot; field\r\n\t\t\t\tresult.fields = result.fields || {};\r\n\t\t\t\tresult.fields[fieldName] = fieldString;\r\n\t\t\t}\r\n\t\t});\r\n\t}\r\n\t// Default the content type and convert the type \&quot;text/x-tiddlywiki\&quot; into null\r\n\tif(result.type === \&quot;text/x-tiddlywiki\&quot;) {\r\n\t\tresult.type = null;\r\n\t};\r\n\tresult.type = result.type || \&quot;text/vnd.tiddlywiki\&quot;;\r\n\treturn JSON.stringify(result,null,$tw.config.preferences.jsonSpaces);\r\n};\r\n\r\n/*\r\nConvert a field set in TiddlyWeb format into ordinary TiddlyWiki5 format\r\n*/\r\nTiddlyWebAdaptor.prototype.convertTiddlerFromTiddlyWebFormat = function(tiddlerFields) {\r\n\tvar self = this,\r\n\t\tresult = {};\r\n\t// Transfer the fields, pulling down the `fields` hashmap\r\n\t$tw.utils.each(tiddlerFields,function(element,title,object) {\r\n\t\tif(title === \&quot;fields\&quot;) {\r\n\t\t\t$tw.utils.each(element,function(element,subTitle,object) {\r\n\t\t\t\tresult[subTitle] = element;\r\n\t\t\t});\r\n\t\t} else {\r\n\t\t\tresult[title] = tiddlerFields[title];\r\n\t\t}\r\n\t});\r\n\t// Make sure the revision is expressed as a string\r\n\tif(typeof result.revision === \&quot;number\&quot;) {\r\n\t\tresult.revision = result.revision.toString();\r\n\t}\r\n\t// Some unholy freaking of content types\r\n\tif(result.type === \&quot;text/javascript\&quot;) {\r\n\t\tresult.type = \&quot;application/javascript\&quot;;\r\n\t} else if(!result.type || result.type === \&quot;None\&quot;) {\r\n\t\tresult.type = \&quot;text/x-tiddlywiki\&quot;;\r\n\t}\r\n\treturn result;\r\n};\r\n\r\n/*\r\nSplit a TiddlyWeb Etag into its constituent parts. For example:\r\n\r\n```\r\n\&quot;system-images_public/unsyncedIcon/946151:9f11c278ccde3a3149f339f4a1db80dd4369fc04\&quot;\r\n```\r\n\r\nNote that the value includes the opening and closing double quotes.\r\n\r\nThe parts are:\r\n\r\n```\r\n&lt;bag&gt;/&lt;title&gt;/&lt;revision&gt;:&lt;hash&gt;\r\n```\r\n*/\r\nTiddlyWebAdaptor.prototype.parseEtag = function(etag) {\r\n\tvar firstSlash = etag.indexOf(\&quot;/\&quot;),\r\n\t\tlastSlash = etag.lastIndexOf(\&quot;/\&quot;),\r\n\t\tcolon = etag.lastIndexOf(\&quot;:\&quot;);\r\n\tif(firstSlash === -1 || lastSlash === -1 || colon === -1) {\r\n\t\treturn null;\r\n\t} else {\r\n\t\treturn {\r\n\t\t\tbag: decodeURIComponent(etag.substring(1,firstSlash)),\r\n\t\t\ttitle: decodeURIComponent(etag.substring(firstSlash + 1,lastSlash)),\r\n\t\t\trevision: etag.substring(lastSlash + 1,colon)\r\n\t\t};\r\n\t}\r\n};\r\n\r\nif($tw.browser &amp;&amp; document.location.protocol.substr(0,4) === \&quot;http\&quot; ) {\r\n\texports.adaptorClass = TiddlyWebAdaptor;\r\n}\r\n\r\n})();\r\n&quot;,
-            &quot;title&quot;: &quot;$:/plugins/tiddlywiki/tiddlyweb/tiddlywebadaptor.js&quot;,
-            &quot;type&quot;: &quot;application/javascript&quot;,
-            &quot;module-type&quot;: &quot;syncadaptor&quot;
-        }
-    }
-}</pre>
-</div>
-<div author="James W. Anderson" core-version="&gt;=5.0.0" dependents="" description="Catches links in HTA" plugin-type="plugin" source="https://github.com/Welford/twexe" title="$:/plugins/welford/htalink" type="application/json" version="0.0.1" revision="0" bag="default">
+<div author="James W. Anderson" core-version="&gt;=5.0.0" dependents="" description="Catches links in HTA" plugin-type="plugin" source="https://github.com/Welford/twexe" title="$:/plugins/welford/htalink" type="application/json" version="0.0.1">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/plugins/welford/htalink/link&quot;: {
@@ -5583,7 +5535,7 @@ yes
     }
 }</pre>
 </div>
-<div author="James W. Anderson" core-version="&gt;=5.0.0" dependents="" description="Runs local exe/batch files. Open in folder, copy to clipboard etc also optional" plugin-type="plugin" source="https://github.com/Welford/twexe" title="$:/plugins/welford/twexe" type="application/json" version="0.0.1" revision="0" bag="default">
+<div author="James W. Anderson" core-version="&gt;=5.0.0" dependents="" description="Runs local exe/batch files. Open in folder, copy to clipboard etc also optional" plugin-type="plugin" source="https://github.com/Welford/twexe" title="$:/plugins/welford/twexe" type="application/json" version="0.0.1">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/plugins/welford/twexe/create&quot;: {
@@ -5630,25 +5582,19 @@ yes
     }
 }</pre>
 </div>
-<div created="20140710201632183" creator="ジェームス" modified="20140710201654071" modifier="ジェームス" title="$:/SiteSubtitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140710201632183" creator="ジェームス" modified="20140710201654071" modifier="ジェームス" title="$:/SiteSubtitle" type="text/vnd.tiddlywiki">
 <pre>Samples Of My Tiddlywiki Stuff</pre>
 </div>
-<div created="20140710201622904" creator="ジェームス" modified="20140710201628790" modifier="ジェームス" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140710201622904" creator="ジェームス" modified="20140710201628790" modifier="ジェームス" title="$:/SiteTitle" type="text/vnd.tiddlywiki">
 <pre>TWNotes</pre>
 </div>
-<div title="$:/status/IsLoggedIn" revision="2" bag="default">
-<pre>yes</pre>
-</div>
-<div title="$:/status/UserName" revision="1" bag="default">
+<div list="Hello Download [[Developing For And Using TW5]]" title="$:/StoryList">
 <pre></pre>
 </div>
-<div list="Hello Download [[Developing For And Using TW5]]" title="$:/StoryList" revision="1" bag="default">
-<pre></pre>
-</div>
-<div created="20140620130427249" modified="20140712124627931" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140620130427249" modified="20140712124627931" title="$:/theme" type="text/vnd.tiddlywiki">
 <pre>$:/themes/welford/phasersonkill</pre>
 </div>
-<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="A clean theme that emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
+<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="A clean theme that emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.0.14-prerelease">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/themes/tiddlywiki/snowwhite/base&quot;: {
@@ -5659,7 +5605,7 @@ yes
     }
 }</pre>
 </div>
-<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="A basic default theme" name="Vanilla" plugin-type="theme" title="$:/themes/tiddlywiki/vanilla" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
+<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="A basic default theme" name="Vanilla" plugin-type="theme" title="$:/themes/tiddlywiki/vanilla" type="application/json" version="5.0.14-prerelease">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/themes/tiddlywiki/vanilla/base&quot;: {
@@ -5717,7 +5663,7 @@ yes
     }
 }</pre>
 </div>
-<div author="James.W.Anderson" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="custom theme based on Seamless" name="PhasersOnKill" plugin-type="theme" title="$:/themes/welford/phasersonkill" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
+<div author="James.W.Anderson" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="custom theme based on Seamless" name="PhasersOnKill" plugin-type="theme" title="$:/themes/welford/phasersonkill" type="application/json" version="5.0.14-prerelease">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/config/AnimationDuration&quot;: {
@@ -5821,7 +5767,7 @@ yes
     }
 }</pre>
 </div>
-<div author="James.W.Anderson" core-version="&gt;=5.0.0" dependents="$:/themes/welford/phasersonkill" description="Theme for removing editing features" name="ReadOnly" plugin-type="theme" title="$:/themes/welford/readonly" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
+<div author="James.W.Anderson" core-version="&gt;=5.0.0" dependents="$:/themes/welford/phasersonkill" description="Theme for removing editing features" name="ReadOnly" plugin-type="theme" title="$:/themes/welford/readonly" type="application/json" version="5.0.14-prerelease">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/themes/welford/readonly/styles.tid&quot;: {
@@ -5832,10 +5778,10 @@ yes
     }
 }</pre>
 </div>
-<div created="20140712130814229" modified="20140712131059105" tags="blog" title="A Sample Blog Post" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140712130814229" modified="20140712131059105" tags="blog" title="A Sample Blog Post" type="text/vnd.tiddlywiki">
 <pre>This can be exported to a blog tiddlywiki using the Download Partial tiddler</pre>
 </div>
-<div created="20140102190517965" creator="ジェームス" modified="20140712132412010" modifier="ジェームス" tags="twdev" title="Developing For And Using TW5" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140102190517965" creator="ジェームス" modified="20140712132412010" modifier="ジェームス" tags="twdev" title="Developing For And Using TW5" type="text/vnd.tiddlywiki">
 <pre>!!Tiddlywiki Development 
 
 I have made a few plugins and themes for tiddlywiki, you can find some notes of things I found usefull while developing them on this site. Search for the tag twdev or look at one of the articles below.
@@ -5863,7 +5809,7 @@ I have made a few plugins and themes for tiddlywiki, you can find some notes of 
 
 </pre>
 </div>
-<div created="20131119194500000" modified="20140710204510974" title="Download" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20131119194500000" modified="20140710204510974" title="Download" type="text/vnd.tiddlywiki">
 <pre>Download single file editions of version ''&lt;&lt;version&gt;&gt;'' of TiddlyWiki:
 
 |{{$:/editions/twnotes/snippets/download-empty-button}}|Get started with an empty wiki |
@@ -5873,7 +5819,7 @@ For more advanced configurations, you can run [[TiddlyWiki on Node.js]].
 
 </pre>
 </div>
-<div created="20140712130137444" modified="20140712130320744" title="Download Partial" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140712130137444" modified="20140712130320744" title="Download Partial" type="text/vnd.tiddlywiki">
 <pre>\define saveTiddlerFilter()
 [[$:/core]] [[$:/isEncrypted]] [[$:/plugins/tiddlywiki/fullscreen]] [[$:/themes/tiddlywiki/vanilla]] [[$:/themes/welford/phasersonkill]] [[$:/themes/welford/readonly]] [[$:/theme]] [[$:/plugins/tiddlywiki/codemirror]] [[$:/plugins/tiddlywiki/highlight]] [[$:/plugins/welford/twexe]] [[$:/plugins/welford/htalink]] [tag[blog]] -[[$:/boot/boot.css]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] +[sort[title]]
 \end
@@ -5883,13 +5829,17 @@ yes
 {{$:/core/templates/tiddlywiki5.html}}
 </pre>
 </div>
-<div created="20140712181615246" draft.of="$:/core/ui/PageControls/new-tiddler" draft.title="$:/core/ui/PageControls/new-tiddler" modified="20140712181614163" tags="$:/tags/PageControls" title="Draft of '$:/core/ui/PageControls/new-tiddler'" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>&lt;$button message=&quot;tw-new-tiddler&quot; title={{$:/language/Buttons/NewTiddler/Hint}} aria-label={{$:/language/Buttons/NewTiddler/Caption}} class=&quot;btn-invisible&quot;&gt;{{$:/core/images/new-button}}&lt;/$button&gt;</pre>
+<div created="20131119194500000" draft.of="Download" draft.title="Download" modified="20140712190745242" title="Draft of 'Download'" type="text/vnd.tiddlywiki">
+<pre>Download single file editions of version ''&lt;&lt;version&gt;&gt;'' of TiddlyWiki:
+
+|{{$:/editions/twnotes/snippets/download-empty-button}}|Get started with an empty wiki |
+|{{$:/snippets/download-wiki-button}}|Download a full copy of this site|
+
+For more advanced configurations, you can run [[TiddlyWiki on Node.js]].
+
+</pre>
 </div>
-<div created="20140712181602007" draft.of="$:/tags/PageControls" draft.title="$:/tags/PageControls" list="$:/core/ui/PageControls/new-tiddler $:/core/ui/PageControls/control-panel $:/core/ui/PageControls/save-wiki" modified="20140712181600933" title="Draft of '$:/tags/PageControls'" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre></pre>
-</div>
-<div created="20140705202408826" modified="20140707212850957" title="Example Tiddler" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140705202408826" modified="20140707212850957" title="Example Tiddler" type="text/vnd.tiddlywiki">
 <pre>!This Tiddler
 !!Does Nothing
 !!!It's just an example
@@ -5908,7 +5858,7 @@ http://www.google.co.jp
 !!TWexe
 &lt;$twexe tiddler=&quot;This Is TWEXE&quot; /&gt;</pre>
 </div>
-<div created="20140712125603027" modified="20140712131847562" tags="twdev" title="Export Specific Tiddlers" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140712125603027" modified="20140712131847562" tags="twdev" title="Export Specific Tiddlers" type="text/vnd.tiddlywiki">
 <pre>Just as you can use the buttons in [[Download]] to download the whole tiddlywiki as it is or an empty copy conatining just the plugins and themes, you can also 
 create a tiddler to extract specific pages. I like to do this to extract pages specifically for my homepage. 
 
@@ -5918,7 +5868,7 @@ create a tiddler to extract specific pages. I like to do this to extract pages s
 !!Example
 *&lt;$button message=&quot;tw-download-file&quot; param=&quot;Download Partial&quot;&gt;Download Partial&lt;/$button&gt;</pre>
 </div>
-<div created="20140325223215222" creator="ジェームス" modified="20140712115927929" modifier="ジェームス" title="Hello" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140325223215222" creator="ジェームス" modified="20140712115927929" modifier="ジェームス" title="Hello" type="text/vnd.tiddlywiki">
 <pre>This TiddlyWiki is for keeping basic notes on how to make plugins for TiddlyWiki and is very much a work in progress.
 
 !!Features
@@ -5933,7 +5883,7 @@ create a tiddler to extract specific pages. I like to do this to extract pages s
 **import into your tiddlywiki by dragging and dropping this link [[$:/plugins/welford/htalink]]
 </pre>
 </div>
-<div created="20140318214655832" creator="ジェームス" modified="20140318214729239" modifier="ジェームス" title="Highlight Example" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140318214655832" creator="ジェームス" modified="20140318214729239" modifier="ジェームス" title="Highlight Example" type="text/vnd.tiddlywiki">
 <pre>```cpp
 void main(void)
 {
@@ -5942,7 +5892,7 @@ void main(void)
 }
 ```</pre>
 </div>
-<div created="20140103173954731" creator="ジェームス" modified="20140712132207856" modifier="ジェームス" tags="twexample" title="list test" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140103173954731" creator="ジェームス" modified="20140712132207856" modifier="ジェームス" tags="twexample" title="list test" type="text/vnd.tiddlywiki">
 <pre>&lt;$list filter=&quot;[!is[system]has[type]each[type]sort[type]]&quot;&gt;
 &lt;div class=&quot;tw-menu-list-item&quot;&gt;
 &lt;$view field=&quot;type&quot;/&gt;
@@ -5965,10 +5915,239 @@ void main(void)
 &lt;/div&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20140707212036871" modified="20140707212107032" tags="$:/tags/twexe" title="This Is TWEXE" twexe_cwd=".\" twexe_name="TWEXE Example" twexe_target=".\" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140712183419077" modified="20140712184922077" title="shortcut.js" type="startup">
+<pre>/**
+ * http://www.openjs.com/scripts/events/keyboard_shortcuts/
+ * Version : 2.01.B
+ * By Binny V A
+ * License : BSD
+ */
+shortcut = {
+	'all_shortcuts':{},//All the shortcuts are stored in this array
+	'add': function(shortcut_combination,callback,opt) {
+		//Provide a set of default options
+		var default_options = {
+			'type':'keydown',
+			'propagate':false,
+			'disable_in_input':false,
+			'target':document,
+			'keycode':false
+		}
+		if(!opt) opt = default_options;
+		else {
+			for(var dfo in default_options) {
+				if(typeof opt[dfo] == 'undefined') opt[dfo] = default_options[dfo];
+			}
+		}
+
+		var ele = opt.target;
+		if(typeof opt.target == 'string') ele = document.getElementById(opt.target);
+		var ths = this;
+		shortcut_combination = shortcut_combination.toLowerCase();
+
+		//The function to be called at keypress
+		var func = function(e) {
+			e = e || window.event;
+			
+			if(opt['disable_in_input']) { //Don't enable shortcut keys in Input, Textarea fields
+				var element;
+				if(e.target) element=e.target;
+				else if(e.srcElement) element=e.srcElement;
+				if(element.nodeType==3) element=element.parentNode;
+
+				if(element.tagName == 'INPUT' || element.tagName == 'TEXTAREA') return;
+			}
+	
+			//Find Which key is pressed
+			if (e.keyCode) code = e.keyCode;
+			else if (e.which) code = e.which;
+			var character = String.fromCharCode(code).toLowerCase();
+			
+			if(code == 188) character=&quot;,&quot;; //If the user presses , when the type is onkeydown
+			if(code == 190) character=&quot;.&quot;; //If the user presses , when the type is onkeydown
+
+			var keys = shortcut_combination.split(&quot;+&quot;);
+			//Key Pressed - counts the number of valid keypresses - if it is same as the number of keys, the shortcut function is invoked
+			var kp = 0;
+			
+			//Work around for stupid Shift key bug created by using lowercase - as a result the shift+num combination was broken
+			var shift_nums = {
+				&quot;`&quot;:&quot;~&quot;,
+				&quot;1&quot;:&quot;!&quot;,
+				&quot;2&quot;:&quot;@&quot;,
+				&quot;3&quot;:&quot;#&quot;,
+				&quot;4&quot;:&quot;$&quot;,
+				&quot;5&quot;:&quot;%&quot;,
+				&quot;6&quot;:&quot;^&quot;,
+				&quot;7&quot;:&quot;&amp;&quot;,
+				&quot;8&quot;:&quot;*&quot;,
+				&quot;9&quot;:&quot;(&quot;,
+				&quot;0&quot;:&quot;)&quot;,
+				&quot;-&quot;:&quot;_&quot;,
+				&quot;=&quot;:&quot;+&quot;,
+				&quot;;&quot;:&quot;:&quot;,
+				&quot;'&quot;:&quot;\&quot;&quot;,
+				&quot;,&quot;:&quot;&lt;&quot;,
+				&quot;.&quot;:&quot;&gt;&quot;,
+				&quot;/&quot;:&quot;?&quot;,
+				&quot;\\&quot;:&quot;|&quot;
+			}
+			//Special Keys - and their codes
+			var special_keys = {
+				'esc':27,
+				'escape':27,
+				'tab':9,
+				'space':32,
+				'return':13,
+				'enter':13,
+				'backspace':8,
+	
+				'scrolllock':145,
+				'scroll_lock':145,
+				'scroll':145,
+				'capslock':20,
+				'caps_lock':20,
+				'caps':20,
+				'numlock':144,
+				'num_lock':144,
+				'num':144,
+				
+				'pause':19,
+				'break':19,
+				
+				'insert':45,
+				'home':36,
+				'delete':46,
+				'end':35,
+				
+				'pageup':33,
+				'page_up':33,
+				'pu':33,
+	
+				'pagedown':34,
+				'page_down':34,
+				'pd':34,
+	
+				'left':37,
+				'up':38,
+				'right':39,
+				'down':40,
+	
+				'f1':112,
+				'f2':113,
+				'f3':114,
+				'f4':115,
+				'f5':116,
+				'f6':117,
+				'f7':118,
+				'f8':119,
+				'f9':120,
+				'f10':121,
+				'f11':122,
+				'f12':123
+			}
+	
+			var modifiers = { 
+				shift: { wanted:false, pressed:false},
+				ctrl : { wanted:false, pressed:false},
+				alt  : { wanted:false, pressed:false},
+				meta : { wanted:false, pressed:false}	//Meta is Mac specific
+			};
+                        
+			if(e.ctrlKey)	modifiers.ctrl.pressed = true;
+			if(e.shiftKey)	modifiers.shift.pressed = true;
+			if(e.altKey)	modifiers.alt.pressed = true;
+			if(e.metaKey)   modifiers.meta.pressed = true;
+                        
+			for(var i=0; k=keys[i],i&lt;keys.length; i++) {
+				//Modifiers
+				if(k == 'ctrl' || k == 'control') {
+					kp++;
+					modifiers.ctrl.wanted = true;
+
+				} else if(k == 'shift') {
+					kp++;
+					modifiers.shift.wanted = true;
+
+				} else if(k == 'alt') {
+					kp++;
+					modifiers.alt.wanted = true;
+				} else if(k == 'meta') {
+					kp++;
+					modifiers.meta.wanted = true;
+				} else if(k.length &gt; 1) { //If it is a special key
+					if(special_keys[k] == code) kp++;
+					
+				} else if(opt['keycode']) {
+					if(opt['keycode'] == code) kp++;
+
+				} else { //The special keys did not match
+					if(character == k) kp++;
+					else {
+						if(shift_nums[character] &amp;&amp; e.shiftKey) { //Stupid Shift key bug created by using lowercase
+							character = shift_nums[character]; 
+							if(character == k) kp++;
+						}
+					}
+				}
+			}
+			
+			if(kp == keys.length &amp;&amp; 
+						modifiers.ctrl.pressed == modifiers.ctrl.wanted &amp;&amp;
+						modifiers.shift.pressed == modifiers.shift.wanted &amp;&amp;
+						modifiers.alt.pressed == modifiers.alt.wanted &amp;&amp;
+						modifiers.meta.pressed == modifiers.meta.wanted) {
+				callback(e);
+	
+				if(!opt['propagate']) { //Stop the event
+					//e.cancelBubble is supported by IE - this will kill the bubbling process.
+					e.cancelBubble = true;
+					e.returnValue = false;
+	
+					//e.stopPropagation works in Firefox.
+					if (e.stopPropagation) {
+						e.stopPropagation();
+						e.preventDefault();
+					}
+					return false;
+				}
+			}
+		}
+		this.all_shortcuts[shortcut_combination] = {
+			'callback':func, 
+			'target':ele, 
+			'event': opt['type']
+		};
+		//Attach the function with the event
+		if(ele.addEventListener) ele.addEventListener(opt['type'], func, false);
+		else if(ele.attachEvent) ele.attachEvent('on'+opt['type'], func);
+		else ele['on'+opt['type']] = func;
+	},
+
+	//Remove the shortcut - just specify the shortcut and I will remove the binding
+	'remove':function(shortcut_combination) {
+		shortcut_combination = shortcut_combination.toLowerCase();
+		var binding = this.all_shortcuts[shortcut_combination];
+		delete(this.all_shortcuts[shortcut_combination])
+		if(!binding) return;
+		var type = binding['event'];
+		var ele = binding['target'];
+		var callback = binding['callback'];
+
+		if(ele.detachEvent) ele.detachEvent('on'+type, callback);
+		else if(ele.removeEventListener) ele.removeEventListener(type, callback, false);
+		else ele['on'+type] = false;
+	}
+}
+
+shortcut.add(&quot;Ctrl+Shift+X&quot;,function() {
+	alert(&quot;Hi there!&quot;);
+});</pre>
+</div>
+<div created="20140707212036871" modified="20140707212107032" tags="$:/tags/twexe" title="This Is TWEXE" twexe_cwd=".\" twexe_name="TWEXE Example" twexe_target=".\" type="text/vnd.tiddlywiki">
 <pre>Write a description of the exe here.</pre>
 </div>
-<div created="20140630220900224" modified="20140710201506015" title="To Do" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140630220900224" modified="20140710201506015" title="To Do" type="text/vnd.tiddlywiki">
 <pre># transclusion of twexe search results
 # ~~push storyriver down by the height of the results~~
 # clean up CSS
@@ -5983,7 +6162,7 @@ void main(void)
 #~~move the custom storyview out into the theme from the actual tiddly~~
 #~~consder having the quick search in the main version too~~</pre>
 </div>
-<div created="20140325222233114" creator="ジェームス" modified="20140712131834065" modifier="ジェームス" tags="twdev" title="TW Dev Notes" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140325222233114" creator="ジェームス" modified="20140712131834065" modifier="ジェームス" tags="twdev" title="TW Dev Notes" type="text/vnd.tiddlywiki">
 <pre>!!Widgets
 
 Accessing a tidder's field and text data from within a widget
