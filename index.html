@@ -133,7 +133,11 @@ Error message and password prompt
 
 <li>$:/plugins/tiddlywiki/codemirror</li>
 
+<li>$:/plugins/tiddlywiki/filesystem</li>
+
 <li>$:/plugins/tiddlywiki/highlight</li>
+
+<li>$:/plugins/tiddlywiki/tiddlyweb</li>
 
 <li>$:/plugins/welford/htalink</li>
 
@@ -143,21 +147,37 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/status/IsLoggedIn</li>
+
+<li>$:/status/UserName</li>
+
 <li>$:/StoryList</li>
 
 <li>$:/theme</li>
 
-<li>$:/themes/tiddlywiki/readonly</li>
+<li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
 
 <li>$:/themes/welford/phasersonkill</li>
 
-<li>Customising Tiddly5</li>
+<li>$:/themes/welford/readonly</li>
+
+<li>A Sample Blog Post</li>
+
+<li>Developing For And Using TW5</li>
 
 <li>Download</li>
 
+<li>Download Partial</li>
+
+<li>Draft of '$:/core/ui/PageControls/new-tiddler'</li>
+
+<li>Draft of '$:/tags/PageControls'</li>
+
 <li>Example Tiddler</li>
+
+<li>Export Specific Tiddlers</li>
 
 <li>Hello</li>
 
@@ -181,9 +201,8 @@ Error message and password prompt
 <!--~~ Ordinary tiddlers ~~-->
 
 <div id="storeArea" style="display:none;">
-<div title="$:/config/OriginalTiddlerPaths" type="application/x-tiddler-dictionary">
-<pre>Customising Tiddly5: Customising Tiddly5.tid
-$:/DefaultTiddlers: DefaultTiddlers.tid
+<div title="$:/config/OriginalTiddlerPaths" type="application/x-tiddler-dictionary" revision="0" bag="default">
+<pre>$:/DefaultTiddlers: DefaultTiddlers.tid
 $:/editions/twnotes/snippets/download-empty-button: download-empty-button.tid
 $:/editions/twnotes/download-empty: download-empty.tid
 Download: Download.tid
@@ -199,7 +218,7 @@ To Do: To Do.tid
 TW Dev Notes: TW Dev Notes.tid
 </pre>
 </div>
-<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core plugin" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.0.14-prerelease">
+<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core plugin" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/config/EditorTypeMappings/image/gif&quot;: {
@@ -2918,7 +2937,7 @@ TW Dev Notes: TW Dev Notes.tid
             &quot;module-type&quot;: &quot;widget&quot;
         },
         &quot;$:/core/modules/widgets/edit-text.js&quot;: {
-            &quot;text&quot;: &quot;/*\\\r\ntitle: $:/core/modules/widgets/edit-text.js\r\ntype: application/javascript\r\nmodule-type: widget\r\n\r\nEdit-text widget\r\n\r\n\\*/\r\n(function(){\r\n\r\n/*jslint node: true, browser: true */\r\n/*global $tw: false */\r\n\&quot;use strict\&quot;;\r\n\r\nvar MIN_TEXT_AREA_HEIGHT = 100; // Minimum height of textareas in pixels\r\n\r\nvar Widget = require(\&quot;$:/core/modules/widgets/widget.js\&quot;).widget;\r\n\r\nvar EditTextWidget = function(parseTreeNode,options) {\r\n\tthis.initialise(parseTreeNode,options);\r\n};\r\n\r\n/*\r\nInherit from the base widget class\r\n*/\r\nEditTextWidget.prototype = new Widget();\r\n\r\n/*\r\nRender this widget into the DOM\r\n*/\r\nEditTextWidget.prototype.render = function(parent,nextSibling) {\r\n\tvar self = this;\r\n\t// Save the parent dom node\r\n\tthis.parentDomNode = parent;\r\n\t// Compute our attributes\r\n\tthis.computeAttributes();\r\n\t// Execute our logic\r\n\tthis.execute();\r\n\t// Create our element\r\n\tvar editInfo = this.getEditInfo();\r\n\tvar domNode = this.document.createElement(this.editTag);\r\n\tif(this.editType) {\r\n\t\tdomNode.setAttribute(\&quot;type\&quot;,this.editType);\r\n\t}\r\n\tif(editInfo.value === \&quot;\&quot; &amp;&amp; this.editPlaceholder) {\r\n\t\tdomNode.setAttribute(\&quot;placeholder\&quot;,this.editPlaceholder);\r\n\t}\r\n\tif(this.editSize) {\r\n\t\tdomNode.setAttribute(\&quot;size\&quot;,this.editSize);\r\n\t}\r\n\t// Assign classes\r\n\tif(this.editClass) {\r\n\t\tdomNode.className = this.editClass;\r\n\t}\r\n\t// Set the text\r\n\tif(this.editTag === \&quot;textarea\&quot;) {\r\n\t\tdomNode.appendChild(this.document.createTextNode(editInfo.value));\r\n\t} else {\r\n\t\tdomNode.value = editInfo.value;\r\n\t}\r\n\t// Add an input event handler\r\n\t$tw.utils.addEventListeners(domNode,[\r\n\t\t{name: \&quot;focus\&quot;, handlerObject: this, handlerMethod: \&quot;handleFocusEvent\&quot;},\r\n\t\t{name: \&quot;input\&quot;, handlerObject: this, handlerMethod: \&quot;handleInputEvent\&quot;}\r\n\t]);\r\n\t// Insert the element into the DOM\r\n\tparent.insertBefore(domNode,nextSibling);\r\n\tthis.domNodes.push(domNode);\r\n\tif(this.postRender) {\r\n\t\tthis.postRender();\r\n\t}\r\n\t// Fix height\r\n\tthis.fixHeight();\r\n};\r\n\r\n/*\r\nGet the tiddler being edited and current value\r\n*/\r\nEditTextWidget.prototype.getEditInfo = function() {\r\n\t// Get the edit value\r\n\tvar self = this,\r\n\t\tvalue,\r\n\t\tupdate;\r\n\tif(this.editIndex) {\r\n\t\tvalue = this.wiki.extractTiddlerDataItem(this.editTitle,this.editIndex,this.editDefault);\r\n\t\tupdate = function(value) {\r\n\t\t\tvar data = self.wiki.getTiddlerData(self.editTitle,{});\r\n\t\t\tif(data[self.editIndex] !== value) {\r\n\t\t\t\tdata[self.editIndex] = value;\r\n\t\t\t\tself.wiki.setTiddlerData(self.editTitle,data);\r\n\t\t\t}\r\n\t\t};\r\n\t} else {\r\n\t\t// Get the current tiddler and the field name\r\n\t\tvar tiddler = this.wiki.getTiddler(this.editTitle);\r\n\t\tif(tiddler) {\r\n\t\t\t// If we've got a tiddler, the value to display is the field string value\r\n\t\t\tvalue = tiddler.getFieldString(this.editField);\r\n\t\t} else {\r\n\t\t\t// Otherwise, we need to construct a default value for the editor\r\n\t\t\tswitch(this.editField) {\r\n\t\t\t\tcase \&quot;text\&quot;:\r\n\t\t\t\t\tvalue = \&quot;Type the text for the tiddler '\&quot; + this.editTitle + \&quot;'\&quot;;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase \&quot;title\&quot;:\r\n\t\t\t\t\tvalue = this.editTitle;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tdefault:\r\n\t\t\t\t\tvalue = \&quot;\&quot;;\r\n\t\t\t\t\tbreak;\r\n\t\t\t}\r\n\t\t\tif(this.editDefault !== undefined) {\r\n\t\t\t\tvalue = this.editDefault;\r\n\t\t\t}\r\n\t\t}\r\n\t\tupdate = function(value) {\r\n\t\t\tvar tiddler = self.wiki.getTiddler(self.editTitle),\r\n\t\t\t\tupdateFields = {\r\n\t\t\t\t\ttitle: self.editTitle\r\n\t\t\t\t};\r\n\t\t\tupdateFields[self.editField] = value;\r\n\t\t\tself.wiki.addTiddler(new $tw.Tiddler(self.wiki.getCreationFields(),tiddler,updateFields,self.wiki.getModificationFields()));\r\n\t\t};\r\n\t}\r\n\treturn {value: value, update: update};\r\n};\r\n\r\n/*\r\nCompute the internal state of the widget\r\n*/\r\nEditTextWidget.prototype.execute = function() {\r\n\t// Get our parameters\r\n\tthis.editTitle = this.getAttribute(\&quot;tiddler\&quot;,this.getVariable(\&quot;currentTiddler\&quot;));\r\n\tthis.editField = this.getAttribute(\&quot;field\&quot;,\&quot;text\&quot;);\r\n\tthis.editIndex = this.getAttribute(\&quot;index\&quot;);\r\n\tthis.editDefault = this.getAttribute(\&quot;default\&quot;);\r\n\tthis.editClass = this.getAttribute(\&quot;class\&quot;);\r\n\tthis.editPlaceholder = this.getAttribute(\&quot;placeholder\&quot;);\r\n\tthis.editSize = this.getAttribute(\&quot;size\&quot;);\r\n\tthis.editFocusPopup = this.getAttribute(\&quot;focusPopup\&quot;);\r\n\t// Get the editor element tag and type\r\n\tvar tag,type;\r\n\tif(this.editField === \&quot;text\&quot;) {\r\n\t\ttag = \&quot;textarea\&quot;;\r\n\t} else {\r\n\t\ttag = \&quot;input\&quot;;\r\n\t\tvar fieldModule = $tw.Tiddler.fieldModules[this.editField];\r\n\t\tif(fieldModule &amp;&amp; fieldModule.editTag) {\r\n\t\t\ttag = fieldModule.editTag;\r\n\t\t}\r\n\t\tif(fieldModule &amp;&amp; fieldModule.editType) {\r\n\t\t\ttype = fieldModule.editType;\r\n\t\t}\r\n\t\ttype = type || \&quot;text\&quot;;\r\n\t}\r\n\t// Get the rest of our parameters\r\n\tthis.editTag = this.getAttribute(\&quot;tag\&quot;,tag);\r\n\tthis.editType = this.getAttribute(\&quot;type\&quot;,type);\r\n};\r\n\r\n/*\r\nSelectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering\r\n*/\r\nEditTextWidget.prototype.refresh = function(changedTiddlers) {\r\n\tvar changedAttributes = this.computeAttributes();\r\n\t// Completely rerender if any of our attributes have changed\r\n\tif(changedAttributes.tiddler || changedAttributes.field || changedAttributes.index) {\r\n\t\tthis.refreshSelf();\r\n\t\treturn true;\r\n\t} else if(changedTiddlers[this.editTitle]) {\r\n\t\tthis.updateEditor(this.getEditInfo().value);\r\n\t\treturn true;\r\n\t}\r\n\treturn false;\r\n};\r\n\r\n/*\r\nUpdate the editor with new text. This method is separate from updateEditorDomNode()\r\nso that subclasses can override updateEditor() and still use updateEditorDomNode()\r\n*/\r\nEditTextWidget.prototype.updateEditor = function(text) {\r\n\tthis.updateEditorDomNode(text);\r\n};\r\n\r\n/*\r\nUpdate the editor dom node with new text\r\n*/\r\nEditTextWidget.prototype.updateEditorDomNode = function(text) {\r\n\t// Replace the edit value if the tiddler we're editing has changed\r\n\tvar domNode = this.domNodes[0];\r\n\tif(!domNode.isTiddlyWikiFakeDom) {\r\n\t\tif(this.document.activeElement !== domNode) {\r\n\t\t\tdomNode.value = text;\r\n\t\t}\r\n\t\t// Fix the height if needed\r\n\t\tthis.fixHeight();\r\n\t}\r\n};\r\n\r\n/*\r\nFix the height of textareas to fit their content\r\n*/\r\nEditTextWidget.prototype.fixHeight = function() {\r\n\tvar self = this,\r\n\t\tdomNode = this.domNodes[0];\r\n\tif(domNode &amp;&amp; !domNode.isTiddlyWikiFakeDom &amp;&amp; this.editTag === \&quot;textarea\&quot;) {\r\n\t\t$tw.utils.nextTick(function() {\r\n\t\t\t// Resize the textarea to fit its content, preserving scroll position\r\n\t\t\tvar scrollPosition = $tw.utils.getScrollPosition(),\r\n\t\t\t\tscrollTop = scrollPosition.y;\r\n\t\t\t// Set its height to auto so that it snaps to the correct height\r\n\t\t\tdomNode.style.height = \&quot;auto\&quot;;\r\n\t\t\t// Calculate the revised height\r\n\t\t\tvar newHeight = Math.max(domNode.scrollHeight + domNode.offsetHeight - domNode.clientHeight,MIN_TEXT_AREA_HEIGHT);\r\n\t\t\t// Only try to change the height if it has changed\r\n\t\t\tif(newHeight !== domNode.offsetHeight) {\r\n\t\t\t\tdomNode.style.height =  newHeight + \&quot;px\&quot;;\r\n\t\t\t\t// Make sure that the dimensions of the textarea are recalculated\r\n\t\t\t\t$tw.utils.forceLayout(domNode);\r\n\t\t\t\t// Check that the scroll position is still visible before trying to scroll back to it\r\n\t\t\t\tscrollTop = Math.min(scrollTop,self.document.body.scrollHeight - window.innerHeight);\r\n\t\t\t\twindow.scrollTo(scrollPosition.x,scrollTop);\r\n\t\t\t}\r\n\t\t});\r\n\t}\r\n};\r\n\r\n/*\r\nHandle a dom \&quot;input\&quot; event\r\n*/\r\nEditTextWidget.prototype.handleInputEvent = function(event) {\r\n\tthis.saveChanges(this.domNodes[0].value);\r\n\tthis.fixHeight();\r\n\treturn true;\r\n};\r\n\r\nEditTextWidget.prototype.handleFocusEvent = function(event) {\r\n\tif(this.editFocusPopup) {\r\n\t\t$tw.popup.triggerPopup({\r\n\t\t\tdomNode: this.domNodes[0],\r\n\t\t\ttitle: this.editFocusPopup,\r\n\t\t\twiki: this.wiki,\r\n\t\t\tforce: true\r\n\t\t});\r\n\t}\r\n\treturn true;\r\n};\r\n\r\nEditTextWidget.prototype.saveChanges = function(text) {\r\n\tvar editInfo = this.getEditInfo();\r\n\tif(text !== editInfo.value) {\r\n\t\teditInfo.update(text);\r\n\t}\r\n};\r\n\r\nexports[\&quot;edit-text\&quot;] = EditTextWidget;\r\n\r\n})();\r\n&quot;,
+            &quot;text&quot;: &quot;/*\\\r\ntitle: $:/core/modules/widgets/edit-text.js\r\ntype: application/javascript\r\nmodule-type: widget\r\n\r\nEdit-text widget\r\n\r\n\\*/\r\n(function(){\r\n\r\n/*jslint node: true, browser: true */\r\n/*global $tw: false */\r\n\&quot;use strict\&quot;;\r\n\r\nvar MIN_TEXT_AREA_HEIGHT = 100; // Minimum height of textareas in pixels\r\n\r\nvar Widget = require(\&quot;$:/core/modules/widgets/widget.js\&quot;).widget;\r\n\r\nvar EditTextWidget = function(parseTreeNode,options) {\r\n\tthis.initialise(parseTreeNode,options);\r\n};\r\n\r\n/*\r\nInherit from the base widget class\r\n*/\r\nEditTextWidget.prototype = new Widget();\r\n\r\n/*\r\nRender this widget into the DOM\r\n*/\r\nEditTextWidget.prototype.render = function(parent,nextSibling) {\r\n\tvar self = this;\r\n\t// Save the parent dom node\r\n\tthis.parentDomNode = parent;\r\n\t// Compute our attributes\r\n\tthis.computeAttributes();\r\n\t// Execute our logic\r\n\tthis.execute();\r\n\t// Create our element\r\n\tvar editInfo = this.getEditInfo();\r\n\tvar domNode = this.document.createElement(this.editTag);\r\n\tif(this.editType) {\r\n\t\tdomNode.setAttribute(\&quot;type\&quot;,this.editType);\r\n\t}\r\n\tif(editInfo.value === \&quot;\&quot; &amp;&amp; this.editPlaceholder) {\r\n\t\tdomNode.setAttribute(\&quot;placeholder\&quot;,this.editPlaceholder);\r\n\t}\r\n\tif(this.editSize) {\r\n\t\tdomNode.setAttribute(\&quot;size\&quot;,this.editSize);\r\n\t}\r\n\t// Assign classes\r\n\tif(this.editClass) {\r\n\t\tdomNode.className = this.editClass;\r\n\t}\r\n\t// Assign accessKey\r\n\tif(this.editAccessKey) {\r\n\t\tdomNode.accessKey = this.editAccessKey;\r\n\t}\r\n\t// Set the text\r\n\tif(this.editTag === \&quot;textarea\&quot;) {\r\n\t\tdomNode.appendChild(this.document.createTextNode(editInfo.value));\r\n\t} else {\r\n\t\tdomNode.value = editInfo.value;\r\n\t}\r\n\t// Add an input event handler\r\n\t$tw.utils.addEventListeners(domNode,[\r\n\t\t{name: \&quot;focus\&quot;, handlerObject: this, handlerMethod: \&quot;handleFocusEvent\&quot;},\r\n\t\t{name: \&quot;input\&quot;, handlerObject: this, handlerMethod: \&quot;handleInputEvent\&quot;}\r\n\t]);\r\n\t// Insert the element into the DOM\r\n\tparent.insertBefore(domNode,nextSibling);\r\n\tthis.domNodes.push(domNode);\r\n\tif(this.postRender) {\r\n\t\tthis.postRender();\r\n\t}\r\n\t// Fix height\r\n\tthis.fixHeight();\r\n};\r\n\r\n/*\r\nGet the tiddler being edited and current value\r\n*/\r\nEditTextWidget.prototype.getEditInfo = function() {\r\n\t// Get the edit value\r\n\tvar self = this,\r\n\t\tvalue,\r\n\t\tupdate;\r\n\tif(this.editIndex) {\r\n\t\tvalue = this.wiki.extractTiddlerDataItem(this.editTitle,this.editIndex,this.editDefault);\r\n\t\tupdate = function(value) {\r\n\t\t\tvar data = self.wiki.getTiddlerData(self.editTitle,{});\r\n\t\t\tif(data[self.editIndex] !== value) {\r\n\t\t\t\tdata[self.editIndex] = value;\r\n\t\t\t\tself.wiki.setTiddlerData(self.editTitle,data);\r\n\t\t\t}\r\n\t\t};\r\n\t} else {\r\n\t\t// Get the current tiddler and the field name\r\n\t\tvar tiddler = this.wiki.getTiddler(this.editTitle);\r\n\t\tif(tiddler) {\r\n\t\t\t// If we've got a tiddler, the value to display is the field string value\r\n\t\t\tvalue = tiddler.getFieldString(this.editField);\r\n\t\t} else {\r\n\t\t\t// Otherwise, we need to construct a default value for the editor\r\n\t\t\tswitch(this.editField) {\r\n\t\t\t\tcase \&quot;text\&quot;:\r\n\t\t\t\t\tvalue = \&quot;Type the text for the tiddler '\&quot; + this.editTitle + \&quot;'\&quot;;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase \&quot;title\&quot;:\r\n\t\t\t\t\tvalue = this.editTitle;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tdefault:\r\n\t\t\t\t\tvalue = \&quot;\&quot;;\r\n\t\t\t\t\tbreak;\r\n\t\t\t}\r\n\t\t\tif(this.editDefault !== undefined) {\r\n\t\t\t\tvalue = this.editDefault;\r\n\t\t\t}\r\n\t\t}\r\n\t\tupdate = function(value) {\r\n\t\t\tvar tiddler = self.wiki.getTiddler(self.editTitle),\r\n\t\t\t\tupdateFields = {\r\n\t\t\t\t\ttitle: self.editTitle\r\n\t\t\t\t};\r\n\t\t\tupdateFields[self.editField] = value;\r\n\t\t\tself.wiki.addTiddler(new $tw.Tiddler(self.wiki.getCreationFields(),tiddler,updateFields,self.wiki.getModificationFields()));\r\n\t\t};\r\n\t}\r\n\treturn {value: value, update: update};\r\n};\r\n\r\n/*\r\nCompute the internal state of the widget\r\n*/\r\nEditTextWidget.prototype.execute = function() {\r\n\t// Get our parameters\r\n\tthis.editTitle = this.getAttribute(\&quot;tiddler\&quot;,this.getVariable(\&quot;currentTiddler\&quot;));\r\n\tthis.editField = this.getAttribute(\&quot;field\&quot;,\&quot;text\&quot;);\r\n\tthis.editIndex = this.getAttribute(\&quot;index\&quot;);\r\n\tthis.editDefault = this.getAttribute(\&quot;default\&quot;);\r\n\tthis.editClass = this.getAttribute(\&quot;class\&quot;);\r\n\tthis.editPlaceholder = this.getAttribute(\&quot;placeholder\&quot;);\r\n\tthis.editSize = this.getAttribute(\&quot;size\&quot;);\r\n\tthis.editFocusPopup = this.getAttribute(\&quot;focusPopup\&quot;);\r\n\tthis.editAccessKey = this.getAttribute(\&quot;accesskey\&quot;);\r\n\t// Get the editor element tag and type\r\n\tvar tag,type;\r\n\tif(this.editField === \&quot;text\&quot;) {\r\n\t\ttag = \&quot;textarea\&quot;;\r\n\t} else {\r\n\t\ttag = \&quot;input\&quot;;\r\n\t\tvar fieldModule = $tw.Tiddler.fieldModules[this.editField];\r\n\t\tif(fieldModule &amp;&amp; fieldModule.editTag) {\r\n\t\t\ttag = fieldModule.editTag;\r\n\t\t}\r\n\t\tif(fieldModule &amp;&amp; fieldModule.editType) {\r\n\t\t\ttype = fieldModule.editType;\r\n\t\t}\r\n\t\ttype = type || \&quot;text\&quot;;\r\n\t}\r\n\t// Get the rest of our parameters\r\n\tthis.editTag = this.getAttribute(\&quot;tag\&quot;,tag);\r\n\tthis.editType = this.getAttribute(\&quot;type\&quot;,type);\r\n};\r\n\r\n/*\r\nSelectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering\r\n*/\r\nEditTextWidget.prototype.refresh = function(changedTiddlers) {\r\n\tvar changedAttributes = this.computeAttributes();\r\n\t// Completely rerender if any of our attributes have changed\r\n\tif(changedAttributes.tiddler || changedAttributes.field || changedAttributes.index) {\r\n\t\tthis.refreshSelf();\r\n\t\treturn true;\r\n\t} else if(changedTiddlers[this.editTitle]) {\r\n\t\tthis.updateEditor(this.getEditInfo().value);\r\n\t\treturn true;\r\n\t}\r\n\treturn false;\r\n};\r\n\r\n/*\r\nUpdate the editor with new text. This method is separate from updateEditorDomNode()\r\nso that subclasses can override updateEditor() and still use updateEditorDomNode()\r\n*/\r\nEditTextWidget.prototype.updateEditor = function(text) {\r\n\tthis.updateEditorDomNode(text);\r\n};\r\n\r\n/*\r\nUpdate the editor dom node with new text\r\n*/\r\nEditTextWidget.prototype.updateEditorDomNode = function(text) {\r\n\t// Replace the edit value if the tiddler we're editing has changed\r\n\tvar domNode = this.domNodes[0];\r\n\tif(!domNode.isTiddlyWikiFakeDom) {\r\n\t\tif(this.document.activeElement !== domNode) {\r\n\t\t\tdomNode.value = text;\r\n\t\t}\r\n\t\t// Fix the height if needed\r\n\t\tthis.fixHeight();\r\n\t}\r\n};\r\n\r\n/*\r\nFix the height of textareas to fit their content\r\n*/\r\nEditTextWidget.prototype.fixHeight = function() {\r\n\tvar self = this,\r\n\t\tdomNode = this.domNodes[0];\r\n\tif(domNode &amp;&amp; !domNode.isTiddlyWikiFakeDom &amp;&amp; this.editTag === \&quot;textarea\&quot;) {\r\n\t\t$tw.utils.nextTick(function() {\r\n\t\t\t// Resize the textarea to fit its content, preserving scroll position\r\n\t\t\tvar scrollPosition = $tw.utils.getScrollPosition(),\r\n\t\t\t\tscrollTop = scrollPosition.y;\r\n\t\t\t// Set its height to auto so that it snaps to the correct height\r\n\t\t\tdomNode.style.height = \&quot;auto\&quot;;\r\n\t\t\t// Calculate the revised height\r\n\t\t\tvar newHeight = Math.max(domNode.scrollHeight + domNode.offsetHeight - domNode.clientHeight,MIN_TEXT_AREA_HEIGHT);\r\n\t\t\t// Only try to change the height if it has changed\r\n\t\t\tif(newHeight !== domNode.offsetHeight) {\r\n\t\t\t\tdomNode.style.height =  newHeight + \&quot;px\&quot;;\r\n\t\t\t\t// Make sure that the dimensions of the textarea are recalculated\r\n\t\t\t\t$tw.utils.forceLayout(domNode);\r\n\t\t\t\t// Check that the scroll position is still visible before trying to scroll back to it\r\n\t\t\t\tscrollTop = Math.min(scrollTop,self.document.body.scrollHeight - window.innerHeight);\r\n\t\t\t\twindow.scrollTo(scrollPosition.x,scrollTop);\r\n\t\t\t}\r\n\t\t});\r\n\t}\r\n};\r\n\r\n/*\r\nHandle a dom \&quot;input\&quot; event\r\n*/\r\nEditTextWidget.prototype.handleInputEvent = function(event) {\r\n\tthis.saveChanges(this.domNodes[0].value);\r\n\tthis.fixHeight();\r\n\treturn true;\r\n};\r\n\r\nEditTextWidget.prototype.handleFocusEvent = function(event) {\r\n\tif(this.editFocusPopup) {\r\n\t\t$tw.popup.triggerPopup({\r\n\t\t\tdomNode: this.domNodes[0],\r\n\t\t\ttitle: this.editFocusPopup,\r\n\t\t\twiki: this.wiki,\r\n\t\t\tforce: true\r\n\t\t});\r\n\t}\r\n\treturn true;\r\n};\r\n\r\nEditTextWidget.prototype.saveChanges = function(text) {\r\n\tvar editInfo = this.getEditInfo();\r\n\tif(text !== editInfo.value) {\r\n\t\teditInfo.update(text);\r\n\t}\r\n};\r\n\r\nexports[\&quot;edit-text\&quot;] = EditTextWidget;\r\n\r\n})();\r\n&quot;,
             &quot;title&quot;: &quot;$:/core/modules/widgets/edit-text.js&quot;,
             &quot;type&quot;: &quot;application/javascript&quot;,
             &quot;module-type&quot;: &quot;widget&quot;
@@ -3934,14 +3953,14 @@ TW Dev Notes: TW Dev Notes.tid
     }
 }</pre>
 </div>
-<div created="20131127215321439" modified="20140710205307943" title="$:/DefaultTiddlers" type="text/vnd.tiddlywiki">
+<div created="20131127215321439" modified="20140712134200472" title="$:/DefaultTiddlers" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Hello
-GettingStarted
-Download</pre>
+Download
+[[Developing For And Using TW5]]</pre>
 </div>
-<div title="$:/editions/twnotes/download-empty">
+<div created="20140712113349124" modified="20140712125439538" title="$:/editions/twnotes/download-empty" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>\define saveTiddlerFilter()
-[[$:/core]] [[$:/isEncrypted]] [[$:/plugins/tiddlywiki/fullscreen]] [[$:/themes/tiddlywiki/vanilla]] [[$:/themes/welford/phasersonkill]] -[[$:/boot/boot.css]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] +[sort[title]]
+[[$:/core]] [[$:/isEncrypted]] [[$:/plugins/tiddlywiki/fullscreen]] [[$:/themes/tiddlywiki/vanilla]] [[$:/themes/welford/phasersonkill]] [[$:/themes/welford/readonly]] [[$:/theme]] [[$:/plugins/tiddlywiki/codemirror]] [[$:/plugins/tiddlywiki/highlight]] [[$:/plugins/welford/twexe]] [[$:/plugins/welford/htalink]] -[[$:/boot/boot.css]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] +[sort[title]]
 \end
 \define savingEmpty()
 yes
@@ -3949,13 +3968,13 @@ yes
 {{$:/core/templates/tiddlywiki5.html}}
 </pre>
 </div>
-<div title="$:/editions/twnotes/snippets/download-empty-button">
+<div title="$:/editions/twnotes/snippets/download-empty-button" revision="0" bag="default">
 <pre>&lt;$button message=&quot;tw-download-file&quot; param=&quot;$:/editions/twnotes/download-empty&quot; class=&quot;btn-big-green&quot;&gt;Download Empty {{$:/core/images/save-button}}&lt;/$button&gt;</pre>
 </div>
-<div title="$:/isEncrypted">
+<div title="$:/isEncrypted" revision="0" bag="default">
 <pre>no</pre>
 </div>
-<div author="OGOSHI Masayuki, pekopeko1" core-version="&gt;=5.0.9" dependents="" description="Japanese (Japan)" name="ja-JP" plugin-type="language" title="$:/languages/ja-JP" type="application/json" version="5.0.14-prerelease">
+<div author="OGOSHI Masayuki, pekopeko1" core-version="&gt;=5.0.9" dependents="" description="Japanese (Japan)" name="ja-JP" plugin-type="language" title="$:/languages/ja-JP" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/language/ControlPanel/Advanced/Caption&quot;: {
@@ -5359,7 +5378,7 @@ yes
     }
 }</pre>
 </div>
-<div author="JeremyRuston" dependents="" description="Codemirror plugin" plugin-type="plugin" title="$:/plugins/tiddlywiki/codemirror" type="application/json" version="5.0.14-prerelease">
+<div author="JeremyRuston" dependents="" description="Codemirror plugin" plugin-type="plugin" title="$:/plugins/tiddlywiki/codemirror" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/core/modules/widgets/edit-codemirror.js&quot;: {
@@ -5472,7 +5491,19 @@ yes
     }
 }</pre>
 </div>
-<div author="JoaoBolila" dependents="" description="Highlight.js plugin for TiddlyWiki5" plugin-type="plugin" title="$:/plugins/tiddlywiki/highlight" type="application/json" version="5.0.14-prerelease">
+<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="File system synchronisation" plugin-type="plugin" title="$:/plugins/tiddlywiki/filesystem" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;$:/plugins/tiddlywiki/filesystem/filesystemadaptor.js&quot;: {
+            &quot;text&quot;: &quot;/*\\\r\ntitle: $:/plugins/tiddlywiki/filesystem/filesystemadaptor.js\r\ntype: application/javascript\r\nmodule-type: syncadaptor\r\n\r\nA sync adaptor module for synchronising with the local filesystem via node.js APIs \r\n\r\n\\*/\r\n(function(){\r\n\r\n/*jslint node: true, browser: true */\r\n/*global $tw: false */\r\n\&quot;use strict\&quot;;\r\n\r\n// Get a reference to the file system\r\nvar fs = !$tw.browser ? require(\&quot;fs\&quot;) : null,\r\n\tpath = !$tw.browser ? require(\&quot;path\&quot;) : null;\r\n\r\nfunction FileSystemAdaptor(syncer) {\r\n\tvar self = this;\r\n\tthis.syncer = syncer;\r\n\tthis.watchers = {};\r\n\tthis.pending = {};\r\n\tthis.logger = new $tw.utils.Logger(\&quot;FileSystem\&quot;);\r\n\tthis.setwatcher = function(filename, title) {\r\n\t\treturn undefined;\r\n\t\treturn this.watchers[filename] = this.watchers[filename] ||\r\n\t\t\tfs.watch(filename, {persistent: false}, function(e) {\r\n\t\t\t\tself.logger.log(\&quot;Error:\&quot;,e,filename);\r\n\t\t\t\tif(e === \&quot;change\&quot;) {\r\n\t\t\t\t\tvar tiddlers = $tw.loadTiddlersFromFile(filename).tiddlers;\r\n\t\t\t\t\tfor(var t in tiddlers) {\r\n\t\t\t\t\t\tif(tiddlers[t].title) {\r\n\t\t\t\t\t\t\t$tw.wiki.addTiddler(tiddlers[t]);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t});\r\n\t}\r\n\r\n\tfor(var f in $tw.boot.files) {\r\n\t\tvar fileInfo = $tw.boot.files[f];\r\n\t\tthis.setwatcher(fileInfo.filepath, f);\r\n\t}\r\n\t// Create the &lt;wiki&gt;/tiddlers folder if it doesn't exist\r\n\t// TODO: we should create the path recursively\r\n\tif(!fs.existsSync($tw.boot.wikiTiddlersPath)) {\r\n\t\tfs.mkdirSync($tw.boot.wikiTiddlersPath);\r\n\t}\r\n}\r\n\r\nFileSystemAdaptor.prototype.getTiddlerInfo = function(tiddler) {\r\n\treturn {};\r\n};\r\n\r\n$tw.config.typeInfo = {\r\n\t\&quot;text/vnd.tiddlywiki\&quot;: {\r\n\t\tfileType: \&quot;application/x-tiddler\&quot;,\r\n\t\textension: \&quot;.tid\&quot;\r\n\t},\r\n\t\&quot;image/jpeg\&quot; : {\r\n\t\thasMetaFile: true\r\n\t}\r\n};\r\n\r\n$tw.config.typeTemplates = {\r\n\t\&quot;application/x-tiddler\&quot;: \&quot;$:/core/templates/tid-tiddler\&quot;\r\n};\r\n\r\nFileSystemAdaptor.prototype.getTiddlerFileInfo = function(tiddler,callback) {\r\n\t// See if we've already got information about this file\r\n\tvar self = this,\r\n\t\ttitle = tiddler.fields.title,\r\n\t\tfileInfo = $tw.boot.files[title];\r\n\t// Get information about how to save tiddlers of this type\r\n\tvar type = tiddler.fields.type || \&quot;text/vnd.tiddlywiki\&quot;,\r\n\t\ttypeInfo = $tw.config.typeInfo[type];\r\n\tif(!typeInfo) {\r\n\t\ttypeInfo = $tw.config.typeInfo[\&quot;text/vnd.tiddlywiki\&quot;];\r\n\t}\r\n\tvar extension = typeInfo.extension || \&quot;\&quot;;\r\n\tif(!fileInfo) {\r\n\t\t// If not, we'll need to generate it\r\n\t\t// Start by getting a list of the existing files in the directory\r\n\t\tfs.readdir($tw.boot.wikiTiddlersPath,function(err,files) {\r\n\t\t\tif(err) {\r\n\t\t\t\treturn callback(err);\r\n\t\t\t}\r\n\t\t\t// Assemble the new fileInfo\r\n\t\t\tfileInfo = {};\r\n\t\t\tfileInfo.filepath = $tw.boot.wikiTiddlersPath + path.sep + self.generateTiddlerFilename(title,extension,files);\r\n\t\t\tfileInfo.type = typeInfo.fileType || tiddler.fields.type;\r\n\t\t\tfileInfo.hasMetaFile = typeInfo.hasMetaFile;\r\n\t\t\t// Save the newly created fileInfo\r\n\t\t\t$tw.boot.files[title] = fileInfo;\r\n\t\t\tself.pending[fileInfo.filepath] = title;\r\n\t\t\t// Pass it to the callback\r\n\t\t\tcallback(null,fileInfo);\r\n\t\t});\r\n\t} else {\r\n\t\t// Otherwise just invoke the callback\r\n\t\tcallback(null,fileInfo);\r\n\t}\r\n};\r\n\r\n/*\r\nGiven a tiddler title and an array of existing filenames, generate a new legal filename for the title, case insensitively avoiding the array of existing filenames\r\n*/\r\nFileSystemAdaptor.prototype.generateTiddlerFilename = function(title,extension,existingFilenames) {\r\n\t// First remove any of the characters that are illegal in Windows filenames\r\n\tvar baseFilename = title.replace(/\\&lt;|\\&gt;|\\:|\\\&quot;|\\/|\\\\|\\||\\?|\\*|\\^/g,\&quot;_\&quot;);\r\n\t// Truncate the filename if it is too long\r\n\tif(baseFilename.length &gt; 200) {\r\n\t\tbaseFilename = baseFilename.substr(0,200) + extension;\r\n\t}\r\n\t// Start with the base filename plus the extension\r\n\tvar filename = baseFilename + extension,\r\n\t\tcount = 1;\r\n\t// Add a discriminator if we're clashing with an existing filename\r\n\twhile(existingFilenames.indexOf(filename) !== -1) {\r\n\t\tfilename = baseFilename + \&quot; \&quot; + (count++) + extension;\r\n\t}\r\n\treturn filename;\r\n};\r\n\r\n/*\r\nSave a tiddler and invoke the callback with (err,adaptorInfo,revision)\r\n*/\r\nFileSystemAdaptor.prototype.saveTiddler = function(tiddler,callback) {\r\n\tvar self = this;\r\n\tthis.getTiddlerFileInfo(tiddler,function(err,fileInfo) {\r\n\t\tvar template, content, encoding;\r\n\t\tfunction _finish() {\r\n\t\t\tif(self.pending[fileInfo.filepath]) {\r\n\t\t\t\tself.setwatcher(fileInfo.filepath, tiddler.fields.title);\r\n\t\t\t\tdelete self.pending[fileInfo.filepath];\r\n\t\t\t}\r\n\t\t\tcallback(null, {}, 0);\r\n\t\t}\r\n\t\tif(err) {\r\n\t\t\treturn callback(err);\r\n\t\t}\r\n\t\tif(self.watchers[fileInfo.filepath]) {\r\n\t\t\tself.watchers[fileInfo.filepath].close();\r\n\t\t\tdelete self.watchers[fileInfo.filepath];\r\n\t\t\tself.pending[fileInfo.filepath] = tiddler.fields.title;\r\n\t\t}\r\n\t\tif(fileInfo.hasMetaFile) {\r\n\t\t\t// Save the tiddler as a separate body and meta file\r\n\t\t\tvar typeInfo = $tw.config.contentTypeInfo[fileInfo.type];\r\n\t\t\tfs.writeFile(fileInfo.filepath,tiddler.fields.text,{encoding: typeInfo.encoding},function(err) {\r\n\t\t\t\tif(err) {\r\n\t\t\t\t\treturn callback(err);\r\n\t\t\t\t}\r\n\t\t\t\tcontent = $tw.wiki.renderTiddler(\&quot;text/plain\&quot;,\&quot;$:/core/templates/tiddler-metadata\&quot;,{variables: {currentTiddler: tiddler.fields.title}});\r\n\t\t\t\tfs.writeFile(fileInfo.filepath + \&quot;.meta\&quot;,content,{encoding: \&quot;utf8\&quot;},function (err) {\r\n\t\t\t\t\tif(err) {\r\n\t\t\t\t\t\treturn callback(err);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tself.logger.log(\&quot;Saved file\&quot;,fileInfo.filepath);\r\n\t\t\t\t\t_finish();\r\n\t\t\t\t});\r\n\t\t\t});\r\n\t\t} else {\r\n\t\t\t// Save the tiddler as a self contained templated file\r\n\t\t\ttemplate = $tw.config.typeTemplates[fileInfo.type];\r\n\t\t\tcontent = $tw.wiki.renderTiddler(\&quot;text/plain\&quot;,template,{variables: {currentTiddler: tiddler.fields.title}});\r\n\t\t\tfs.writeFile(fileInfo.filepath,content,{encoding: \&quot;utf8\&quot;},function (err) {\r\n\t\t\t\tif(err) {\r\n\t\t\t\t\treturn callback(err);\r\n\t\t\t\t}\r\n\t\t\t\tself.logger.log(\&quot;Saved file\&quot;,fileInfo.filepath);\r\n\t\t\t\t_finish();\r\n\t\t\t});\r\n\t\t}\r\n\t});\r\n};\r\n\r\n/*\r\nLoad a tiddler and invoke the callback with (err,tiddlerFields)\r\n\r\nWe don't need to implement loading for the file system adaptor, because all the tiddler files will have been loaded during the boot process.\r\n*/\r\nFileSystemAdaptor.prototype.loadTiddler = function(title,callback) {\r\n\tcallback(null,null);\r\n};\r\n\r\n/*\r\nDelete a tiddler and invoke the callback with (err)\r\n*/\r\nFileSystemAdaptor.prototype.deleteTiddler = function(title,callback) {\r\n\tvar self = this,\r\n\t\tfileInfo = $tw.boot.files[title];\r\n\t// Only delete the tiddler if we have writable information for the file\r\n\tif(fileInfo) {\r\n\t\tif(this.watchers[fileInfo.filepath]) {\r\n\t\t\tthis.watchers[fileInfo.filepath].close();\r\n\t\t\tdelete this.watchers[fileInfo.filepath];\r\n\t\t}\r\n\t\tdelete this.pending[fileInfo.filepath];\r\n\t\t// Delete the file\r\n\t\tfs.unlink(fileInfo.filepath,function(err) {\r\n\t\t\tif(err) {\r\n\t\t\t\treturn callback(err);\r\n\t\t\t}\r\n\t\t\tself.logger.log(\&quot;Deleted file\&quot;,fileInfo.filepath);\r\n\t\t\t// Delete the metafile if present\r\n\t\t\tif(fileInfo.hasMetaFile) {\r\n\t\t\t\tfs.unlink(fileInfo.filepath + \&quot;.meta\&quot;,function(err) {\r\n\t\t\t\t\tif(err) {\r\n\t\t\t\t\t\treturn callback(err);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcallback(null);\r\n\t\t\t\t});\r\n\t\t\t} else {\r\n\t\t\t\tcallback(null);\r\n\t\t\t}\r\n\t\t});\r\n\t} else {\r\n\t\tcallback(null);\r\n\t}\r\n};\r\n\r\nif(fs) {\r\n\texports.adaptorClass = FileSystemAdaptor;\r\n}\r\n\r\n})();\r\n&quot;,
+            &quot;title&quot;: &quot;$:/plugins/tiddlywiki/filesystem/filesystemadaptor.js&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;syncadaptor&quot;
+        }
+    }
+}</pre>
+</div>
+<div author="JoaoBolila" dependents="" description="Highlight.js plugin for TiddlyWiki5" plugin-type="plugin" title="$:/plugins/tiddlywiki/highlight" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/plugins/tiddlywiki/highlight/highlight.js&quot;: {
@@ -5506,7 +5537,41 @@ yes
     }
 }</pre>
 </div>
-<div author="James W. Anderson" core-version="&gt;=5.0.0" dependents="" description="Catches links in HTA" plugin-type="plugin" source="https://github.com/Welford/twexe" title="$:/plugins/welford/htalink" type="application/json" version="0.0.1">
+<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWeb and TiddlySpace components" plugin-type="plugin" title="$:/plugins/tiddlywiki/tiddlyweb" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;$:/editions/server/download-offline-button&quot;: {
+            &quot;title&quot;: &quot;$:/editions/server/download-offline-button&quot;,
+            &quot;text&quot;: &quot;&lt;$button message=\&quot;tw-download-file\&quot; param=\&quot;$:/editions/server/download-offline\&quot; class=\&quot;btn-big-green\&quot;&gt;Download Offline Snapshot {{$:/core/images/save-button}}&lt;/$button&gt;&quot;
+        },
+        &quot;$:/editions/server/download-offline&quot;: {
+            &quot;title&quot;: &quot;$:/editions/server/download-offline&quot;,
+            &quot;text&quot;: &quot;\\define saveTiddlerFilter()\r\n[is[tiddler]] -[[$:/boot/boot.css]] -[[$:/HistoryList]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] -[[$:/plugins/tiddlywiki/filesystem]] -[[$:/plugins/tiddlywiki/tiddlyweb]] +[sort[title]]\r\n\\end\r\n{{$:/core/templates/tiddlywiki5.html}}\r\n&quot;
+        },
+        &quot;$:/snippets/encryptionstatus&quot;: {
+            &quot;title&quot;: &quot;$:/snippets/encryptionstatus&quot;,
+            &quot;text&quot;: &quot;Encryption is not supported when running TiddlyWiki5 on the server.\r\n&quot;
+        },
+        &quot;$:/core/templates/html-div-tiddler&quot;: {
+            &quot;title&quot;: &quot;$:/core/templates/html-div-tiddler&quot;,
+            &quot;text&quot;: &quot;&lt;!--\n\nThis template is used for saving tiddlers as an HTML DIV tag with attributes representing the tiddler fields. This version includes the tiddler changecount as the field `revision`.\n\n--&gt;`&lt;div`&lt;$fields exclude='text revision bag' template=' $name$=\&quot;$encoded_value$\&quot;'&gt;&lt;/$fields&gt;` revision=\&quot;`&lt;&lt;changecount&gt;&gt;`\&quot; bag=\&quot;default\&quot;&gt;\r\n&lt;pre&gt;`&lt;$view field=\&quot;text\&quot; format=\&quot;htmlencoded\&quot; /&gt;`&lt;/pre&gt;\r\n&lt;/div&gt;`\r\n&quot;
+        },
+        &quot;$:/plugins/tiddlywiki/tiddlyweb/ServerControlPanel&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/tiddlywiki/tiddlyweb/ServerControlPanel&quot;,
+            &quot;caption&quot;: &quot;Server&quot;,
+            &quot;tags&quot;: &quot;$:/tags/ControlPanel&quot;,
+            &quot;text&quot;: &quot;&lt;$reveal state=\&quot;$:/status/IsLoggedIn\&quot; type=\&quot;nomatch\&quot; text=\&quot;yes\&quot;&gt;\r\nLog in to ~TiddlyWeb: &lt;$button message=\&quot;tw-login\&quot; class=\&quot;btn btn-info\&quot;&gt;Login&lt;/$button&gt;\r\n&lt;/$reveal&gt;\r\n&lt;$reveal state=\&quot;$:/status/IsLoggedIn\&quot; type=\&quot;match\&quot; text=\&quot;yes\&quot;&gt;\r\nLogged in as {{$:/status/UserName}} &lt;$button message=\&quot;tw-logout\&quot; class=\&quot;btn btn-warning\&quot;&gt;Logout&lt;/$button&gt;\r\n&lt;/$reveal&gt;\n\n----\n\nHost configuration: &lt;$edit-text tiddler=\&quot;$:/config/tiddlyweb/host\&quot; tag=\&quot;input\&quot; default=\&quot;\&quot;/&gt;\n\n&lt;blockquote&gt;//for example, `$protocol$//$host$/folder`, where `$protocol$` is replaced by the protocol (typically `http` or `https`), and `$host$` by the host name//&lt;/blockquote&gt;\n\n----\n\n&lt;$button message=\&quot;tw-server-refresh\&quot; class=\&quot;btn btn-warning\&quot;&gt;Refresh&lt;/$button&gt; to fetch changes from the server immediately\n\n----\n\nDownload an offline copy of this wiki:\n\n{{$:/editions/server/download-offline-button}}&quot;
+        },
+        &quot;$:/plugins/tiddlywiki/tiddlyweb/tiddlywebadaptor.js&quot;: {
+            &quot;text&quot;: &quot;/*\\\r\ntitle: $:/plugins/tiddlywiki/tiddlyweb/tiddlywebadaptor.js\r\ntype: application/javascript\r\nmodule-type: syncadaptor\r\n\r\nA sync adaptor module for synchronising with TiddlyWeb compatible servers \r\n\r\n\\*/\r\n(function(){\r\n\r\n/*jslint node: true, browser: true */\r\n/*global $tw: false */\r\n\&quot;use strict\&quot;;\r\n\r\nvar CONFIG_HOST_TIDDLER = \&quot;$:/config/tiddlyweb/host\&quot;,\r\n\tDEFAULT_HOST_TIDDLER = \&quot;$protocol$//$host$/\&quot;;\r\n\r\nfunction TiddlyWebAdaptor(syncer) {\r\n\tthis.syncer = syncer;\r\n\tthis.host = this.getHost();\r\n\tthis.recipe = undefined;\r\n\tthis.logger = new $tw.utils.Logger(\&quot;TiddlyWebAdaptor\&quot;);\r\n}\r\n\r\nTiddlyWebAdaptor.prototype.getHost = function() {\r\n\tvar text = this.syncer.wiki.getTiddlerText(CONFIG_HOST_TIDDLER,DEFAULT_HOST_TIDDLER),\r\n\t\tsubstitutions = [\r\n\t\t\t{name: \&quot;protocol\&quot;, value: document.location.protocol},\r\n\t\t\t{name: \&quot;host\&quot;, value: document.location.host}\r\n\t\t];\r\n\tfor(var t=0; t&lt;substitutions.length; t++) {\r\n\t\tvar s = substitutions[t];\r\n\t\ttext = text.replace(new RegExp(\&quot;\\\\$\&quot; + s.name + \&quot;\\\\$\&quot;,\&quot;mg\&quot;),s.value);\r\n\t}\r\n\treturn text;\r\n};\r\n\r\nTiddlyWebAdaptor.prototype.getTiddlerInfo = function(tiddler) {\r\n\treturn {\r\n\t\tbag: tiddler.fields[\&quot;bag\&quot;]\r\n\t};\r\n};\r\n\r\n/*\r\nGet the current status of the TiddlyWeb connection\r\n*/\r\nTiddlyWebAdaptor.prototype.getStatus = function(callback) {\r\n\t// Get status\r\n\tvar self = this,\r\n\t\twiki = self.syncer.wiki;\r\n\tthis.logger.log(\&quot;Getting status\&quot;);\r\n\t$tw.utils.httpRequest({\r\n\t\turl: this.host + \&quot;status\&quot;,\r\n\t\tcallback: function(err,data) {\r\n\t\t\tif(err) {\r\n\t\t\t\treturn callback(err);\r\n\t\t\t}\r\n\t\t\t// Decode the status JSON\r\n\t\t\tvar json = null,\r\n\t\t\t\tisLoggedIn = false;\r\n\t\t\ttry {\r\n\t\t\t\tjson = JSON.parse(data);\r\n\t\t\t} catch (e) {\r\n\t\t\t}\r\n\t\t\tif(json) {\r\n\t\t\t\tself.logger.log(\&quot;Status:\&quot;,data);\r\n\t\t\t\t// Record the recipe\r\n\t\t\t\tif(json.space) {\r\n\t\t\t\t\tself.recipe = json.space.recipe;\r\n\t\t\t\t}\r\n\t\t\t\t// Check if we're logged in\r\n\t\t\t\tisLoggedIn = json.username !== \&quot;GUEST\&quot;;\r\n\t\t\t}\r\n\t\t\t// Invoke the callback if present\r\n\t\t\tif(callback) {\r\n\t\t\t\tcallback(null,isLoggedIn,json.username);\r\n\t\t\t}\r\n\t\t}\r\n\t});\r\n};\r\n\r\n/*\r\nAttempt to login and invoke the callback(err)\r\n*/\r\nTiddlyWebAdaptor.prototype.login = function(username,password,callback) {\r\n\tvar options = {\r\n\t\turl: this.host + \&quot;challenge/tiddlywebplugins.tiddlyspace.cookie_form\&quot;,\r\n\t\ttype: \&quot;POST\&quot;,\r\n\t\tdata: {\r\n\t\t\tuser: username,\r\n\t\t\tpassword: password,\r\n\t\t\ttiddlyweb_redirect: \&quot;/status\&quot; // workaround to marginalize automatic subsequent GET\r\n\t\t},\r\n\t\tcallback: function(err) {\r\n\t\t\tcallback(err);\r\n\t\t}\r\n\t};\r\n\tthis.logger.log(\&quot;Logging in:\&quot;,options);\r\n\t$tw.utils.httpRequest(options);\r\n};\r\n\r\n/*\r\n*/\r\nTiddlyWebAdaptor.prototype.logout = function(callback) {\r\n\tvar options = {\r\n\t\turl: this.host + \&quot;logout\&quot;,\r\n\t\ttype: \&quot;POST\&quot;,\r\n\t\tdata: {\r\n\t\t\tcsrf_token: this.getCsrfToken(),\r\n\t\t\ttiddlyweb_redirect: \&quot;/status\&quot; // workaround to marginalize automatic subsequent GET\r\n\t\t},\r\n\t\tcallback: function(err,data) {\r\n\t\t\tcallback(err);\r\n\t\t}\r\n\t};\r\n\tthis.logger.log(\&quot;Logging out:\&quot;,options);\r\n\t$tw.utils.httpRequest(options);\r\n};\r\n\r\n/*\r\nRetrieve the CSRF token from its cookie\r\n*/\r\nTiddlyWebAdaptor.prototype.getCsrfToken = function() {\r\n\tvar regex = /^(?:.*; )?csrf_token=([^(;|$)]*)(?:;|$)/,\r\n\t\tmatch = regex.exec(document.cookie),\r\n\t\tcsrf = null;\r\n\tif (match &amp;&amp; (match.length === 2)) {\r\n\t\tcsrf = match[1];\r\n\t}\r\n\treturn csrf;\r\n};\r\n\r\n/*\r\nGet an array of skinny tiddler fields from the server\r\n*/\r\nTiddlyWebAdaptor.prototype.getSkinnyTiddlers = function(callback) {\r\n\tvar self = this;\r\n\t$tw.utils.httpRequest({\r\n\t\turl: this.host + \&quot;recipes/\&quot; + this.recipe + \&quot;/tiddlers.json\&quot;,\r\n\t\tcallback: function(err,data) {\r\n\t\t\t// Check for errors\r\n\t\t\tif(err) {\r\n\t\t\t\treturn callback(err);\r\n\t\t\t}\r\n\t\t\t// Process the tiddlers to make sure the revision is a string\r\n\t\t\tvar tiddlers = JSON.parse(data);\r\n\t\t\tfor(var t=0; t&lt;tiddlers.length; t++) {\r\n\t\t\t\ttiddlers[t] = self.convertTiddlerFromTiddlyWebFormat(tiddlers[t]);\r\n\t\t\t}\r\n\t\t\t// Invoke the callback with the skinny tiddlers\r\n\t\t\tcallback(null,tiddlers);\r\n\t\t}\r\n\t});\r\n};\r\n\r\n/*\r\nSave a tiddler and invoke the callback with (err,adaptorInfo,revision)\r\n*/\r\nTiddlyWebAdaptor.prototype.saveTiddler = function(tiddler,callback) {\r\n\tvar self = this;\r\n\t$tw.utils.httpRequest({\r\n\t\turl: this.host + \&quot;recipes/\&quot; + encodeURIComponent(this.recipe) + \&quot;/tiddlers/\&quot; + encodeURIComponent(tiddler.fields.title),\r\n\t\ttype: \&quot;PUT\&quot;,\r\n\t\theaders: {\r\n\t\t\t\&quot;Content-type\&quot;: \&quot;application/json\&quot;\r\n\t\t},\r\n\t\tdata: this.convertTiddlerToTiddlyWebFormat(tiddler),\r\n\t\tcallback: function(err,data,request) {\r\n\t\t\tif(err) {\r\n\t\t\t\treturn callback(err);\r\n\t\t\t}\r\n\t\t\t// Save the details of the new revision of the tiddler\r\n\t\t\tvar etagInfo = self.parseEtag(request.getResponseHeader(\&quot;Etag\&quot;));\r\n\t\t\t// Invoke the callback\r\n\t\t\tcallback(null,{\r\n\t\t\t\tbag: etagInfo.bag\r\n\t\t\t}, etagInfo.revision);\t\r\n\t\t}\r\n\t});\r\n};\r\n\r\n/*\r\nLoad a tiddler and invoke the callback with (err,tiddlerFields)\r\n*/\r\nTiddlyWebAdaptor.prototype.loadTiddler = function(title,callback) {\r\n\tvar self = this;\r\n\t$tw.utils.httpRequest({\r\n\t\turl: this.host + \&quot;recipes/\&quot; + encodeURIComponent(this.recipe) + \&quot;/tiddlers/\&quot; + encodeURIComponent(title),\r\n\t\tcallback: function(err,data,request) {\r\n\t\t\tif(err) {\r\n\t\t\t\treturn callback(err);\r\n\t\t\t}\r\n\t\t\t// Invoke the callback\r\n\t\t\tcallback(null,self.convertTiddlerFromTiddlyWebFormat(JSON.parse(data)));\r\n\t\t}\r\n\t});\r\n};\r\n\r\n/*\r\nDelete a tiddler and invoke the callback with (err)\r\n*/\r\nTiddlyWebAdaptor.prototype.deleteTiddler = function(title,callback) {\r\n\tvar self = this,\r\n\t\tbag = this.syncer.tiddlerInfo[title].adaptorInfo.bag;\r\n\t// If we don't have a bag it means that the tiddler hasn't been seen by the server, so we don't need to delete it\r\n\tif(!bag) {\r\n\t\treturn callback(null);\r\n\t}\r\n\t// Issue HTTP request to delete the tiddler\r\n\t$tw.utils.httpRequest({\r\n\t\turl: this.host + \&quot;bags/\&quot; + encodeURIComponent(bag) + \&quot;/tiddlers/\&quot; + encodeURIComponent(title),\r\n\t\ttype: \&quot;DELETE\&quot;,\r\n\t\tcallback: function(err,data,request) {\r\n\t\t\tif(err) {\r\n\t\t\t\treturn callback(err);\r\n\t\t\t}\r\n\t\t\t// Invoke the callback\r\n\t\t\tcallback(null);\r\n\t\t}\r\n\t});\r\n};\r\n\r\n/*\r\nConvert a tiddler to a field set suitable for PUTting to TiddlyWeb\r\n*/\r\nTiddlyWebAdaptor.prototype.convertTiddlerToTiddlyWebFormat = function(tiddler) {\r\n\tvar result = {},\r\n\t\tknownFields = [\r\n\t\t\t\&quot;bag\&quot;, \&quot;created\&quot;, \&quot;creator\&quot;, \&quot;modified\&quot;, \&quot;modifier\&quot;, \&quot;permissions\&quot;, \&quot;recipe\&quot;, \&quot;revision\&quot;, \&quot;tags\&quot;, \&quot;text\&quot;, \&quot;title\&quot;, \&quot;type\&quot;, \&quot;uri\&quot;\r\n\t\t];\r\n\tif(tiddler) {\r\n\t\t$tw.utils.each(tiddler.fields,function(fieldValue,fieldName) {\r\n\t\t\tvar fieldString = fieldName === \&quot;tags\&quot; ?\r\n\t\t\t\t\t\t\t\ttiddler.fields.tags :\r\n\t\t\t\t\t\t\t\ttiddler.getFieldString(fieldName); // Tags must be passed as an array, not a string\r\n\r\n\t\t\tif(knownFields.indexOf(fieldName) !== -1) {\r\n\t\t\t\t// If it's a known field, just copy it across\r\n\t\t\t\tresult[fieldName] = fieldString;\r\n\t\t\t} else {\r\n\t\t\t\t// If it's unknown, put it in the \&quot;fields\&quot; field\r\n\t\t\t\tresult.fields = result.fields || {};\r\n\t\t\t\tresult.fields[fieldName] = fieldString;\r\n\t\t\t}\r\n\t\t});\r\n\t}\r\n\t// Default the content type and convert the type \&quot;text/x-tiddlywiki\&quot; into null\r\n\tif(result.type === \&quot;text/x-tiddlywiki\&quot;) {\r\n\t\tresult.type = null;\r\n\t};\r\n\tresult.type = result.type || \&quot;text/vnd.tiddlywiki\&quot;;\r\n\treturn JSON.stringify(result,null,$tw.config.preferences.jsonSpaces);\r\n};\r\n\r\n/*\r\nConvert a field set in TiddlyWeb format into ordinary TiddlyWiki5 format\r\n*/\r\nTiddlyWebAdaptor.prototype.convertTiddlerFromTiddlyWebFormat = function(tiddlerFields) {\r\n\tvar self = this,\r\n\t\tresult = {};\r\n\t// Transfer the fields, pulling down the `fields` hashmap\r\n\t$tw.utils.each(tiddlerFields,function(element,title,object) {\r\n\t\tif(title === \&quot;fields\&quot;) {\r\n\t\t\t$tw.utils.each(element,function(element,subTitle,object) {\r\n\t\t\t\tresult[subTitle] = element;\r\n\t\t\t});\r\n\t\t} else {\r\n\t\t\tresult[title] = tiddlerFields[title];\r\n\t\t}\r\n\t});\r\n\t// Make sure the revision is expressed as a string\r\n\tif(typeof result.revision === \&quot;number\&quot;) {\r\n\t\tresult.revision = result.revision.toString();\r\n\t}\r\n\t// Some unholy freaking of content types\r\n\tif(result.type === \&quot;text/javascript\&quot;) {\r\n\t\tresult.type = \&quot;application/javascript\&quot;;\r\n\t} else if(!result.type || result.type === \&quot;None\&quot;) {\r\n\t\tresult.type = \&quot;text/x-tiddlywiki\&quot;;\r\n\t}\r\n\treturn result;\r\n};\r\n\r\n/*\r\nSplit a TiddlyWeb Etag into its constituent parts. For example:\r\n\r\n```\r\n\&quot;system-images_public/unsyncedIcon/946151:9f11c278ccde3a3149f339f4a1db80dd4369fc04\&quot;\r\n```\r\n\r\nNote that the value includes the opening and closing double quotes.\r\n\r\nThe parts are:\r\n\r\n```\r\n&lt;bag&gt;/&lt;title&gt;/&lt;revision&gt;:&lt;hash&gt;\r\n```\r\n*/\r\nTiddlyWebAdaptor.prototype.parseEtag = function(etag) {\r\n\tvar firstSlash = etag.indexOf(\&quot;/\&quot;),\r\n\t\tlastSlash = etag.lastIndexOf(\&quot;/\&quot;),\r\n\t\tcolon = etag.lastIndexOf(\&quot;:\&quot;);\r\n\tif(firstSlash === -1 || lastSlash === -1 || colon === -1) {\r\n\t\treturn null;\r\n\t} else {\r\n\t\treturn {\r\n\t\t\tbag: decodeURIComponent(etag.substring(1,firstSlash)),\r\n\t\t\ttitle: decodeURIComponent(etag.substring(firstSlash + 1,lastSlash)),\r\n\t\t\trevision: etag.substring(lastSlash + 1,colon)\r\n\t\t};\r\n\t}\r\n};\r\n\r\nif($tw.browser &amp;&amp; document.location.protocol.substr(0,4) === \&quot;http\&quot; ) {\r\n\texports.adaptorClass = TiddlyWebAdaptor;\r\n}\r\n\r\n})();\r\n&quot;,
+            &quot;title&quot;: &quot;$:/plugins/tiddlywiki/tiddlyweb/tiddlywebadaptor.js&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;syncadaptor&quot;
+        }
+    }
+}</pre>
+</div>
+<div author="James W. Anderson" core-version="&gt;=5.0.0" dependents="" description="Catches links in HTA" plugin-type="plugin" source="https://github.com/Welford/twexe" title="$:/plugins/welford/htalink" type="application/json" version="0.0.1" revision="0" bag="default">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/plugins/welford/htalink/link&quot;: {
@@ -5518,7 +5583,7 @@ yes
     }
 }</pre>
 </div>
-<div author="James W. Anderson" core-version="&gt;=5.0.0" dependents="" description="Runs local exe/batch files. Open in folder, copy to clipboard etc also optional" plugin-type="plugin" source="https://github.com/Welford/twexe" title="$:/plugins/welford/twexe" type="application/json" version="0.0.1">
+<div author="James W. Anderson" core-version="&gt;=5.0.0" dependents="" description="Runs local exe/batch files. Open in folder, copy to clipboard etc also optional" plugin-type="plugin" source="https://github.com/Welford/twexe" title="$:/plugins/welford/twexe" type="application/json" version="0.0.1" revision="0" bag="default">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/plugins/welford/twexe/create&quot;: {
@@ -5565,30 +5630,36 @@ yes
     }
 }</pre>
 </div>
-<div created="20140710201632183" creator="ジェームス" modified="20140710201654071" modifier="ジェームス" title="$:/SiteSubtitle" type="text/vnd.tiddlywiki">
+<div created="20140710201632183" creator="ジェームス" modified="20140710201654071" modifier="ジェームス" title="$:/SiteSubtitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Samples Of My Tiddlywiki Stuff</pre>
 </div>
-<div created="20140710201622904" creator="ジェームス" modified="20140710201628790" modifier="ジェームス" title="$:/SiteTitle" type="text/vnd.tiddlywiki">
+<div created="20140710201622904" creator="ジェームス" modified="20140710201628790" modifier="ジェームス" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>TWNotes</pre>
 </div>
-<div list="Hello GettingStarted Download" title="$:/StoryList">
+<div title="$:/status/IsLoggedIn" revision="2" bag="default">
+<pre>yes</pre>
+</div>
+<div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div created="20140620130427249" modified="20140710200336807" title="$:/theme" type="text/vnd.tiddlywiki">
+<div list="Hello Download [[Developing For And Using TW5]]" title="$:/StoryList" revision="1" bag="default">
+<pre></pre>
+</div>
+<div created="20140620130427249" modified="20140712124627931" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>$:/themes/welford/phasersonkill</pre>
 </div>
-<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/snowwhite" description="Theme for removing editing features" name="ReadOnly" plugin-type="theme" title="$:/themes/tiddlywiki/readonly" type="application/json" version="5.0.14-prerelease">
+<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="A clean theme that emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
 <pre>{
     &quot;tiddlers&quot;: {
-        &quot;$:/themes/tiddlywiki/readonly/styles.tid&quot;: {
-            &quot;title&quot;: &quot;$:/themes/tiddlywiki/readonly/styles.tid&quot;,
+        &quot;$:/themes/tiddlywiki/snowwhite/base&quot;: {
+            &quot;title&quot;: &quot;$:/themes/tiddlywiki/snowwhite/base&quot;,
             &quot;tags&quot;: &quot;[[$:/tags/stylesheet]]&quot;,
-            &quot;text&quot;: &quot;\\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline\n\nsvg.tw-image-new-button, svg.tw-image-options-button, svg.tw-image-save-button, svg.tw-image-edit-button, svg.tw-image-delete-button, svg.tw-image-cancel-button, svg.tw-image-done-button {\r\n\tdisplay: none;\t\r\n}\r\n&quot;
+            &quot;text&quot;: &quot;\\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline\n\n.sidebar-header {\r\n\ttext-shadow: 0 1px 0 &lt;&lt;colour sidebar-foreground-shadow&gt;&gt;;\r\n}\n\n.tw-tiddler-info {\r\n\t&lt;&lt;box-shadow \&quot;inset 1px 2px 3px rgba(0,0,0,0.1)\&quot;&gt;&gt;\r\n}\n\n@media screen {\r\n\t.tw-tiddler-frame {\r\n\t\t&lt;&lt;box-shadow \&quot;5px 5px 5px rgba(0, 0, 0, 0.1)\&quot;&gt;&gt;\r\n\t}\r\n}\n\n@media (max-width: {{$:/themes/tiddlywiki/vanilla/metrics/sidebarbreakpoint}}) {\r\n\t.tw-tiddler-frame {\r\n\t\t&lt;&lt;box-shadow none&gt;&gt;\r\n\t}\r\n}\n\n.tw-page-controls button svg, .tw-tiddler-controls button svg, .tw-topbar button svg {\r\n\t&lt;&lt;transition \&quot;fill 150ms ease-in-out\&quot;&gt;&gt;\r\n}\n\n.tw-tiddler-controls button.tw-selected svg {\r\n\t&lt;&lt;filter \&quot;drop-shadow(0px -1px 2px rgba(0,0,0,0.25))\&quot;&gt;&gt;\r\n}\n\n.tw-tiddler-frame input.tw-edit-texteditor {\r\n\t&lt;&lt;box-shadow \&quot;inset 0 1px 8px rgba(0, 0, 0, 0.15)\&quot;&gt;&gt;\r\n}\n\n.tw-edit-tags {\r\n\t&lt;&lt;box-shadow \&quot;inset 0 1px 8px rgba(0, 0, 0, 0.15)\&quot;&gt;&gt;\r\n}\n\n.tw-tiddler-frame .tw-edit-tags input.tw-edit-texteditor {\r\n\t&lt;&lt;box-shadow \&quot;none\&quot;&gt;&gt;\r\n\tborder: none;\r\n\toutline: none;\r\n}\n\ncanvas.tw-edit-bitmapeditor  {\r\n\t&lt;&lt;box-shadow \&quot;2px 2px 5px rgba(0, 0, 0, 0.5)\&quot;&gt;&gt;\r\n}\n\n.tw-drop-down {\r\n\tborder-radius: 4px;\r\n\t&lt;&lt;box-shadow \&quot;2px 2px 10px rgba(0, 0, 0, 0.5)\&quot;&gt;&gt;\r\n}\n\n.tw-block-dropdown {\r\n\tborder-radius: 4px;\r\n\t&lt;&lt;box-shadow \&quot;2px 2px 10px rgba(0, 0, 0, 0.5)\&quot;&gt;&gt;\r\n}\n\n.tw-modal-displayed {\r\n\t-webkit-filter: blur(4px);\r\n}\n\n.modal {\r\n\tborder-radius: 6px;\r\n\t&lt;&lt;box-shadow \&quot;0 3px 7px rgba(0,0,0,0.3)\&quot;&gt;&gt;\r\n}\n\n.modal-footer {\r\n\tborder-radius: 0 0 6px 6px;\r\n\t&lt;&lt;box-shadow \&quot;inset 0 1px 0 #fff\&quot;&gt;&gt;;\r\n}\n\n\r\n.tw-alert {\r\n\tborder-radius: 6px;\r\n\t&lt;&lt;box-shadow \&quot;0 3px 7px rgba(0,0,0,0.6)\&quot;&gt;&gt;\r\n}\n\n.tw-notification {\r\n\tborder-radius: 6px;\r\n\t&lt;&lt;box-shadow \&quot;0 3px 7px rgba(0,0,0,0.3)\&quot;&gt;&gt;\r\n\ttext-shadow: 0 1px 0 rgba(255,255,255, 0.8);\r\n}\n\n.tw-sidebar-lists .tw-tab-divider {\r\n\t&lt;&lt;background-linear-gradient \&quot;left, rgb(216,216,216) 0%, rgb(236,236,236) 250px\&quot;&gt;&gt;\r\n}\n\n.tw-more-sidebar .tw-tab-buttons button {\r\n\t&lt;&lt;background-linear-gradient \&quot;left, rgb(236,236,236) 0%, rgb(224,224,224) 100%\&quot;&gt;&gt;\r\n}\n\n.tw-more-sidebar .tw-tab-buttons button.tw-tab-selected {\r\n\t&lt;&lt;background-linear-gradient \&quot;left, rgb(236,236,236) 0%, rgb(248,248,248) 100%\&quot;&gt;&gt;\r\n}\n\n.tw-message-box img {\r\n\t&lt;&lt;box-shadow \&quot;1px 1px 3px rgba(0,0,0,0.5)\&quot;&gt;&gt;\r\n}\r\n&quot;
         }
     }
 }</pre>
 </div>
-<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="A basic default theme" name="Vanilla" plugin-type="theme" title="$:/themes/tiddlywiki/vanilla" type="application/json" version="5.0.14-prerelease">
+<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="A basic default theme" name="Vanilla" plugin-type="theme" title="$:/themes/tiddlywiki/vanilla" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/themes/tiddlywiki/vanilla/base&quot;: {
@@ -5646,7 +5717,7 @@ yes
     }
 }</pre>
 </div>
-<div author="James.W.Anderson" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="custom theme based on Seamless" name="PhasersOnKill" plugin-type="theme" title="$:/themes/welford/phasersonkill" type="application/json" version="5.0.14-prerelease">
+<div author="James.W.Anderson" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="custom theme based on Seamless" name="PhasersOnKill" plugin-type="theme" title="$:/themes/welford/phasersonkill" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/config/AnimationDuration&quot;: {
@@ -5710,7 +5781,7 @@ yes
             &quot;tags&quot;: &quot;$:/tags/PageTemplate&quot;,
             &quot;title&quot;: &quot;$:/themes/welford/phasersonkill/PageTop&quot;,
             &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
-            &quot;text&quot;: &quot;&lt;div class=\&quot;tw-pagetop\&quot;&gt;\r\n\t&lt;b&gt;{{$:/SiteTitle}}&lt;/b&gt; \r\n\t&lt;$edit-text tiddler=\&quot;$:/temp/topsearch\&quot; type=\&quot;search\&quot; tag=\&quot;input\&quot;/&gt;\r\n\t&lt;$list filter=\&quot;[all[shadows+tiddlers]tag[$:/tags/PageControls]!has[draft.of]]\&quot; variable=\&quot;listItem\&quot;&gt;\r\n\t\t&lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt; mode=\&quot;inline\&quot;/&gt;\r\n\t&lt;/$list&gt;\r\n&lt;/div&gt;\r\n&lt;div class=\&quot;special-search\&quot;&gt;\r\n{{$:/themes/welford/phasersonkill/SearchResults}}\r\n&lt;/div&gt;\r\n&quot;
+            &quot;text&quot;: &quot;&lt;div class=\&quot;tw-pagetop\&quot;&gt;\r\n\t&lt;b&gt;{{$:/SiteTitle}}&lt;/b&gt; \r\n\t&lt;$edit-text tiddler=\&quot;$:/temp/topsearch\&quot; type=\&quot;search\&quot; tag=\&quot;input\&quot; accesskey=\&quot;q\&quot; /&gt;\r\n\t&lt;$list filter=\&quot;[all[shadows+tiddlers]tag[$:/tags/PageControls]!has[draft.of]]\&quot; variable=\&quot;listItem\&quot;&gt;\r\n\t\t&lt;$transclude tiddler=&lt;&lt;listItem&gt;&gt; mode=\&quot;inline\&quot;/&gt;\r\n\t&lt;/$list&gt;\r\n&lt;/div&gt;\r\n&lt;div class=\&quot;special-search\&quot;&gt;\r\n{{$:/themes/welford/phasersonkill/SearchResults}}\r\n&lt;/div&gt;\r\n&quot;
         },
         &quot;$:/themes/welford/phasersonkill/SearchPadding&quot;: {
             &quot;created&quot;: &quot;20140629173226803&quot;,
@@ -5750,18 +5821,39 @@ yes
     }
 }</pre>
 </div>
-<div created="20140102190517965" creator="ジェームス" modified="20140710205056326" modifier="ジェームス" tags="twdev" title="Customising Tiddly5" type="text/vnd.tiddlywiki">
-<pre>;Page Template 
-&lt;&lt;&lt; [[$:/tags/PageTemplate]] [[$:/PageTop]] [[$:/core/ui/PageTemplate/sidebar]] [[$:/core/ui/PageTemplate/story]]
-Extra pages must have [[$:/tags/PageTemplate]] tag in them
-&lt;&lt;&lt;
+<div author="James.W.Anderson" core-version="&gt;=5.0.0" dependents="$:/themes/welford/phasersonkill" description="Theme for removing editing features" name="ReadOnly" plugin-type="theme" title="$:/themes/welford/readonly" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;$:/themes/welford/readonly/styles.tid&quot;: {
+            &quot;title&quot;: &quot;$:/themes/welford/readonly/styles.tid&quot;,
+            &quot;tags&quot;: &quot;[[$:/tags/stylesheet]]&quot;,
+            &quot;text&quot;: &quot;\\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline\n\nsvg.tw-image-new-button, svg.tw-image-options-button, svg.tw-image-save-button, svg.tw-image-edit-button, svg.tw-image-delete-button, svg.tw-image-cancel-button, svg.tw-image-done-button {\r\n\tdisplay: none;\t\r\n}\r\n&quot;
+        }
+    }
+}</pre>
+</div>
+<div created="20140712130814229" modified="20140712131059105" tags="blog" title="A Sample Blog Post" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>This can be exported to a blog tiddlywiki using the Download Partial tiddler</pre>
+</div>
+<div created="20140102190517965" creator="ジェームス" modified="20140712132412010" modifier="ジェームス" tags="twdev" title="Developing For And Using TW5" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!Tiddlywiki Development 
 
-;Custom CSS 
-&lt;&lt;&lt; 
-custom css must have [[$:/tags/stylesheet]] tag
+I have made a few plugins and themes for tiddlywiki, you can find some notes of things I found usefull while developing them on this site. Search for the tag twdev or look at one of the articles below.
 
-here is one i made earlier  [[$:/stylesheet/Custom]]
-&lt;&lt;&lt;
+;twdev articles
+&lt;$list filter=&quot;[tag[twdev]]&quot;&gt;
+&lt;div class=&quot;tw-menu-list-subitem&quot;&gt;
+&lt;$link to={{!!title}}&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;
+&lt;/div&gt;
+&lt;/$list&gt;
+
+;twexample articles
+&lt;$list filter=&quot;[tag[twdev]]&quot;&gt;
+&lt;div class=&quot;tw-menu-list-subitem&quot;&gt;
+&lt;$link to={{!!title}}&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;
+&lt;/div&gt;
+&lt;/$list&gt;
+
 ;useful links
 &lt;&lt;&lt;
 [[http://tw5toolbar.tiddlyspot.com/]]
@@ -5769,12 +5861,9 @@ here is one i made earlier  [[$:/stylesheet/Custom]]
 [[http://tw5gray.tiddlyspot.com/]]
 &lt;&lt;&lt;
 
-[[$:/MenuWidth]]
-[[$:/HeaderHeight]]
-
 </pre>
 </div>
-<div created="20131119194500000" modified="20140710204510974" title="Download" type="text/vnd.tiddlywiki">
+<div created="20131119194500000" modified="20140710204510974" title="Download" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Download single file editions of version ''&lt;&lt;version&gt;&gt;'' of TiddlyWiki:
 
 |{{$:/editions/twnotes/snippets/download-empty-button}}|Get started with an empty wiki |
@@ -5784,7 +5873,23 @@ For more advanced configurations, you can run [[TiddlyWiki on Node.js]].
 
 </pre>
 </div>
-<div created="20140705202408826" modified="20140707212850957" title="Example Tiddler" type="text/vnd.tiddlywiki">
+<div created="20140712130137444" modified="20140712130320744" title="Download Partial" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>\define saveTiddlerFilter()
+[[$:/core]] [[$:/isEncrypted]] [[$:/plugins/tiddlywiki/fullscreen]] [[$:/themes/tiddlywiki/vanilla]] [[$:/themes/welford/phasersonkill]] [[$:/themes/welford/readonly]] [[$:/theme]] [[$:/plugins/tiddlywiki/codemirror]] [[$:/plugins/tiddlywiki/highlight]] [[$:/plugins/welford/twexe]] [[$:/plugins/welford/htalink]] [tag[blog]] -[[$:/boot/boot.css]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] +[sort[title]]
+\end
+\define savingEmpty()
+yes
+\end
+{{$:/core/templates/tiddlywiki5.html}}
+</pre>
+</div>
+<div created="20140712181615246" draft.of="$:/core/ui/PageControls/new-tiddler" draft.title="$:/core/ui/PageControls/new-tiddler" modified="20140712181614163" tags="$:/tags/PageControls" title="Draft of '$:/core/ui/PageControls/new-tiddler'" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>&lt;$button message=&quot;tw-new-tiddler&quot; title={{$:/language/Buttons/NewTiddler/Hint}} aria-label={{$:/language/Buttons/NewTiddler/Caption}} class=&quot;btn-invisible&quot;&gt;{{$:/core/images/new-button}}&lt;/$button&gt;</pre>
+</div>
+<div created="20140712181602007" draft.of="$:/tags/PageControls" draft.title="$:/tags/PageControls" list="$:/core/ui/PageControls/new-tiddler $:/core/ui/PageControls/control-panel $:/core/ui/PageControls/save-wiki" modified="20140712181600933" title="Draft of '$:/tags/PageControls'" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre></pre>
+</div>
+<div created="20140705202408826" modified="20140707212850957" title="Example Tiddler" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!This Tiddler
 !!Does Nothing
 !!!It's just an example
@@ -5803,7 +5908,17 @@ http://www.google.co.jp
 !!TWexe
 &lt;$twexe tiddler=&quot;This Is TWEXE&quot; /&gt;</pre>
 </div>
-<div created="20140325223215222" creator="ジェームス" modified="20140710210123760" modifier="ジェームス" title="Hello" type="text/vnd.tiddlywiki">
+<div created="20140712125603027" modified="20140712131847562" tags="twdev" title="Export Specific Tiddlers" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>Just as you can use the buttons in [[Download]] to download the whole tiddlywiki as it is or an empty copy conatining just the plugins and themes, you can also 
+create a tiddler to extract specific pages. I like to do this to extract pages specifically for my homepage. 
+
+!!Method
+*Using this syntax `&lt;$button message=&quot;tw-download-file&quot; param=&quot;Download Partial&quot;&gt;Download Empty&lt;/$button&gt;`
+*and the tiddler [[Download Partial]] I can creat a button which will let me download a tiddler containing only tiddlers tagged &quot;blog&quot;
+!!Example
+*&lt;$button message=&quot;tw-download-file&quot; param=&quot;Download Partial&quot;&gt;Download Partial&lt;/$button&gt;</pre>
+</div>
+<div created="20140325223215222" creator="ジェームス" modified="20140712115927929" modifier="ジェームス" title="Hello" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>This TiddlyWiki is for keeping basic notes on how to make plugins for TiddlyWiki and is very much a work in progress.
 
 !!Features
@@ -5818,7 +5933,7 @@ http://www.google.co.jp
 **import into your tiddlywiki by dragging and dropping this link [[$:/plugins/welford/htalink]]
 </pre>
 </div>
-<div created="20140318214655832" creator="ジェームス" modified="20140318214729239" modifier="ジェームス" title="Highlight Example" type="text/vnd.tiddlywiki">
+<div created="20140318214655832" creator="ジェームス" modified="20140318214729239" modifier="ジェームス" title="Highlight Example" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>```cpp
 void main(void)
 {
@@ -5827,7 +5942,7 @@ void main(void)
 }
 ```</pre>
 </div>
-<div created="20140103173954731" creator="ジェームス" modified="20140710205037638" modifier="ジェームス" tags="twexample" title="list test" type="text/vnd.tiddlywiki">
+<div created="20140103173954731" creator="ジェームス" modified="20140712132207856" modifier="ジェームス" tags="twexample" title="list test" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;$list filter=&quot;[!is[system]has[type]each[type]sort[type]]&quot;&gt;
 &lt;div class=&quot;tw-menu-list-item&quot;&gt;
 &lt;$view field=&quot;type&quot;/&gt;
@@ -5850,10 +5965,10 @@ void main(void)
 &lt;/div&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20140707212036871" modified="20140707212107032" tags="$:/tags/twexe" title="This Is TWEXE" twexe_cwd=".\" twexe_name="TWEXE Example" twexe_target=".\" type="text/vnd.tiddlywiki">
+<div created="20140707212036871" modified="20140707212107032" tags="$:/tags/twexe" title="This Is TWEXE" twexe_cwd=".\" twexe_name="TWEXE Example" twexe_target=".\" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>Write a description of the exe here.</pre>
 </div>
-<div created="20140630220900224" modified="20140710201506015" title="To Do" type="text/vnd.tiddlywiki">
+<div created="20140630220900224" modified="20140710201506015" title="To Do" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre># transclusion of twexe search results
 # ~~push storyriver down by the height of the results~~
 # clean up CSS
@@ -5868,7 +5983,7 @@ void main(void)
 #~~move the custom storyview out into the theme from the actual tiddly~~
 #~~consder having the quick search in the main version too~~</pre>
 </div>
-<div created="20140325222233114" creator="ジェームス" modified="20140710204928545" modifier="ジェームス" title="TW Dev Notes" type="text/vnd.tiddlywiki">
+<div created="20140325222233114" creator="ジェームス" modified="20140712131834065" modifier="ジェームス" tags="twdev" title="TW Dev Notes" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!Widgets
 
 Accessing a tidder's field and text data from within a widget
