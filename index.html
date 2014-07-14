@@ -151,11 +151,15 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/tab-{794734817}</li>
+
 <li>$:/status/IsLoggedIn</li>
 
 <li>$:/status/UserName</li>
 
 <li>$:/StoryList</li>
+
+<li>$:/temp/NewTagName</li>
 
 <li>$:/theme</li>
 
@@ -168,6 +172,8 @@ Error message and password prompt
 <li>$:/themes/welford/readonly</li>
 
 <li>A Sample Blog Post</li>
+
+<li>Creating Plugins</li>
 
 <li>Developing For And Using TW5</li>
 
@@ -5612,7 +5618,7 @@ yes
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/plugins/welford/twmousetrap/example.js&quot;: {
-            &quot;text&quot;: &quot;/*\\\r\ntitle: $:/plugins/welford/twmousetrap/example.js\r\ntype: application/javascript\r\nmodule-type: startup\r\n\r\nregisters a sample keypress thingy\r\n\\*/\r\n\r\n(function(){\r\n/*jslint node: true, browser: true */\r\n/*global $tw: false */\r\n\&quot;use strict\&quot;;\r\n\r\n// Export name and synchronous status\r\nexports.name = \&quot;twmousetrapexample\&quot;;\r\nexports.platforms = [\&quot;browser\&quot;];\r\nexports.after = [\&quot;twmousetrap\&quot;];\r\nexports.synchronous = true;\r\n\r\n\r\nexports.startup = function() {\r\n\t$tw.Mousetrap.bind(\&quot;ctrl+shift+x\&quot;,\r\n\t\tfunction() {\r\n\t\t\talert(\&quot;Hi there!\&quot;);\r\n\t\t}\r\n\t);\r\n\t$tw.Mousetrap.bind(\&quot;/\&quot;,\r\n\t\tfunction() {\r\n\t\t\tdocument.getElementById(\&quot;topsearch\&quot;).focus();\r\n\t\t},\r\n\t\t\&quot;keyup\&quot;\r\n\t);\r\n};\r\n//\r\n})();\r\n&quot;,
+            &quot;text&quot;: &quot;/*\\\r\ntitle: $:/plugins/welford/twmousetrap/example.js\r\ntype: application/javascript\r\nmodule-type: startup\r\n\r\nregisters a sample keypress thingy\r\n\\*/\r\n\r\n(function(){\r\n/*jslint node: true, browser: true */\r\n/*global $tw: false */\r\n\&quot;use strict\&quot;;\r\n\r\n// Export name and synchronous status\r\nexports.name = \&quot;twmousetrapexample\&quot;;\r\nexports.platforms = [\&quot;browser\&quot;];\r\nexports.after = [\&quot;twmousetrap\&quot;];\r\nexports.synchronous = true;\r\n\r\n\r\nexports.startup = function() {\r\n\t$tw.Mousetrap.bind(\&quot;ctrl+shift+x\&quot;,\r\n\t\tfunction() {\r\n\t\t\talert(\&quot;Hi there!\&quot;);\r\n\t\t}\r\n\t);\r\n\t$tw.Mousetrap.bind(\&quot;/\&quot;,\r\n\t\tfunction() {\r\n\t\t\tif(document.getElementById(\&quot;topsearch\&quot;)){document.getElementById(\&quot;topsearch\&quot;).focus();}\r\n\t\t},\r\n\t\t\&quot;keyup\&quot;\r\n\t);\r\n};\r\n//\r\n})();\r\n&quot;,
             &quot;title&quot;: &quot;$:/plugins/welford/twmousetrap/example.js&quot;,
             &quot;type&quot;: &quot;application/javascript&quot;,
             &quot;module-type&quot;: &quot;startup&quot;
@@ -5632,16 +5638,22 @@ yes
 <div created="20140710201622904" creator="ジェームス" modified="20140710201628790" modifier="ジェームス" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>TWNotes</pre>
 </div>
+<div modified="20140714213301313" title="$:/state/tab-{794734817}" revision="1" bag="default">
+<pre>$:/core/ui/ControlPanel/Appearance</pre>
+</div>
 <div title="$:/status/IsLoggedIn" revision="2" bag="default">
 <pre>yes</pre>
 </div>
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div list="Hello Download [[Developing For And Using TW5]]" title="$:/StoryList" revision="7" bag="default">
+<div list="Hello Download [[Developing For And Using TW5]]" title="$:/StoryList" revision="10" bag="default">
 <pre></pre>
 </div>
-<div created="20140620130427249" modified="20140712124627931" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140714213411636" modified="20140714213412252" title="$:/temp/NewTagName" revision="6" bag="default">
+<pre></pre>
+</div>
+<div created="20140620130427249" modified="20140714213303449" title="$:/theme" type="text/vnd.tiddlywiki" revision="1" bag="default">
 <pre>$:/themes/welford/phasersonkill</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="A clean theme that emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.0.14-prerelease" revision="0" bag="default">
@@ -5831,6 +5843,66 @@ yes
 <div created="20140712130814229" modified="20140712131059105" tags="blog" title="A Sample Blog Post" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>This can be exported to a blog tiddlywiki using the Download Partial tiddler</pre>
 </div>
+<div created="20140316210654272" creator="ジェームス" modified="20140714213420007" modifier="ジェームス" tags="twdev" title="Creating Plugins" revision="3" bag="default">
+<pre>#install node.js
+## ~~edit P:\nodejs\node_modules\npm\npmrc to change where npm installs it's modules if you want~~
+#~~install tiddlywiki on nodejs `&gt;npm install -g tiddlywiki`~~ not neccesary if you are using the github repo
+#clone the repo at https://github.com/Jermolene/TiddlyWiki5 then
+##go to where you cloned tiddlywiki and use `npm link` so that it uses the local github copy instead of the installed one (need to do as admin if you already installed the nodejs version)
+## sanity check `tiddlywiki --version`
+# moveto [tw_root]\editions\
+# create a wiki to test your plugin ``tiddlywiki plugintest --init server``
+## this will create a folder called plugintest with a tiddlywiki.info file in it
+#create some folders for your plugin in ``[tw_root]\plugins\[organization_name]\[plugin_name]``
+##also need some extra data like ``[tw_root]\plugins\[organization_name]\[plugin_name]\plugin.info``
+##also need some extra data like ``[tw_root]\plugins\[organization_name]\[plugin_name]\plugin.js``
+#add your plugin to ``tiddlywiki.info``
+
+!!Example plugin.info
+```javascript
+{
+	&quot;title&quot;: &quot;$:/plugins/[organization_name]\[plugin_name]&quot;,
+	&quot;description&quot;: &quot;runs local batch scripts&quot;,
+	&quot;author&quot;: &quot;James W. Anderson&quot;,
+	&quot;version&quot;: &quot;0.0.1&quot;,
+	&quot;core-version&quot;: &quot;&gt;=5.0.0&quot;,
+	&quot;source&quot;: &quot;https://github.com/Welford/NotUploadedYet&quot;,
+	&quot;plugin-type&quot;: &quot;plugin&quot;
+}
+```
+!!Example plugin.js
+```javascript
+/*\
+title: $:/plugins/welford/batch/plugin.js
+type: application/javascript
+module-type: macro
+runs a batch/exe on the local computer
+\*/
+//module-type etermines the kind of plugin that it is....see the docs somewhere for it
+//don't put your own comments in the above, it will ruin the plugin creation
+(function () {
+
+	/*jslint node: true, browser: true */
+	/*global $tw: false */
+	&quot;use strict&quot;;
+
+	/*
+	Information about this macro
+	*/
+
+	exports.name = &quot;plugin&quot;; //the name by which the plugin can be called in this case, because it is of type macro, it can be invoked in a tiddler as &lt;&lt;plugin&gt;&gt;
+	exports.params = [];
+
+	/*
+	Run the macro
+	*/
+	exports.run = function () {
+		return &quot;Garbled Mess1&quot;;
+	};
+
+})();
+```</pre>
+</div>
 <div created="20140102190517965" creator="ジェームス" modified="20140712132412010" modifier="ジェームス" tags="twdev" title="Developing For And Using TW5" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!Tiddlywiki Development 
 
@@ -5899,7 +5971,7 @@ create a tiddler to extract specific pages. I like to do this to extract pages s
 !!Example
 *&lt;$button message=&quot;tw-download-file&quot; param=&quot;$:/editions/twnotes/download-partial&quot;&gt;Download Partial&lt;/$button&gt;</pre>
 </div>
-<div created="20140325223215222" creator="ジェームス" modified="20140713110311051" modifier="ジェームス" title="Hello" type="text/vnd.tiddlywiki" revision="1" bag="default">
+<div created="20140325223215222" creator="ジェームス" modified="20140713110311051" modifier="ジェームス" title="Hello" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>This TiddlyWiki is for keeping basic notes on how to make plugins for TiddlyWiki and is very much a work in progress.
 
 !!Features
