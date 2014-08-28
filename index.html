@@ -151,10 +151,6 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
-<li>$:/status/IsLoggedIn</li>
-
-<li>$:/status/UserName</li>
-
 <li>$:/StoryList</li>
 
 <li>$:/temp/info-plugin</li>
@@ -203,10 +199,10 @@ Error message and password prompt
 <!--~~ Ordinary tiddlers ~~-->
 
 <div id="storeArea" style="display:none;">
-<div title="$:/config/OriginalTiddlerPaths" type="application/json" revision="0" bag="default">
+<div title="$:/config/OriginalTiddlerPaths" type="application/json">
 <pre>{&quot;A Sample Blog Post&quot;:&quot;A Sample Blog Post.tid&quot;,&quot;Creating Plugins&quot;:&quot;Creating Plugins.tid&quot;,&quot;$:/DefaultTiddlers&quot;:&quot;DefaultTiddlers.tid&quot;,&quot;Developing For And Using TW5&quot;:&quot;Developing For And Using TW5.tid&quot;,&quot;$:/editions/twnotes/snippets/download-empty-button&quot;:&quot;download-empty-button.tid&quot;,&quot;$:/editions/twnotes/download-empty&quot;:&quot;download-empty.tid&quot;,&quot;$:/editions/twnotes/download-partial&quot;:&quot;download-partial.tid&quot;,&quot;$:/editions/twnotes/snippets/download-wiki-button&quot;:&quot;download-wiki-button.tid&quot;,&quot;$:/editions/twnotes/download-wiki&quot;:&quot;download-wiki.tid&quot;,&quot;Download&quot;:&quot;Download.tid&quot;,&quot;Example Tiddler&quot;:&quot;Example Tiddler.tid&quot;,&quot;Export Specific Tiddlers&quot;:&quot;Export Specific Tiddlers.tid&quot;,&quot;Hello&quot;:&quot;Hello.tid&quot;,&quot;Highlight Example&quot;:&quot;Highlight Example.tid&quot;,&quot;list test&quot;:&quot;list test.tid&quot;,&quot;$:/SiteSubtitle&quot;:&quot;SiteSubtitle.tid&quot;,&quot;$:/SiteTitle&quot;:&quot;SiteTitle.tid&quot;,&quot;$:/theme&quot;:&quot;theme.tid&quot;,&quot;This Is TWEXE&quot;:&quot;This Is TWEXE.tid&quot;,&quot;To Do&quot;:&quot;To Do.tid&quot;,&quot;TW Dev Notes&quot;:&quot;TW Dev Notes.tid&quot;}</pre>
 </div>
-<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core plugin" list="readme" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.0.15-prerelease" revision="0" bag="default">
+<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core plugin" list="readme" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.0.15-prerelease">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/Acknowledgements&quot;: {
@@ -4713,12 +4709,12 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20131127215321439" modified="20140712134200472" title="$:/DefaultTiddlers" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20131127215321439" modified="20140712134200472" title="$:/DefaultTiddlers" type="text/vnd.tiddlywiki">
 <pre>Hello
 Download
 [[Developing For And Using TW5]]</pre>
 </div>
-<div created="20140712113349124" modified="20140714213857674" title="$:/editions/twnotes/download-empty" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140712113349124" modified="20140714213857674" title="$:/editions/twnotes/download-empty" type="text/vnd.tiddlywiki">
 <pre>\define saveTiddlerFilter()
 [[$:/core]] [[$:/isEncrypted]] [[$:/plugins/tiddlywiki/fullscreen]] [[$:/themes/tiddlywiki/vanilla]] [[$:/themes/welford/phasersonkill]] [[$:/themes/welford/readonly]] [[$:/theme]] [[$:/plugins/tiddlywiki/codemirror]] [[$:/plugins/tiddlywiki/highlight]] [[$:/plugins/welford/twexe]] [[$:/plugins/welford/htalink]] [[$:/plugins/welford/twmousetrap]] -[[$:/boot/boot.css]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] +[sort[title]]
 \end
@@ -4728,7 +4724,7 @@ yes
 {{$:/core/templates/tiddlywiki5.html}}
 </pre>
 </div>
-<div created="20140712130137444" modified="20140712130320744" title="$:/editions/twnotes/download-partial" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140712130137444" modified="20140712130320744" title="$:/editions/twnotes/download-partial" type="text/vnd.tiddlywiki">
 <pre>\define saveTiddlerFilter()
 [[$:/core]] [[$:/isEncrypted]] [[$:/plugins/tiddlywiki/fullscreen]] [[$:/themes/tiddlywiki/vanilla]] [[$:/themes/welford/phasersonkill]] [[$:/themes/welford/readonly]] [[$:/theme]] [[$:/plugins/tiddlywiki/codemirror]] [[$:/plugins/tiddlywiki/highlight]] [[$:/plugins/welford/twexe]] [[$:/plugins/welford/htalink]] [tag[blog]] -[[$:/boot/boot.css]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] +[sort[title]]
 \end
@@ -4738,23 +4734,23 @@ yes
 {{$:/core/templates/tiddlywiki5.html}}
 </pre>
 </div>
-<div created="20140713102207127" modified="20140713102335636" title="$:/editions/twnotes/download-wiki" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140713102207127" modified="20140713102335636" title="$:/editions/twnotes/download-wiki" type="text/vnd.tiddlywiki">
 <pre>\define saveTiddlerFilter()
 [is[tiddler]] -[prefix[$:/state/popup/]] -[[$:/HistoryList]] -[[$:/boot/boot.css]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] +[sort[title]] -[[$:/plugins/tiddlywiki/filesystem]] -[[$:/plugins/tiddlywiki/tiddlyweb]]
 \end
 {{$:/core/templates/tiddlywiki5.html}}
 </pre>
 </div>
-<div title="$:/editions/twnotes/snippets/download-empty-button" revision="0" bag="default">
+<div title="$:/editions/twnotes/snippets/download-empty-button">
 <pre>&lt;$button message=&quot;tw-download-file&quot; param=&quot;$:/editions/twnotes/download-empty&quot; class=&quot;btn-big-green&quot;&gt;Download Empty {{$:/core/images/save-button}}&lt;/$button&gt;</pre>
 </div>
-<div created="20140713102532406" modified="20140713102651755" title="$:/editions/twnotes/snippets/download-wiki-button" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140713102532406" modified="20140713102651755" title="$:/editions/twnotes/snippets/download-wiki-button" type="text/vnd.tiddlywiki">
 <pre>&lt;$button message=&quot;tw-download-file&quot; param=&quot;$:/editions/twnotes/download-wiki&quot; class=&quot;btn-big-green&quot;&gt;Download Wiki {{$:/core/images/save-button}}&lt;/$button&gt;</pre>
 </div>
-<div title="$:/isEncrypted" revision="0" bag="default">
+<div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div author="OGOSHI Masayuki, pekopeko1" core-version="&gt;=5.0.9" dependents="" description="Japanese (Japan)" name="ja-JP" plugin-type="language" title="$:/languages/ja-JP" type="application/json" version="5.0.15-prerelease" revision="0" bag="default">
+<div author="OGOSHI Masayuki, pekopeko1" core-version="&gt;=5.0.9" dependents="" description="Japanese (Japan)" name="ja-JP" plugin-type="language" title="$:/languages/ja-JP" type="application/json" version="5.0.15-prerelease">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/language/ControlPanel/Advanced/Caption&quot;: {
@@ -6151,7 +6147,7 @@ yes
     }
 }</pre>
 </div>
-<div author="JeremyRuston" dependents="" description="Codemirror plugin" list="readme" plugin-type="plugin" title="$:/plugins/tiddlywiki/codemirror" type="application/json" version="5.0.15-prerelease" revision="0" bag="default">
+<div author="JeremyRuston" dependents="" description="Codemirror plugin" list="readme" plugin-type="plugin" title="$:/plugins/tiddlywiki/codemirror" type="application/json" version="5.0.15-prerelease">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/core/modules/widgets/edit-codemirror.js&quot;: {
@@ -6264,7 +6260,7 @@ yes
     }
 }</pre>
 </div>
-<div author="JoaoBolila" dependents="" description="Highlight.js plugin for TiddlyWiki5" list="license" plugin-type="plugin" title="$:/plugins/tiddlywiki/highlight" type="application/json" version="5.0.15-prerelease" revision="0" bag="default">
+<div author="JoaoBolila" dependents="" description="Highlight.js plugin for TiddlyWiki5" list="license" plugin-type="plugin" title="$:/plugins/tiddlywiki/highlight" type="application/json" version="5.0.15-prerelease">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/plugins/tiddlywiki/highlight/highlight.js&quot;: {
@@ -6298,7 +6294,7 @@ yes
     }
 }</pre>
 </div>
-<div author="James W. Anderson" core-version="&gt;=5.0.0" dependents="" description="Catches links in HTA" plugin-type="plugin" source="https://github.com/Welford/htalink" title="$:/plugins/welford/htalink" type="application/json" version="0.0.1" revision="0" bag="default">
+<div author="James W. Anderson" core-version="&gt;=5.0.0" dependents="" description="Catches links in HTA" plugin-type="plugin" source="https://github.com/Welford/htalink" title="$:/plugins/welford/htalink" type="application/json" version="0.0.1">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/plugins/welford/htalink/link.js&quot;: {
@@ -6310,7 +6306,7 @@ yes
     }
 }</pre>
 </div>
-<div author="James W. Anderson" core-version="&gt;=5.0.0" dependents="" description="Runs local exe/batch files. Open in folder, copy to clipboard etc also optional" plugin-type="plugin" source="https://github.com/Welford/twexe" title="$:/plugins/welford/twexe" type="application/json" version="0.0.1" revision="0" bag="default">
+<div author="James W. Anderson" core-version="&gt;=5.0.0" dependents="" description="Runs local exe/batch files. Open in folder, copy to clipboard etc also optional" plugin-type="plugin" source="https://github.com/Welford/twexe" title="$:/plugins/welford/twexe" type="application/json" version="0.0.1">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/plugins/welford/twexe/create&quot;: {
@@ -6357,7 +6353,7 @@ yes
     }
 }</pre>
 </div>
-<div author="James W. Anderson" core-version="&gt;=5.0.0" dependents="" description="global shortcuts" plugin-type="plugin" source="https://github.com/Welford/twmoustrap" title="$:/plugins/welford/twmousetrap" type="application/json" version="0.0.1" revision="0" bag="default">
+<div author="James W. Anderson" core-version="&gt;=5.0.0" dependents="" description="global shortcuts" plugin-type="plugin" source="https://github.com/Welford/twmoustrap" title="$:/plugins/welford/twmousetrap" type="application/json" version="0.0.1">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/plugins/welford/twmousetrap/example.js&quot;: {
@@ -6375,39 +6371,33 @@ yes
     }
 }</pre>
 </div>
-<div created="20140710201632183" creator="ジェームス" modified="20140710201654071" modifier="ジェームス" title="$:/SiteSubtitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140710201632183" creator="ジェームス" modified="20140710201654071" modifier="ジェームス" title="$:/SiteSubtitle" type="text/vnd.tiddlywiki">
 <pre>Samples Of My Tiddlywiki Stuff</pre>
 </div>
-<div created="20140710201622904" creator="ジェームス" modified="20140710201628790" modifier="ジェームス" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140710201622904" creator="ジェームス" modified="20140710201628790" modifier="ジェームス" title="$:/SiteTitle" type="text/vnd.tiddlywiki">
 <pre>TWNotes</pre>
 </div>
-<div title="$:/status/IsLoggedIn" revision="2" bag="default">
-<pre>yes</pre>
-</div>
-<div title="$:/status/UserName" revision="1" bag="default">
+<div list="Hello Download [[Developing For And Using TW5]]" title="$:/StoryList">
 <pre></pre>
 </div>
-<div list="Hello Download [[Developing For And Using TW5]]" title="$:/StoryList" revision="1" bag="default">
-<pre></pre>
-</div>
-<div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
+<div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/info/browser&quot;: {
             &quot;title&quot;: &quot;$:/info/browser&quot;,
-            &quot;text&quot;: &quot;yes&quot;
+            &quot;text&quot;: &quot;no&quot;
         },
         &quot;$:/info/node&quot;: {
             &quot;title&quot;: &quot;$:/info/node&quot;,
-            &quot;text&quot;: &quot;no&quot;
+            &quot;text&quot;: &quot;yes&quot;
         }
     }
 }</pre>
 </div>
-<div created="20140620130427249" modified="20140802191909354" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140620130427249" modified="20140802191909354" title="$:/theme" type="text/vnd.tiddlywiki">
 <pre>$:/themes/welford/phasersonkill</pre>
 </div>
-<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="A clean theme that emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.0.15-prerelease" revision="0" bag="default">
+<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="A clean theme that emphasises individual tiddlers" name="Snow White" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.0.15-prerelease">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/themes/tiddlywiki/snowwhite/base&quot;: {
@@ -6418,7 +6408,7 @@ yes
     }
 }</pre>
 </div>
-<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="A basic default theme" name="Vanilla" plugin-type="theme" title="$:/themes/tiddlywiki/vanilla" type="application/json" version="5.0.15-prerelease" revision="0" bag="default">
+<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="A basic default theme" name="Vanilla" plugin-type="theme" title="$:/themes/tiddlywiki/vanilla" type="application/json" version="5.0.15-prerelease">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/themes/tiddlywiki/vanilla/base&quot;: {
@@ -6476,7 +6466,7 @@ yes
     }
 }</pre>
 </div>
-<div author="James.W.Anderson" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="custom theme based on Seamless" name="PhasersOnKill" plugin-type="theme" title="$:/themes/welford/phasersonkill" type="application/json" version="5.0.15-prerelease" revision="0" bag="default">
+<div author="James.W.Anderson" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="custom theme based on Seamless" name="PhasersOnKill" plugin-type="theme" title="$:/themes/welford/phasersonkill" type="application/json" version="5.0.15-prerelease">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/config/AnimationDuration&quot;: {
@@ -6504,7 +6494,7 @@ yes
             &quot;title&quot;: &quot;$:/themes/welford/phasersonkill/base&quot;,
             &quot;tags&quot;: &quot;[[$:/tags/stylesheet]]&quot;,
             &quot;list-after&quot;: &quot;$:/themes/tiddlywiki/vanilla/base&quot;,
-            &quot;text&quot;: &quot;\\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline\n\n/*\r\nRules copied from Snow White---------------------------------------------\r\n*/\n\n.tw-page-controls button svg, .tw-tiddler-controls button svg, .tw-topbar button svg {\r\n\t&lt;&lt;transition \&quot;fill 150ms ease-in-out\&quot;&gt;&gt;\r\n}\n\n.tw-tiddler-controls button.tw-selected svg {\r\n\t&lt;&lt;filter \&quot;drop-shadow(0px -1px 2px rgba(0,0,0,0.25))\&quot;&gt;&gt;\r\n}\n\n.tw-drop-down {\r\n\tborder-radius: 4px;\r\n\t&lt;&lt;box-shadow \&quot;2px 2px 10px rgba(0, 0, 0, 0.5)\&quot;&gt;&gt;\r\n}\n\n.tw-block-dropdown {\r\n\tborder-radius: 4px;\r\n\t&lt;&lt;box-shadow \&quot;2px 2px 10px rgba(0, 0, 0, 0.5)\&quot;&gt;&gt;\r\n}\n\n.tw-modal-displayed {\r\n\t-webkit-filter: blur(4px);\r\n}\n\n.modal {\r\n\tborder-radius: 6px;\r\n\t&lt;&lt;box-shadow \&quot;0 3px 7px rgba(0,0,0,0.3)\&quot;&gt;&gt;\r\n}\n\n.modal-footer {\r\n\tborder-radius: 0 0 6px 6px;\r\n\t&lt;&lt;box-shadow \&quot;inset 0 1px 0 #fff\&quot;&gt;&gt;;\r\n}\n\n.tw-alert {\r\n\tborder-radius: 6px;\r\n\t&lt;&lt;box-shadow \&quot;0 3px 7px rgba(0,0,0,0.6)\&quot;&gt;&gt;\r\n}\n\n.tw-notification {\r\n\tborder-radius: 6px;\r\n\t&lt;&lt;box-shadow \&quot;0 3px 7px rgba(0,0,0,0.3)\&quot;&gt;&gt;\r\n\ttext-shadow: 0 1px 0 rgba(255,255,255, 0.8);\r\n}\n\n.tw-message-box img {\r\n\t&lt;&lt;box-shadow \&quot;1px 1px 3px rgba(0,0,0,0.5)\&quot;&gt;&gt;\r\n}\n\n/*\r\nPhaserOnKill Stuff---------------------------------------------\r\n*/\n\nblockquote { border-left:2px dashed #DDD; margin-left:12px; }\n\n/* page header */\r\ndiv.tw-pagetop { \r\n position:fixed;\r\n max-height:{{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\n width: 100%;\r\n top : 0px;\r\n left : 0px;\r\n padding-left: 5px;  \r\n z-index: 98;\r\n background : {{$:/themes/welford/phasersonkill/metrics/headerbgcolour}}; !important; /* as background */\r\n overflow:hidden;\r\n vertical-align:middle;\r\n line-height:{{$:/themes/welford/phasersonkill/metrics/headerheight}}; \r\n opacity:0.93;\r\n box-shadow: #ccc 0px 1px 5px;\r\n}\n\n.tw-pagetop b { color:{{$:/themes/welford/phasersonkill/metrics/headerfontcolour}}; font-size:1.1em;}\n\n.story-river {\r\n width: auto;\r\n height: 100%;\r\n left: 0px;\r\n top: {{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\n padding: 0px 10px 0px 10px;\r\n margin: 0;\r\n background-color: #fff;\r}\n\n.tw-tiddler-frame {\r\n width:100%; \r\n}\n\n\r\n/* Use the tiddler background colour for the page background */\r\nhtml {max-width:{{$:/themes/welford/phasersonkill/metrics/maxwidth}};}\n\nhtml body.tw-body {\r\n\tbackground-color: &lt;&lt;colour background&gt;&gt;;\t\r\n}\n\nhtml:-webkit-full-screen {\r\n\tbackground-color: &lt;&lt;colour background&gt;&gt;;\r\n}\n\n/* Adjust the colour of the page controls */\r\nbody.tw-body .tw-page-controls svg {\r\n\tfill: &lt;&lt;colour muted-foreground&gt;&gt;;\r\n}\n\n/* Adjust the colour of the sidebar selected tabs */\r\nbody.tw-body .tw-sidebar-lists .tw-tab-buttons button.tw-tab-selected {\r\n\tbackground-color: &lt;&lt;colour background&gt;&gt;;\r\n}\n\n/* tiddler titles  */\r\n.tw-tiddler-title {\r\nborder-bottom: 1px solid {{$:/themes/welford/phasersonkill/metrics/titlebordercolour}};\r\n}\n\n/* stop the p tags form adding unwanted padding at the stop of the story river */\r\n.tw-dropzone p { margin:0px; padding:0px; }\r\n.story-river p { padding: 0px; margin: 0px; }\n\n/* hide the reveal stuff for the sidebar*/\r\nspan.tw-topbar {display:none;}\n\n/* color and size of controls in topbar for smallscreen version */\r\n.tw-pagetop svg.tw-image-button {\r\npadding:0;\r\nmargin:0; \r\nfill:red;\r\nwidth:{{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\nheight:{{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\nvertical-align:middle;\r\n}\n\n.special-search .tw-reveal .tw-search-results, .hacky-buffer .tw-reveal .tw-search-results { \r\nposition : fixed;\r\ntop : {{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\nleft : 0px;\t\r\npadding: 0px 10px 0px 10px;\r\nmargin: 0;\r\nbackground:  {{$:/themes/welford/phasersonkill/metrics/headerbgcolour}};\r\nz-index: 99;\r\nbox-shadow: 0px 10px 30px  {{$:/themes/welford/phasersonkill/metrics/headerbgcolour}};\r\nborder-top:1px dashed #ddd;\r\n}\n\n.hacky-buffer .tw-reveal{ display: block; }\r\n.hacky-buffer .tw-reveal .tw-search-results { position : static;}\n\n.topbar-hack { \r\n\theight : {{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\n\tposition : static;\r\n}\n\n.tw-pagetop-close-search  svg { \r\nposition: fixed;\r\ntop : {{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\nwidth:{{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\nheight:{{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\nz-index: 99;\r\n/* close search button */\r\nright: {{$:/themes/welford/phasersonkill/metrics/border}};\r\nmargin-top:5px;\r\n}\n\n.smallscreen-only .tw-reveal\t{display : block;}\r\n.displayblock\t\t\t\t\t{display : block;}\n\n\r\n.tw-scrollable {\t\r\n\tmax-height: {{$:/themes/welford/phasersonkill/metrics/searchheight}};\r\n}\n\n.topsearchform  { display:inline; padding:0; margin:0;}\n\n/* \r\nsmall screen differences \r\n*/\n\n@media (max-width: {{$:/themes/welford/phasersonkill/metrics/sidebarbreakpoint}} ) \r\n{\r\n\t.sidebar-header\t\t{ display:none;}\t\r\n\t.largescreen-only\t{ display:none; }\t\r\n\t.special-search .tw-reveal .tw-search-results, .hacky-buffer .tw-reveal .tw-search-results { \r\n\t\twidth: 100%;\r\n\t\tright: {{$:/themes/welford/phasersonkill/metrics/menuwidth}}; \r\n\t\topacity:0.93;\r\n\t}\t\t\n\n\t/* width with sidebar no shown */\r\n\tbody.tw-body .tw-tiddler-frame\t{ padding: 0; }\r\n}\n\n/* \r\nlarger screen differences \r\n*/\n\n@media (min-width: {{$:/themes/welford/phasersonkill/metrics/sidebarbreakpoint}}) {\n\n\t/* Move the sidebar up so that the title lines up */\r\n\tbody.tw-body .tw-sidebar-scrollable {\r\n\t\tposition: fixed;\r\n\t\tleft : auto;\r\n\t\tmargin:0;\r\n\t\ttop:{{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\n\t\twidth:{{$:/themes/welford/phasersonkill/metrics/menuwidth}};\r\n\t\tpadding: 0 0 0 20px;\r\n\t\tbackground-color:{{$:/themes/welford/phasersonkill/metrics/sidebarcolour}};\r\n\t}\n\n\t.tw-pagetop { \r\n\t\t/*line-height:{{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\n\t\tvertical-align:middle;*/\r\n\t}\n\n\t.story-river { \r\n\t right: {{$:/themes/welford/phasersonkill/metrics/menuwidth}}; \r\n\t position: absolute;\r\n\t}\t\n\n\t.special-search .tw-reveal .tw-search-results, .hacky-buffer .tw-reveal .tw-search-results { \r\n\t width: 100%;\r\n\t right: {{$:/themes/welford/phasersonkill/metrics/menuwidth}}; \r\n\t opacity:0.93;\r\n\t}\n\n\t/* Stop the tiddler info panel from bleeding into the tiddler frame padding */\r\n\tbody.tw-body .tw-tiddler-info { margin: 0; }\n\n\t/* Stop message boxes from bleeding into the tiddler frame padding */\r\n\tbody.tw-body .tw-message-box { margin: 21px 0 21px 0; }\n\n\t/* Hide smallscreen only stuff */\r\n\t.smallscreen-only\t{ display:none;}\t\n\n\t/* width with sidebar shown */\r\n\tbody.tw-body .tw-tiddler-frame\t{ padding: 0 20px 0 0; }\r\n}\n\n@media (min-width: {{$:/themes/welford/phasersonkill/metrics/maxwidth}}) {\r\n\t/* above max width don't move the sidebar anymore */\r\n\tbody.tw-body .tw-sidebar-scrollable {\t\t\r\n\t\tbackground-color:red;\r\n\t\tleft: calc({{$:/themes/welford/phasersonkill/metrics/maxwidth}} - {{$:/themes/welford/phasersonkill/metrics/menuwidth}});\r\n\t}\r\n}&quot;
+            &quot;text&quot;: &quot;\\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline\n\n/*\r\nRules copied from Snow White---------------------------------------------\r\n*/\n\n.tw-page-controls button svg, .tw-tiddler-controls button svg, .tw-topbar button svg {\r\n\t&lt;&lt;transition \&quot;fill 150ms ease-in-out\&quot;&gt;&gt;\r\n}\n\n.tw-tiddler-controls button.tw-selected svg {\r\n\t&lt;&lt;filter \&quot;drop-shadow(0px -1px 2px rgba(0,0,0,0.25))\&quot;&gt;&gt;\r\n}\n\n.tw-drop-down {\r\n\tborder-radius: 4px;\r\n\t&lt;&lt;box-shadow \&quot;2px 2px 10px rgba(0, 0, 0, 0.5)\&quot;&gt;&gt;\r\n}\n\n.tw-block-dropdown {\r\n\tborder-radius: 4px;\r\n\t&lt;&lt;box-shadow \&quot;2px 2px 10px rgba(0, 0, 0, 0.5)\&quot;&gt;&gt;\r\n}\n\n.tw-modal-displayed {\r\n\t-webkit-filter: blur(4px);\r\n}\n\n.modal {\r\n\tborder-radius: 6px;\r\n\t&lt;&lt;box-shadow \&quot;0 3px 7px rgba(0,0,0,0.3)\&quot;&gt;&gt;\r\n}\n\n.modal-footer {\r\n\tborder-radius: 0 0 6px 6px;\r\n\t&lt;&lt;box-shadow \&quot;inset 0 1px 0 #fff\&quot;&gt;&gt;;\r\n}\n\n.tw-alert {\r\n\tborder-radius: 6px;\r\n\t&lt;&lt;box-shadow \&quot;0 3px 7px rgba(0,0,0,0.6)\&quot;&gt;&gt;\r\n}\n\n.tw-notification {\r\n\tborder-radius: 6px;\r\n\t&lt;&lt;box-shadow \&quot;0 3px 7px rgba(0,0,0,0.3)\&quot;&gt;&gt;\r\n\ttext-shadow: 0 1px 0 rgba(255,255,255, 0.8);\r\n}\n\n.tw-message-box img {\r\n\t&lt;&lt;box-shadow \&quot;1px 1px 3px rgba(0,0,0,0.5)\&quot;&gt;&gt;\r\n}\n\n/*\r\nPhaserOnKill Stuff---------------------------------------------\r\n*/\n\nblockquote { border-left:2px dashed #DDD; margin-left:12px; }\n\n/* page header */\r\ndiv.tw-pagetop { \r\n position:fixed;\r\n max-height:{{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\n width: 100%;\r\n top : 0px;\r\n left : 0px;\r\n padding-left: 5px;  \r\n z-index: 98;\r\n background : {{$:/themes/welford/phasersonkill/metrics/headerbgcolour}}; !important; /* as background */\r\n overflow:hidden;\r\n vertical-align:middle;\r\n line-height:{{$:/themes/welford/phasersonkill/metrics/headerheight}}; \r\n opacity:0.93;\r\n box-shadow: #ccc 0px 1px 5px;\r\n}\n\n.tw-pagetop b { color:{{$:/themes/welford/phasersonkill/metrics/headerfontcolour}}; font-size:1.1em;}\n\n.story-river {\r\n width: auto;\r\n height: 100%;\r\n left: 0px;\r\n top: {{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\n padding: 0px 10px 0px 10px;\r\n margin: 0;\r\n background-color: #fff;\r}\n\n.tw-tiddler-frame {\r\n width:100%; \r\n}\n\n\r\n/* Use the tiddler background colour for the page background */\r\nhtml {max-width:{{$:/themes/welford/phasersonkill/metrics/maxwidth}};}\n\nhtml body.tw-body {\r\n\tbackground-color: &lt;&lt;colour background&gt;&gt;;\t\r\n}\n\nhtml:-webkit-full-screen {\r\n\tbackground-color: &lt;&lt;colour background&gt;&gt;;\r\n}\n\n/* Adjust the colour of the page controls */\r\nbody.tw-body .tw-page-controls svg {\r\n\tfill: &lt;&lt;colour muted-foreground&gt;&gt;;\r\n}\n\n/* Adjust the colour of the sidebar selected tabs */\r\nbody.tw-body .tw-sidebar-lists .tw-tab-buttons button.tw-tab-selected {\r\n\tbackground-color: &lt;&lt;colour background&gt;&gt;;\r\n}\n\n/* tiddler titles  */\r\n.tw-tiddler-title {\r\nborder-bottom: 1px solid {{$:/themes/welford/phasersonkill/metrics/titlebordercolour}};\r\n}\n\n/* stop the p tags form adding unwanted padding at the stop of the story river */\r\n.tw-dropzone p { margin:0px; padding:0px; }\r\n.story-river p { padding: 0px; margin: 0px; }\n\n/* hide the reveal stuff for the sidebar*/\r\nspan.tw-topbar {display:none;}\n\n/* color and size of controls in topbar for smallscreen version */\r\n.tw-pagetop svg.tw-image-button {\r\npadding:0;\r\nmargin:0; \r\nfill:red;\r\nwidth:{{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\nheight:{{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\nvertical-align:middle;\r\n}\n\n.special-search .tw-reveal .tw-search-results, .hacky-buffer .tw-reveal .tw-search-results { \r\nposition : fixed;\r\ntop : {{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\nleft : 0px;\t\r\npadding: 0px 10px 0px 10px;\r\nmargin: 0;\r\nbackground:  {{$:/themes/welford/phasersonkill/metrics/headerbgcolour}};\r\nz-index: 99;\r\nbox-shadow: 0px 10px 30px  {{$:/themes/welford/phasersonkill/metrics/headerbgcolour}};\r\nborder-top:1px dashed #ddd;\r\n}\n\n.hacky-buffer .tw-reveal{ display: block; }\r\n.hacky-buffer .tw-reveal .tw-search-results { position : static;}\n\n.topbar-hack { \r\n\theight : {{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\n\tposition : static;\r\n}\n\n.tw-pagetop-close-search  svg { \r\nposition: fixed;\r\ntop : {{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\nwidth:{{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\nheight:{{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\nz-index: 99;\r\n/* close search button */\r\nright: {{$:/themes/welford/phasersonkill/metrics/border}};\r\nmargin-top:5px;\r\n}\n\n.smallscreen-only .tw-reveal\t{display : block;}\r\n.displayblock\t\t\t\t\t{display : block;}\n\n\r\n.tw-scrollable {\t\r\n\tmax-height: {{$:/themes/welford/phasersonkill/metrics/searchheight}};\r\n}\n\n.topsearchform  { display:inline; padding:0; margin:0;}\n\n/* \r\nsmall screen differences \r\n*/\n\n@media (max-width: {{$:/themes/welford/phasersonkill/metrics/sidebarbreakpoint}} ) \r\n{\r\n\t.sidebar-header\t\t{ display:none;}\t\r\n\t.largescreen-only\t{ display:none; }\t\r\n\t.special-search .tw-reveal .tw-search-results, .hacky-buffer .tw-reveal .tw-search-results { \r\n\t\twidth: 100%;\r\n\t\tright: {{$:/themes/welford/phasersonkill/metrics/menuwidth}}; \r\n\t\topacity:0.93;\r\n\t}\t\t\n\n\t/* width with sidebar no shown */\r\n\tbody.tw-body .tw-tiddler-frame\t{ padding: 0; }\r\n}\n\n/* \r\nlarger screen differences \r\n*/\n\n@media (min-width: {{$:/themes/welford/phasersonkill/metrics/sidebarbreakpoint}}) {\n\n\t/* Move the sidebar up so that the title lines up */\r\n\tbody.tw-body .tw-sidebar-scrollable {\r\n\t\tposition: fixed;\r\n\t\tleft : auto;\r\n\t\tmargin:0;\r\n\t\ttop:{{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\n\t\twidth:{{$:/themes/welford/phasersonkill/metrics/menuwidth}};\r\n\t\tpadding: 0 0 0 20px;\r\n\t\tbackground-color:{{$:/themes/welford/phasersonkill/metrics/sidebarcolour}};\r\n\t}\n\n\t.tw-pagetop { \r\n\t\t/*line-height:{{$:/themes/welford/phasersonkill/metrics/headerheight}};\r\n\t\tvertical-align:middle;*/\r\n\t}\n\n\t.story-river { \r\n\t right: {{$:/themes/welford/phasersonkill/metrics/menuwidth}}; \r\n\t position: absolute;\r\n\t}\t\n\n\t.special-search .tw-reveal .tw-search-results, .hacky-buffer .tw-reveal .tw-search-results { \r\n\t width: 100%;\r\n\t right: {{$:/themes/welford/phasersonkill/metrics/menuwidth}}; \r\n\t opacity:0.93;\r\n\t}\n\n\t/* Stop the tiddler info panel from bleeding into the tiddler frame padding */\r\n\tbody.tw-body .tw-tiddler-info { margin: 0; }\n\n\t/* Stop message boxes from bleeding into the tiddler frame padding */\r\n\tbody.tw-body .tw-message-box { margin: 21px 0 21px 0; }\n\n\t/* Hide smallscreen only stuff */\r\n\t.smallscreen-only\t{ display:none;}\t\n\n\t/* width with sidebar shown */\r\n\tbody.tw-body .tw-tiddler-frame\t{ padding: 0 20px 0 0; }\r\n}\n\n@media (min-width: {{$:/themes/welford/phasersonkill/metrics/maxwidth}}) {\r\n\t/* above max width don't move the sidebar anymore */\r\n\tbody.tw-body .tw-sidebar-scrollable {\t\t\r\n\t\tleft: calc({{$:/themes/welford/phasersonkill/metrics/maxwidth}} - {{$:/themes/welford/phasersonkill/metrics/menuwidth}});\r\n\t}\r\n}&quot;
         },
         &quot;$:/themes/welford/phasersonkill/metrics/headerfontcolour&quot;: {
             &quot;title&quot;: &quot;$:/themes/welford/phasersonkill/metrics/headerfontcolour&quot;,
@@ -6592,7 +6582,7 @@ yes
     }
 }</pre>
 </div>
-<div author="James.W.Anderson" core-version="&gt;=5.0.0" dependents="$:/themes/welford/phasersonkill" description="Theme for removing editing features" name="ReadOnly" plugin-type="theme" title="$:/themes/welford/readonly" type="application/json" version="5.0.15-prerelease" revision="0" bag="default">
+<div author="James.W.Anderson" core-version="&gt;=5.0.0" dependents="$:/themes/welford/phasersonkill" description="Theme for removing editing features" name="ReadOnly" plugin-type="theme" title="$:/themes/welford/readonly" type="application/json" version="5.0.15-prerelease">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/themes/welford/readonly/styles.tid&quot;: {
@@ -6603,10 +6593,10 @@ yes
     }
 }</pre>
 </div>
-<div created="20140712130814229" modified="20140712131059105" tags="blog" title="A Sample Blog Post" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140712130814229" modified="20140712131059105" tags="blog" title="A Sample Blog Post" type="text/vnd.tiddlywiki">
 <pre>This can be exported to a blog tiddlywiki using the Download Partial tiddler</pre>
 </div>
-<div created="20140316210654272" creator="ジェームス" modified="20140714213420007" modifier="ジェームス" tags="twdev" title="Creating Plugins" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140316210654272" creator="ジェームス" modified="20140714213420007" modifier="ジェームス" tags="twdev" title="Creating Plugins" type="text/vnd.tiddlywiki">
 <pre>#install node.js
 ## ~~edit P:\nodejs\node_modules\npm\npmrc to change where npm installs it's modules if you want~~
 #~~install tiddlywiki on nodejs `&gt;npm install -g tiddlywiki`~~ not neccesary if you are using the github repo
@@ -6666,7 +6656,7 @@ runs a batch/exe on the local computer
 })();
 ```</pre>
 </div>
-<div created="20140102190517965" creator="ジェームス" modified="20140712132412010" modifier="ジェームス" tags="twdev" title="Developing For And Using TW5" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140102190517965" creator="ジェームス" modified="20140712132412010" modifier="ジェームス" tags="twdev" title="Developing For And Using TW5" type="text/vnd.tiddlywiki">
 <pre>!!Tiddlywiki Development 
 
 I have made a few plugins and themes for tiddlywiki, you can find some notes of things I found usefull while developing them on this site. Search for the tag twdev or look at one of the articles below.
@@ -6694,7 +6684,7 @@ I have made a few plugins and themes for tiddlywiki, you can find some notes of 
 
 </pre>
 </div>
-<div created="20131119194500000" modified="20140713102706459" title="Download" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20131119194500000" modified="20140713102706459" title="Download" type="text/vnd.tiddlywiki">
 <pre>Download single file editions of version ''&lt;&lt;version&gt;&gt;'' of TiddlyWiki:
 
 |{{$:/editions/twnotes/snippets/download-empty-button}}|Get started with an empty wiki |
@@ -6705,7 +6695,7 @@ For more advanced configurations, you can run [[TiddlyWiki on Node.js]].
 
 </pre>
 </div>
-<div created="20140705202408826" modified="20140707212850957" title="Example Tiddler" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140705202408826" modified="20140707212850957" title="Example Tiddler" type="text/vnd.tiddlywiki">
 <pre>!This Tiddler
 !!Does Nothing
 !!!It's just an example
@@ -6724,7 +6714,7 @@ http://www.google.co.jp
 !!TWexe
 &lt;$twexe tiddler=&quot;This Is TWEXE&quot; /&gt;</pre>
 </div>
-<div created="20140712125603027" modified="20140713103341044" tags="twdev" title="Export Specific Tiddlers" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140712125603027" modified="20140713103341044" tags="twdev" title="Export Specific Tiddlers" type="text/vnd.tiddlywiki">
 <pre>Just as you can use the buttons in [[Download]] to download the whole tiddlywiki as it is or an empty copy conatining just the plugins and themes, you can also 
 create a tiddler to extract specific pages. I like to do this to extract pages specifically for my homepage. 
 
@@ -6734,7 +6724,7 @@ create a tiddler to extract specific pages. I like to do this to extract pages s
 !!Example
 *&lt;$button message=&quot;tw-download-file&quot; param=&quot;$:/editions/twnotes/download-partial&quot;&gt;Download Partial&lt;/$button&gt;</pre>
 </div>
-<div created="20140325223215222" creator="ジェームス" modified="20140713110311051" modifier="ジェームス" title="Hello" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140325223215222" creator="ジェームス" modified="20140713110311051" modifier="ジェームス" title="Hello" type="text/vnd.tiddlywiki">
 <pre>This TiddlyWiki is for keeping basic notes on how to make plugins for TiddlyWiki and is very much a work in progress.
 
 !!Features
@@ -6752,7 +6742,7 @@ create a tiddler to extract specific pages. I like to do this to extract pages s
 **import into your tiddlywiki by dragging and dropping this link [[$:/plugins/welford/twmousetrap]]
 </pre>
 </div>
-<div created="20140318214655832" creator="ジェームス" modified="20140318214729239" modifier="ジェームス" title="Highlight Example" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140318214655832" creator="ジェームス" modified="20140318214729239" modifier="ジェームス" title="Highlight Example" type="text/vnd.tiddlywiki">
 <pre>```cpp
 void main(void)
 {
@@ -6761,7 +6751,7 @@ void main(void)
 }
 ```</pre>
 </div>
-<div created="20140103173954731" creator="ジェームス" modified="20140712132207856" modifier="ジェームス" tags="twexample" title="list test" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140103173954731" creator="ジェームス" modified="20140712132207856" modifier="ジェームス" tags="twexample" title="list test" type="text/vnd.tiddlywiki">
 <pre>&lt;$list filter=&quot;[!is[system]has[type]each[type]sort[type]]&quot;&gt;
 &lt;div class=&quot;tw-menu-list-item&quot;&gt;
 &lt;$view field=&quot;type&quot;/&gt;
@@ -6784,10 +6774,10 @@ void main(void)
 &lt;/div&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20140707212036871" modified="20140707212107032" tags="$:/tags/twexe" title="This Is TWEXE" twexe_cwd=".\" twexe_name="TWEXE Example" twexe_target=".\" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140707212036871" modified="20140707212107032" tags="$:/tags/twexe" title="This Is TWEXE" twexe_cwd=".\" twexe_name="TWEXE Example" twexe_target=".\" type="text/vnd.tiddlywiki">
 <pre>Write a description of the exe here.</pre>
 </div>
-<div created="20140630220900224" modified="20140710201506015" title="To Do" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140630220900224" modified="20140710201506015" title="To Do" type="text/vnd.tiddlywiki">
 <pre># transclusion of twexe search results
 # ~~push storyriver down by the height of the results~~
 # clean up CSS
@@ -6802,7 +6792,7 @@ void main(void)
 #~~move the custom storyview out into the theme from the actual tiddly~~
 #~~consder having the quick search in the main version too~~</pre>
 </div>
-<div created="20140325222233114" creator="ジェームス" modified="20140712131834065" modifier="ジェームス" tags="twdev" title="TW Dev Notes" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20140325222233114" creator="ジェームス" modified="20140712131834065" modifier="ジェームス" tags="twdev" title="TW Dev Notes" type="text/vnd.tiddlywiki">
 <pre>!!Widgets
 
 Accessing a tidder's field and text data from within a widget
