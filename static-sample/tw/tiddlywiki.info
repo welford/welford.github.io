@@ -1,0 +1,29 @@
+{
+    "plugins": [
+        "tiddlywiki/katex",
+        "tiddlywiki/highlight",
+        "welford/twstaticblog/helper",
+        "welford/twstaticblog/export"
+    ],
+    "themes": [
+        "tiddlywiki/vanilla",
+        "welford/phasersonkill-static"
+    ],
+    "build": {
+        "css": [
+            "--rendertiddler", "$:/core/templates/static.template.css", "static.css", "text/plain"
+        ],
+        "index": [            
+            "--rendertiddler", "$:/plugins/welford/twstaticblog/export/static.index.html", "index.html", "text/plain"
+           ],
+        "posts": [
+            "--rendertiddlers", "[[$:/plugins/welford/twstaticblog/helper/blogentrytags]tags[]tagging[]]-[[$:/plugins/welford/twstaticblog/helper/donotexport]tags[]tagging[]]-$:/plugins/welford/twstaticblog/helper/blogentrytags", "$:/plugins/welford/twstaticblog/export/static.tiddler.html", "posts", "text/plain", ".html"
+        ],
+        "framework": [
+            "--rendertiddlers", "[[$:/plugins/welford/twstaticblog/helper/blogframeworktags]tags[]tagging[]]-[[$:/plugins/welford/twstaticblog/helper/donotexport]tags[]tagging[]]-$:/plugins/welford/twstaticblog/helper/blogframeworktags", "$:/plugins/welford/twstaticblog/export/static.framework.html", "framework", "text/plain", ".html", "noclean"
+        ],
+        "tag": [
+            "--rendertiddlers", "[[$:/plugins/welford/twstaticblog/helper/blogentrytags]tags[]tagging[]tags[]]-[[$:/plugins/welford/twstaticblog/helper/donotexport]tags[]]-[[$:/plugins/welford/twstaticblog/helper/hiddentags]tags[]]", "$:/plugins/welford/twstaticblog/export/static.tag.html", "tags", "text/plain", ".html", "noclean"
+        ]    
+    }
+}
