@@ -125,6 +125,8 @@ Error message and password prompt
 
 <li>$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/export-tiddler</li>
 
+<li>$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/info</li>
+
 <li>$:/config/ViewToolbarButtons/Visibility/$:/plugins/welford/twpin/button</li>
 
 <li>$:/core</li>
@@ -175,21 +177,13 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
-<li>$:/state/tab--1498284803</li>
-
-<li>$:/state/tab/sidebar--1835078512</li>
-
 <li>$:/status/IsLoggedIn</li>
 
 <li>$:/status/UserName</li>
 
 <li>$:/StoryList</li>
 
-<li>$:/temp/advancedsearch</li>
-
 <li>$:/temp/info-plugin</li>
-
-<li>$:/temp/search</li>
 
 <li>$:/theme</li>
 
@@ -267,7 +261,10 @@ Error message and password prompt
 <div created="20141123201522087" modified="20141204215530652" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/export-tiddler" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>hide</pre>
 </div>
-<div created="20150503093236417" modified="20150503095425242" title="$:/config/ViewToolbarButtons/Visibility/$:/plugins/welford/twpin/button" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20150503144403496" modified="20150503144402440" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/info" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>hide</pre>
+</div>
+<div created="20150503093236417" modified="20150503143515826" title="$:/config/ViewToolbarButtons/Visibility/$:/plugins/welford/twpin/button" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>show</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.8-prerelease" revision="0" bag="default">
@@ -8534,7 +8531,7 @@ yes
             &quot;caption&quot;: &quot;{{$:/plugins/welford/twpin/images/unpinned}} {{$:/plugins/welford/twpin/caption}}&quot;,
             &quot;list-after&quot;: &quot;$:/core/ui/Buttons/info&quot;,
             &quot;description&quot;: &quot;Pin a tiddler to the default page&quot;,
-            &quot;text&quot;: &quot;&lt;$fieldmangler tiddler=\&quot;$:/DefaultTiddlers\&quot;&gt;\r\n&lt;$fidget&gt;\r\n&lt;$list filter=\&quot;[all[current]]-[list[$:/DefaultTiddlers]]\&quot;&gt;\r\n&lt;$button class=&lt;&lt;tv-config-toolbar-class&gt;&gt; tooltip=\&quot;Pin this tiddler\&quot;&gt;\r\n&lt;$action-sendmessage $message=\&quot;tm-add-field\&quot; $param=\&quot;list\&quot;/&gt;\r\n&lt;$action-sendmessage $message=\&quot;tm-append-to-list\&quot; field=\&quot;$:/DefaultTiddlers!!list\&quot; value=&lt;&lt;currentTiddler&gt;&gt;/&gt;\r\n{{$:/plugins/welford/twpin/images/unpinned}}\r\n&lt;$list filter=\&quot;[&lt;tv-config-toolbar-text&gt;prefix[yes]]\&quot;&gt;&lt;span class=\&quot;tc-btn-text\&quot;&gt;&lt;$text text={{$:/plugins/welford/twpin/pincaption}}/&gt;&lt;/span&gt;&lt;/$list&gt;\r\n&lt;/$button&gt;\r\n&lt;/$list&gt;\r\n&lt;$list filter=\&quot;[list[$:/DefaultTiddlers]is[current]]\&quot;&gt;\r\n&lt;$button class=&lt;&lt;tv-config-toolbar-class&gt;&gt; tooltip=\&quot;Unpin this tiddler\&quot;&gt;\r\n&lt;$action-sendmessage $message=\&quot;tm-add-field\&quot; $param=\&quot;list\&quot;/&gt;\r\n&lt;$action-sendmessage $message=\&quot;tm-remove-from-list\&quot; field=\&quot;$:/DefaultTiddlers!!list\&quot; value=&lt;&lt;currentTiddler&gt;&gt;/&gt;{{$:/plugins/welford/twpin/images/pinned}}\r\n&lt;$list filter=\&quot;[&lt;tv-config-toolbar-text&gt;prefix[yes]]\&quot;&gt;&lt;span class=\&quot;tc-btn-text\&quot;&gt;&lt;$text text={{$:/plugins/welford/twpin/unpincaption}}/&gt;&lt;/span&gt;&lt;/$list&gt;\r\n&lt;/$button&gt;\r\n&lt;/$list&gt;\r\n&lt;/$fidget&gt;\r\n&lt;/$fieldmangler&gt;&quot;
+            &quot;text&quot;: &quot;&lt;$fieldmangler tiddler=\&quot;$:/DefaultTiddlers\&quot;&gt;&lt;$fidget&gt;&lt;$list filter=\&quot;[all[current]]-[list[$:/DefaultTiddlers]]\&quot;&gt;&lt;$button class=&lt;&lt;tv-config-toolbar-class&gt;&gt; tooltip=\&quot;Pin this tiddler\&quot;&gt;&lt;$action-sendmessage $message=\&quot;tm-add-field\&quot; $param=\&quot;list\&quot;/&gt;&lt;$action-sendmessage $message=\&quot;tm-append-to-list\&quot; field=\&quot;$:/DefaultTiddlers!!list\&quot; value=&lt;&lt;currentTiddler&gt;&gt;/&gt;{{$:/plugins/welford/twpin/images/unpinned}}&lt;$list filter=\&quot;[&lt;tv-config-toolbar-text&gt;prefix[yes]]\&quot;&gt;&lt;span class=\&quot;tc-btn-text\&quot;&gt;&lt;$text text={{$:/plugins/welford/twpin/pincaption}}/&gt;&lt;/span&gt;&lt;/$list&gt;&lt;/$button&gt;&lt;/$list&gt;&lt;$list filter=\&quot;[list[$:/DefaultTiddlers]is[current]]\&quot;&gt;&lt;$button class=&lt;&lt;tv-config-toolbar-class&gt;&gt; tooltip=\&quot;Unpin this tiddler\&quot;&gt;&lt;$action-sendmessage $message=\&quot;tm-add-field\&quot; $param=\&quot;list\&quot;/&gt;&lt;$action-sendmessage $message=\&quot;tm-remove-from-list\&quot; field=\&quot;$:/DefaultTiddlers!!list\&quot; value=&lt;&lt;currentTiddler&gt;&gt;/&gt;{{$:/plugins/welford/twpin/images/pinned}}&lt;$list filter=\&quot;[&lt;tv-config-toolbar-text&gt;prefix[yes]]\&quot;&gt;&lt;span class=\&quot;tc-btn-text\&quot;&gt;&lt;$text text={{$:/plugins/welford/twpin/unpincaption}}/&gt;&lt;/span&gt;&lt;/$list&gt;&lt;/$button&gt;&lt;/$list&gt;&lt;/$fidget&gt;&lt;/$fieldmangler&gt;&quot;
         },
         &quot;$:/plugins/welford/twpin/pincaption&quot;: {
             &quot;title&quot;: &quot;$:/plugins/welford/twpin/pincaption&quot;,
@@ -8670,23 +8667,14 @@ yes
 <div created="20140710201622904" creator="ジェームス" modified="20140710201628790" modifier="ジェームス" title="$:/SiteTitle" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>TWNotes</pre>
 </div>
-<div modified="20150503104015490" title="$:/state/tab--1498284803" revision="1" bag="default">
-<pre>$:/core/ui/AdvancedSearch/Shadows</pre>
-</div>
-<div modified="20150503103903598" title="$:/state/tab/sidebar--1835078512" revision="2" bag="default">
-<pre>$:/core/ui/SideBar/Open</pre>
-</div>
 <div title="$:/status/IsLoggedIn" revision="2" bag="default">
 <pre>yes</pre>
 </div>
 <div title="$:/status/UserName" revision="1" bag="default">
 <pre></pre>
 </div>
-<div list="$:/AdvancedSearch Hello [[Developing For And Using TW5]] GettingStarted" title="$:/StoryList" revision="5" bag="default">
+<div list="Hello [[Developing For And Using TW5]] GettingStarted" title="$:/StoryList" revision="1" bag="default">
 <pre></pre>
-</div>
-<div modified="20150503104011507" title="$:/temp/advancedsearch" revision="1" bag="default">
-<pre>new journal</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
 <pre>{
@@ -8701,9 +8689,6 @@ yes
         }
     }
 }</pre>
-</div>
-<div created="20150503104008331" modified="20150503104011507" title="$:/temp/search" revision="12" bag="default">
-<pre></pre>
 </div>
 <div created="20140620130427249" modified="20141207212411514" title="$:/theme" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>$:/themes/welford/phasersonkill</pre>
