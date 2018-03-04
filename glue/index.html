@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<title> GLUE: Parsing OpenGL headers into useable code for Win32 </title>
+		<script src="./gltools.js" ></script>
+	</head>
+	<style>
+		body						{background-color:#333;}
+		#explanation				{color: #eee;}
+		#dropbox					{width:100%; height:100%; border: 3px dashed white;}
+		div.download_button			{display:None;background-color:#e22;color:#eee;}
+		div.download_button, a		{color: #eee;}
+		div.download_button:hover	{cursor: pointer;}
+	</style>
+<body>
+	<div id="explanation" onclick="">
+		Drag and drop either the glcorearb.h or glext.h file and the wglext.h file into the drop box below. You can then download the GLUE .c and .h files for use in your project. You can download the files from https://www.khronos.org/ here: 
+		<a target="glcore"  href="https://www.khronos.org/registry/OpenGL/api/GL/glcorearb.h">glcorearb.h</a>,
+		<a target="glext"   href="https://www.khronos.org/registry/OpenGL/api/GL/glext.h">glext.h</a>,
+		<a target="wglext"  href="https://www.khronos.org/registry/OpenGL/api/GL/wglext.h">wglext.h</a>
+		Dragging text blobs of these files will also work.
+	</div>
+	<div id="download_button_c" class="download_button" onclick="">download gl.c</div>
+	<div id="download_button_h" class="download_button" onclick="">download gl.h</div>
+	<div id="dropbox"></div>
+	<script>
+		var dropbox = document.getElementById("dropbox");
+		// Get file data on drop
+		dropbox.addEventListener('dragover', GLT_HandleDragOver, false);
+		dropbox.addEventListener('drop', GLT_HandleDraggedAndDroppedData, false);
+	</script>
+</body>
+</html>
