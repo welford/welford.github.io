@@ -215,12 +215,12 @@ function GLT_HandleDraggedAndDroppedData(e)
 		if (item.type.match(/text\/plain.*/)) {
 			var reader = new FileReader();
 			reader.onload = function(e2) {
-				if(e2.target.result.includes("__glcorearb_h_")){
+				if(e2.target.result.includes("__gl_glcorearb_h_")){
 					lstGL = GLT_GetListOfGLFunctionsNames(e2.target.result);
-				}else if(e2.target.result.includes("__wglext_h_")){
+				}else if(e2.target.result.includes("__wgl_wglext_h_")){
 					lstWGL = GLT_GetListOfWGLFunctionsNames(e2.target.result);
 				}
-				else if(e2.target.result.includes("__glext_h_")){
+				else if(e2.target.result.includes("__gl_glext_h_")){
 					lstGL = GLT_GetListOfGLFunctionsNames(e2.target.result);
 				}else{
 					console.log("unknown text file")

@@ -14,19 +14,19 @@
 
 	"build": {
 		"css": [
-			"--rendertiddler",
+			"--render",
 			"$:/core/templates/static.template.css",
 			"static.css",
 			"text/plain"
 		],
 		"index": [
-			"--rendertiddler",
+			"--render",
 			"$:/plugins/welford/twstaticblog/helper/template.index.html",
 			"index.html",
 			"text/plain"
 		],
 		"posts": [
-			"--rendertiddlers",
+			"--render",
 			"[[$:/plugins/welford/twstaticblog/helper/ctrl.post]tags[]tagging[]]-[[$:/plugins/welford/twstaticblog/helper/ctrl.donotexport]tags[]tagging[]]-$:/plugins/welford/twstaticblog/helper/ctrl.post",
 			"$:/plugins/welford/twstaticblog/helper/template.post.html",
 			"posts",
@@ -34,7 +34,7 @@
 			".html"
 		],
 		"framework": [
-			"--rendertiddlers",
+			"--render",
 			"[[$:/plugins/welford/twstaticblog/helper/ctrl.framework]tags[]tagging[]]-[[$:/plugins/welford/twstaticblog/helper/ctrl.donotexport]tags[]tagging[]]-$:/plugins/welford/twstaticblog/helper/ctrl.framework",
 			"$:/plugins/welford/twstaticblog/helper/template.framework.html",
 			"framework",
@@ -43,7 +43,7 @@
 			"noclean"
 		],
 		"tag": [
-			"--rendertiddlers",
+			"--render",
 			"[[$:/plugins/welford/twstaticblog/helper/ctrl.post]tags[]tagging[]tags[]]-[[$:/plugins/welford/twstaticblog/helper/ctrl.donotexport]tags[]]-[[$:/plugins/welford/twstaticblog/helper/ctrl.hidden]tags[]]",
 			"$:/plugins/welford/twstaticblog/helper/template.tag.html",
 			"tags",
