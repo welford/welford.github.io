@@ -14597,7 +14597,7 @@ Error message and password prompt
         },
         &quot;$:/plugins/welford/twsr/readme&quot;: {
             &quot;title&quot;: &quot;$:/plugins/welford/twsr/readme&quot;,
-            &quot;text&quot;: &quot;! Spaces Repetition\n\nhttps://en.wikipedia.org/wiki/Spaced_repetition\n\nOften reffered to as SRS, when dealing with software that provides a service for this.\n\n! How To Use\n\nTag a tiddler with $:/tags/twsr, and other tags that match tiddlers you wish to revise as cards. \r\nAt the bottom of that tiddler should appear a revision UI with a ⚙ icon, you can click that icon\r\ntoo randomly add new cards from the whole set, or to jump to the active card you are studying.\n\nTag a tiddler $:/tags/twsr_ignore and it won't be considered for revision\n\nIf you add a \&quot;&lt;$question&gt;...&lt;/$question&gt;\&quot; segment to a tiddler then the user will first be shown the \r\ncontents of the $question segment, then can then click \&quot;Show Answer\&quot; to reveal the rest of the tiddlers contents\n\n!Example\n\nSee http://welford.github.io/kanji.html which lets you study Japanese characters (kanji) with 1 to 5 strokes.\n\n\r\n! Configure\n\nMost of the above can be configured by editing $:/plugins/welford/twsr/config_template, you could even copy \r\nit and have two separate revision methods within your tiddlywiki.\n\n!!config fields\n\n!!!``tags: [[$:/tags/twsr/config]]``\r\nThis must be ``$:/tags/twsr/config`` for it to be considered a twsr config tiddler. \r\nChanging this will nullify this tiddler  as a twsr plugin\n\n!!!``twsr_cfg_tags: $:/tags/twsr``\r\nThe tag(s) used to identify a tiddler to put a flashcard UI in. A tiddler needs to match all the tags here \r\nfor it to be considered an active tiddler for flashcards UI.\n\n\r\nIf you are removing ``$:/tags/twsr`` from this list then you will need to clone title: ``$:/plugins/welford/twsr/viewtemplate``\r\nand replace the ``$:/tags/twsr`` shown below with a tag from the list so that the flashcard UI appears\n\n```\r\n&lt;$list filter=\&quot;[is[current]tag[$:/tags/twsr]]\&quot; variable=\&quot;listItem\&quot;&gt;&lt;$twsr/&gt;&lt;/$list&gt;\r\n```\n\n!!!``twsr_cfg_ignore_tags: $:/tags/twsr_ignore\n\ntiddlers with this tag will not be considered for studying\n\n!!!``twsr_cfg_grade_names: [[again]] [[good]] [[easy]]``\r\n!!!``twsr_cfg_grade_numbers: [[0]] [[4]] [[5]]``\n\nThere are a pair, and specifici to the SM-2 alorithm used  (see: https://en.wikipedia.org/wiki/SuperMemo#Description_of_SM-2_algorithm)\r\nThe number of items in both fields needs to match, and they need to be in the same order\n\nIn the default cause, when you click \&quot;Show Answer\&quot; you will be asked to grade the card on how well you recalled it.\r\nthe options will be:\r\n*Again : 0\r\n*good : 4\r\n*easy : 5\n\n\r\n!!!``twsr_cfg_add_new: [[1]] [[5]] [[10]]``\n\nthe number of steps for adding new cards when you click the ⚙ icon\n\n!!!``twsr_cfg_display: Show Answer``\n\nThe label of the Show Answer button\n\n!!!``twsr_cfg_schedule: cards scheduled: ``\n\nthe label of the ⚙ icon when you hover over it to see how many remaining cards are scheduled.\n\n\r\n!! Custom Example\n\nhttp://welford.github.io/kanji.html also contains a custom ruleset for 13 stroke characters (it should show below the main example)\n\n\n\n&quot;
+            &quot;text&quot;: &quot;! Spaces Repetition\n\nhttps://en.wikipedia.org/wiki/Spaced_repetition\n\nOften reffered to as SRS, when dealing with software that provides a service for this.\n\n! How To Use\n\nTag a tiddler with $:/tags/twsr, and other tags that match tiddlers you wish to revise as cards. \r\nAt the bottom of that tiddler should appear a revision UI with a ⚙ icon, you can click that icon\r\ntoo randomly add new cards from the whole set, or to jump to the active card you are studying.\n\nTag a tiddler $:/tags/twsr_ignore and it won't be considered for revision\n\nIf you add a \&quot;&lt;$question&gt;...&lt;/$question&gt;\&quot; segment to a tiddler then the user will first be shown the \r\ncontents of the $question segment, then can then click \&quot;Show Answer\&quot; to reveal the rest of the tiddlers contents\n\n!Example\n\nSee http://welford.github.io/kanji.html which lets you study Japanese characters (kanji) with 1 to 5 strokes.\n\n\r\n! Configure\n\nMost of the above can be configured by editing $:/plugins/welford/twsr/config_template, you could even copy \r\nit and have two separate revision methods within your tiddlywiki.\n\n!!config fields\n\n!!!``tags: [[$:/tags/twsr/config]]``\r\nThis must be ``$:/tags/twsr/config`` for it to be considered a twsr config tiddler. \r\nChanging this will nullify this tiddler  as a twsr plugin\n\n!!!``twsr_cfg_tags: $:/tags/twsr``\r\nThe tag(s) used to identify a tiddler to put a flashcard UI in. A tiddler needs to match all the tags here \r\nfor it to be considered an active tiddler for flashcards UI.\n\n\r\nIf you are removing ``$:/tags/twsr`` from this list then you will need to clone title: ``$:/plugins/welford/twsr/viewtemplate``\r\nand replace the ``$:/tags/twsr`` shown below with a tag from the list so that the flashcard UI appears\n\n```\r\n&lt;$list filter=\&quot;[is[current]tag[$:/tags/twsr]]\&quot; variable=\&quot;listItem\&quot;&gt;&lt;$twsr/&gt;&lt;/$list&gt;\r\n```\n\n!!!``twsr_cfg_ignore_tags: $:/tags/twsr_ignore``\n\ntiddlers with this tag will not be considered for studying\n\n!!!``twsr_cfg_grade_names: [[again]] [[good]] [[easy]]``\r\n!!!``twsr_cfg_grade_numbers: [[0]] [[4]] [[5]]``\n\nThere are a pair, and specifici to the SM-2 alorithm used  (see: https://en.wikipedia.org/wiki/SuperMemo#Description_of_SM-2_algorithm)\r\nThe number of items in both fields needs to match, and they need to be in the same order\n\nIn the default cause, when you click \&quot;Show Answer\&quot; you will be asked to grade the card on how well you recalled it.\r\nthe options will be:\r\n*Again : 0\r\n*good : 4\r\n*easy : 5\n\n\r\n!!!``twsr_cfg_add_new: [[1]] [[5]] [[10]]``\n\nthe number of steps for adding new cards when you click the ⚙ icon\n\n!!!``twsr_cfg_display: Show Answer``\n\nThe label of the Show Answer button\n\n!!!``twsr_cfg_schedule: cards scheduled: ``\n\nthe label of the ⚙ icon when you hover over it to see how many remaining cards are scheduled.\n\n\r\n!! Custom Example\n\nhttp://welford.github.io/kanji.html also contains a custom ruleset for 13 stroke characters (it should show below the main example)\n\n\n\n&quot;
         },
         &quot;$:/plugins/welford/twsr/twsr.js&quot;: {
             &quot;title&quot;: &quot;$:/plugins/welford/twsr/twsr.js&quot;,
@@ -14856,8 +14856,8 @@ This is the link to the isolated post which appears at the bottom of every artic
 <div created="20210410181853225" modified="20210410181853225" title="$:/state/editpreviewtype">
 <pre>$:/core/ui/EditTemplate/body/preview/output</pre>
 </div>
-<div created="20210530185522300" modified="20210530185522300" title="$:/state/plugin-info--1110771490-$:/plugins/welford/twsr--1818226785">
-<pre>contents</pre>
+<div created="20210530185522300" modified="20210530195702176" title="$:/state/plugin-info--1110771490-$:/plugins/welford/twsr--1818226785">
+<pre>readme</pre>
 </div>
 <div created="20210407212848335" modified="20210407212848335" title="$:/state/plugin-info-1024715668-$:/plugins/welford/twstaticblog/helper---1861025739">
 <pre>contents</pre>
@@ -14883,8 +14883,8 @@ This is the link to the isolated post which appears at the bottom of every artic
 <div created="20210410175706598" modified="20210530193517883" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Plugins</pre>
 </div>
-<div created="20210407212838740" modified="20210530193604891" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<div created="20210407212838740" modified="20210530194950975" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div bag="default" revision="1" title="$:/status/IsAnonymous">
 <pre>yes</pre>
@@ -14896,12 +14896,12 @@ This is the link to the isolated post which appears at the bottom of every artic
 <pre>no</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
-<pre>no</pre>
+<pre>yes</pre>
 </div>
 <div bag="default" revision="1" title="$:/status/UserName">
 <pre></pre>
 </div>
-<div created="20210530193921298" list="[[Spaced Repetition Example]] [[Custom Example]] 字 言葉 これは言葉の例です" modified="20210530194042406" title="$:/StoryList">
+<div created="20210530195658675" list="$:/Import [[Spaced Repetition Example]] [[Custom Example]] 字 言葉 これは言葉の例です" modified="20210530195658675" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20210407212252617" modified="20210407212255257" title="$:/theme">
