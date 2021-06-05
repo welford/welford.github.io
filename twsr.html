@@ -14902,8 +14902,8 @@ This is the link to the isolated post which appears at the bottom of every artic
 <div created="20210410175706598" modified="20210605174402335" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Plugins</pre>
 </div>
-<div created="20210407212838740" modified="20210605180146618" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Open</pre>
+<div created="20210407212838740" modified="20210605180721089" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div bag="default" revision="1" title="$:/status/IsAnonymous">
 <pre>yes</pre>
@@ -14915,12 +14915,12 @@ This is the link to the isolated post which appears at the bottom of every artic
 <pre>no</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
-<pre>yes</pre>
+<pre>no</pre>
 </div>
 <div bag="default" revision="1" title="$:/status/UserName">
 <pre></pre>
 </div>
-<div created="20210605180145745" list="$:/Import [[Spaced Repetition Example]] [[Reduces SRS Example]] [[Custom Example]] [[Another SRS Example]] [[To Do]]" modified="20210605180145745" title="$:/StoryList">
+<div created="20210605180722439" list="[[Spaced Repetition Example]] [[Reduces SRS Example]] [[Custom Example]] [[Another SRS Example]] [[To Do]]" modified="20210605180741805" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20210407212252617" modified="20210407212255257" title="$:/theme">
@@ -15070,8 +15070,10 @@ This tiddler lets you study kanji with 13 strokes
 
 </pre>
 </div>
-<div created="20210411162915641" modified="20210605173323181" tags="output blog-donotexport 類：字" title="kotoba-template">
-<pre>|kotobaTable |k
+<div created="20210411162915641" modified="20210605180755252" tags="output blog-donotexport 類：字" title="kotoba-template">
+<pre>! &lt;$list filter=&quot;[list[!!title]]&quot;&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$list&gt;
+
+|kotobaTable |k
 | !読み |  &lt;$answer&gt; &lt;$list filter=&quot;[list[!!yomikata]]&quot;&gt;&lt;$view field=&quot;title&quot;/&gt; &lt;/$list&gt; &lt;/$answer&gt; |
 | !意味 | &lt;$answer&gt; &lt;$list filter=&quot;[list[!!meanings]]&quot;&gt;&lt;$view field=&quot;title&quot;/&gt; &lt;/$list&gt; &lt;/$answer&gt; |
 | !漢字 | &lt;$answer&gt; &lt;$list filter=&quot;[list[!!components]]&quot;&gt;&lt;$link to={{!!title}}&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt; &lt;/$list&gt; &lt;/$answer&gt; |
