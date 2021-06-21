@@ -239,8 +239,6 @@ Error message and password prompt
 
 <li>Custom Example</li>
 
-<li>Draft of 'Spaced Repetition Example'</li>
-
 <li>kotoba-template</li>
 
 <li>moji-template</li>
@@ -14983,12 +14981,12 @@ This is the link to the isolated post which appears at the bottom of every artic
 <pre>no</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
-<pre>yes</pre>
+<pre>no</pre>
 </div>
 <div bag="default" revision="1" title="$:/status/UserName">
 <pre></pre>
 </div>
-<div created="20210620174601592" list="$:/Import [[Spaced Repetition Example]] [[Reduced SRS Example]] [[Custom Example]] [[Another SRS Example]] [[Answers without Scheduling]] [[To Do]]" modified="20210620174657951" title="$:/StoryList">
+<div created="20210621055205752" list="[[Spaced Repetition Example]] [[Reduced SRS Example]] [[Custom Example]] [[Another SRS Example]] [[Ruby Widget / Furigana]] [[Answers without Scheduling]] [[To Do]]" modified="20210621055205752" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20210407212252617" modified="20210407212255257" title="$:/theme">
@@ -15149,49 +15147,6 @@ This tiddler lets you study kanji with 13 strokes
 
 </pre>
 </div>
-<div created="20210523192035886" draft.of="Spaced Repetition Example" draft.title="Spaced Repetition Example" modified="20210614190752409" tags="一画 二画 三画 四画 五画 $:/tags/twsr" title="Draft of 'Spaced Repetition Example'">
-<pre>! Spaced Repetition 
-
-See:
-
-*https://en.wikipedia.org/wiki/Spaced_repetition
-*https://en.wikipedia.org/wiki/SuperMemo#Description_of_SM-2_algorithm
-
-For an explanation of what spaced repetition is.
-
-! How to use
-
-Tag a tiddler with &lt;&lt;tag &quot;$:/tags/twsr&quot;&gt;&gt; and any other tags of subjects you want to learn. Any tiddlers that also contain any of those tags will be considered condidates for the scheduler in this tiddler. The display for this plugin will always appear at the the bottom of the active tiddler.
-
-In this example I have added the tags&lt;&lt;tag 一画&quot;&gt;&gt;,&lt;&lt;tag 二画&quot;&gt;&gt;,&lt;&lt;tag 三画&quot;&gt;&gt;,&lt;&lt;tag 四画&quot;&gt;&gt;,&lt;&lt;tag 五画&quot;&gt;&gt; , which means that this tiddler should pick up Japanese characters that contain 1, 2, 3, 4 or 5 strokes.
-
-I've added 10 for the example, you can add more using the ⚙icon
-
-! Question Segment / Grading
-
-If you add a ``&lt;$question&gt;...&lt;/$question&gt;`` segment to a tiddler, then only that section of the tiddler will be initially shown. By clicking &quot;Show Answer&quot; the rest of the contents of the tiddler will be revealed and you'll be asked how well you remembered the details.
-
-If there is no ``&lt;$question&gt;`` segment then the contents of the tiddler will displayed and you'll be asked to grade it immediately.
-
-! Answer Segment
-
-An alternative to the ``&lt;$question&gt;`` segment is the ``&lt;$answer&gt;`` segment which will black out sections of the tiddler when it is used as a card. Unlike the ``&lt;$question&gt;`` section the whole tiddler will be shown. You can click on the blacked out sections to reveal their contents. when all are revealed you will be asked to grade the card (you can also just click &quot;Show Answer&quot; to get straight to the grading)
-
-the second card scheduled in this example uses the ``&lt;$answer&gt;`` segment : you can view the card here: [[九]]
-
-
-! Scheduling
-
-Only tiddlers containing ``twsr_interval`` attribute will be considered for scheduling. So adding the tag is not enough by itself. You can add ``twsr_interval`` to a number of tiddlers by clicking on the ⚙icon, and selecting +1, +5, or +10 which will add ``twsr_interval`` to 1, 5 or 10 tiddlers that match the candidate tags ando not already have that attribute.
-
-
-!Example
-
-The scheduler will always appear the the bottom of the containing tiddler
-
-
-</pre>
-</div>
 <div created="20210411162915641" modified="20210605180755252" tags="output blog-donotexport 類：字" title="kotoba-template">
 <pre>! &lt;$list filter=&quot;[list[!!title]]&quot;&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$list&gt;
 
@@ -15280,7 +15235,7 @@ the ruby/furigana is automatically gets wrapped in the ``&lt;$answer&gt;`` tags,
 see [[Answers without Scheduling]] for a real example
 </pre>
 </div>
-<div created="20210523192035886" modified="20210605171845549" tags="一画 二画 三画 四画 五画 $:/tags/twsr" title="Spaced Repetition Example">
+<div created="20210523192035886" modified="20210621055220951" tags="一画 二画 三画 四画 五画 $:/tags/twsr" title="Spaced Repetition Example">
 <pre>! Spaced Repetition 
 
 See:
@@ -15308,7 +15263,7 @@ If there is no ``&lt;$question&gt;`` segment then the contents of the tiddler wi
 
 An alternative to the ``&lt;$question&gt;`` segment is the ``&lt;$answer&gt;`` segment which will black out sections of the tiddler when it is used as a card. Unlike the ``&lt;$question&gt;`` section the whole tiddler will be shown. You can click on the blacked out sections to reveal their contents. when all are revealed you will be asked to grade the card (you can also just click &quot;Show Answer&quot; to get straight to the grading)
 
-the second card scheduled in this example uses the ``&lt;$answer&gt;`` segment : you can view the card here: [[九]]
+the second card scheduled in this example uses the ``&lt;$answer&gt;`` segment : you can view the card here: [[入]]
 
 
 ! Scheduling
@@ -15992,8 +15947,8 @@ The scheduler will always appear the the bottom of the containing tiddler
 <pre>{{||moji-template}}
 </pre>
 </div>
-<div bag="default" created="20150620130427249" grade="1" jplt="5" kunyomi="い.る -い.る -い.り い.れる -い.れ はい.る" meanings="Enter Insert" modified="20210523192534606" onyomi="にゅう じゅ" revision="0" strokes="2" tags="常用 類：字 二画 output" title="入" twsr_efactor="2.5" twsr_grade="0" twsr_interval="0" twsr_rnumber="0" type="text/vnd.tiddlywiki">
-<pre>{{||moji-template}}
+<div bag="default" created="20150620130427249" grade="1" jplt="5" kunyomi="い.る -い.る -い.り い.れる -い.れ はい.る" meanings="Enter Insert" modified="20210621055209960" onyomi="にゅう じゅ" revision="0" strokes="2" tags="常用 類：字 二画 output" title="入" twsr_efactor="2.5" twsr_grade="0" twsr_interval="0" twsr_rnumber="0" type="text/vnd.tiddlywiki">
+<pre>{{||moji-template2}}
 </pre>
 </div>
 <div bag="default" created="20150620130427249" grade="3" jplt="3" kunyomi="まった.く すべ.て" meanings="Whole Entire All Complete Fulfill" modified="20150620130427249" onyomi="ぜん" revision="0" strokes="6" tags="常用 類：字 六画 output" title="全" type="text/vnd.tiddlywiki">
