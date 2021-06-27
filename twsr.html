@@ -239,6 +239,10 @@ Error message and password prompt
 
 <li>Custom Example</li>
 
+<li>Download Cards</li>
+
+<li>download-kanji-cards</li>
+
 <li>kotoba-template</li>
 
 <li>moji-template</li>
@@ -14444,10 +14448,11 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20210407210316296" modified="20210620174622241" title="$:/DefaultTiddlers">
+<div created="20210407210316296" modified="20210627093221991" title="$:/DefaultTiddlers">
 <pre>[[Spaced Repetition Example]]
 [[Reduced SRS Example]]
 [[Custom Example]]
+[[Download Cards]]
 [[Another SRS Example]]
 [[Ruby Widget / Furigana]]
 [[Answers without Scheduling]]
@@ -14935,8 +14940,8 @@ This is the link to the isolated post which appears at the bottom of every artic
 <div created="20210407210318444" modified="20210407210324340" title="$:/SiteTitle">
 <pre>漢字</pre>
 </div>
-<div created="20210410175902453" modified="20210605173111614" title="$:/state/advancedsearch/currentTab">
-<pre>$:/core/ui/AdvancedSearch/Standard</pre>
+<div created="20210410175902453" modified="20210627092329438" title="$:/state/advancedsearch/currentTab">
+<pre>$:/core/ui/AdvancedSearch/Filter</pre>
 </div>
 <div created="20210410181853225" modified="20210410181853225" title="$:/state/editpreviewtype">
 <pre>$:/core/ui/EditTemplate/body/preview/output</pre>
@@ -14950,8 +14955,8 @@ This is the link to the isolated post which appears at the bottom of every artic
 <div created="20210410181854708" modified="20210614184303333" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20210410175902453" modified="20210605173111614" title="$:/state/tab--1498284803">
-<pre>$:/core/ui/AdvancedSearch/Standard</pre>
+<div created="20210410175902453" modified="20210627092329438" title="$:/state/tab--1498284803">
+<pre>$:/core/ui/AdvancedSearch/Filter</pre>
 </div>
 <div created="20210407212257045" modified="20210411213955738" title="$:/state/tab--1963855381">
 <pre>$:/themes/tiddlywiki/vanilla/themetweaks</pre>
@@ -14968,8 +14973,8 @@ This is the link to the isolated post which appears at the bottom of every artic
 <div created="20210410175706598" modified="20210620174655397" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Plugins</pre>
 </div>
-<div created="20210407212838740" modified="20210620174707606" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Open</pre>
+<div created="20210407212838740" modified="20210627092405794" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div bag="default" revision="1" title="$:/status/IsAnonymous">
 <pre>yes</pre>
@@ -14986,7 +14991,7 @@ This is the link to the isolated post which appears at the bottom of every artic
 <div bag="default" revision="1" title="$:/status/UserName">
 <pre></pre>
 </div>
-<div created="20210621055205752" list="[[Spaced Repetition Example]] [[Reduced SRS Example]] [[Custom Example]] [[Another SRS Example]] [[Ruby Widget / Furigana]] [[Answers without Scheduling]] [[To Do]]" modified="20210621055205752" title="$:/StoryList">
+<div created="20210627092317757" list="[[Download Cards]] [[Spaced Repetition Example]] [[Reduced SRS Example]] [[Custom Example]] [[Ruby Widget / Furigana]] [[Answers without Scheduling]] [[To Do]]" modified="20210627093307231" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20210407212252617" modified="20210407212255257" title="$:/theme">
@@ -15147,7 +15152,26 @@ This tiddler lets you study kanji with 13 strokes
 
 </pre>
 </div>
-<div created="20210411162915641" modified="20210605180755252" tags="output blog-donotexport 類：字" title="kotoba-template">
+<div created="20210627082543820" modified="20210627093703368" tags="" title="Download Cards">
+<pre>Use the button below to download an empty wiki containing the set of  ~2137 &lt;$r u=&quot;じょうようかんじ&quot;&gt;常用漢字&lt;/$r&gt;
+
+&lt;$button class=&quot;tc-btn-download&quot;&gt;
+&lt;$action-sendmessage $message=&quot;tm-download-file&quot; $param=&quot;download-kanji-cards&quot; filename=&quot;kanji.html&quot;/&gt;
+Download Kanji Cards
+&lt;/$button&gt;
+</pre>
+</div>
+<div created="20210627090916479" modified="20210627092448813" tags="" title="download-kanji-cards">
+<pre>\define saveTiddlerFilter()
+[[$:/core]] [[$:/isEncrypted]] [[$:/themes/tiddlywiki/snowwhite]] [[$:/themes/tiddlywiki/vanilla]] -[[$:/boot/boot.css]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] +[sort[title]] [tag[類：字]]
+\end
+\define savingEmpty()
+yes
+\end
+{{$:/core/templates/tiddlywiki5.html}}
+</pre>
+</div>
+<div created="20210411162915641" modified="20210627093001331" tags="output blog-donotexport $:/tags/twsr_ignore" title="kotoba-template">
 <pre>! &lt;$list filter=&quot;[list[!!title]]&quot;&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$list&gt;
 
 |kotobaTable |k
@@ -15163,7 +15187,7 @@ This tiddler lets you study kanji with 13 strokes
 
 </pre>
 </div>
-<div created="20210407210907843" modified="20210523200440504" tags="output blog-donotexport 類：字" title="moji-template">
+<div created="20210407210907843" modified="20210627093040740" tags="output blog-donotexport 類：字 $:/tags/twsr_ignore" title="moji-template">
 <pre>&lt;$question&gt;
 
 ! &lt;$list filter=&quot;[list[!!title]]&quot;&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$list&gt;
@@ -15184,7 +15208,7 @@ This tiddler lets you study kanji with 13 strokes
 
 </pre>
 </div>
-<div created="20210531201943371" modified="20210531203614605" tags="output blog-donotexport 類：字" title="moji-template2">
+<div created="20210531201943371" modified="20210627093023493" tags="output blog-donotexport 類：字 $:/tags/twsr_ignore" title="moji-template2">
 <pre>! &lt;$list filter=&quot;[list[!!title]]&quot;&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$list&gt;
 
 |mojiTable |k

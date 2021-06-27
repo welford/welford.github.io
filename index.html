@@ -159,6 +159,8 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
+<li>$:/editions/twnotes/download-blog</li>
+
 <li>$:/editions/twnotes/download-empty</li>
 
 <li>$:/editions/twnotes/download-partial</li>
@@ -209,7 +211,11 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/advancedsearch/currentTab</li>
+
 <li>$:/state/showeditpreview</li>
+
+<li>$:/state/tab--1498284803</li>
 
 <li>$:/state/tab/moresidebar-1850697562</li>
 
@@ -10176,6 +10182,15 @@ Error message and password prompt
 <pre>GettingStarted
 </pre>
 </div>
+<div created="20210627083416965" modified="20210627083642394" tags="" title="$:/editions/twnotes/download-blog">
+<pre>\define saveTiddlerFilter()
+[[$:/core]] [[$:/isEncrypted]] [[$:/themes/tiddlywiki/snowwhite]] [[$:/themes/tiddlywiki/vanilla]] -[[$:/boot/boot.css]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] +[sort[title]] [tag[blog]]
+\end
+\define savingEmpty()
+yes
+\end
+{{$:/core/templates/tiddlywiki5.html}}</pre>
+</div>
 <div bag="default" created="20140712113349124" modified="20141123161304682" revision="0" title="$:/editions/twnotes/download-empty" type="text/vnd.tiddlywiki">
 <pre>\define saveTiddlerFilter()
 [[$:/core]] [[$:/isEncrypted]] [[$:/plugins/tiddlywiki/fullscreen]] [[$:/themes/tiddlywiki/vanilla]] [[$:/themes/welford/phasersonkill]] [[$:/themes/welford/readonly]] [[$:/theme]] [[$:/plugins/tiddlywiki/codemirror]]  [[$:/plugins/tiddlywiki/katex]] [[$:/plugins/tiddlywiki/highlight]] [[$:/plugins/welford/twexe]] [[$:/plugins/welford/htalink]] [[$:/plugins/welford/twpin]] [[$:/plugins/welford/twmousetrap]] [[$:/plugins/welford/twpin]] [[$:/plugins/kpe/mathjax]] -[[$:/boot/boot.css]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] +[sort[title]]
@@ -10186,9 +10201,9 @@ yes
 {{$:/core/templates/tiddlywiki5.html}}
 </pre>
 </div>
-<div bag="default" created="20140712130137444" modified="20141123161312963" revision="0" title="$:/editions/twnotes/download-partial" type="text/vnd.tiddlywiki">
+<div bag="default" created="20140712130137444" modified="20210627084350067" revision="0" title="$:/editions/twnotes/download-partial" type="text/vnd.tiddlywiki">
 <pre>\define saveTiddlerFilter()
-[[$:/core]] [[$:/isEncrypted]] [[$:/plugins/tiddlywiki/fullscreen]] [[$:/themes/tiddlywiki/vanilla]] [[$:/themes/welford/phasersonkill]] [[$:/themes/welford/readonly]] [[$:/theme]] [[$:/plugins/tiddlywiki/codemirror]] [[$:/plugins/tiddlywiki/katex]] [[$:/plugins/tiddlywiki/highlight]] [[$:/plugins/welford/twexe]] [[$:/plugins/welford/htalink]] [[$:/plugins/welford/twpin]] [tag[blog]] -[[$:/boot/boot.css]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] +[sort[title]]
+[[$:/core]] [[$:/isEncrypted]] [[$:/plugins/tiddlywiki/fullscreen]] [[$:/themes/tiddlywiki/vanilla]] [[$:/themes/welford/phasersonkill]] [[$:/themes/welford/readonly]] [[$:/theme]] [[$:/plugins/tiddlywiki/codemirror]] [[$:/plugins/tiddlywiki/katex]] [[$:/plugins/tiddlywiki/highlight]] [[$:/plugins/welford/twexe]] [[$:/plugins/welford/htalink]] [[$:/plugins/welford/twpin]] [tag[blog]] [[$:/palette]] -[[$:/boot/boot.css]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] +[sort[title]]
 \end
 \define savingEmpty()
 yes
@@ -10221,7 +10236,7 @@ yes
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[$:/plugins/welford/twsr]]</pre>
+# [[Animation.gif]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -13455,25 +13470,31 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 <div bag="default" created="20140710201622904" creator="ジェームス" modified="20140710201628790" modifier="ジェームス" revision="0" title="$:/SiteTitle" type="text/vnd.tiddlywiki">
 <pre>TWNotes</pre>
 </div>
-<div created="20210613102123640" modified="20210613102123640" title="$:/state/showeditpreview">
+<div created="20210627083343988" modified="20210627083350678" title="$:/state/advancedsearch/currentTab">
+<pre>$:/core/ui/AdvancedSearch/System</pre>
+</div>
+<div created="20210613102123640" modified="20210627083651127" title="$:/state/showeditpreview">
 <pre>yes</pre>
+</div>
+<div created="20210627083343988" modified="20210627083350678" title="$:/state/tab--1498284803">
+<pre>$:/core/ui/AdvancedSearch/System</pre>
 </div>
 <div created="20210530195511571" modified="20210530195511571" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Plugins</pre>
 </div>
-<div created="20210530195503662" modified="20210620174750198" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Open</pre>
+<div created="20210530195503662" modified="20210627090518891" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div bag="default" revision="2" title="$:/status/IsLoggedIn">
 <pre>yes</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
-<pre>yes</pre>
+<pre>no</pre>
 </div>
 <div bag="default" revision="1" title="$:/status/UserName">
 <pre></pre>
 </div>
-<div created="20210620174737480" list="$:/Import Hello [[Developing For And Using TW5]] GettingStarted" modified="20210620174737480" title="$:/StoryList">
+<div created="20210627085152430" list="[[Developing For And Using TW5]] [[Export Specific Tiddlers]] GettingStarted" modified="20210627085152430" title="$:/StoryList">
 <pre></pre>
 </div>
 <div bag="default" created="20140620130427249" modified="20170410215131861" revision="0" title="$:/theme" type="text/vnd.tiddlywiki">
@@ -13862,15 +13883,71 @@ http://www.google.co.jp
 !!TWexe
 &lt;$twexe tiddler=&quot;This Is TWEXE&quot; /&gt;</pre>
 </div>
-<div bag="default" created="20140712125603027" modified="20140713103341044" revision="0" tags="twdev" title="Export Specific Tiddlers" type="text/vnd.tiddlywiki">
+<div bag="default" created="20140712125603027" modified="20210627090105059" revision="0" tags="twdev" title="Export Specific Tiddlers" type="text/vnd.tiddlywiki">
 <pre>Just as you can use the buttons in [[Download]] to download the whole tiddlywiki as it is or an empty copy conatining just the plugins and themes, you can also 
 create a tiddler to extract specific pages. I like to do this to extract pages specifically for my homepage. 
 
 !!Method
-*Using this syntax `&lt;$button message=&quot;tw-download-file&quot; param=&quot;Download Partial&quot;&gt;Download Empty&lt;/$button&gt;`
+*Using this syntax `&lt;$button message=&quot;tm-download-file&quot; param=&quot;$:/editions/twnotes/download-blog&quot;&gt;Download Empty&lt;/$button&gt;`
+
 *and the tiddler [[$:/editions/twnotes/download-partial]] I can creat a button which will let me download a tiddler containing only tiddlers tagged &quot;blog&quot;
-!!Example
-*&lt;$button message=&quot;tw-download-file&quot; param=&quot;$:/editions/twnotes/download-partial&quot;&gt;Download Partial&lt;/$button&gt;</pre>
+
+!! Explanation
+
+!!! Download Empty
+
+we use this tiddler as a base:  [[$:/editions/tw5.com/download-empty|https://tiddlywiki.com/#%24%3A%2Feditions%2Ftw5.com%2Fdownload-empty]]
+
+The contents are below for convenience:
+
+```
+\define saveTiddlerFilter()
+[[$:/core]] [[$:/isEncrypted]] [[$:/themes/tiddlywiki/snowwhite]] [[$:/themes/tiddlywiki/vanilla]] -[[$:/b
+oot/boot.css]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] +[sort[title]]
+\end
+\define savingEmpty()
+yes
+\end
+{{$:/core/templates/tiddlywiki5.html}}
+```
+
+!!! Download Specifically Tagged Posts
+
+Copying the above to create [[$:/editions/twnotes/download-blog]]
+
+```
+\define saveTiddlerFilter()
+[[$:/core]] [[$:/isEncrypted]] [[$:/themes/tiddlywiki/snowwhite]] [[$:/themes/tiddlywiki/vanilla]] -[[$:/boot/boot.css]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] +[sort[title]] [tag[blog]]
+\end
+\define savingEmpty()
+yes
+\end
+{{$:/core/templates/tiddlywiki5.html}}
+```
+
+Which is the same as [[$:/editions/tw5.com/download-empty|https://tiddlywiki.com/#%24%3A%2Feditions%2Ftw5.com%2Fdownload-empty]] with the addition of ``[tag[blog]]`` after ``+[sort[title]]``
+
+This should download a plain Tiddlwyiki that only contains tiddlers tagged blog from this Wiki.
+
+
+&lt;$button message=&quot;tm-download-file&quot; param=&quot;$:/editions/twnotes/download-blog&quot;  filename=&quot;blog.html&quot;&gt;Download Blog&lt;/$button&gt;
+
+!!! Download Plugins and Themes Empty
+
+below is the contents of [[$:/editions/twnotes/download-partial]] which adds the plugins and themes to the download
+
+```
+\define saveTiddlerFilter()
+[[$:/core]] [[$:/isEncrypted]] [[$:/plugins/tiddlywiki/fullscreen]] [[$:/themes/tiddlywiki/vanilla]] [[$:/themes/welford/phasersonkill]] [[$:/themes/welford/readonly]] [[$:/theme]] [[$:/plugins/tiddlywiki/codemirror]] [[$:/plugins/tiddlywiki/katex]] [[$:/plugins/tiddlywiki/highlight]] [[$:/plugins/welford/twexe]] [[$:/plugins/welford/htalink]] [[$:/plugins/welford/twpin]] [tag[blog]] [[$:/palette]] -[[$:/boot/boot.css]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] +[sort[title]]
+\end
+\define savingEmpty()
+yes
+\end
+{{$:/core/templates/tiddlywiki5.html}}
+
+```
+
+&lt;$button message=&quot;tm-download-file&quot; param=&quot;$:/editions/twnotes/download-partial&quot;  filename=&quot;styled.html&quot;&gt;Download blog Styled&lt;/$button&gt;</pre>
 </div>
 <div bag="default" created="20141221111642457" modified="20150111233827928" revision="0" tags="tiddlywiki filters" title="Filters" type="text/vnd.tiddlywiki">
 <pre>I always struggle with anything but the most basic of tiddlers when writing list. It always feels like a bit of guess work so I will write a few examples too. I will be using the ``&lt;&lt;list-links &quot;[[filter ]]&quot;&gt;&gt;`` macro.
