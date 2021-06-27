@@ -241,6 +241,10 @@ Error message and password prompt
 
 <li>Download Cards</li>
 
+<li>Download Empty TWSR Wiki</li>
+
+<li>download-empty-twsr</li>
+
 <li>download-kanji-cards</li>
 
 <li>kotoba-template</li>
@@ -14448,11 +14452,12 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20210407210316296" modified="20210627093221991" title="$:/DefaultTiddlers">
+<div created="20210407210316296" modified="20210627162004940" title="$:/DefaultTiddlers">
 <pre>[[Spaced Repetition Example]]
 [[Reduced SRS Example]]
 [[Custom Example]]
 [[Download Cards]]
+[[Download Empty TWSR Wiki]]
 [[Another SRS Example]]
 [[Ruby Widget / Furigana]]
 [[Answers without Scheduling]]
@@ -14952,8 +14957,8 @@ This is the link to the isolated post which appears at the bottom of every artic
 <div created="20210407212848335" modified="20210407212848335" title="$:/state/plugin-info-1024715668-$:/plugins/welford/twstaticblog/helper---1861025739">
 <pre>contents</pre>
 </div>
-<div created="20210410181854708" modified="20210614184303333" title="$:/state/showeditpreview">
-<pre>yes</pre>
+<div created="20210410181854708" modified="20210627161130889" title="$:/state/showeditpreview">
+<pre>no</pre>
 </div>
 <div created="20210410175902453" modified="20210627092329438" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Filter</pre>
@@ -14973,7 +14978,7 @@ This is the link to the isolated post which appears at the bottom of every artic
 <div created="20210410175706598" modified="20210620174655397" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Plugins</pre>
 </div>
-<div created="20210407212838740" modified="20210627092405794" title="$:/state/tab/sidebar--595412856">
+<div created="20210407212838740" modified="20210627161431659" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div bag="default" revision="1" title="$:/status/IsAnonymous">
@@ -14991,7 +14996,7 @@ This is the link to the isolated post which appears at the bottom of every artic
 <div bag="default" revision="1" title="$:/status/UserName">
 <pre></pre>
 </div>
-<div created="20210627092317757" list="[[Download Cards]] [[Spaced Repetition Example]] [[Reduced SRS Example]] [[Custom Example]] [[Ruby Widget / Furigana]] [[Answers without Scheduling]] [[To Do]]" modified="20210627093307231" title="$:/StoryList">
+<div created="20210627161118980" list="$:/ControlPanel [[Download Empty TWSR Wiki]] [[Spaced Repetition Example]] [[Reduced SRS Example]] 一 類：字 [[Custom Example]] [[Download Cards]] [[Another SRS Example]] [[Ruby Widget / Furigana]] [[Answers without Scheduling]] [[To Do]]" modified="20210627162001183" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20210407212252617" modified="20210407212255257" title="$:/theme">
@@ -15159,6 +15164,28 @@ This tiddler lets you study kanji with 13 strokes
 &lt;$action-sendmessage $message=&quot;tm-download-file&quot; $param=&quot;download-kanji-cards&quot; filename=&quot;kanji.html&quot;/&gt;
 Download Kanji Cards
 &lt;/$button&gt;
+</pre>
+</div>
+<div created="20210627161020792" modified="20210627161955205" tags="" title="Download Empty TWSR Wiki">
+<pre>Use the button below to download an almost empty wiki containing the plugins required for twsr and nothing else.
+
+&lt;$button class=&quot;tc-btn-download&quot;&gt;
+&lt;$action-sendmessage $message=&quot;tm-download-file&quot; $param=&quot;download-empty-twsr&quot; filename=&quot;twsr-empty.html&quot;/&gt;
+Download Empty TWSR Wiki
+&lt;/$button&gt;
+
+
+
+</pre>
+</div>
+<div created="20210627161123600" modified="20210627161944830" tags="" title="download-empty-twsr">
+<pre>\define saveTiddlerFilter()
+[[$:/core]] [[$:/isEncrypted]] [[$:/themes/tiddlywiki/snowwhite]] [[$:/themes/tiddlywiki/vanilla]] [[$:/plugins/welford/twsr]] -[[$:/boot/boot.css]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] +[sort[title]]
+\end
+\define savingEmpty()
+yes
+\end
+{{$:/core/templates/tiddlywiki5.html}}
 </pre>
 </div>
 <div created="20210627090916479" modified="20210627092448813" tags="" title="download-kanji-cards">
