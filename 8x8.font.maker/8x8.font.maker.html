@@ -1,0 +1,301 @@
+<html>
+	<head>
+		<style>
+			div.char{
+				border: 1px solid grey;
+				width: fit-content;
+				float:left;
+			}
+			div.row > span{
+				height: 10px;
+				width: 10px;
+				display: inline-block;
+			}
+			div.row > span{
+				height: 10px;
+				width: 10px;
+				display: inline-block;
+			}
+			div.row > span.set{
+				background-color: black;
+			}
+			div.row > span.clr{
+				background-color: transparent;
+			}
+			div.row > span:hover{
+				height: 10px;
+				width: 10px;
+				display: inline-block;
+				background-color: grey;
+			}
+		</style>
+
+		<style type="text/css">
+			.context-menu {
+				position: absolute;
+				text-align: center;
+				background: lightgray;
+				border: 1px solid black;
+			}
+
+			.context-menu ul {
+				padding: 0px;
+				margin: 0px;
+				min-width: 150px;
+				list-style: none;
+			}
+
+			.context-menu ul li {
+				padding-bottom: 7px;
+				padding-top: 7px;
+				border: 1px solid black;
+			}
+
+			.context-menu ul li a {
+				text-decoration: none;
+				color: black;
+			}
+
+			.context-menu ul li:hover {
+				background: darkgray;
+			}
+		</style>
+
+		<script>
+			var gClipboard = new Uint8Array([0,0,0,0,0,0,0,0]);
+			var gTargetAscii = -1;
+			var gDownload = document.createElement("a");
+			gDownload.style = "display: none";
+			gDownload.download = "font.8x8.bin";
+			var binary8x8 = [0b00000001, 0b00000010, 0b00000100, 0b00001000, 0b00010000, 0b00100000, 0b01000000, 0b10000000];
+
+			function GenerateOutput(w,h) {
+				var op = new Uint8Array(256*8);
+				for(var asciiCode=0;asciiCode<256;asciiCode++){
+					for(var y=0;y<h;y++) {
+						var byte = 0;
+						for(var x=0;x<w;x++) {
+							var character = document.getElementById("ASCII"+asciiCode+"r"+y+"c"+x)
+							if(character && character.classList.contains("set")) {
+								byte |= binary8x8[x];
+							}
+						}
+						op[(asciiCode*8)+y] = byte;
+					}
+				}
+				return op;
+			}
+			
+			function GetCharacterData(op,asciiCode,w,h) {
+				for(var y=0;y<h;y++) {
+					op[y] = 0;
+					for(var x=0;x<w;x++) {
+						var character = document.getElementById("ASCII"+asciiCode+"r"+y+"c"+x)
+						if(character.classList.contains("set")) {
+							op[y] |=  binary8x8[x];
+						}
+					}
+				}
+			}
+
+			function SetCharacterFromData(characterData,asciiCode,w,h) {
+				for(var y=0;y<h;y++) {
+					for(var x=0;x<w;x++) {
+						var character = document.getElementById("ASCII"+asciiCode+"r"+y+"c"+x)
+						character.className = "";
+						if(characterData[y] & binary8x8[x]) {
+							character.classList.add("set")
+						}
+					}
+				}
+			}
+
+			function SetFromData(data,w,h) {
+				for(var asciiCode=0;asciiCode<256;asciiCode++){
+					var characterData = new Uint8Array([
+						data[(asciiCode*8)+0],
+						data[(asciiCode*8)+1],
+						data[(asciiCode*8)+2],
+						data[(asciiCode*8)+3],
+						data[(asciiCode*8)+4],
+						data[(asciiCode*8)+5],
+						data[(asciiCode*8)+6],
+						data[(asciiCode*8)+7],
+					]);
+					SetCharacterFromData(characterData,asciiCode,8,8);
+				}
+			}
+
+			function SaveFontBin(w,h) {
+				var op = GenerateOutput(w,h);
+				var blob = new Blob([op], {type: "octet/stream"}),
+				url = window.URL.createObjectURL(blob);
+				gDownload.href = url;
+				gDownload.click();
+				window.URL.revokeObjectURL(url);
+			}
+
+			var mouse_state = 0;
+			function ToggleState(event,element){
+				if(mouse_state != 0) { 
+					mouse_state = 0;
+					return
+				};
+				if(element.classList.contains("set")){
+					element.classList.add("clr");
+					element.classList.remove("set");
+				} else {
+					element.classList.remove("clr");
+					element.classList.add("set");
+				}
+			}
+
+			function SetState(event,element){
+				element.classList.remove("clr");
+				element.classList.add("set");
+			}
+
+			function MouseDown(event,element){
+				if(event.buttons === 1) {
+					mouse_state = 1;
+				}
+				return false;
+			}
+			
+			function MouseUp(event,element,down){
+				if(mouse_state == 2) {
+					mouse_state = 3;
+				} else {
+					mouse_state = 0;
+				}
+				return false;
+			}
+
+			var lastPos = [0,0];
+			function SetMove(event,element){
+				var pos = [event.clientX,event.clientY];
+				if(pos[0] == lastPos[0] && pos[1] == lastPos[1]) return false;
+				lastPos = pos;
+				if(event.buttons === 1) {
+					if(mouse_state == 1) {
+						mouse_state = 2;
+					}
+					if(mouse_state >= 2){
+						SetState(event,element);
+					}
+				}
+				return false;
+			}
+
+			function SetActiveCharacter(event,element,code){
+				gTargetAscii = code;
+			}
+
+			function CopyCharacter(event,element){
+				GetCharacterData(gClipboard, gTargetAscii, 8, 8);
+			}
+
+			function PasteCharacter(event,element){
+				SetCharacterFromData(gClipboard, gTargetAscii, 8, 8);
+			}
+
+			function CreateCharacterEditor(asciiCode, w, h) {
+				var character = document.createElement("div");
+
+				character.className = "char"
+				character.title = "ASCII:"+asciiCode+";Character:"+String.fromCharCode(asciiCode)+";";
+				character.id = "ASCII_"+asciiCode;
+				character.onmouseover=function(elm){ return function(event){SetActiveCharacter(event,elm,asciiCode)}}(character);
+				character.draggable = false;
+				character.addEventListener("dragstart",(event)=>{event.preventDefault();});
+				character.addEventListener('drop', (event) => {e.preventDefault();});
+				for(var y=0;y<h;y++) {
+					var row = document.createElement("div");
+					row.classList.add("row");
+					row.id = "ASCII"+asciiCode+"r"+y;
+					row.draggable = false;
+					for(var x=0;x<w;x++) {
+						var column = document.createElement("span");
+						column.className = "clr";
+						column.id = "ASCII"+asciiCode+"r"+y+"c"+x;
+						column.draggable = false;
+						column.onclick=function(elm){ return function(event){console.log("clk");ToggleState(event,elm)}}(column);
+						column.onmousedown=function(elm){ return function(event){console.log("dwn");MouseDown(event,elm)}}(column);
+						column.onmousemove=function(elm){ return function(event){console.log("mve");SetMove(event,elm)}}(column);
+						column.onmouseup=function(elm){ return function(event){console.log("up");MouseUp(event,elm)}}(column);
+						row.appendChild(column);
+					}
+					character.appendChild(row);
+				}
+				return character;
+			}
+
+			function ImportFont(ev) {
+				// Prevent default behavior (Prevent file from being opened)
+				ev.preventDefault();
+				if (ev.dataTransfer.items) {
+					//var tmp = ev.dataTransfer.getData("text/html");
+					var files = ev.dataTransfer.files; // Array of all files
+					for (var i=0, file; file=files[i]; i++) {
+						var reader = new FileReader();
+						reader.onload = function(e2) {
+							var data = new Uint8Array(e2.target.result); 
+							SetFromData(data,8,8);
+						}
+						reader.readAsArrayBuffer(file); // start reading the file data.
+					}
+				} else {
+				}
+			}
+
+			function dragOver(ev) {
+				ev.preventDefault();// Prevent default behavior (Prevent file from being opened)
+			}
+		</script>
+	</head>
+	
+	<body>
+		<div id="contextMenu" class="context-menu" style="display:none">
+		<ul>
+			<li onclick="CopyCharacter()"><span>Copy</span></li>
+			<li onclick="PasteCharacter()"><span>Paste</span></li>
+		</ul>
+	</div>
+		<div class="draganddrop" id="draganddrop" ondrop="ImportFont(event)" ondragover="dragOver(event)">
+			<button onclick="SaveFontBin(8,8)">Save</button>
+			<div class="editor" id="editor">
+			</div>
+		</div>
+	</body>
+	<script>
+		//STARTUP
+		document.body.appendChild(gDownload);
+		var editor = document.getElementById("editor")
+		for(var asciiCode=0;asciiCode<256;asciiCode++) {
+			editor.appendChild(CreateCharacterEditor(asciiCode,8,8))
+		}
+	</script>
+	 <script>
+		document.onclick = hideMenu;
+		document.oncontextmenu = rightClick;
+
+		function hideMenu() {
+			document.getElementById("contextMenu").style.display = "none"
+		}
+
+		function rightClick(e) {
+			e.preventDefault();
+
+			if (document.getElementById("contextMenu").style.display == "block"){
+				hideMenu();
+			} else {
+				var menu = document
+					.getElementById("contextMenu")
+						
+				menu.style.display = 'block';
+				menu.style.left = e.pageX + "px";
+				menu.style.top = e.pageY + "px";
+			}
+		}
+	</script>
+</html>
