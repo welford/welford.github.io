@@ -26,6 +26,11 @@
 				height: 10px;
 				width: 10px;
 				display: inline-block;
+			}
+			div.row > span.set:hover{
+				background-color: rgb(203, 24, 24);
+			}
+			div.row > span.clr:hover{
 				background-color: grey;
 			}
 		</style>
@@ -136,6 +141,7 @@
 			}
 
 			var mouse_state = 0;
+			var start_state = false;
 			function ToggleState(event,element){
 				if(mouse_state != 0) { 
 					mouse_state = 0;
@@ -150,14 +156,26 @@
 				}
 			}
 
-			function SetState(event,element){
-				element.classList.remove("clr");
-				element.classList.add("set");
+			function SetState(event,element, state){
+				if(state) {
+					element.classList.remove("clr");
+					element.classList.add("set");
+				} else {
+					element.classList.add("clr");
+					element.classList.remove("set");
+				}
 			}
 
 			function MouseDown(event,element){
 				if(event.buttons === 1) {
 					mouse_state = 1;
+				}
+				// If we started on a set pixel we are removing
+				// otherwise we are adding
+				if(element.classList.contains("set")){
+					start_state = true;
+				} else {
+					start_state = false;
 				}
 				return false;
 			}
@@ -181,7 +199,7 @@
 						mouse_state = 2;
 					}
 					if(mouse_state >= 2){
-						SetState(event,element);
+						SetState(event,element,!start_state);
 					}
 				}
 				return false;
@@ -199,6 +217,11 @@
 				SetCharacterFromData(gClipboard, gTargetAscii, 8, 8);
 			}
 
+			//events go:
+			// mouse down
+			// mouse move
+			// mouse up
+			// mouse click
 			function CreateCharacterEditor(asciiCode, w, h) {
 				var character = document.createElement("div");
 
@@ -219,10 +242,10 @@
 						column.className = "clr";
 						column.id = "ASCII"+asciiCode+"r"+y+"c"+x;
 						column.draggable = false;
-						column.onclick=function(elm){ return function(event){console.log("clk");ToggleState(event,elm)}}(column);
-						column.onmousedown=function(elm){ return function(event){console.log("dwn");MouseDown(event,elm)}}(column);
-						column.onmousemove=function(elm){ return function(event){console.log("mve");SetMove(event,elm)}}(column);
-						column.onmouseup=function(elm){ return function(event){console.log("up");MouseUp(event,elm)}}(column);
+						column.onclick=function(elm){ return function(event){ToggleState(event,elm)}}(column);
+						column.onmousedown=function(elm){ return function(event){MouseDown(event,elm)}}(column);
+						column.onmousemove=function(elm){ return function(event){SetMove(event,elm)}}(column);
+						column.onmouseup=function(elm){ return function(event){MouseUp(event,elm)}}(column);
 						row.appendChild(column);
 					}
 					character.appendChild(row);
@@ -262,6 +285,13 @@
 		</ul>
 	</div>
 		<div class="draganddrop" id="draganddrop" ondrop="ImportFont(event)" ondragover="dragOver(event)">
+			<div>1. click on a blank square to add a pixel </div>
+			<div>2. click on a filled square to remove a pixel </div>
+			<div>3. drag in either state 1 or 2 to paint/delete</div>
+			<div>4. "Save" exports data as 1 bit per pixel. Each character is 8x8 pixels. Hover over character to see corresponding ASCII char</div>
+			<div>5. You can reimport exported data to continue editing. </div>
+			<div>6. Right click to copy/paste (on a per character basis). </div>
+			<div>※. THERE IS NO UNDO/REDO. </div>
 			<button onclick="SaveFontBin(8,8)">Save</button>
 			<div class="editor" id="editor">
 			</div>
